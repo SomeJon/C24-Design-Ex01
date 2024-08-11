@@ -67,13 +67,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(314, 17);
+            this.label1.Location = new System.Drawing.Point(314, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(559, 36);
+            this.label1.Size = new System.Drawing.Size(52, 18);
             this.label1.TabIndex = 53;
-            this.label1.Text = "This is the AppID of \"Design Patterns App 2.4\". The grader will use it to test yo" +
-    "ur app.\r\nType here your own AppID to test it:";
+            this.label1.Text = "App Id:";
             // 
             // tabControl1
             // 
@@ -116,7 +115,7 @@
             this.textBoxAppID.Name = "textBoxAppID";
             this.textBoxAppID.Size = new System.Drawing.Size(237, 24);
             this.textBoxAppID.TabIndex = 54;
-            this.textBoxAppID.Text = "1450160541956417";
+            this.textBoxAppID.Text = "867142571975316";
             // 
             // tabPage2
             // 
