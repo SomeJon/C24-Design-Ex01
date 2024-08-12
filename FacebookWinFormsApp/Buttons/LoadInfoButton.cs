@@ -16,5 +16,6 @@ namespace FacebookClient.Buttons
         }
 
         public eInfoChoice InfoChoice { get; set;}
+        public object RecivedInfo { get; set;}
     }
 }

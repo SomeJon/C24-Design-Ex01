@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FacebookClient.Buttons;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,7 +41,15 @@ namespace FacebookClient.Pages
 
         private void addIdButton_Click(object sender, EventArgs e)
         {
-            OnRecivedInfo(sender, e);
+            if (addAppIdTextBox.Text.Length > 0) {
+                (sender as LoadInfoButton).RecivedInfo = addAppIdTextBox.Text;
+                appIdComboBox.Items.Add(addAppIdTextBox.Text);
+                appIdComboBox.SelectedIndex = appIdComboBox.Items.Count - 1;
+                OnRecivedInfo(sender, e);
+            } else
+            {
+                MessageBox.Show("You need to first input an id in the Text Box!");
+            }
         }
     }
 }

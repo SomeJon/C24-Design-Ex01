@@ -10,6 +10,8 @@ using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using FacebookClient.Pages;
+using FacebookClient.Buttons;
+using CefSharp.DevTools.Debugger;
 
 namespace BasicFacebookFeatures
 {
@@ -24,16 +26,6 @@ namespace BasicFacebookFeatures
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-            //Clipboard.SetText("design.patterns");
-
-            if (LoginResult == null)
-            {
-                login();
-            }
-        }
-
         private void login()
         {
             LoginResult = FacebookService.Login(AppSettings.s_AppID,
@@ -46,41 +38,28 @@ namespace BasicFacebookFeatures
             else
             {
                 MessageBox.Show(LoginResult.ErrorMessage, "Login Failed");
+                LoginResult = null;
             }
 
-            if (string.IsNullOrEmpty(LoginResult.ErrorMessage))
-            {
-                //buttonLogin.Text = $"Logged in as {LoginResult.LoggedInUser.Name}";
-                //buttonLogin.BackColor = Color.LightGreen;
-                //pictureBoxProfile.ImageLocation = LoginResult.LoggedInUser.PictureNormalURL;
-                //buttonLogin.Enabled = false;
-                //buttonLogout.Enabled = true;
-            }
+            //if (string.IsNullOrEmpty(LoginResult.ErrorMessage))
+            //{
+            //    //buttonLogin.Text = $"Logged in as {LoginResult.LoggedInUser.Name}";
+            //    //buttonLogin.BackColor = Color.LightGreen;
+            //    //pictureBoxProfile.ImageLocation = LoginResult.LoggedInUser.PictureNormalURL;
+            //    //buttonLogin.Enabled = false;
+            //    //buttonLogout.Enabled = true;
+            //}
         }
 
-        private void buttonLogout_Click(object sender, EventArgs e)
-        {
-            FacebookService.LogoutWithUI();
-            //buttonLogin.Text = "Login";
-            //buttonLogin.BackColor = buttonLogout.BackColor;
-            LoginResult = null;
-            //buttonLogin.Enabled = true;
-            //buttonLogout.Enabled = false;
-        }
-
-        private void loginPage1_SelectedChoice(object sender, EventArgs e)
-        {
-            Button selectedButton = sender as Button;
-            if((sender as Button).Name.Equals("loginButton"))
-            {
-                login();
-                //MainPage.SelectedIndex = 0;
-            }
-            else
-            {
-                //MainPage.SelectedIndex = 2;
-            }
-        }
+        //private void buttonLogout_Click(object sender, EventArgs e)
+        //{
+        //    FacebookService.LogoutWithUI();
+        //    //buttonLogin.Text = "Login";
+        //    //buttonLogin.BackColor = buttonLogout.BackColor;
+        //    LoginResult = null;
+        //    //buttonLogin.Enabled = true;
+        //    //buttonLogout.Enabled = false;
+        //}
 
         public static class AppSettings
         {
@@ -102,29 +81,48 @@ namespace BasicFacebookFeatures
             "user_videos"};
         }
 
-        private void changePage_PageControl(object sender, EventArgs e)
+        private void loadInfoButton_RecievedInfo(object sender, EventArgs e)
         {
-            //check to which page we need to move
-            Button selectedPage = sender as Button;
-            if ((sender as Button).Name.Equals("loginButton"))
+            LoadInfoButton loadInfoButton = sender as LoadInfoButton;
+            
+            switch (loadInfoButton.InfoChoice)
             {
-                login();
-                //MainPage.SelectedIndex = 0;
-            }
-            else if ((sender as Button).Name.Equals("settingButton"))
-            {
-                //MainPage.SelectedIndex = 2;
-            }
-            else
-            {
-                //MainPage.SelectedIndex = 1;
+                case LoadInfoButton.eInfoChoice.AppId:
+                    AppSettings.s_AppID = loadInfoButton.RecivedInfo.ToString();
+                    break;
+                default:
+                    MessageBox.Show("Big big error happened!");
+                    break;
+
             }
         }
 
-        private void recivedInfo_PageControl(object sender, EventArgs e)
+        private void switchPageButton_ChangePage(object sender, EventArgs e)
         {
-            //check which new info recived and use it
-            AppSettings.s_AppID = (sender as ComboBox).SelectedItem.ToString();
+            PageSwitchButton switchPageButton = sender as PageSwitchButton;
+
+            switch (switchPageButton.PageChoice)
+            {
+                case PageSwitchButton.ePageChoice.HomePage:
+                    if (LoginResult == null)
+                    {
+                        login();
+                    }
+
+                    if (LoggedUser != null)
+                    {
+                        tabControl.SelectedIndex = 2;
+                    }
+
+                    break;
+                case PageSwitchButton.ePageChoice.Login:
+                    tabControl.SelectedIndex = 0;
+                    break;
+                case PageSwitchButton.ePageChoice.LoginSetting:
+                    tabControl.SelectedIndex = 1;
+                    break;
+            }
         }
+
     }
 }
