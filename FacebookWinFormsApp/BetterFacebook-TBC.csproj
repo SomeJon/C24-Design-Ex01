@@ -101,6 +101,7 @@
     <Compile Include="Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageControl.cs" />
     <Compile Include="Pages\SettingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>

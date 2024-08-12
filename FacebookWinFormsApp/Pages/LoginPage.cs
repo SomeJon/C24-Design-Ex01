@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FacebookClient.New_Buttons
+namespace FacebookClient.Pages
 {
     public partial class LoginPage : UserControl, PageControl
     {
-        public event EventHandler SelectedChoice;
+        public event EventHandler ChangePage;
 
         public override Color BackColor {  get; set; }
 
@@ -23,17 +23,17 @@ namespace FacebookClient.New_Buttons
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (SelectedChoice != null)
+            if (ChangePage != null)
             {
-                SelectedChoice.Invoke(sender, EventArgs.Empty);
+                ChangePage.Invoke(sender, EventArgs.Empty);
             }
         }
 
         private void settingButton_Click(object sender, EventArgs e)
         {
-            if (SelectedChoice != null)
+            if (ChangePage != null)
             {
-                SelectedChoice.Invoke(sender, EventArgs.Empty);
+                ChangePage.Invoke(sender, EventArgs.Empty);
             }
         }
     }

@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FacebookClient.New_Buttons
+namespace FacebookClient.Pages
 {
     public partial class SettingPage : UserControl, PageControl
     {
-        public event EventHandler SettingChanged;
+        public event EventHandler RecivedInfo;
+        public event EventHandler ChangePage;
         public string SelectedAppId { get; private set; }
         public override Color BackColor {  get; set; }
 
@@ -30,15 +31,19 @@ namespace FacebookClient.New_Buttons
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            if (SettingChanged != null)
+            if (ChangePage != null)
             {
-                SettingChanged.Invoke(this, EventArgs.Empty);
+                ChangePage.Invoke(sender, EventArgs.Empty);
             }
         }
 
         private void appIdComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedAppId = appIdComboBox.SelectedItem.ToString();
+            if(RecivedInfo != null)
+            {
+                RecivedInfo(sender, EventArgs.Empty);
+            }
         }
 
         private void addIdButton_Click(object sender, EventArgs e)

@@ -36,9 +36,9 @@
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.textBoxAppID = new System.Windows.Forms.TextBox();
             this.newLogin = new System.Windows.Forms.TabPage();
-            this.loginPage = new FacebookClient.New_Buttons.LoginPage();
+            this.loginPage = new FacebookClient.Pages.LoginPage();
             this.loginSettingTab = new System.Windows.Forms.TabPage();
-            this.settingLoginPage = new FacebookClient.New_Buttons.SettingPage();
+            this.settingLoginPage = new FacebookClient.Pages.SettingPage();
             this.tabControl.SuspendLayout();
             this.oldLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
@@ -140,7 +140,7 @@
             this.loginPage.Name = "loginPage";
             this.loginPage.Size = new System.Drawing.Size(1073, 658);
             this.loginPage.TabIndex = 0;
-            this.loginPage.SelectedChoice += new System.EventHandler(this.loginPage1_SelectedChoice);
+            this.loginPage.ChangePage += new System.EventHandler(this.loginPage1_SelectedChoice);
             // 
             // loginSettingTab
             // 
@@ -161,7 +161,8 @@
             this.settingLoginPage.Name = "settingLoginPage";
             this.settingLoginPage.Size = new System.Drawing.Size(1067, 652);
             this.settingLoginPage.TabIndex = 0;
-            this.settingLoginPage.SettingChanged += new System.EventHandler(this.settingLoginPage_SettingChanged);
+            this.settingLoginPage.ChangePage += new System.EventHandler(this.changePage_PageControl);
+            this.settingLoginPage.RecivedInfo += new System.EventHandler(this.recivedInfo_PageControl);
             // 
             // FormMain
             // 
@@ -195,8 +196,8 @@
         private System.Windows.Forms.TextBox textBoxAppID;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.TabPage loginSettingTab;
-        private FacebookClient.New_Buttons.LoginPage loginPage;
-        private FacebookClient.New_Buttons.SettingPage settingLoginPage;
+        private FacebookClient.Pages.LoginPage loginPage;
+        private FacebookClient.Pages.SettingPage settingLoginPage;
     }
 }
 

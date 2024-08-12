@@ -1,4 +1,4 @@
-﻿namespace FacebookClient.New_Buttons
+﻿namespace FacebookClient.Pages
 {
     partial class SettingPage
     {
