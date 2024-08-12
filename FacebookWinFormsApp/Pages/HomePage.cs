@@ -10,20 +10,17 @@ using System.Windows.Forms;
 
 namespace FacebookClient.Pages
 {
-    public partial class LoginPage : UserControl, PageControl
+    public partial class HomePage : UserControl
     {
+        public event EventHandler RecivedInfo;
         public event EventHandler ChangePage;
+        public string SelectedAppId { get; private set; }
+        public override Color BackColor { get; set; }
 
-        public override Color BackColor {  get; set; }
 
-        public LoginPage()
+        public HomePage()
         {
             InitializeComponent();
-        }
-
-        private void LoginPage_Load(object sender, EventArgs e)
-        {
-            dateLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
     }
 }
