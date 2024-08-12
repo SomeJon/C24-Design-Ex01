@@ -28,18 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPage));
             this.dateLabel = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timePanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.loginButton = new System.Windows.Forms.Button();
             this.facebooklogo = new System.Windows.Forms.PictureBox();
-            this.exitButton = new System.Windows.Forms.Button();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.loginButton = new FacebookClient.Buttons.PageSwitchButton();
+            this.settingButton = new FacebookClient.Buttons.PageSwitchButton();
+            this.exitButton = new FacebookClient.Buttons.PageSwitchButton();
             this.timePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebooklogo)).BeginInit();
             this.SuspendLayout();
@@ -87,18 +85,6 @@
             this.textBox1.Text = "press to throw facebook logos in the air";
             this.textBox1.Visible = false;
             // 
-            // loginButton
-            // 
-            this.loginButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.loginButton.Location = new System.Drawing.Point(362, 226);
-            this.loginButton.Margin = new System.Windows.Forms.Padding(4);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(336, 97);
-            this.loginButton.TabIndex = 59;
-            this.loginButton.Text = "Login with Facebook";
-            this.loginButton.UseVisualStyleBackColor = true;
-            // 
             // facebooklogo
             // 
             this.facebooklogo.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -111,17 +97,6 @@
             this.facebooklogo.TabIndex = 60;
             this.facebooklogo.TabStop = false;
             // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.exitButton.Location = new System.Drawing.Point(362, 330);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(336, 50);
-            this.exitButton.TabIndex = 61;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            // 
             // textBox9
             // 
             this.textBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -133,24 +108,52 @@
             this.textBox9.TabIndex = 62;
             this.textBox9.Text = "new mini form to confirm exit";
             // 
-            // button2
+            // loginButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(913, 467);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 77);
-            this.button2.TabIndex = 63;
-            this.button2.Text = "Setting";
-            this.button2.UseVisualStyleBackColor = true;
+            this.loginButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.loginButton.Location = new System.Drawing.Point(362, 226);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.loginButton.Size = new System.Drawing.Size(336, 98);
+            this.loginButton.TabIndex = 65;
+            this.loginButton.Text = "Login with Facebook";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.switchPageButton_Click);
+            // 
+            // settingButton
+            // 
+            this.settingButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.settingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.settingButton.Location = new System.Drawing.Point(906, 475);
+            this.settingButton.Name = "settingButton";
+            this.settingButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.LoginSetting;
+            this.settingButton.Size = new System.Drawing.Size(98, 69);
+            this.settingButton.TabIndex = 66;
+            this.settingButton.Text = "Settings";
+            this.settingButton.UseVisualStyleBackColor = true;
+            this.settingButton.Click += new System.EventHandler(this.switchPageButton_Click);
+            // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.exitButton.Location = new System.Drawing.Point(362, 330);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.Exit;
+            this.exitButton.Size = new System.Drawing.Size(336, 55);
+            this.exitButton.TabIndex = 67;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
             // 
             // LoginPage
             // 
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.facebooklogo);
+            this.Controls.Add(this.settingButton);
             this.Controls.Add(this.loginButton);
+            this.Controls.Add(this.facebooklogo);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.timePanel);
@@ -169,14 +172,13 @@
         #endregion
 
         private System.Windows.Forms.Label dateLabel;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.PictureBox facebooklogo;
-        private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Button button2;
+        private Buttons.PageSwitchButton loginButton;
+        private Buttons.PageSwitchButton settingButton;
+        private Buttons.PageSwitchButton exitButton;
     }
 }

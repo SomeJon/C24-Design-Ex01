@@ -10,9 +10,8 @@ using System.Windows.Forms;
 
 namespace FacebookClient.Pages
 {
-    public partial class LoginPage : UserControl, PageControl
+    public partial class LoginPage : BasePage
     {
-        public event EventHandler ChangePage;
 
         public override Color BackColor {  get; set; }
 
@@ -24,6 +23,11 @@ namespace FacebookClient.Pages
         private void LoginPage_Load(object sender, EventArgs e)
         {
             dateLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
+
+        private void switchPageButton_Click(object sender, EventArgs e)
+        {
+            OnChangePage(sender, e);
         }
     }
 }

@@ -28,13 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.buttonAboutme = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.logoutButton = new FacebookClient.Buttons.PageSwitchButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -43,89 +38,39 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.useCase2 = new FacebookClient.Buttons.PageSwitchButton();
+            this.frienedButton = new FacebookClient.Buttons.PageSwitchButton();
+            this.useCase1 = new FacebookClient.Buttons.PageSwitchButton();
+            this.aboutButton = new FacebookClient.Buttons.PageSwitchButton();
+            this.pictureButton = new FacebookClient.Buttons.PageSwitchButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.button6.Location = new System.Drawing.Point(441, 167);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(177, 30);
-            this.button6.TabIndex = 27;
-            this.button6.Text = "pictures";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.button5.Location = new System.Drawing.Point(258, 275);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(177, 30);
-            this.button5.TabIndex = 26;
-            this.button5.Text = "use case 2";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.button2.Location = new System.Drawing.Point(258, 239);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(177, 30);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "use case 1";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // buttonAboutme
-            // 
-            this.buttonAboutme.BackColor = System.Drawing.Color.Transparent;
-            this.buttonAboutme.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.buttonAboutme.Location = new System.Drawing.Point(258, 167);
-            this.buttonAboutme.Name = "buttonAboutme";
-            this.buttonAboutme.Size = new System.Drawing.Size(177, 30);
-            this.buttonAboutme.TabIndex = 24;
-            this.buttonAboutme.Text = "about me";
-            this.buttonAboutme.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.button1.Location = new System.Drawing.Point(258, 203);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 30);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "number of friends";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button
-            // 
-            this.button.BackColor = System.Drawing.Color.Transparent;
-            this.button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.button.Location = new System.Drawing.Point(0, 3);
-            this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(88, 38);
-            this.button.TabIndex = 22;
-            this.button.Text = "Logout";
-            this.button.UseVisualStyleBackColor = false;
-            this.button.Visible = false;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel1.Controls.Add(this.button);
+            this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(845, 163);
             this.panel1.TabIndex = 28;
+            // 
+            // logoutButton
+            // 
+            this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.logoutButton.Location = new System.Drawing.Point(0, 1);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.Logout;
+            this.logoutButton.Size = new System.Drawing.Size(96, 42);
+            this.logoutButton.TabIndex = 67;
+            this.logoutButton.Text = "Logout";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.switchPageButton_Click);
             // 
             // panel2
             // 
@@ -215,22 +160,82 @@
             this.textBox4.Text = "Switch background";
             this.textBox4.Visible = false;
             // 
+            // useCase2
+            // 
+            this.useCase2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.useCase2.Location = new System.Drawing.Point(258, 276);
+            this.useCase2.Name = "useCase2";
+            this.useCase2.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.UseCase2Page;
+            this.useCase2.Size = new System.Drawing.Size(177, 30);
+            this.useCase2.TabIndex = 66;
+            this.useCase2.Text = "Use Cae 2";
+            this.useCase2.UseVisualStyleBackColor = true;
+            this.useCase2.Click += new System.EventHandler(this.switchPageButton_Click);
+            // 
+            // frienedButton
+            // 
+            this.frienedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.frienedButton.Location = new System.Drawing.Point(258, 204);
+            this.frienedButton.Name = "frienedButton";
+            this.frienedButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.FriendPage;
+            this.frienedButton.Size = new System.Drawing.Size(177, 30);
+            this.frienedButton.TabIndex = 65;
+            this.frienedButton.Text = "Number of friends";
+            this.frienedButton.UseVisualStyleBackColor = true;
+            this.frienedButton.Click += new System.EventHandler(this.switchPageButton_Click);
+            // 
+            // useCase1
+            // 
+            this.useCase1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.useCase1.Location = new System.Drawing.Point(258, 240);
+            this.useCase1.Name = "useCase1";
+            this.useCase1.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.UseCase1Page;
+            this.useCase1.Size = new System.Drawing.Size(177, 30);
+            this.useCase1.TabIndex = 64;
+            this.useCase1.Text = "Use Case 1";
+            this.useCase1.UseVisualStyleBackColor = true;
+            this.useCase1.Click += new System.EventHandler(this.switchPageButton_Click);
+            // 
+            // aboutButton
+            // 
+            this.aboutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.aboutButton.Location = new System.Drawing.Point(258, 168);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.AboutMePage;
+            this.aboutButton.Size = new System.Drawing.Size(177, 30);
+            this.aboutButton.TabIndex = 63;
+            this.aboutButton.Text = "About ME";
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.switchPageButton_Click);
+            // 
+            // pictureButton
+            // 
+            this.pictureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.pictureButton.Location = new System.Drawing.Point(441, 168);
+            this.pictureButton.Name = "pictureButton";
+            this.pictureButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.PicturePage;
+            this.pictureButton.Size = new System.Drawing.Size(177, 30);
+            this.pictureButton.TabIndex = 62;
+            this.pictureButton.Text = "Pictures";
+            this.pictureButton.UseVisualStyleBackColor = true;
+            this.pictureButton.Click += new System.EventHandler(this.switchPageButton_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.Controls.Add(this.useCase2);
+            this.Controls.Add(this.frienedButton);
+            this.Controls.Add(this.useCase1);
+            this.Controls.Add(this.aboutButton);
+            this.Controls.Add(this.pictureButton);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.buttonAboutme);
-            this.Controls.Add(this.button1);
             this.Name = "HomePage";
             this.Size = new System.Drawing.Size(844, 547);
             this.panel1.ResumeLayout(false);
@@ -246,13 +251,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button buttonAboutme;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox1;
@@ -262,5 +260,11 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox4;
+        private Buttons.PageSwitchButton pictureButton;
+        private Buttons.PageSwitchButton aboutButton;
+        private Buttons.PageSwitchButton useCase1;
+        private Buttons.PageSwitchButton frienedButton;
+        private Buttons.PageSwitchButton useCase2;
+        private Buttons.PageSwitchButton logoutButton;
     }
 }

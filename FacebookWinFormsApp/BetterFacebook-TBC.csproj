@@ -89,11 +89,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buttons\LoadInfoButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Buttons\PageSwitchButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BasePage.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Pages\HomePage.cs">
       <SubType>UserControl</SubType>
@@ -107,18 +116,11 @@
     <Compile Include="Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PageControl.cs" />
     <Compile Include="Pages\SettingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Pages\SettingPage.Designer.cs">
       <DependentUpon>SettingPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Pages\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,9 +135,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\SettingPage.resx">
       <DependentUpon>SettingPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

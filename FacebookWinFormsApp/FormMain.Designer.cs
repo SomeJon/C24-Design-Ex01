@@ -78,7 +78,7 @@
             this.loginSettingTab.Location = new System.Drawing.Point(4, 22);
             this.loginSettingTab.Name = "loginSettingTab";
             this.loginSettingTab.Padding = new System.Windows.Forms.Padding(3);
-            this.loginSettingTab.Size = new System.Drawing.Size(192, 74);
+            this.loginSettingTab.Size = new System.Drawing.Size(943, 598);
             this.loginSettingTab.TabIndex = 1;
             this.loginSettingTab.Text = "LoginSettingsPage";
             this.loginSettingTab.UseVisualStyleBackColor = true;
@@ -88,7 +88,7 @@
             this.settingPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingPage1.Location = new System.Drawing.Point(3, 3);
             this.settingPage1.Name = "settingPage1";
-            this.settingPage1.Size = new System.Drawing.Size(186, 68);
+            this.settingPage1.Size = new System.Drawing.Size(937, 592);
             this.settingPage1.TabIndex = 0;
             // 
             // homeTab
@@ -97,7 +97,7 @@
             this.homeTab.Location = new System.Drawing.Point(4, 22);
             this.homeTab.Name = "homeTab";
             this.homeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.homeTab.Size = new System.Drawing.Size(943, 598);
+            this.homeTab.Size = new System.Drawing.Size(192, 74);
             this.homeTab.TabIndex = 2;
             this.homeTab.Text = "Home Page";
             this.homeTab.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@
             this.homePage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homePage1.Location = new System.Drawing.Point(3, 3);
             this.homePage1.Name = "homePage1";
-            this.homePage1.Size = new System.Drawing.Size(937, 592);
+            this.homePage1.Size = new System.Drawing.Size(186, 68);
             this.homePage1.TabIndex = 0;
             // 
             // FormMain
