@@ -10,10 +10,8 @@ using System.Windows.Forms;
 
 namespace FacebookClient.Pages
 {
-    public partial class HomePage : UserControl
+    public partial class HomePage : BasePage
     {
-        public event EventHandler RecivedInfo;
-        public event EventHandler ChangePage;
         public string SelectedAppId { get; private set; }
         public override Color BackColor { get; set; }
 
@@ -21,6 +19,11 @@ namespace FacebookClient.Pages
         public HomePage()
         {
             InitializeComponent();
+        }
+
+        private void switchPageButton_Click(object sender, EventArgs e)
+        {
+            OnChangePage(sender, e);
         }
     }
 }

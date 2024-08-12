@@ -1,0 +1,28 @@
+﻿using System;
+using System.Windows.Forms;
+using System.ComponentModel;
+
+namespace FacebookClient.Pages
+{
+    public class BasePage : UserControl
+    {
+        [Category(".Page Events")]
+        [Description("Occurs when information is received " +
+            "and needs to be proccessed.")]
+        public event EventHandler RecivedInfo;
+
+        [Category(".Page Events")]
+        [Description("Occurs when recieve a page change request.")]
+        public event EventHandler ChangePage;
+
+        protected void OnRecivedInfo(object sender, EventArgs e)
+        {
+            RecivedInfo?.Invoke(sender, e);
+        }
+
+        protected void OnChangePage(object sender, EventArgs e)
+        {
+            ChangePage?.Invoke(sender, e);
+        }
+    }
+}

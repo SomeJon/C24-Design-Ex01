@@ -71,6 +71,8 @@
             this.loginPage1.Name = "loginPage1";
             this.loginPage1.Size = new System.Drawing.Size(937, 592);
             this.loginPage1.TabIndex = 0;
+            this.loginPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
+            this.loginPage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
             // 
             // loginSettingTab
             // 
@@ -78,7 +80,7 @@
             this.loginSettingTab.Location = new System.Drawing.Point(4, 22);
             this.loginSettingTab.Name = "loginSettingTab";
             this.loginSettingTab.Padding = new System.Windows.Forms.Padding(3);
-            this.loginSettingTab.Size = new System.Drawing.Size(192, 74);
+            this.loginSettingTab.Size = new System.Drawing.Size(943, 598);
             this.loginSettingTab.TabIndex = 1;
             this.loginSettingTab.Text = "LoginSettingsPage";
             this.loginSettingTab.UseVisualStyleBackColor = true;
@@ -88,8 +90,10 @@
             this.settingPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingPage1.Location = new System.Drawing.Point(3, 3);
             this.settingPage1.Name = "settingPage1";
-            this.settingPage1.Size = new System.Drawing.Size(186, 68);
+            this.settingPage1.Size = new System.Drawing.Size(937, 592);
             this.settingPage1.TabIndex = 0;
+            this.settingPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
+            this.settingPage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
             // 
             // homeTab
             // 
@@ -109,6 +113,8 @@
             this.homePage1.Name = "homePage1";
             this.homePage1.Size = new System.Drawing.Size(937, 592);
             this.homePage1.TabIndex = 0;
+            this.homePage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
+            this.homePage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
             // 
             // FormMain
             // 
