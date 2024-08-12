@@ -9,7 +9,8 @@ namespace BasicFacebookFeatures
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// The main entry point for the application
+        /// check something
         /// </summary>
         [STAThread]
         static void Main()
