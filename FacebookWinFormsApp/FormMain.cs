@@ -50,10 +50,10 @@ namespace BasicFacebookFeatures
 
             if (string.IsNullOrEmpty(LoginResult.ErrorMessage))
             {
-                buttonLogin.Text = $"Logged in as {LoginResult.LoggedInUser.Name}";
-                buttonLogin.BackColor = Color.LightGreen;
+                //buttonLogin.Text = $"Logged in as {LoginResult.LoggedInUser.Name}";
+                //buttonLogin.BackColor = Color.LightGreen;
                 //pictureBoxProfile.ImageLocation = LoginResult.LoggedInUser.PictureNormalURL;
-                buttonLogin.Enabled = false;
+                //buttonLogin.Enabled = false;
                 //buttonLogout.Enabled = true;
             }
         }
@@ -61,11 +61,11 @@ namespace BasicFacebookFeatures
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FacebookService.LogoutWithUI();
-            buttonLogin.Text = "Login";
+            //buttonLogin.Text = "Login";
             //buttonLogin.BackColor = buttonLogout.BackColor;
             LoginResult = null;
-            buttonLogin.Enabled = true;
-           // buttonLogout.Enabled = false;
+            //buttonLogin.Enabled = true;
+            //buttonLogout.Enabled = false;
         }
 
         private void loginPage1_SelectedChoice(object sender, EventArgs e)
@@ -74,11 +74,11 @@ namespace BasicFacebookFeatures
             if((sender as Button).Name.Equals("loginButton"))
             {
                 login();
-                MainPage.SelectedIndex = 0;
+                //MainPage.SelectedIndex = 0;
             }
             else
             {
-                MainPage.SelectedIndex = 2;
+                //MainPage.SelectedIndex = 2;
             }
         }
 
@@ -109,15 +109,15 @@ namespace BasicFacebookFeatures
             if ((sender as Button).Name.Equals("loginButton"))
             {
                 login();
-                MainPage.SelectedIndex = 0;
+                //MainPage.SelectedIndex = 0;
             }
             else if ((sender as Button).Name.Equals("settingButton"))
             {
-                MainPage.SelectedIndex = 2;
+                //MainPage.SelectedIndex = 2;
             }
             else
             {
-                MainPage.SelectedIndex = 1;
+                //MainPage.SelectedIndex = 1;
             }
         }
 
@@ -125,41 +125,6 @@ namespace BasicFacebookFeatures
         {
             //check which new info recived and use it
             AppSettings.s_AppID = (sender as ComboBox).SelectedItem.ToString();
-        }
-
-        private void buttonLogout_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
