@@ -28,110 +28,309 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.buttonLogout = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.oldLogin = new System.Windows.Forms.TabPage();
-            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.textBoxAppID = new System.Windows.Forms.TextBox();
+            this.MainPage = new System.Windows.Forms.TabControl();
+            this.FrontPage = new System.Windows.Forms.TabPage();
             this.newLogin = new System.Windows.Forms.TabPage();
-            this.loginPage = new FacebookClient.Pages.LoginPage();
             this.loginSettingTab = new System.Windows.Forms.TabPage();
+            this.HomePage = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.facebooklogo = new System.Windows.Forms.PictureBox();
+            this.loginPage = new FacebookClient.Pages.LoginPage();
             this.settingLoginPage = new FacebookClient.Pages.SettingPage();
-            this.tabControl.SuspendLayout();
-            this.oldLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.MainPage.SuspendLayout();
+            this.FrontPage.SuspendLayout();
             this.newLogin.SuspendLayout();
             this.loginSettingTab.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facebooklogo)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(18, 17);
+            this.buttonLogin.Location = new System.Drawing.Point(368, 176);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(268, 32);
+            this.buttonLogin.Size = new System.Drawing.Size(281, 87);
             this.buttonLogin.TabIndex = 36;
-            this.buttonLogin.Text = "Login";
+            this.buttonLogin.Text = "Login with Facebook";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // buttonLogout
+            // MainPage
             // 
-            this.buttonLogout.Enabled = false;
-            this.buttonLogout.Location = new System.Drawing.Point(18, 57);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(268, 32);
-            this.buttonLogout.TabIndex = 52;
-            this.buttonLogout.Text = "Logout";
-            this.buttonLogout.UseVisualStyleBackColor = true;
-            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            this.MainPage.Controls.Add(this.FrontPage);
+            this.MainPage.Controls.Add(this.newLogin);
+            this.MainPage.Controls.Add(this.loginSettingTab);
+            this.MainPage.Controls.Add(this.HomePage);
+            this.MainPage.Controls.Add(this.tabPage2);
+            this.MainPage.Location = new System.Drawing.Point(-2, 0);
+            this.MainPage.Name = "MainPage";
+            this.MainPage.SelectedIndex = 0;
+            this.MainPage.Size = new System.Drawing.Size(1081, 689);
+            this.MainPage.TabIndex = 54;
             // 
-            // label1
+            // FrontPage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(314, 31);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 18);
-            this.label1.TabIndex = 53;
-            this.label1.Text = "App Id:";
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.oldLogin);
-            this.tabControl.Controls.Add(this.newLogin);
-            this.tabControl.Controls.Add(this.loginSettingTab);
-            this.tabControl.Location = new System.Drawing.Point(-2, 0);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1081, 689);
-            this.tabControl.TabIndex = 54;
-            // 
-            // oldLogin
-            // 
-            this.oldLogin.Controls.Add(this.pictureBoxProfile);
-            this.oldLogin.Controls.Add(this.textBoxAppID);
-            this.oldLogin.Controls.Add(this.label1);
-            this.oldLogin.Controls.Add(this.buttonLogout);
-            this.oldLogin.Controls.Add(this.buttonLogin);
-            this.oldLogin.Location = new System.Drawing.Point(4, 27);
-            this.oldLogin.Name = "oldLogin";
-            this.oldLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.oldLogin.Size = new System.Drawing.Size(1073, 658);
-            this.oldLogin.TabIndex = 0;
-            this.oldLogin.Text = "Old Login";
-            this.oldLogin.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxProfile
-            // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(18, 96);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(79, 78);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfile.TabIndex = 55;
-            this.pictureBoxProfile.TabStop = false;
-            // 
-            // textBoxAppID
-            // 
-            this.textBoxAppID.Location = new System.Drawing.Point(317, 61);
-            this.textBoxAppID.Name = "textBoxAppID";
-            this.textBoxAppID.Size = new System.Drawing.Size(237, 24);
-            this.textBoxAppID.TabIndex = 54;
-            this.textBoxAppID.Text = "867142571975316";
+            this.FrontPage.BackColor = System.Drawing.Color.SteelBlue;
+            this.FrontPage.Controls.Add(this.dateTimePicker1);
+            this.FrontPage.Controls.Add(this.textBox8);
+            this.FrontPage.Controls.Add(this.button4);
+            this.FrontPage.Controls.Add(this.facebooklogo);
+            this.FrontPage.Controls.Add(this.button3);
+            this.FrontPage.Controls.Add(this.buttonLogin);
+            this.FrontPage.Location = new System.Drawing.Point(4, 31);
+            this.FrontPage.Name = "FrontPage";
+            this.FrontPage.Padding = new System.Windows.Forms.Padding(3);
+            this.FrontPage.Size = new System.Drawing.Size(1073, 654);
+            this.FrontPage.TabIndex = 0;
+            this.FrontPage.Text = "Front Page";
             // 
             // newLogin
             // 
             this.newLogin.Controls.Add(this.loginPage);
-            this.newLogin.Location = new System.Drawing.Point(4, 27);
+            this.newLogin.Location = new System.Drawing.Point(4, 31);
             this.newLogin.Name = "newLogin";
             this.newLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.newLogin.Size = new System.Drawing.Size(1073, 658);
+            this.newLogin.Size = new System.Drawing.Size(1073, 654);
             this.newLogin.TabIndex = 1;
             this.newLogin.Text = "New Login";
             this.newLogin.UseVisualStyleBackColor = true;
+            // 
+            // loginSettingTab
+            // 
+            this.loginSettingTab.Controls.Add(this.settingLoginPage);
+            this.loginSettingTab.Location = new System.Drawing.Point(4, 31);
+            this.loginSettingTab.Name = "loginSettingTab";
+            this.loginSettingTab.Padding = new System.Windows.Forms.Padding(3);
+            this.loginSettingTab.Size = new System.Drawing.Size(1073, 654);
+            this.loginSettingTab.TabIndex = 2;
+            this.loginSettingTab.Text = "Login Setting";
+            this.loginSettingTab.UseVisualStyleBackColor = true;
+            // 
+            // HomePage
+            // 
+            this.HomePage.Location = new System.Drawing.Point(4, 31);
+            this.HomePage.Name = "HomePage";
+            this.HomePage.Padding = new System.Windows.Forms.Padding(3);
+            this.HomePage.Size = new System.Drawing.Size(1073, 654);
+            this.HomePage.TabIndex = 3;
+            this.HomePage.Text = "Exit page";
+            this.HomePage.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.tabPage2.Controls.Add(this.comboBox3);
+            this.tabPage2.Controls.Add(this.textBox4);
+            this.tabPage2.Controls.Add(this.comboBox2);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.textBox7);
+            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.pictureBox3);
+            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.textBox5);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.pictureBox2);
+            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.button);
+            this.tabPage2.Controls.Add(this.pictureBox1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 31);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1073, 654);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "Home page";
+            // 
+            // button
+            // 
+            this.button.BackColor = System.Drawing.Color.Transparent;
+            this.button.Location = new System.Drawing.Point(0, 0);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size(88, 38);
+            this.button.TabIndex = 0;
+            this.button.Text = "Logout";
+            this.button.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1001, 139);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.Location = new System.Drawing.Point(878, 105);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(123, 28);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "Theme picture";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox2.Location = new System.Drawing.Point(0, 283);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(123, 28);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "Profile picture";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(0, 139);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(191, 138);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.textBox3.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.textBox3.Location = new System.Drawing.Point(188, 139);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(400, 28);
+            this.textBox3.TabIndex = 5;
+            this.textBox3.Text = "Full name";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(188, 200);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 30);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "number of friends";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox5.Location = new System.Drawing.Point(0, 374);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(153, 28);
+            this.textBox5.TabIndex = 10;
+            this.textBox5.Text = "show all my posts";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox6.Location = new System.Drawing.Point(0, 560);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(182, 28);
+            this.textBox6.TabIndex = 11;
+            this.textBox6.Text = "my most likes picture";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(0, 408);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(204, 146);
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(409, 408);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(212, 30);
+            this.comboBox1.TabIndex = 13;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox7.Location = new System.Drawing.Point(409, 374);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(153, 28);
+            this.textBox7.TabIndex = 14;
+            this.textBox7.Text = "picture album";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Location = new System.Drawing.Point(188, 173);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(177, 30);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "about me";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(188, 226);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(212, 30);
+            this.comboBox2.TabIndex = 16;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox4.Location = new System.Drawing.Point(833, 139);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(168, 28);
+            this.textBox4.TabIndex = 17;
+            this.textBox4.Text = "switch background";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(833, 163);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(168, 30);
+            this.comboBox3.TabIndex = 18;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(301, 39);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(409, 112);
+            this.button3.TabIndex = 53;
+            this.button3.Text = "Welcome to Facebook 2.0!!!";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // facebooklogo
+            // 
+            this.facebooklogo.BackColor = System.Drawing.Color.Transparent;
+            this.facebooklogo.Image = ((System.Drawing.Image)(resources.GetObject("facebooklogo.Image")));
+            this.facebooklogo.Location = new System.Drawing.Point(682, 176);
+            this.facebooklogo.Name = "facebooklogo";
+            this.facebooklogo.Size = new System.Drawing.Size(117, 87);
+            this.facebooklogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.facebooklogo.TabIndex = 54;
+            this.facebooklogo.TabStop = false;
             // 
             // loginPage
             // 
@@ -142,45 +341,66 @@
             this.loginPage.TabIndex = 0;
             this.loginPage.ChangePage += new System.EventHandler(this.loginPage1_SelectedChoice);
             // 
-            // loginSettingTab
-            // 
-            this.loginSettingTab.Controls.Add(this.settingLoginPage);
-            this.loginSettingTab.Location = new System.Drawing.Point(4, 27);
-            this.loginSettingTab.Name = "loginSettingTab";
-            this.loginSettingTab.Padding = new System.Windows.Forms.Padding(3);
-            this.loginSettingTab.Size = new System.Drawing.Size(1073, 658);
-            this.loginSettingTab.TabIndex = 2;
-            this.loginSettingTab.Text = "Login Setting";
-            this.loginSettingTab.UseVisualStyleBackColor = true;
-            // 
             // settingLoginPage
             // 
             this.settingLoginPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingLoginPage.Location = new System.Drawing.Point(3, 3);
-            this.settingLoginPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.settingLoginPage.Margin = new System.Windows.Forms.Padding(4);
             this.settingLoginPage.Name = "settingLoginPage";
-            this.settingLoginPage.Size = new System.Drawing.Size(1067, 652);
+            this.settingLoginPage.Size = new System.Drawing.Size(1067, 648);
             this.settingLoginPage.TabIndex = 0;
-            this.settingLoginPage.ChangePage += new System.EventHandler(this.changePage_PageControl);
             this.settingLoginPage.RecivedInfo += new System.EventHandler(this.recivedInfo_PageControl);
+            this.settingLoginPage.ChangePage += new System.EventHandler(this.changePage_PageControl);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(368, 279);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(281, 39);
+            this.button4.TabIndex = 55;
+            this.button4.Text = "Exit";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox8.Location = new System.Drawing.Point(0, 143);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(361, 28);
+            this.textBox8.TabIndex = 56;
+            this.textBox8.Text = "press to throw facebook logos in the air";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(0, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(295, 28);
+            this.dateTimePicker1.TabIndex = 57;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 686);
-            this.Controls.Add(this.tabControl);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1003, 686);
+            this.Controls.Add(this.MainPage);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.tabControl.ResumeLayout(false);
-            this.oldLogin.ResumeLayout(false);
-            this.oldLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            this.Text = "MainPage";
+            this.MainPage.ResumeLayout(false);
+            this.FrontPage.ResumeLayout(false);
+            this.FrontPage.PerformLayout();
             this.newLogin.ResumeLayout(false);
             this.loginSettingTab.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facebooklogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -188,16 +408,35 @@
 		#endregion
 
 		private System.Windows.Forms.Button buttonLogin;
-		private System.Windows.Forms.Button buttonLogout;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TabControl tabControl;
-		private System.Windows.Forms.TabPage oldLogin;
+		private System.Windows.Forms.TabControl MainPage;
+		private System.Windows.Forms.TabPage FrontPage;
 		private System.Windows.Forms.TabPage newLogin;
-        private System.Windows.Forms.TextBox textBoxAppID;
-        private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.TabPage loginSettingTab;
         private FacebookClient.Pages.LoginPage loginPage;
         private FacebookClient.Pages.SettingPage settingLoginPage;
+        private System.Windows.Forms.TabPage HomePage;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button button;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox facebooklogo;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
