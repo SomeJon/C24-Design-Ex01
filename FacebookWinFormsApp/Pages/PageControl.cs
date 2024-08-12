@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacebookClient.New_Buttons
+namespace FacebookClient.Pages
 {
     internal interface PageControl
     {

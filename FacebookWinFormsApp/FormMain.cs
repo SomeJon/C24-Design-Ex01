@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using FacebookClient.New_Buttons;
+using FacebookClient.Pages;
 
 namespace BasicFacebookFeatures
 {
@@ -102,10 +102,29 @@ namespace BasicFacebookFeatures
             "user_videos"};
         }
 
-        private void settingLoginPage_SettingChanged(object sender, EventArgs e)
+        private void changePage_PageControl(object sender, EventArgs e)
         {
-            AppSettings.s_AppID = settingLoginPage.SelectedAppId;
-            tabControl.SelectedIndex = 1;
+            //check to which page we need to move
+            Button selectedPage = sender as Button;
+            if ((sender as Button).Name.Equals("loginButton"))
+            {
+                login();
+                tabControl.SelectedIndex = 0;
+            }
+            else if ((sender as Button).Name.Equals("settingButton"))
+            {
+                tabControl.SelectedIndex = 2;
+            }
+            else
+            {
+                tabControl.SelectedIndex = 1;
+            }
+        }
+
+        private void recivedInfo_PageControl(object sender, EventArgs e)
+        {
+            //check which new info recived and use it
+            AppSettings.s_AppID = (sender as ComboBox).SelectedItem.ToString();
         }
     }
 }
