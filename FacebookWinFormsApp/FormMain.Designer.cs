@@ -56,10 +56,10 @@
             // loginTab
             // 
             this.loginTab.Controls.Add(this.loginPage1);
-            this.loginTab.Location = new System.Drawing.Point(4, 22);
+            this.loginTab.Location = new System.Drawing.Point(4, 25);
             this.loginTab.Name = "loginTab";
             this.loginTab.Padding = new System.Windows.Forms.Padding(3);
-            this.loginTab.Size = new System.Drawing.Size(943, 598);
+            this.loginTab.Size = new System.Drawing.Size(943, 595);
             this.loginTab.TabIndex = 0;
             this.loginTab.Text = "Login Page";
             this.loginTab.UseVisualStyleBackColor = true;
@@ -69,7 +69,7 @@
             this.loginPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPage1.Location = new System.Drawing.Point(3, 3);
             this.loginPage1.Name = "loginPage1";
-            this.loginPage1.Size = new System.Drawing.Size(937, 592);
+            this.loginPage1.Size = new System.Drawing.Size(937, 589);
             this.loginPage1.TabIndex = 0;
             this.loginPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
             this.loginPage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
@@ -77,10 +77,10 @@
             // loginSettingTab
             // 
             this.loginSettingTab.Controls.Add(this.settingPage1);
-            this.loginSettingTab.Location = new System.Drawing.Point(4, 22);
+            this.loginSettingTab.Location = new System.Drawing.Point(4, 25);
             this.loginSettingTab.Name = "loginSettingTab";
             this.loginSettingTab.Padding = new System.Windows.Forms.Padding(3);
-            this.loginSettingTab.Size = new System.Drawing.Size(943, 598);
+            this.loginSettingTab.Size = new System.Drawing.Size(943, 595);
             this.loginSettingTab.TabIndex = 1;
             this.loginSettingTab.Text = "LoginSettingsPage";
             this.loginSettingTab.UseVisualStyleBackColor = true;
@@ -89,8 +89,9 @@
             // 
             this.settingPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingPage1.Location = new System.Drawing.Point(3, 3);
+            this.settingPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.settingPage1.Name = "settingPage1";
-            this.settingPage1.Size = new System.Drawing.Size(937, 592);
+            this.settingPage1.Size = new System.Drawing.Size(937, 589);
             this.settingPage1.TabIndex = 0;
             this.settingPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
             this.settingPage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
@@ -98,10 +99,10 @@
             // homeTab
             // 
             this.homeTab.Controls.Add(this.homePage1);
-            this.homeTab.Location = new System.Drawing.Point(4, 22);
+            this.homeTab.Location = new System.Drawing.Point(4, 25);
             this.homeTab.Name = "homeTab";
             this.homeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.homeTab.Size = new System.Drawing.Size(943, 598);
+            this.homeTab.Size = new System.Drawing.Size(943, 595);
             this.homeTab.TabIndex = 2;
             this.homeTab.Text = "Home Page";
             this.homeTab.UseVisualStyleBackColor = true;
@@ -110,8 +111,9 @@
             // 
             this.homePage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homePage1.Location = new System.Drawing.Point(3, 3);
+            this.homePage1.Margin = new System.Windows.Forms.Padding(4);
             this.homePage1.Name = "homePage1";
-            this.homePage1.Size = new System.Drawing.Size(937, 592);
+            this.homePage1.Size = new System.Drawing.Size(937, 589);
             this.homePage1.TabIndex = 0;
             this.homePage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
             this.homePage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
