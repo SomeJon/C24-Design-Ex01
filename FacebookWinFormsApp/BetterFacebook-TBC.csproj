@@ -114,6 +114,7 @@
     <Compile Include="Code\Form\ExitConfirmationForm.Designer.cs">
       <DependentUpon>ExitConfirmationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Code\Pages\Data\HomePageData.cs" />
     <Compile Include="Code\Pages\FriendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>

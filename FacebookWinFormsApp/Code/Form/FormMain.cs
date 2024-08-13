@@ -12,6 +12,7 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using FacebookClient.Pages;
 using FacebookClient.Buttons;
 using CefSharp.DevTools.Debugger;
+using FacebookClient.Code.Pages.Data;
 
 namespace BasicFacebookFeatures
 {
@@ -19,6 +20,8 @@ namespace BasicFacebookFeatures
     {
         public LoginResult LoginResult { get; set; }
         public User LoggedUser { get; private set; }
+        private HomePageData m_HomePageData = new HomePageData();
+
 
         public FormMain()
         {
@@ -34,21 +37,20 @@ namespace BasicFacebookFeatures
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
                 LoggedUser = LoginResult.LoggedInUser;
+
+                m_HomePageData.ProfilePicUrl = LoggedUser.PictureNormalURL;
+                //if (LoggedUser.Cover != null) 
+                //{
+                //    m_HomePageData.ProfileCoverPicUrl
+                //        = LoggedUser.Cover.SourceURL;
+                //}
+                m_HomePageData.UserName = LoggedUser.UserName;
             }
             else
             {
                 MessageBox.Show(LoginResult.ErrorMessage, "Login Failed");
                 LoginResult = null;
             }
-
-            //if (string.IsNullOrEmpty(LoginResult.ErrorMessage))
-            //{
-            //    //buttonLogin.Text = $"Logged in as {LoginResult.LoggedInUser.Name}";
-            //    //buttonLogin.BackColor = Color.LightGreen;
-            //    //pictureBoxProfile.ImageLocation = LoginResult.LoggedInUser.PictureNormalURL;
-            //    //buttonLogin.Enabled = false;
-            //    //buttonLogout.Enabled = true;
-            //}
         }
 
         //private void buttonLogout_Click(object sender, EventArgs e)
@@ -101,6 +103,8 @@ namespace BasicFacebookFeatures
         {
             PageSwitchButton switchPageButton = sender as PageSwitchButton;
 
+            //todo: add a page factory, after which the data conainer would be loaded
+
             switch (switchPageButton.PageChoice)
             {
                 case PageSwitchButton.ePageChoice.HomePage:
@@ -111,6 +115,7 @@ namespace BasicFacebookFeatures
 
                     if (LoggedUser != null)
                     {
+                        homePage1.Data = m_HomePageData;
                         tabControl.SelectedIndex = 2;
                     }
 
