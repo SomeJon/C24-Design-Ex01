@@ -24,5 +24,17 @@ namespace FacebookClient.Pages
         {
             ChangePage?.Invoke(sender, e);
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // BasePage
+            // 
+            this.Name = "BasePage";
+            this.Size = new System.Drawing.Size(858, 500);
+            this.ResumeLayout(false);
+
+        }
     }
 }
