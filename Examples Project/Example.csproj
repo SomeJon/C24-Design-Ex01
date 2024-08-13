@@ -7,35 +7,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{905D5BF1-A7E4-4440-85E8-84772F5312D5}</ProjectGuid>
+    <ProjectGuid>{1AB44001-B417-474F-90B7-96176B7A98F8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>FacebookClient</RootNamespace>
-    <AssemblyName>BetterFacebook-TBC</AssemblyName>
+    <RootNamespace>BasicFacebookFeatures</RootNamespace>
+    <AssemblyName>Example</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -57,6 +38,26 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CefSharp, Version=87.1.132.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
       <HintPath>..\packages\CefSharp.Common.87.1.132\lib\net452\CefSharp.dll</HintPath>
@@ -74,10 +75,9 @@
       <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="System.Messaging" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -90,76 +90,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Buttons\LoadInfoButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Code\Buttons\PageSwitchButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Code\Form\FormMain.cs">
+    <Compile Include="FormAppSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Code\Form\FormMain.Designer.cs">
+    <Compile Include="FormAppSettings.designer.cs">
+      <DependentUpon>FormAppSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Pages\AboutMePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\BasePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Form\ExitConfirmationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Code\Form\ExitConfirmationForm.Designer.cs">
-      <DependentUpon>ExitConfirmationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Pages\FriendsPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\HomePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\HomePage.Designer.cs">
-      <DependentUpon>HomePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Pages\LoginPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Pages\SettingPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\SettingPage.Designer.cs">
-      <DependentUpon>SettingPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Code\Form\FormMain.resx">
+    <EmbeddedResource Include="FormAppSettings.resx">
+      <DependentUpon>FormAppSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\AboutMePage.resx">
-      <DependentUpon>AboutMePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\BasePage.resx">
-      <DependentUpon>BasePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Form\ExitConfirmationForm.resx">
-      <DependentUpon>ExitConfirmationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\FriendsPage.resx">
-      <DependentUpon>FriendsPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\HomePage.resx">
-      <DependentUpon>HomePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\LoginPage.resx">
-      <DependentUpon>LoginPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\SettingPage.resx">
-      <DependentUpon>SettingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
