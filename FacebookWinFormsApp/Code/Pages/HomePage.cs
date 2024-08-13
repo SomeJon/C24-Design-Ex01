@@ -34,11 +34,6 @@ namespace FacebookClient.Pages
                 profilePicture.LoadAsync(Data.ProfilePicUrl);
             }
 
-            if(Data?.ProfileCoverPicUrl != null)
-            {
-                coverPicture.LoadAsync(Data.ProfileCoverPicUrl);
-            }
-
             textBoxFullName.Text = Data?.UserName; 
         }
     }

@@ -38,12 +38,7 @@ namespace BasicFacebookFeatures
             {
                 LoggedUser = LoginResult.LoggedInUser;
 
-                m_HomePageData.ProfilePicUrl = LoggedUser.PictureNormalURL;
-                //if (LoggedUser.Cover != null) 
-                //{
-                //    m_HomePageData.ProfileCoverPicUrl
-                //        = LoggedUser.Cover.SourceURL;
-                //}
+                m_HomePageData.ProfilePicUrl = LoggedUser.PictureLargeURL;
                 m_HomePageData.UserName = LoggedUser.UserName;
             }
             else

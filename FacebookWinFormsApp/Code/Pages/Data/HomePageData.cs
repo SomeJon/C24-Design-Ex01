@@ -9,7 +9,6 @@ namespace FacebookClient.Code.Pages.Data
     public class HomePageData
     {
         public string ProfilePicUrl { get; set; }
-        public string ProfileCoverPicUrl { get; set; }
         public string UserName { get; set; }
     }
 }

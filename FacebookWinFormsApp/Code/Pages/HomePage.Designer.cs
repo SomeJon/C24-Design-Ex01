@@ -206,7 +206,7 @@
             this.textBoxFullName.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxFullName.ForeColor = System.Drawing.Color.MidnightBlue;
             this.textBoxFullName.Location = new System.Drawing.Point(257, 169);
-            this.textBoxFullName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxFullName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxFullName.Multiline = true;
             this.textBoxFullName.Name = "textBoxFullName";
             this.textBoxFullName.Size = new System.Drawing.Size(513, 43);
@@ -219,6 +219,7 @@
             this.profilePicture.Location = new System.Drawing.Point(-1, 168);
             this.profilePicture.Name = "profilePicture";
             this.profilePicture.Size = new System.Drawing.Size(253, 189);
+            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePicture.TabIndex = 68;
             this.profilePicture.TabStop = false;
             // 
