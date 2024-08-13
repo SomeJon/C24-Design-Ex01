@@ -63,7 +63,7 @@ namespace BasicFacebookFeatures
 			m_LoginResult = FacebookService.Login(AppSettings.s_AppID,
 					AppSettings.s_Permissions);
 
-			if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
+            if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
                 m_LoggedInUser = m_LoginResult.LoggedInUser;
 
