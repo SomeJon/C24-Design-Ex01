@@ -90,75 +90,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buttons\LoadInfoButton.cs">
+    <Compile Include="Code\Buttons\LoadInfoButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Buttons\PageSwitchButton.cs">
+    <Compile Include="Code\Buttons\PageSwitchButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="Code\Form\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
+    <Compile Include="Code\Form\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AboutMePage.cs">
+    <Compile Include="Code\Pages\AboutMePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\BasePage.cs">
+    <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\ExitConfirmationForm.cs">
+    <Compile Include="Code\Form\ExitConfirmationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\ExitConfirmationForm.Designer.cs">
+    <Compile Include="Code\Form\ExitConfirmationForm.Designer.cs">
       <DependentUpon>ExitConfirmationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FriendsPage.cs">
+    <Compile Include="Code\Pages\FriendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\HomePage.cs">
+    <Compile Include="Code\Pages\HomePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\HomePage.Designer.cs">
+    <Compile Include="Code\Pages\HomePage.Designer.cs">
       <DependentUpon>HomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoginPage.cs">
+    <Compile Include="Code\Pages\LoginPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\LoginPage.Designer.cs">
+    <Compile Include="Code\Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingPage.cs">
+    <Compile Include="Code\Pages\SettingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\SettingPage.Designer.cs">
+    <Compile Include="Code\Pages\SettingPage.Designer.cs">
       <DependentUpon>SettingPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Code\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormMain.resx">
+    <EmbeddedResource Include="Code\Form\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\AboutMePage.resx">
+    <EmbeddedResource Include="Code\Pages\AboutMePage.resx">
       <DependentUpon>AboutMePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\BasePage.resx">
+    <EmbeddedResource Include="Code\Pages\BasePage.resx">
       <DependentUpon>BasePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\ExitConfirmationForm.resx">
+    <EmbeddedResource Include="Code\Form\ExitConfirmationForm.resx">
       <DependentUpon>ExitConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\FriendsPage.resx">
+    <EmbeddedResource Include="Code\Pages\FriendsPage.resx">
       <DependentUpon>FriendsPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\HomePage.resx">
+    <EmbeddedResource Include="Code\Pages\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\LoginPage.resx">
+    <EmbeddedResource Include="Code\Pages\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\SettingPage.resx">
+    <EmbeddedResource Include="Code\Pages\SettingPage.resx">
       <DependentUpon>SettingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
