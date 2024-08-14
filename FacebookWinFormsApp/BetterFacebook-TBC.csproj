@@ -183,6 +183,9 @@
     <EmbeddedResource Include="Code\Pages\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Code\Pages\PhotosPage.resx">
+      <DependentUpon>PhotosPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\SettingPage.resx">
       <DependentUpon>SettingPage.cs</DependentUpon>
     </EmbeddedResource>

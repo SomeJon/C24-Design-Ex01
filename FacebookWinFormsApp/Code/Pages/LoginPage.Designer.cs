@@ -37,6 +37,8 @@
             this.ButtonExit = new FacebookClient.Buttons.PageSwitchButton();
             this.textBoxWelcomeMsg = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.timePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebooklogo)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +71,7 @@
             this.facebooklogo.Image = ((System.Drawing.Image)(resources.GetObject("facebooklogo.Image")));
             this.facebooklogo.Location = new System.Drawing.Point(688, 221);
             this.facebooklogo.Name = "facebooklogo";
-            this.facebooklogo.Size = new System.Drawing.Size(131, 98);
+            this.facebooklogo.Size = new System.Drawing.Size(120, 98);
             this.facebooklogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.facebooklogo.TabIndex = 60;
             this.facebooklogo.TabStop = false;
@@ -124,12 +126,12 @@
             this.textBoxWelcomeMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxWelcomeMsg.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.textBoxWelcomeMsg.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxWelcomeMsg.Location = new System.Drawing.Point(171, 94);
+            this.textBoxWelcomeMsg.Location = new System.Drawing.Point(160, 66);
             this.textBoxWelcomeMsg.Multiline = true;
             this.textBoxWelcomeMsg.Name = "textBoxWelcomeMsg";
             this.textBoxWelcomeMsg.Size = new System.Drawing.Size(671, 97);
             this.textBoxWelcomeMsg.TabIndex = 68;
-            this.textBoxWelcomeMsg.Text = "welcome to facebook 2.0!!";
+            this.textBoxWelcomeMsg.Text = "welcome to facebook 2.0";
             this.textBoxWelcomeMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox4
@@ -147,9 +149,37 @@
             this.textBox4.TabIndex = 71;
             this.textBox4.Text = "press the facebook logo :)";
             // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.textBox2.Location = new System.Drawing.Point(660, 344);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(127, 28);
+            this.textBox2.TabIndex = 73;
+            this.textBox2.Text = "might be emoji";
+            this.textBox2.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.textBox1.Location = new System.Drawing.Point(723, 506);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(127, 28);
+            this.textBox1.TabIndex = 74;
+            this.textBox1.Text = "might be emoji";
+            this.textBox1.Visible = false;
+            // 
             // LoginPage
             // 
             this.BackColor = System.Drawing.Color.DarkBlue;
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBoxWelcomeMsg);
             this.Controls.Add(this.ButtonExit);
@@ -179,5 +209,7 @@
         private Buttons.PageSwitchButton ButtonExit;
         private System.Windows.Forms.TextBox textBoxWelcomeMsg;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -51,5 +51,10 @@ namespace FacebookClient.Pages
                 MessageBox.Show("You need to first input an id in the Text Box!");
             }
         }
+
+        private void pictureBoxReturn_Click(object sender, EventArgs e)
+        {
+           OnChangePage(sender, e);        
+        }
     }
 }
