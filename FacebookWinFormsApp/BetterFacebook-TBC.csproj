@@ -148,6 +148,12 @@
     <Compile Include="Code\Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Code\Pages\PhotosPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Code\Pages\PhotosPage.Designer.cs">
+      <DependentUpon>PhotosPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Code\Pages\SettingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
