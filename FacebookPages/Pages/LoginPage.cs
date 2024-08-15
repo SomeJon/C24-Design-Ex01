@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FacebookPages.Pages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,12 +36,6 @@ namespace FacebookClient.Pages
         private void switchPageButton_Click(object sender, EventArgs e)
         {
             OnChangePage(sender, e);
-        }
-
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            ExitConfirmationForm exitForm = new ExitConfirmationForm();
-            exitForm.ShowDialog();
         }
 
         private void facebooklogo_Click(object sender, EventArgs e)

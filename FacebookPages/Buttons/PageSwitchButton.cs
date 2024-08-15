@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace FacebookClient.Buttons
 {
-    internal class PageSwitchButton : Button
+    public class PageSwitchButton : Button
     {
         public enum ePageChoice
         {

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterFacebook-TBC", "Faceb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Examples Project\Example.csproj", "{1AB44001-B417-474F-90B7-96176B7A98F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookPages", "FacebookPages\FacebookPages.csproj", "{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{1AB44001-B417-474F-90B7-96176B7A98F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1AB44001-B417-474F-90B7-96176B7A98F8}.Release|x64.ActiveCfg = Release|x64
 		{1AB44001-B417-474F-90B7-96176B7A98F8}.Release|x64.Build.0 = Release|x64
+		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Debug|x64.Build.0 = Debug|Any CPU
+		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Release|x64.ActiveCfg = Release|Any CPU
+		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

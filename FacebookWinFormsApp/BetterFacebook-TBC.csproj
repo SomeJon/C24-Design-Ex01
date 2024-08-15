@@ -105,23 +105,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Buttons\LoadInfoButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Code\Buttons\PageSwitchButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Code\Form\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Code\Form\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Pages\AboutMePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\BasePage.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Code\Form\ExitConfirmationForm.cs">
       <SubType>Form</SubType>
@@ -129,65 +117,13 @@
     <Compile Include="Code\Form\ExitConfirmationForm.Designer.cs">
       <DependentUpon>ExitConfirmationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Pages\Data\HomePageData.cs" />
-    <Compile Include="Code\Pages\FriendsPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\FriendsPage.Designer.cs">
-      <DependentUpon>FriendsPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Pages\HomePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\HomePage.Designer.cs">
-      <DependentUpon>HomePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Pages\LoginPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Pages\PhotosPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\PhotosPage.Designer.cs">
-      <DependentUpon>PhotosPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Code\Pages\SettingPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\SettingPage.Designer.cs">
-      <DependentUpon>SettingPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Code\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Code\Form\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\AboutMePage.resx">
-      <DependentUpon>AboutMePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\BasePage.resx">
-      <DependentUpon>BasePage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Code\Form\ExitConfirmationForm.resx">
       <DependentUpon>ExitConfirmationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\FriendsPage.resx">
-      <DependentUpon>FriendsPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\HomePage.resx">
-      <DependentUpon>HomePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\LoginPage.resx">
-      <DependentUpon>LoginPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\PhotosPage.resx">
-      <DependentUpon>PhotosPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\SettingPage.resx">
-      <DependentUpon>SettingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -230,6 +166,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\gear-computer-icons-clip-art-gears-vector-c77d15e91af4e43fe5b26693eebf3c3d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FacebookPages\FacebookPages.csproj">
+      <Project>{89ba5b9e-1a5a-4fa3-be9f-18af65f4c209}</Project>
+      <Name>FacebookPages</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

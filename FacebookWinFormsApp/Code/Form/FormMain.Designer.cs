@@ -94,7 +94,7 @@
             this.loginSettingTab.Location = new System.Drawing.Point(4, 22);
             this.loginSettingTab.Name = "loginSettingTab";
             this.loginSettingTab.Padding = new System.Windows.Forms.Padding(3);
-            this.loginSettingTab.Size = new System.Drawing.Size(837, 567);
+            this.loginSettingTab.Size = new System.Drawing.Size(192, 74);
             this.loginSettingTab.TabIndex = 1;
             this.loginSettingTab.Text = "LoginSettingsPage";
             this.loginSettingTab.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             this.settingPage1.Location = new System.Drawing.Point(3, 3);
             this.settingPage1.Margin = new System.Windows.Forms.Padding(4);
             this.settingPage1.Name = "settingPage1";
-            this.settingPage1.Size = new System.Drawing.Size(831, 561);
+            this.settingPage1.Size = new System.Drawing.Size(186, 68);
             this.settingPage1.TabIndex = 0;
             this.settingPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
             this.settingPage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
@@ -116,7 +116,7 @@
             this.homeTab.Location = new System.Drawing.Point(4, 22);
             this.homeTab.Name = "homeTab";
             this.homeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.homeTab.Size = new System.Drawing.Size(837, 567);
+            this.homeTab.Size = new System.Drawing.Size(192, 74);
             this.homeTab.TabIndex = 2;
             this.homeTab.Text = "Home Page";
             this.homeTab.UseVisualStyleBackColor = true;
@@ -137,7 +137,7 @@
             this.aboutMeTab.Location = new System.Drawing.Point(4, 22);
             this.aboutMeTab.Name = "aboutMeTab";
             this.aboutMeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.aboutMeTab.Size = new System.Drawing.Size(837, 567);
+            this.aboutMeTab.Size = new System.Drawing.Size(192, 74);
             this.aboutMeTab.TabIndex = 3;
             this.aboutMeTab.Text = "About";
             this.aboutMeTab.UseVisualStyleBackColor = true;
@@ -158,7 +158,7 @@
             this.freindstave.Location = new System.Drawing.Point(4, 22);
             this.freindstave.Name = "freindstave";
             this.freindstave.Padding = new System.Windows.Forms.Padding(3);
-            this.freindstave.Size = new System.Drawing.Size(837, 567);
+            this.freindstave.Size = new System.Drawing.Size(192, 74);
             this.freindstave.TabIndex = 4;
             this.freindstave.Text = "Friends";
             this.freindstave.UseVisualStyleBackColor = true;
@@ -180,7 +180,7 @@
             this.photoTab.Location = new System.Drawing.Point(4, 22);
             this.photoTab.Name = "photoTab";
             this.photoTab.Padding = new System.Windows.Forms.Padding(3);
-            this.photoTab.Size = new System.Drawing.Size(837, 567);
+            this.photoTab.Size = new System.Drawing.Size(192, 74);
             this.photoTab.TabIndex = 5;
             this.photoTab.Text = "Photos";
             this.photoTab.UseVisualStyleBackColor = true;
@@ -201,6 +201,7 @@
             this.ClientSize = new System.Drawing.Size(846, 593);
             this.Controls.Add(this.tabControl);
             this.Name = "FormMain";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.tabControl.ResumeLayout(false);
             this.loginTab.ResumeLayout(false);
             this.loginSettingTab.ResumeLayout(false);

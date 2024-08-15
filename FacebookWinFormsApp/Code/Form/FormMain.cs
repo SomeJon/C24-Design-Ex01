@@ -13,6 +13,7 @@ using FacebookClient.Pages;
 using FacebookClient.Buttons;
 using CefSharp.DevTools.Debugger;
 using FacebookClient.Code.Pages.Data;
+using FacebookPages.Pages;
 
 namespace BasicFacebookFeatures
 {
@@ -128,8 +129,15 @@ namespace BasicFacebookFeatures
                     m_HomePageData = new HomePageData();
                     tabControl.SelectedIndex = 0;
                     break;
+                case PageSwitchButton.ePageChoice.Exit:
+                    Application.Exit();
+                    break;
             }
         }
 
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !PageUtils.CloseConfirm();
+        }
     }
 }
