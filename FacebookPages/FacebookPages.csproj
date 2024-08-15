@@ -61,7 +61,12 @@
     <Compile Include="Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Pages\Builder\AboutPageBuilder.cs" />
+    <Compile Include="Pages\Builder\FriendsPageBuilder.cs" />
+    <Compile Include="Pages\Builder\HomePageBuilder.cs" />
+    <Compile Include="Pages\Builder\PageBuilder.cs" />
     <Compile Include="Pages\Data\HomePageData.cs" />
+    <Compile Include="Pages\Data\PageData.cs" />
     <Compile Include="Pages\FriendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,6 +98,7 @@
     <Compile Include="Pages\SettingPage.Designer.cs">
       <DependentUpon>SettingPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Data\Theme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pages\AboutMePage.resx">
       <DependentUpon>AboutMePage.cs</DependentUpon>
