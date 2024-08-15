@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace FacebookClient.Buttons
 {
-    internal class LoadInfoButton : Button
+    public class LoadInfoButton : Button
     {
         public enum eInfoChoice
         {
             AppId,
-
+            Exit,
         }
 
         public eInfoChoice InfoChoice { get; set;}

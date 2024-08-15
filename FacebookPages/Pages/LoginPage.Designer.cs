@@ -103,7 +103,7 @@
             this.ButtonExit.TabIndex = 67;
             this.ButtonExit.Text = "Exit";
             this.ButtonExit.UseVisualStyleBackColor = true;
-            this.ButtonExit.Click += new System.EventHandler(this.exitButton_Click);
+            this.ButtonExit.Click += new System.EventHandler(this.switchPageButton_Click);
             // 
             // textBoxWelcomeMsg
             // 

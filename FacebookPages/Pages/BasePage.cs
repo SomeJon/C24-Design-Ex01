@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.ComponentModel;
+using FacebookPages.Pages.Data;
 
 namespace FacebookClient.Pages
 {
@@ -10,10 +11,10 @@ namespace FacebookClient.Pages
         [Description("Occurs when information is received " +
             "and needs to be proccessed.")]
         public event EventHandler RecivedInfo;
-
         [Category(".Page Events")]
         [Description("Occurs when recieve a page change request.")]
         public event EventHandler ChangePage;
+        public Theme PageTheme { get; internal set; }
 
         protected void OnRecivedInfo(object sender, EventArgs e)
         {
