@@ -28,7 +28,7 @@ namespace FacebookPages.Pages.Builder
 
         public BasePage Build()
         {
-            return HomePageConstruct;
+            return  HomePageConstruct;
         }
     }
 }

@@ -9,11 +9,11 @@ using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using FacebookClient.Pages;
 using FacebookClient.Buttons;
 using CefSharp.DevTools.Debugger;
 using FacebookClient.Code.Pages.Data;
 using FacebookPages.Pages;
+using FacebookPages.Pages.Data;
 
 namespace BasicFacebookFeatures
 {
@@ -22,7 +22,8 @@ namespace BasicFacebookFeatures
         public LoginResult LoginResult { get; set; }
         public User LoggedUser { get; private set; }
         private HomePageData m_HomePageData = new HomePageData();
-
+        private AboutMePageData m_AboutMePageData = new AboutMePageData();
+        
 
         public FormMain()
         {
@@ -43,6 +44,8 @@ namespace BasicFacebookFeatures
                 m_HomePageData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
                 m_HomePageData.FirstName = LoggedUser?.FirstName;
                 m_HomePageData.LastName = LoggedUser?.LastName;
+
+                m_AboutMePageData.Country = LoggedUser?.Location.Location.Country;
 
             }
             else
@@ -105,6 +108,7 @@ namespace BasicFacebookFeatures
                     if (LoggedUser != null)
                     {
                         homePage1.Data = m_HomePageData;
+                        aboutMePage1.Data = m_AboutMePageData;
                         tabControl.SelectedIndex = 2;
                     }
 
