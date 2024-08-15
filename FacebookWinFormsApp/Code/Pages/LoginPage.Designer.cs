@@ -52,7 +52,7 @@
             this.dateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dateLabel.Location = new System.Drawing.Point(0, 0);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(380, 28);
+            this.dateLabel.Size = new System.Drawing.Size(299, 21);
             this.dateLabel.TabIndex = 0;
             this.dateLabel.Text = "Showing the current date in dd/mm/yy";
             // 
@@ -143,7 +143,7 @@
             this.textBox2.Location = new System.Drawing.Point(660, 344);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(127, 28);
+            this.textBox2.Size = new System.Drawing.Size(127, 24);
             this.textBox2.TabIndex = 73;
             this.textBox2.Text = "might be emoji";
             this.textBox2.Visible = false;
@@ -156,7 +156,7 @@
             this.textBox1.Location = new System.Drawing.Point(723, 506);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(127, 28);
+            this.textBox1.Size = new System.Drawing.Size(127, 24);
             this.textBox1.TabIndex = 74;
             this.textBox1.Text = "might be emoji";
             this.textBox1.Visible = false;

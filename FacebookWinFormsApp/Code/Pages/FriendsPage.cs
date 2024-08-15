@@ -18,9 +18,9 @@ namespace FacebookClient.Code.Pages
             InitializeComponent();
         }
 
-        private void buttonReturn_Click(object sender, EventArgs e)
+        private void switchPageButton_Click(object sender, EventArgs e)
         {
-
+            OnChangePage(sender, e);
         }
     }
 }

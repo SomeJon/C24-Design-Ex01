@@ -17,5 +17,10 @@ namespace FacebookClient.Code.Pages
         {
             InitializeComponent();
         }
+
+        private void switchPageButton_Click(object sender, EventArgs e)
+        {
+            OnChangePage(sender, e);
+        }
     }
 }
