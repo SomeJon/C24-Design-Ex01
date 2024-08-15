@@ -40,8 +40,10 @@ namespace BasicFacebookFeatures
             {
                 LoggedUser = LoginResult.LoggedInUser;
 
-                m_HomePageData.ProfilePicUrl = LoggedUser.PictureLargeURL;
-                m_HomePageData.UserName = LoggedUser.UserName;
+                m_HomePageData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
+                m_HomePageData.FirstName = LoggedUser?.FirstName;
+                m_HomePageData.LastName = LoggedUser?.LastName;
+
             }
             else
             {

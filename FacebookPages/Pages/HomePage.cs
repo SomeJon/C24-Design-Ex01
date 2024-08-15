@@ -32,9 +32,11 @@ namespace FacebookClient.Pages
             if(Data?.ProfilePicUrl != null)
             {
                 profilePicture.LoadAsync(Data.ProfilePicUrl);
+
             }
 
-            textBoxFullName.Text = Data?.UserName; 
+            textBoxFullName.Text = Data?.FirstName 
+                + " " + Data?.LastName; 
         }
 
        
