@@ -168,6 +168,10 @@
     <None Include="Resources\gear-computer-icons-clip-art-gears-vector-c77d15e91af4e43fe5b26693eebf3c3d.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Examples Project\Example.csproj">
+      <Project>{1ab44001-b417-474f-90b7-96176b7a98f8}</Project>
+      <Name>Example</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FacebookPages\FacebookPages.csproj">
       <Project>{89ba5b9e-1a5a-4fa3-be9f-18af65f4c209}</Project>
       <Name>FacebookPages</Name>

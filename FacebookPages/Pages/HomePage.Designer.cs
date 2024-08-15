@@ -1,4 +1,4 @@
-﻿namespace FacebookClient.Pages
+﻿namespace FacebookPages.Pages
 {
     partial class HomePage
     {
@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.logoutButton = new FacebookClient.Buttons.PageSwitchButton();
+            this.logoutButton = new FacebookPages.Buttons.PageSwitchButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.useCase2 = new FacebookClient.Buttons.PageSwitchButton();
-            this.frienedButton = new FacebookClient.Buttons.PageSwitchButton();
-            this.useCase1 = new FacebookClient.Buttons.PageSwitchButton();
-            this.aboutButton = new FacebookClient.Buttons.PageSwitchButton();
-            this.pictureButton = new FacebookClient.Buttons.PageSwitchButton();
+            this.useCase2 = new FacebookPages.Buttons.PageSwitchButton();
+            this.frienedButton = new FacebookPages.Buttons.PageSwitchButton();
+            this.useCase1 = new FacebookPages.Buttons.PageSwitchButton();
+            this.aboutButton = new FacebookPages.Buttons.PageSwitchButton();
+            this.pictureButton = new FacebookPages.Buttons.PageSwitchButton();
             this.textBoxFullName = new System.Windows.Forms.TextBox();
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.coverPicture = new System.Windows.Forms.PictureBox();
@@ -54,7 +54,7 @@
             this.logoutButton.Location = new System.Drawing.Point(4, 4);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(4);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.Logout;
+            this.logoutButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.Logout;
             this.logoutButton.Size = new System.Drawing.Size(128, 52);
             this.logoutButton.TabIndex = 67;
             this.logoutButton.Text = "Logout";
@@ -89,8 +89,8 @@
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.SkyBlue;
             this.panel4.Controls.Add(this.textBox3);
@@ -117,7 +117,7 @@
             this.useCase2.Location = new System.Drawing.Point(316, 307);
             this.useCase2.Margin = new System.Windows.Forms.Padding(4);
             this.useCase2.Name = "useCase2";
-            this.useCase2.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.UseCase2Page;
+            this.useCase2.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.UseCase2Page;
             this.useCase2.Size = new System.Drawing.Size(177, 37);
             this.useCase2.TabIndex = 66;
             this.useCase2.Text = "Use Cae 2";
@@ -130,7 +130,7 @@
             this.frienedButton.Location = new System.Drawing.Point(316, 225);
             this.frienedButton.Margin = new System.Windows.Forms.Padding(4);
             this.frienedButton.Name = "frienedButton";
-            this.frienedButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.FriendPage;
+            this.frienedButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.FriendPage;
             this.frienedButton.Size = new System.Drawing.Size(177, 37);
             this.frienedButton.TabIndex = 65;
             this.frienedButton.Text = "Friends";
@@ -143,7 +143,7 @@
             this.useCase1.Location = new System.Drawing.Point(316, 266);
             this.useCase1.Margin = new System.Windows.Forms.Padding(4);
             this.useCase1.Name = "useCase1";
-            this.useCase1.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.UseCase1Page;
+            this.useCase1.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.UseCase1Page;
             this.useCase1.Size = new System.Drawing.Size(177, 37);
             this.useCase1.TabIndex = 64;
             this.useCase1.Text = "Use Case 1";
@@ -156,7 +156,7 @@
             this.aboutButton.Location = new System.Drawing.Point(317, 185);
             this.aboutButton.Margin = new System.Windows.Forms.Padding(4);
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.AboutMePage;
+            this.aboutButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.AboutMePage;
             this.aboutButton.Size = new System.Drawing.Size(177, 37);
             this.aboutButton.TabIndex = 63;
             this.aboutButton.Text = "About ME";
@@ -169,7 +169,7 @@
             this.pictureButton.Location = new System.Drawing.Point(554, 185);
             this.pictureButton.Margin = new System.Windows.Forms.Padding(4);
             this.pictureButton.Name = "pictureButton";
-            this.pictureButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.PicturePage;
+            this.pictureButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.PicturePage;
             this.pictureButton.Size = new System.Drawing.Size(176, 37);
             this.pictureButton.TabIndex = 62;
             this.pictureButton.Text = "Pictures";
@@ -203,7 +203,7 @@
             // 
             // coverPicture
             // 
-            this.coverPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.coverPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coverPicture.BackColor = System.Drawing.Color.Navy;
             this.coverPicture.Location = new System.Drawing.Point(0, 0);
@@ -228,7 +228,7 @@
             // 
             // m_SettingButton
             // 
-            this.m_SettingButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.m_SettingButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.m_SettingButton.Location = new System.Drawing.Point(769, 131);
             this.m_SettingButton.Name = "m_SettingButton";

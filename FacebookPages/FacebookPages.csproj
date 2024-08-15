@@ -61,10 +61,11 @@
     <Compile Include="Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\Builder\AboutPageBuilder.cs" />
+    <Compile Include="Pages\Builder\AboutMePageBuilder.cs" />
     <Compile Include="Pages\Builder\FriendsPageBuilder.cs" />
     <Compile Include="Pages\Builder\HomePageBuilder.cs" />
     <Compile Include="Pages\Builder\PageBuilder.cs" />
+    <Compile Include="Pages\Data\AboutMePageData.cs" />
     <Compile Include="Pages\Data\HomePageData.cs" />
     <Compile Include="Pages\Data\PageData.cs" />
     <Compile Include="Pages\FriendsPage.cs">

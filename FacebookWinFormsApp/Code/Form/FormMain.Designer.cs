@@ -1,4 +1,6 @@
-﻿namespace BasicFacebookFeatures
+﻿using FacebookPages.Pages;
+
+namespace BasicFacebookFeatures
 {
     partial class FormMain
     {
@@ -30,17 +32,17 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.loginTab = new System.Windows.Forms.TabPage();
-            this.loginPage1 = new FacebookClient.Pages.LoginPage();
+            this.loginPage1 = new FacebookPages.Pages.LoginPage();
             this.loginSettingTab = new System.Windows.Forms.TabPage();
-            this.settingPage1 = new FacebookClient.Pages.SettingPage();
+            this.settingPage1 = new FacebookPages.Pages.SettingPage();
             this.homeTab = new System.Windows.Forms.TabPage();
-            this.homePage1 = new FacebookClient.Pages.HomePage();
+            this.homePage1 = new FacebookPages.Pages.HomePage();
             this.aboutMeTab = new System.Windows.Forms.TabPage();
-            this.aboutMePage1 = new FacebookClient.Pages.AboutMePage();
+            this.aboutMePage1 = new FacebookPages.Pages.AboutMePage();
             this.freindstave = new System.Windows.Forms.TabPage();
-            this.friendsPage1 = new FacebookClient.Code.Pages.FriendsPage();
+            this.friendsPage1 = new FacebookPages.Pages.FriendsPage();
             this.photoTab = new System.Windows.Forms.TabPage();
-            this.photosPage1 = new FacebookClient.Code.Pages.PhotosPage();
+            this.photosPage1 = new FacebookPages.Pages.PhotosPage();
             this.tabControl.SuspendLayout();
             this.loginTab.SuspendLayout();
             this.loginSettingTab.SuspendLayout();
@@ -216,8 +218,8 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage loginTab;
         private System.Windows.Forms.TabPage loginSettingTab;
-        private FacebookClient.Pages.LoginPage loginPage1;
-        private FacebookClient.Pages.SettingPage settingPage1;
+        private LoginPage loginPage1;
+        private FacebookPages.Pages.SettingPage settingPage1;
 
         #endregion
 
@@ -225,10 +227,10 @@
         private System.Windows.Forms.TabPage aboutMeTab;
         private System.Windows.Forms.TabPage freindstave;
         private System.Windows.Forms.TabPage photoTab;
-        private FacebookClient.Pages.HomePage homePage1;
-        private FacebookClient.Code.Pages.FriendsPage friendsPage1;
-        private FacebookClient.Pages.AboutMePage aboutMePage1;
-        private FacebookClient.Code.Pages.PhotosPage photosPage1;
+        private HomePage homePage1;
+        private FacebookPages.Pages.FriendsPage friendsPage1;
+        private FacebookPages.Pages.AboutMePage aboutMePage1;
+        private FacebookPages.Pages.PhotosPage photosPage1;
     }
 }
 

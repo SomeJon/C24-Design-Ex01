@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacebookClient.Pages
+namespace FacebookPages.Pages
 {
-    public class AboutMePage : BasePage
+    public partial class AboutMePage : BasePage
     {
         private System.Windows.Forms.Label labelAboutMe;
         private System.Windows.Forms.Label labelBirthDate;
@@ -18,6 +18,7 @@ namespace FacebookClient.Pages
         private System.Windows.Forms.Label labelHometown;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label Residence;
+        public FacebookPages.Pages.Data.AboutMePageData Data { private get; set; }
 
         public AboutMePage()
         {
@@ -37,7 +38,7 @@ namespace FacebookClient.Pages
             this.labelWorkingPlace = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.Residence = new System.Windows.Forms.Label();
-            this.buttonReturn = new FacebookClient.Buttons.PageSwitchButton();
+            this.buttonReturn = new Buttons.PageSwitchButton();
             this.labelHometown = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -47,9 +48,9 @@ namespace FacebookClient.Pages
             this.labelAboutMe.AutoSize = true;
             this.labelAboutMe.Font = new System.Drawing.Font("Arial", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelAboutMe.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelAboutMe.Location = new System.Drawing.Point(67, 113);
+            this.labelAboutMe.Location = new System.Drawing.Point(23, 91);
             this.labelAboutMe.Name = "labelAboutMe";
-            this.labelAboutMe.Size = new System.Drawing.Size(120, 28);
+            this.labelAboutMe.Size = new System.Drawing.Size(152, 34);
             this.labelAboutMe.TabIndex = 0;
             this.labelAboutMe.Text = "About me";
             this.labelAboutMe.Click += new System.EventHandler(this.labelAboutMe_Click);
@@ -59,9 +60,9 @@ namespace FacebookClient.Pages
             this.labelBirthDate.AutoSize = true;
             this.labelBirthDate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBirthDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelBirthDate.Location = new System.Drawing.Point(77, 172);
+            this.labelBirthDate.Location = new System.Drawing.Point(44, 161);
             this.labelBirthDate.Name = "labelBirthDate";
-            this.labelBirthDate.Size = new System.Drawing.Size(79, 20);
+            this.labelBirthDate.Size = new System.Drawing.Size(98, 25);
             this.labelBirthDate.TabIndex = 1;
             this.labelBirthDate.Text = "Birth date";
             // 
@@ -72,7 +73,7 @@ namespace FacebookClient.Pages
             this.labelAducation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelAducation.Location = new System.Drawing.Point(335, 172);
             this.labelAducation.Name = "labelAducation";
-            this.labelAducation.Size = new System.Drawing.Size(81, 20);
+            this.labelAducation.Size = new System.Drawing.Size(100, 25);
             this.labelAducation.TabIndex = 2;
             this.labelAducation.Text = "Aducation";
             // 
@@ -83,7 +84,7 @@ namespace FacebookClient.Pages
             this.labelWorkingPlace.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelWorkingPlace.Location = new System.Drawing.Point(335, 219);
             this.labelWorkingPlace.Name = "labelWorkingPlace";
-            this.labelWorkingPlace.Size = new System.Drawing.Size(109, 20);
+            this.labelWorkingPlace.Size = new System.Drawing.Size(135, 25);
             this.labelWorkingPlace.TabIndex = 3;
             this.labelWorkingPlace.Text = "Working place";
             // 
@@ -92,9 +93,9 @@ namespace FacebookClient.Pages
             this.labelStatus.AutoSize = true;
             this.labelStatus.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelStatus.Location = new System.Drawing.Point(77, 219);
+            this.labelStatus.Location = new System.Drawing.Point(53, 206);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(53, 20);
+            this.labelStatus.Size = new System.Drawing.Size(65, 25);
             this.labelStatus.TabIndex = 4;
             this.labelStatus.Text = "Status";
             // 
@@ -105,7 +106,7 @@ namespace FacebookClient.Pages
             this.Residence.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Residence.Location = new System.Drawing.Point(346, 265);
             this.Residence.Name = "Residence";
-            this.Residence.Size = new System.Drawing.Size(79, 20);
+            this.Residence.Size = new System.Drawing.Size(98, 25);
             this.Residence.TabIndex = 5;
             this.Residence.Text = "Residence";
             // 
@@ -115,8 +116,8 @@ namespace FacebookClient.Pages
             this.buttonReturn.Location = new System.Drawing.Point(0, 0);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.HomePage;
-            this.buttonReturn.Size = new System.Drawing.Size(59, 36);
+            this.buttonReturn.PageChoice = Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.buttonReturn.Size = new System.Drawing.Size(80, 36);
             this.buttonReturn.TabIndex = 69;
             this.buttonReturn.Text = "return";
             this.buttonReturn.UseVisualStyleBackColor = true;
@@ -129,7 +130,7 @@ namespace FacebookClient.Pages
             this.labelHometown.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelHometown.Location = new System.Drawing.Point(77, 265);
             this.labelHometown.Name = "labelHometown";
-            this.labelHometown.Size = new System.Drawing.Size(87, 20);
+            this.labelHometown.Size = new System.Drawing.Size(106, 25);
             this.labelHometown.TabIndex = 70;
             this.labelHometown.Text = "Hometown";
             // 
@@ -141,7 +142,7 @@ namespace FacebookClient.Pages
             this.textBox4.Location = new System.Drawing.Point(305, 35);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(261, 24);
+            this.textBox4.Size = new System.Drawing.Size(261, 28);
             this.textBox4.TabIndex = 71;
             this.textBox4.Text = "theme picture";
             this.textBox4.Visible = false;

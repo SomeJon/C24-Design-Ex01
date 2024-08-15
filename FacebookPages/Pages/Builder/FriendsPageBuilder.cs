@@ -1,6 +1,4 @@
-﻿using FacebookClient.Code.Pages;
-using FacebookClient.Code.Pages.Data;
-using FacebookClient.Pages;
+﻿using FacebookPages.Pages;
 using FacebookPages.Pages.Data;
 using System;
 using System.Collections.Generic;
