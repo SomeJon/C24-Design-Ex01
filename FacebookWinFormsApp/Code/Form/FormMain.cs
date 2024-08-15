@@ -44,7 +44,7 @@ namespace BasicFacebookFeatures
                 m_HomePageData.FirstName = LoggedUser?.FirstName;
                 m_HomePageData.LastName = LoggedUser?.LastName;
 
-                m_AboutMePageData.Country = LoggedUser?.Location.Location.Country;
+                m_AboutMePageData.Country = LoggedUser?.Location?.Location?.Country;
 
             }
             else
