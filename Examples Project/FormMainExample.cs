@@ -12,9 +12,9 @@ using TestBed;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormMain : Form
+    public partial class FormMainExample : Form
     {
-        public FormMain()
+        public FormMainExample()
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 200;
