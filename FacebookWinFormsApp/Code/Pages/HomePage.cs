@@ -36,5 +36,7 @@ namespace FacebookClient.Pages
 
             textBoxFullName.Text = Data?.UserName; 
         }
+
+       
     }
 }

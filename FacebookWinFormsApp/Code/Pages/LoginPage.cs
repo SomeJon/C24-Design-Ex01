@@ -21,9 +21,6 @@ namespace FacebookClient.Pages
         public LoginPage()
         {
             InitializeComponent();
-            m_RotationTimer = new Timer();
-            m_RotationTimer.Interval = 10;
-            m_RotationTimer.Tick += RotationTimer_Tick;
             m_OriginalImage = facebooklogo.Image;
         }
 
@@ -49,27 +46,5 @@ namespace FacebookClient.Pages
             m_RotationTimer.Start();
         }
 
-        private void RotationTimer_Tick(object sender, EventArgs e)
-        {
-            m_RotationAngle += 10;
-            Bitmap rotatedImage = new Bitmap(m_OriginalImage.Width, m_OriginalImage.Height);
-
-            using (Graphics g = Graphics.FromImage(rotatedImage))
-            {
-                g.TranslateTransform((float)m_OriginalImage.Width / 2, (float)m_OriginalImage.Height / 2);
-                g.RotateTransform(m_RotationAngle);
-                g.TranslateTransform(-(float)m_OriginalImage.Width / 2, -(float)m_OriginalImage.Height / 2);
-                g.DrawImage(m_OriginalImage, new Point(0, 0));
-            }
-            
-            facebooklogo.Image = rotatedImage;
-            facebooklogo.Refresh();
-            if (m_RotationAngle >= 360)
-            {
-                m_RotationTimer.Stop();
-                m_RotationAngle = 0; 
-                facebooklogo.Image = m_OriginalImage;
-            }
-        }
     }
 }

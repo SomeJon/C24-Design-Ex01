@@ -59,5 +59,25 @@ namespace FacebookClient.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap back_icon_6_603907859 {
+            get {
+                object obj = ResourceManager.GetObject("back-icon-6-603907859", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gear_computer_icons_clip_art_gears_vector_c77d15e91af4e43fe5b26693eebf3c3d {
+            get {
+                object obj = ResourceManager.GetObject("gear-computer-icons-clip-art-gears-vector-c77d15e91af4e43fe5b26693eebf3c3d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

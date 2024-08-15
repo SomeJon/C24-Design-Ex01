@@ -28,41 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhotosPage));
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.pictureBoxReturn = new System.Windows.Forms.PictureBox();
             this.buttonReturn = new FacebookClient.Buttons.PageSwitchButton();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReturn)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.textBox2.Location = new System.Drawing.Point(185, 54);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(127, 28);
-            this.textBox2.TabIndex = 78;
-            this.textBox2.Text = "might be emoji";
-            this.textBox2.Visible = false;
-            // 
-            // pictureBoxReturn
-            // 
-            this.pictureBoxReturn.Cursor = System.Windows.Forms.Cursors.No;
-            this.pictureBoxReturn.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxReturn.Image")));
-            this.pictureBoxReturn.Location = new System.Drawing.Point(197, 3);
-            this.pictureBoxReturn.Name = "pictureBoxReturn";
-            this.pictureBoxReturn.Size = new System.Drawing.Size(60, 44);
-            this.pictureBoxReturn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxReturn.TabIndex = 77;
-            this.pictureBoxReturn.TabStop = false;
-            this.pictureBoxReturn.Tag = "back";
             // 
             // buttonReturn
             // 
@@ -133,21 +104,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.pictureBoxReturn);
             this.Controls.Add(this.buttonReturn);
             this.Name = "PhotosPage";
             this.Size = new System.Drawing.Size(886, 533);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReturn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.PictureBox pictureBoxReturn;
         private Buttons.PageSwitchButton buttonReturn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
