@@ -9,9 +9,8 @@ using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using FacebookClient.Buttons;
+using FacebookPages.Buttons;
 using CefSharp.DevTools.Debugger;
-using FacebookClient.Code.Pages.Data;
 using FacebookPages.Pages;
 using FacebookPages.Pages.Data;
 

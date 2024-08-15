@@ -1,4 +1,4 @@
-﻿using FacebookClient.Code.Pages.Data;
+﻿using FacebookPages.Pages.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FacebookClient.Pages
+namespace FacebookPages.Pages
 {
     public partial class HomePage : BasePage
     {
@@ -29,16 +29,16 @@ namespace FacebookClient.Pages
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            if(Data?.ProfilePicUrl != null)
+            if (Data?.ProfilePicUrl != null)
             {
                 profilePicture.LoadAsync(Data.ProfilePicUrl);
 
             }
 
-            textBoxFullName.Text = Data?.FirstName 
-                + " " + Data?.LastName; 
+            textBoxFullName.Text = Data?.FirstName
+                + " " + Data?.LastName;
         }
 
-       
+
     }
 }

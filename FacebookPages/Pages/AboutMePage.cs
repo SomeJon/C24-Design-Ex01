@@ -1,12 +1,11 @@
-﻿using FacebookClient.Code.Pages.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacebookClient.Pages
+namespace FacebookPages.Pages
 {
     public partial class AboutMePage : BasePage
     {
@@ -19,7 +18,7 @@ namespace FacebookClient.Pages
         private System.Windows.Forms.Label labelHometown;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label Residence;
-        public AboutMePage Data { private get; set; }
+        public FacebookPages.Pages.Data.AboutMePageData Data { private get; set; }
 
         public AboutMePage()
         {
@@ -39,7 +38,7 @@ namespace FacebookClient.Pages
             this.labelWorkingPlace = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.Residence = new System.Windows.Forms.Label();
-            this.buttonReturn = new FacebookClient.Buttons.PageSwitchButton();
+            this.buttonReturn = new Buttons.PageSwitchButton();
             this.labelHometown = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -117,7 +116,7 @@ namespace FacebookClient.Pages
             this.buttonReturn.Location = new System.Drawing.Point(0, 0);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.buttonReturn.PageChoice = Buttons.PageSwitchButton.ePageChoice.HomePage;
             this.buttonReturn.Size = new System.Drawing.Size(80, 36);
             this.buttonReturn.TabIndex = 69;
             this.buttonReturn.Text = "return";
