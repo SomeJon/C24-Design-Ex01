@@ -33,12 +33,12 @@
             this.timePanel = new System.Windows.Forms.Panel();
             this.facebooklogo = new System.Windows.Forms.PictureBox();
             this.loginButton = new FacebookClient.Buttons.PageSwitchButton();
-            this.settingButton = new FacebookClient.Buttons.PageSwitchButton();
             this.ButtonExit = new FacebookClient.Buttons.PageSwitchButton();
             this.textBoxWelcomeMsg = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.settingButton = new FacebookClient.Buttons.PageSwitchButton();
             this.timePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebooklogo)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +52,7 @@
             this.dateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dateLabel.Location = new System.Drawing.Point(0, 0);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(380, 28);
+            this.dateLabel.Size = new System.Drawing.Size(299, 21);
             this.dateLabel.TabIndex = 0;
             this.dateLabel.Text = "Showing the current date in dd/mm/yy";
             // 
@@ -90,20 +90,6 @@
             this.loginButton.Text = "Login with Facebook";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.switchPageButton_Click);
-            // 
-            // settingButton
-            // 
-            this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.settingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingButton.ForeColor = System.Drawing.Color.DarkBlue;
-            this.settingButton.Location = new System.Drawing.Point(857, 475);
-            this.settingButton.Name = "settingButton";
-            this.settingButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.LoginSetting;
-            this.settingButton.Size = new System.Drawing.Size(147, 69);
-            this.settingButton.TabIndex = 66;
-            this.settingButton.Text = "Settings";
-            this.settingButton.UseVisualStyleBackColor = true;
-            this.settingButton.Click += new System.EventHandler(this.switchPageButton_Click);
             // 
             // ButtonExit
             // 
@@ -157,7 +143,7 @@
             this.textBox2.Location = new System.Drawing.Point(660, 344);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(127, 28);
+            this.textBox2.Size = new System.Drawing.Size(127, 24);
             this.textBox2.TabIndex = 73;
             this.textBox2.Text = "might be emoji";
             this.textBox2.Visible = false;
@@ -170,10 +156,24 @@
             this.textBox1.Location = new System.Drawing.Point(723, 506);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(127, 28);
+            this.textBox1.Size = new System.Drawing.Size(127, 24);
             this.textBox1.TabIndex = 74;
             this.textBox1.Text = "might be emoji";
             this.textBox1.Visible = false;
+            // 
+            // settingButton
+            // 
+            this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingButton.ForeColor = System.Drawing.Color.DarkBlue;
+            this.settingButton.Location = new System.Drawing.Point(884, 458);
+            this.settingButton.Name = "settingButton";
+            this.settingButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.LoginSetting;
+            this.settingButton.Size = new System.Drawing.Size(120, 86);
+            this.settingButton.TabIndex = 66;
+            this.settingButton.Text = "Settings";
+            this.settingButton.UseVisualStyleBackColor = true;
+            this.settingButton.Click += new System.EventHandler(this.switchPageButton_Click);
             // 
             // LoginPage
             // 
@@ -205,11 +205,11 @@
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.PictureBox facebooklogo;
         private Buttons.PageSwitchButton loginButton;
-        private Buttons.PageSwitchButton settingButton;
         private Buttons.PageSwitchButton ButtonExit;
         private System.Windows.Forms.TextBox textBoxWelcomeMsg;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
+        private Buttons.PageSwitchButton settingButton;
     }
 }

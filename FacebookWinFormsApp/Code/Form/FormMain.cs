@@ -27,6 +27,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
+            
         }
 
         private void login()
@@ -47,16 +48,6 @@ namespace BasicFacebookFeatures
                 LoginResult = null;
             }
         }
-
-        //private void buttonLogout_Click(object sender, EventArgs e)
-        //{
-        //    FacebookService.LogoutWithUI();
-        //    //buttonLogin.Text = "Login";
-        //    //buttonLogin.BackColor = buttonLogout.BackColor;
-        //    LoginResult = null;
-        //    //buttonLogin.Enabled = true;
-        //    //buttonLogout.Enabled = false;
-        //}
 
         public static class AppSettings
         {
@@ -120,6 +111,22 @@ namespace BasicFacebookFeatures
                     break;
                 case PageSwitchButton.ePageChoice.LoginSetting:
                     tabControl.SelectedIndex = 1;
+                    break;
+                case PageSwitchButton.ePageChoice.AboutMePage:
+                    tabControl.SelectedIndex = 3;
+                    break;
+                case PageSwitchButton.ePageChoice.FriendPage:
+                    tabControl.SelectedIndex = 4;
+                    break;
+                case PageSwitchButton.ePageChoice.PicturePage:
+                    tabControl.SelectedIndex = 5;
+                    break;
+                case PageSwitchButton.ePageChoice.Logout:
+                    FacebookService.LogoutWithUI();
+                    LoginResult = null;
+                    LoggedUser = null;
+                    m_HomePageData = new HomePageData();
+                    tabControl.SelectedIndex = 0;
                     break;
             }
         }

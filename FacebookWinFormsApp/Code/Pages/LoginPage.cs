@@ -61,13 +61,13 @@ namespace FacebookClient.Pages
                 g.TranslateTransform(-(float)m_OriginalImage.Width / 2, -(float)m_OriginalImage.Height / 2);
                 g.DrawImage(m_OriginalImage, new Point(0, 0));
             }
-            
+
             facebooklogo.Image = rotatedImage;
             facebooklogo.Refresh();
             if (m_RotationAngle >= 360)
             {
                 m_RotationTimer.Stop();
-                m_RotationAngle = 0; 
+                m_RotationAngle = 0;
                 facebooklogo.Image = m_OriginalImage;
             }
         }
