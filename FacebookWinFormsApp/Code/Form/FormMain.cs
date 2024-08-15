@@ -13,6 +13,8 @@ using FacebookPages.Buttons;
 using CefSharp.DevTools.Debugger;
 using FacebookPages.Pages;
 using FacebookPages.Pages.Data;
+using FacebookClient.Code;
+using System.Dynamic;
 
 namespace BasicFacebookFeatures
 {
@@ -22,6 +24,7 @@ namespace BasicFacebookFeatures
         public User LoggedUser { get; private set; }
         private HomePageData m_HomePageData = new HomePageData();
         private AboutMePageData m_AboutMePageData = new AboutMePageData();
+        private FacebookUtils Utils;
         
 
         public FormMain()
@@ -39,12 +42,15 @@ namespace BasicFacebookFeatures
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
                 LoggedUser = LoginResult.LoggedInUser;
+                Utils = new FacebookUtils(LoggedUser.Id, LoginResult.AccessToken);
 
                 m_HomePageData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
                 m_HomePageData.FirstName = LoggedUser?.FirstName;
                 m_HomePageData.LastName = LoggedUser?.LastName;
 
-                m_AboutMePageData.Country = LoggedUser?.Location.Location.Country;
+                Facebook.JsonObject fetchResultLocation = Utils.Fetch("location{location}");
+
+                m_AboutMePageData.Country = LoggedUser?.Location?.Location?.Country;
 
             }
             else
