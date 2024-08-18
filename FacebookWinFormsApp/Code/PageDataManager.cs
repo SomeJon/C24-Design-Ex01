@@ -10,8 +10,8 @@ namespace FacebookClient.Code
 {
     internal class PageDataManager
     {
-        public AboutMePageData About { get; } = new AboutMePageData();
-        public HomePageData Home { get; } = new HomePageData(); 
-        public Theme Theme { get; }
+        public AboutMePageData AboutData { get; } = new AboutMePageData();
+        public HomePageData HomeData { get; } = new HomePageData(); 
+        public Theme ThemeData { get; }
     }
 }

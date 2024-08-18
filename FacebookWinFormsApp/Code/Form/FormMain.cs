@@ -44,10 +44,10 @@ namespace BasicFacebookFeatures
             {
                 LoggedUser = LoginResult.LoggedInUser;
                 m_UserFetchData = new UserFetchData(LoggedUser.Id, LoginResult.AccessToken);
-                m_PagesData.Home.ProfilePicUrl = LoggedUser?.PictureLargeURL;
-                m_PagesData.Home.FirstName = LoggedUser?.FirstName;
-                m_PagesData.Home.LastName = LoggedUser?.LastName;
-                m_PagesData.About.fetchAndLoadData(m_UserFetchData);
+                m_PagesData.HomeData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
+                m_PagesData.HomeData.FirstName = LoggedUser?.FirstName;
+                m_PagesData.HomeData.LastName = LoggedUser?.LastName;
+                m_PagesData.AboutData.fetchAndLoadData(m_UserFetchData);
             }
             else
             {
@@ -108,7 +108,7 @@ namespace BasicFacebookFeatures
                     if (LoggedUser != null)
                     {
                         homePage1.Data = m_PagesData.Home;
-                        aboutMePage1.Data = m_PagesData.About;
+                        aboutMePage1.Data = m_PagesData.AboutData;
                         tabControl.SelectedIndex = 2;
                     }
 
