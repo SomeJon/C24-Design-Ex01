@@ -105,6 +105,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\FacebookUtils.cs" />
     <Compile Include="Code\Form\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
