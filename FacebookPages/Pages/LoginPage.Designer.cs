@@ -1,4 +1,4 @@
-﻿namespace FacebookClient.Pages
+﻿namespace FacebookPages.Pages
 {
     partial class LoginPage
     {
@@ -32,13 +32,13 @@
             this.dateLabel = new System.Windows.Forms.Label();
             this.timePanel = new System.Windows.Forms.Panel();
             this.facebooklogo = new System.Windows.Forms.PictureBox();
-            this.loginButton = new FacebookClient.Buttons.PageSwitchButton();
-            this.ButtonExit = new FacebookClient.Buttons.PageSwitchButton();
+            this.loginButton = new FacebookPages.Buttons.PageSwitchButton();
+            this.ButtonExit = new FacebookPages.Buttons.PageSwitchButton();
             this.textBoxWelcomeMsg = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.settingButton = new FacebookClient.Buttons.PageSwitchButton();
+            this.settingButton = new FacebookPages.Buttons.PageSwitchButton();
             this.timePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebooklogo)).BeginInit();
             this.SuspendLayout();
@@ -84,7 +84,7 @@
             this.loginButton.ForeColor = System.Drawing.Color.DarkBlue;
             this.loginButton.Location = new System.Drawing.Point(317, 221);
             this.loginButton.Name = "loginButton";
-            this.loginButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.loginButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.HomePage;
             this.loginButton.Size = new System.Drawing.Size(336, 98);
             this.loginButton.TabIndex = 65;
             this.loginButton.Text = "Login with Facebook";
@@ -98,7 +98,7 @@
             this.ButtonExit.ForeColor = System.Drawing.Color.DarkBlue;
             this.ButtonExit.Location = new System.Drawing.Point(317, 325);
             this.ButtonExit.Name = "ButtonExit";
-            this.ButtonExit.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.Exit;
+            this.ButtonExit.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.Exit;
             this.ButtonExit.Size = new System.Drawing.Size(336, 55);
             this.ButtonExit.TabIndex = 67;
             this.ButtonExit.Text = "Exit";
@@ -168,7 +168,7 @@
             this.settingButton.ForeColor = System.Drawing.Color.DarkBlue;
             this.settingButton.Location = new System.Drawing.Point(884, 458);
             this.settingButton.Name = "settingButton";
-            this.settingButton.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.LoginSetting;
+            this.settingButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.LoginSetting;
             this.settingButton.Size = new System.Drawing.Size(120, 86);
             this.settingButton.TabIndex = 66;
             this.settingButton.Text = "Settings";

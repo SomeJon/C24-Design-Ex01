@@ -1,4 +1,4 @@
-﻿namespace FacebookClient.Code.Pages
+﻿namespace FacebookPages.Pages
 {
     partial class FriendsPage
     {
@@ -35,7 +35,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.pageSwitchButton1 = new FacebookClient.Buttons.PageSwitchButton();
+            this.pageSwitchButton1 = new FacebookPages.Buttons.PageSwitchButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,7 +124,7 @@
             this.pageSwitchButton1.Location = new System.Drawing.Point(2, 2);
             this.pageSwitchButton1.Margin = new System.Windows.Forms.Padding(2);
             this.pageSwitchButton1.Name = "pageSwitchButton1";
-            this.pageSwitchButton1.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.pageSwitchButton1.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.HomePage;
             this.pageSwitchButton1.Size = new System.Drawing.Size(44, 35);
             this.pageSwitchButton1.TabIndex = 78;
             this.pageSwitchButton1.Text = "back";

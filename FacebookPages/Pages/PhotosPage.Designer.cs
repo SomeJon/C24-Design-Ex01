@@ -1,4 +1,4 @@
-﻿namespace FacebookClient.Code.Pages
+﻿namespace FacebookPages.Pages
 {
     partial class PhotosPage
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonReturn = new FacebookClient.Buttons.PageSwitchButton();
+            this.buttonReturn = new FacebookPages.Buttons.PageSwitchButton();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,7 +41,7 @@
             this.buttonReturn.Location = new System.Drawing.Point(4, 4);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.PageChoice = FacebookClient.Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.buttonReturn.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.HomePage;
             this.buttonReturn.Size = new System.Drawing.Size(70, 38);
             this.buttonReturn.TabIndex = 76;
             this.buttonReturn.Text = "return";

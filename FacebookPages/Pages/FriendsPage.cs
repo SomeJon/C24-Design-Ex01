@@ -1,4 +1,4 @@
-﻿using FacebookClient.Pages;
+﻿using FacebookPages.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FacebookClient.Code.Pages
+namespace FacebookPages.Pages
 {
     public partial class FriendsPage : BasePage
     {

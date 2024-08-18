@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacebookClient.Code.Pages.Data
+namespace FacebookPages.Pages.Data
 {
     public class HomePageData : PageData
     {

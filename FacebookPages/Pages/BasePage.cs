@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using FacebookPages.Pages.Data;
 
-namespace FacebookClient.Pages
+namespace FacebookPages.Pages
 {
     public class BasePage : UserControl
     {

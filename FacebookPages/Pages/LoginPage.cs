@@ -1,5 +1,4 @@
-﻿using FacebookPages.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FacebookClient.Pages
+namespace FacebookPages.Pages
 {
     public partial class LoginPage : BasePage
     {
@@ -17,7 +16,7 @@ namespace FacebookClient.Pages
         private int m_RotationAngle = 0;
         private Image m_OriginalImage;
 
-        public override Color BackColor {  get; set; }
+        public override Color BackColor { get; set; }
 
         public LoginPage()
         {
