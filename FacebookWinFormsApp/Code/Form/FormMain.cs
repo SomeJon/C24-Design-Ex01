@@ -13,8 +13,9 @@ using FacebookPages.Buttons;
 using CefSharp.DevTools.Debugger;
 using FacebookPages.Pages;
 using FacebookPages.Pages.Data;
-using FacebookClient.Code;
 using System.Dynamic;
+using FacebookPages.Code.Pages.Data;
+using FacebookClient.Code;
 
 namespace BasicFacebookFeatures
 {
@@ -22,10 +23,10 @@ namespace BasicFacebookFeatures
     {
         public LoginResult LoginResult { get; set; }
         public User LoggedUser { get; private set; }
-        private HomePageData m_HomePageData = new HomePageData();
-        private AboutMePageData m_AboutMePageData = new AboutMePageData();
-        private FacebookUtils Utils;
-        
+        private PageDataManager m_PagesData = new PageDataManager();
+        private UserFetchData m_UserFetchData;
+
+
 
         public FormMain()
         {
@@ -42,15 +43,11 @@ namespace BasicFacebookFeatures
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
                 LoggedUser = LoginResult.LoggedInUser;
-                Utils = new FacebookUtils(LoggedUser.Id, LoginResult.AccessToken);
-
-                m_HomePageData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
-                m_HomePageData.FirstName = LoggedUser?.FirstName;
-                m_HomePageData.LastName = LoggedUser?.LastName;
-
-                Facebook.JsonObject fetchResultLocation = Utils.Fetch("location{location}");
-                
-                m_AboutMePageData.Country = LoggedUser?.Location?.Location?.Country;
+                m_UserFetchData = new UserFetchData(LoggedUser.Id, LoginResult.AccessToken);
+                m_PagesData.Home.ProfilePicUrl = LoggedUser?.PictureLargeURL;
+                m_PagesData.Home.FirstName = LoggedUser?.FirstName;
+                m_PagesData.Home.LastName = LoggedUser?.LastName;
+                m_PagesData.About.fetchAndLoadData(m_UserFetchData);
             }
             else
             {
@@ -110,8 +107,8 @@ namespace BasicFacebookFeatures
 
                     if (LoggedUser != null)
                     {
-                        homePage1.Data = m_HomePageData;
-                        aboutMePage1.Data = m_AboutMePageData;
+                        homePage1.Data = m_PagesData.Home;
+                        aboutMePage1.Data = m_PagesData.About;
                         tabControl.SelectedIndex = 2;
                     }
 
@@ -135,7 +132,7 @@ namespace BasicFacebookFeatures
                     FacebookService.LogoutWithUI();
                     LoginResult = null;
                     LoggedUser = null;
-                    m_HomePageData = new HomePageData();
+                    m_PagesData = new PageDataManager();
                     tabControl.SelectedIndex = 0;
                     break;
                 case PageSwitchButton.ePageChoice.Exit:

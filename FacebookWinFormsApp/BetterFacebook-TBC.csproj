@@ -105,7 +105,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\FacebookUtils.cs" />
     <Compile Include="Code\Form\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +117,7 @@
     <Compile Include="Code\Form\ExitConfirmationForm.Designer.cs">
       <DependentUpon>ExitConfirmationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Code\PageDataManager.cs" />
     <Compile Include="Code\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Code\Form\FormMain.resx">
@@ -176,6 +176,10 @@
     <ProjectReference Include="..\FacebookPages\FacebookPages.csproj">
       <Project>{89ba5b9e-1a5a-4fa3-be9f-18af65f4c209}</Project>
       <Name>FacebookPages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FetchHandler\FetchHandler.csproj">
+      <Project>{b3f772bb-2b99-48b1-982c-81633a06924e}</Project>
+      <Name>FetchHandler</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -145,6 +145,7 @@
             this.Controls.Add(this.labelAboutMe);
             this.Name = "FriendsPage";
             this.Size = new System.Drawing.Size(448, 367);
+            this.Load += new System.EventHandler(this.FriendsPage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

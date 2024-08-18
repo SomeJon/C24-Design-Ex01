@@ -22,5 +22,10 @@ namespace FacebookPages.Pages
         {
             OnChangePage(sender, e);
         }
+
+        private void FriendsPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacebookPages.Pages.Data
+namespace FetchHandler.Fetch.About
 {
-    public class AboutMePageData : PageData
+    public class LocationData
     {
         public string City { get; set; }
         public string Country { get; set; }
