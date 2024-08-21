@@ -13,7 +13,6 @@ namespace FacebookPages.Pages
 {
     public partial class HomePage : BasePage
     {
-        public string SelectedAppId { get; private set; }
         public override Color BackColor { get; set; }
         public HomePageData Data { private get; set; }
 

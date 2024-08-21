@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace FacebookPages.Pages
 {
-    public partial class SettingPage : BasePage
+    public partial class LoginSettingPage : BasePage
     {
         public override Color BackColor {  get; set; }
 
-        public SettingPage()
+        public LoginSettingPage()
         {
             InitializeComponent();
             appIdComboBox.Items.AddRange(new string[] {

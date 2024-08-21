@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FacebookPages.Pages.Data;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace FacebookPages.Pages
         private System.Windows.Forms.Label labelHometown;
         private System.Windows.Forms.Label labelAducation;
         private System.Windows.Forms.Label Residence;
-        public FacebookPages.Pages.Data.AboutMePageData Data { private get; set; }
+        public AboutMePageData Data { private get; set; }
 
         public AboutMePage()
         {

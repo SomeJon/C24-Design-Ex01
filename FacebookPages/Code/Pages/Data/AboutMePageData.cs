@@ -23,7 +23,7 @@ namespace FacebookPages.Pages.Data
         public void fetchAndLoadData(UserFetchData i_Fetcher)
         {
             Fetcher fetchHandler = new Fetcher(i_Fetcher);
-            UserData userData = fetchHandler.FetchToObj<UserData>
+            AboutDataWarpper userData = fetchHandler.FetchToObj<AboutDataWarpper>
                 ("birthday,location{location},email,gender,hometown,name");
 
             City = userData.Location.Location.City;

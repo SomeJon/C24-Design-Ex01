@@ -33,7 +33,7 @@ namespace FetchHandler.Fetch
             return ConvertJsonTo<T>(loadObject.ToString());
         }
 
-        public static T ConvertJsonTo<T>(string i_Json)
+        private static T ConvertJsonTo<T>(string i_Json)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             return serializer.Deserialize<T>(i_Json);

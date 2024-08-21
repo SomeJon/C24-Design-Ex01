@@ -1,6 +1,6 @@
 ﻿namespace FacebookPages.Pages
 {
-    partial class SettingPage
+    partial class LoginSettingPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginSettingPage));
             this.appIdComboBox = new System.Windows.Forms.ComboBox();
             this.addAppIdTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();

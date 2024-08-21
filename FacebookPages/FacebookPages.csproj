@@ -64,10 +64,6 @@
     <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Code\Pages\Builder\AboutMePageBuilder.cs" />
-    <Compile Include="Code\Pages\Builder\FriendsPageBuilder.cs" />
-    <Compile Include="Code\Pages\Builder\HomePageBuilder.cs" />
-    <Compile Include="Code\Pages\Builder\PageBuilder.cs" />
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
     <Compile Include="Code\Pages\Data\HomePageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
@@ -96,11 +92,11 @@
     <Compile Include="Code\Pages\PhotosPage.Designer.cs">
       <DependentUpon>PhotosPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Pages\SettingPage.cs">
+    <Compile Include="Code\Pages\LoginSettingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Code\Pages\SettingPage.Designer.cs">
-      <DependentUpon>SettingPage.cs</DependentUpon>
+    <Compile Include="Code\Pages\LoginSettingPage.Designer.cs">
+      <DependentUpon>LoginSettingPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\Pages\Data\Theme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,8 +118,8 @@
     <EmbeddedResource Include="Code\Pages\PhotosPage.resx">
       <DependentUpon>PhotosPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\SettingPage.resx">
-      <DependentUpon>SettingPage.cs</DependentUpon>
+    <EmbeddedResource Include="Code\Pages\LoginSettingPage.resx">
+      <DependentUpon>LoginSettingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -53,10 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fetch\About\Hometown.cs" />
-    <Compile Include="Fetch\About\LocationData.cs" />
-    <Compile Include="Fetch\About\LocationObject.cs" />
-    <Compile Include="Fetch\About\UserData.cs" />
+    <Compile Include="Fetch\WarrperClasses\Hometown.cs" />
+    <Compile Include="Fetch\WarrperClasses\LocationData.cs" />
+    <Compile Include="Fetch\WarrperClasses\LocationObject.cs" />
+    <Compile Include="Fetch\About\AboutDataWarpper.cs" />
     <Compile Include="Fetch\Fetcher.cs" />
     <Compile Include="Fetch\UserFetchData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
