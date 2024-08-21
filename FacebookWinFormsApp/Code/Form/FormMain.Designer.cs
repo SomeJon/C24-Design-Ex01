@@ -34,7 +34,7 @@ namespace BasicFacebookFeatures
             this.loginTab = new System.Windows.Forms.TabPage();
             this.loginPage1 = new FacebookPages.Pages.LoginPage();
             this.loginSettingTab = new System.Windows.Forms.TabPage();
-            this.settingPage1 = new FacebookPages.Pages.SettingPage();
+            this.settingPage1 = new FacebookPages.Pages.LoginPage();
             this.homeTab = new System.Windows.Forms.TabPage();
             this.homePage1 = new FacebookPages.Pages.HomePage();
             this.aboutMeTab = new System.Windows.Forms.TabPage();
@@ -219,7 +219,7 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.TabPage loginTab;
         private System.Windows.Forms.TabPage loginSettingTab;
         private LoginPage loginPage1;
-        private FacebookPages.Pages.SettingPage settingPage1;
+        private FacebookPages.Pages.LoginPage settingPage1;
 
         #endregion
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FacebookClient.Code
 {
-    internal class PageDataManager
+    public class PageDataManager
     {
         public AboutMePageData AboutData { get; } = new AboutMePageData();
         public HomePageData HomeData { get; } = new HomePageData(); 
