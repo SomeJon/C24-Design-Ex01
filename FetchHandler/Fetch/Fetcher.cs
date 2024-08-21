@@ -21,14 +21,20 @@ namespace FetchHandler.Fetch
             UserFetchData = i_FetchData;
         }
 
-        public T FetchToObj<T>(string i_Fields)
+        public T FetchToObj<T>(string i_Fields, string i_Path = null)
         {
             FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToekn);
             dynamic fieldsValue = new ExpandoObject();
+            string path = $"/{UserFetchData.UserId}";
 
+            if (!string.IsNullOrEmpty(i_Path))
+            {
+                path += i_Path;
+            }
+            
             fieldsValue.fields = i_Fields;
-
-            dynamic loadObject = facebookClient.Get($"/{UserFetchData.UserId}", fieldsValue);
+            
+            dynamic loadObject = facebookClient.Get(path, fieldsValue);
             //JsonObject keyValuePairs = loadObject;
             return ConvertJsonTo<T>(loadObject.ToString());
         }

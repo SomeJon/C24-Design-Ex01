@@ -157,6 +157,7 @@ namespace FacebookClient.Code
             m_PagesData.HomeData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
             m_PagesData.HomeData.FirstName = LoggedUser?.FirstName;
             m_PagesData.HomeData.LastName = LoggedUser?.LastName;
+            m_PagesData.HomeData.fetchAndLoadData(m_UserFetchData);
             homePage1.Data = m_PagesData.HomeData;
             tabControl.SelectedIndex = 2;
         }
