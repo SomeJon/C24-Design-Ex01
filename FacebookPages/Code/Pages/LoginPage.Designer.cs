@@ -70,7 +70,7 @@
             this.facebooklogo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.facebooklogo.BackColor = System.Drawing.Color.Transparent;
             this.facebooklogo.Image = ((System.Drawing.Image)(resources.GetObject("facebooklogo.Image")));
-            this.facebooklogo.Location = new System.Drawing.Point(688, 221);
+            this.facebooklogo.Location = new System.Drawing.Point(536, 221);
             this.facebooklogo.Name = "facebooklogo";
             this.facebooklogo.Size = new System.Drawing.Size(120, 98);
             this.facebooklogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -83,7 +83,7 @@
             this.ButtonExit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ButtonExit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonExit.ForeColor = System.Drawing.Color.DarkBlue;
-            this.ButtonExit.Location = new System.Drawing.Point(317, 335);
+            this.ButtonExit.Location = new System.Drawing.Point(165, 335);
             this.ButtonExit.Name = "ButtonExit";
             this.ButtonExit.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.Exit;
             this.ButtonExit.Size = new System.Drawing.Size(336, 55);
@@ -99,7 +99,7 @@
             this.textBoxWelcomeMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxWelcomeMsg.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.textBoxWelcomeMsg.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxWelcomeMsg.Location = new System.Drawing.Point(160, 66);
+            this.textBoxWelcomeMsg.Location = new System.Drawing.Point(8, 66);
             this.textBoxWelcomeMsg.Multiline = true;
             this.textBoxWelcomeMsg.Name = "textBoxWelcomeMsg";
             this.textBoxWelcomeMsg.Size = new System.Drawing.Size(671, 97);
@@ -114,7 +114,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox4.Location = new System.Drawing.Point(245, 152);
+            this.textBox4.Location = new System.Drawing.Point(93, 152);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -127,7 +127,7 @@
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox2.BackColor = System.Drawing.SystemColors.Info;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.textBox2.Location = new System.Drawing.Point(660, 344);
+            this.textBox2.Location = new System.Drawing.Point(508, 344);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(127, 28);
@@ -140,7 +140,7 @@
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.textBox1.Location = new System.Drawing.Point(723, 506);
+            this.textBox1.Location = new System.Drawing.Point(451, 510);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(127, 28);
@@ -153,7 +153,7 @@
             this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.settingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingButton.ForeColor = System.Drawing.Color.DarkBlue;
-            this.settingButton.Location = new System.Drawing.Point(884, 458);
+            this.settingButton.Location = new System.Drawing.Point(580, 454);
             this.settingButton.Name = "settingButton";
             this.settingButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.LoginSetting;
             this.settingButton.Size = new System.Drawing.Size(120, 86);
@@ -167,7 +167,7 @@
             this.rememberLoginChackBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rememberLoginChackBox.AutoSize = true;
             this.rememberLoginChackBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.rememberLoginChackBox.Location = new System.Drawing.Point(332, 309);
+            this.rememberLoginChackBox.Location = new System.Drawing.Point(180, 309);
             this.rememberLoginChackBox.Name = "rememberLoginChackBox";
             this.rememberLoginChackBox.Size = new System.Drawing.Size(133, 20);
             this.rememberLoginChackBox.TabIndex = 77;
@@ -180,7 +180,7 @@
             this.loginButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.loginButton.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.loginButton.ForeColor = System.Drawing.Color.DarkBlue;
-            this.loginButton.Location = new System.Drawing.Point(317, 214);
+            this.loginButton.Location = new System.Drawing.Point(165, 214);
             this.loginButton.Name = "loginButton";
             this.loginButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.HomePage;
             this.loginButton.Size = new System.Drawing.Size(336, 89);
@@ -203,7 +203,7 @@
             this.Controls.Add(this.facebooklogo);
             this.Controls.Add(this.timePanel);
             this.Name = "LoginPage";
-            this.Size = new System.Drawing.Size(1007, 547);
+            this.Size = new System.Drawing.Size(703, 543);
             this.Load += new System.EventHandler(this.LoginPage_Load);
             this.timePanel.ResumeLayout(false);
             this.timePanel.PerformLayout();
