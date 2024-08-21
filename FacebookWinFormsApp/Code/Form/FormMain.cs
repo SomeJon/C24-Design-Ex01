@@ -17,7 +17,7 @@ using System.Dynamic;
 using FacebookPages.Code.Pages.Data;
 using FacebookClient.Code;
 
-namespace BasicFacebookFeatures
+namespace FacebookClient.Code
 {
     public partial class FormMain : Form
     {
@@ -107,7 +107,7 @@ namespace BasicFacebookFeatures
 
                     if (LoggedUser != null)
                     {
-                        homePage1.Data = m_PagesData.Home;
+                        homePage1.Data = m_PagesData.HomeData;
                         aboutMePage1.Data = m_PagesData.AboutData;
                         tabControl.SelectedIndex = 2;
                     }

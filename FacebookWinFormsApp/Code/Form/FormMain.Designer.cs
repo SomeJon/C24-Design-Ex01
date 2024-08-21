@@ -1,6 +1,6 @@
 ﻿using FacebookPages.Pages;
 
-namespace BasicFacebookFeatures
+namespace FacebookClient.Code
 {
     partial class FormMain
     {
