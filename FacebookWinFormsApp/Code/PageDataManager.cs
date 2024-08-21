@@ -11,7 +11,8 @@ namespace FacebookClient.Code
     public class PageDataManager
     {
         public AboutMePageData AboutData { get; } = new AboutMePageData();
-        public HomePageData HomeData { get; } = new HomePageData(); 
+        public HomePageData HomeData { get; } = new HomePageData();
+        public FriendsPageData FriendsData { get; } = new FriendsPageData();
         public Theme ThemeData { get; }
     }
 }

@@ -127,6 +127,9 @@ namespace FacebookClient.Code
                     tabControl.SelectedIndex = 3;
                     break;
                 case PageSwitchButton.ePageChoice.FriendPage:
+                    m_PagesData.FriendsData
+                        .fetchAndLoadData(m_UserFetchData);
+                    friendsPage1.Data = m_PagesData.FriendsData;
                     tabControl.SelectedIndex = 4;
                     break;
                 case PageSwitchButton.ePageChoice.PicturePage:

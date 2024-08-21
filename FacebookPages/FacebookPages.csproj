@@ -65,6 +65,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
+    <Compile Include="Code\Pages\Data\FriendsPageData.cs" />
     <Compile Include="Code\Pages\Data\HomePageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
     <Compile Include="Code\Pages\FriendsPage.cs">

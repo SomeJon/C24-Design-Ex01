@@ -1,4 +1,5 @@
-﻿using FacebookPages.Pages;
+﻿using FacebookPages.Code.Pages.Data;
+using FacebookPages.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace FacebookPages.Pages
 {
     public partial class FriendsPage : BasePage
     {
+        public FriendsPageData Data { private get; set; }
+        
         public FriendsPage()
         {
             InitializeComponent();

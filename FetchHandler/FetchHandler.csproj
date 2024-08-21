@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fetch\temp\temp.cs" />
+    <Compile Include="Fetch\temp\TempFriends.cs" />
     <Compile Include="Fetch\WarrperClasses\Hometown.cs" />
     <Compile Include="Fetch\WarrperClasses\LocationData.cs" />
     <Compile Include="Fetch\WarrperClasses\LocationObject.cs" />

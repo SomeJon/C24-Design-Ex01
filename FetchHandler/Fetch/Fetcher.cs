@@ -29,7 +29,7 @@ namespace FetchHandler.Fetch
 
             if (!string.IsNullOrEmpty(i_Path))
             {
-                path += i_Path;
+                path += "/" + i_Path;
             }
             
             fieldsValue.fields = i_Fields;
