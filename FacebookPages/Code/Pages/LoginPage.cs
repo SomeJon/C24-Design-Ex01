@@ -15,7 +15,7 @@ namespace FacebookPages.Pages
         private Timer m_RotationTimer;
         private int m_RotationAngle = 0;
         private Image m_OriginalImage;
-
+        public event EventHandler<EventArgs> RemeberLogin;
         public override Color BackColor { get; set; }
 
         public LoginPage()
@@ -64,6 +64,11 @@ namespace FacebookPages.Pages
                 m_RotationAngle = 0;
                 facebooklogo.Image = m_OriginalImage;
             }
+        }
+
+        private void rememberLoginChackBox_Click(object sender, EventArgs e)
+        {
+            RemeberLogin?.Invoke(sender, new EventArgs());
         }
     }
 }

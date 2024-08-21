@@ -12,6 +12,7 @@ namespace FacebookPages.Buttons
         public enum eInfoChoice
         {
             AppId,
+            Login,
             Exit,
         }
 

@@ -37,7 +37,5 @@ namespace FacebookPages.Pages
             textBoxFullName.Text = Data?.FirstName
                 + " " + Data?.LastName;
         }
-
-
     }
 }
