@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Examples Project
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookPages", "FacebookPages\FacebookPages.csproj", "{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchHandler", "FetchHandler\FetchHandler.csproj", "{B3F772BB-2B99-48B1-982C-81633A06924E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Release|x64.ActiveCfg = Release|Any CPU
 		{89BA5B9E-1A5A-4FA3-BE9F-18AF65F4C209}.Release|x64.Build.0 = Release|Any CPU
+		{B3F772BB-2B99-48B1-982C-81633A06924E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F772BB-2B99-48B1-982C-81633A06924E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F772BB-2B99-48B1-982C-81633A06924E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B3F772BB-2B99-48B1-982C-81633A06924E}.Debug|x64.Build.0 = Debug|Any CPU
+		{B3F772BB-2B99-48B1-982C-81633A06924E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F772BB-2B99-48B1-982C-81633A06924E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F772BB-2B99-48B1-982C-81633A06924E}.Release|x64.ActiveCfg = Release|Any CPU
+		{B3F772BB-2B99-48B1-982C-81633A06924E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

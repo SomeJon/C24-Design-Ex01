@@ -36,6 +36,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\FBApi\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,78 +52,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buttons\LoadInfoButton.cs">
+    <Compile Include="Code\Buttons\LoadInfoButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Buttons\PageSwitchButton.cs">
+    <Compile Include="Code\Buttons\PageSwitchButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Pages\AboutMePage.cs">
+    <Compile Include="Code\Pages\AboutMePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\BasePage.cs">
+    <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\Builder\AboutMePageBuilder.cs" />
-    <Compile Include="Pages\Builder\FriendsPageBuilder.cs" />
-    <Compile Include="Pages\Builder\HomePageBuilder.cs" />
-    <Compile Include="Pages\Builder\PageBuilder.cs" />
-    <Compile Include="Pages\Data\AboutMePageData.cs" />
-    <Compile Include="Pages\Data\HomePageData.cs" />
-    <Compile Include="Pages\Data\PageData.cs" />
-    <Compile Include="Pages\FriendsPage.cs">
+    <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
+    <Compile Include="Code\Pages\Data\FriendsPageData.cs" />
+    <Compile Include="Code\Pages\Data\HomePageData.cs" />
+    <Compile Include="Code\Pages\Data\PageData.cs" />
+    <Compile Include="Code\Pages\FriendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\FriendsPage.Designer.cs">
+    <Compile Include="Code\Pages\FriendsPage.Designer.cs">
       <DependentUpon>FriendsPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\HomePage.cs">
+    <Compile Include="Code\Pages\HomePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\HomePage.Designer.cs">
+    <Compile Include="Code\Pages\HomePage.Designer.cs">
       <DependentUpon>HomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoginPage.cs">
+    <Compile Include="Code\Pages\LoginPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\LoginPage.Designer.cs">
+    <Compile Include="Code\Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PageUtils.cs" />
-    <Compile Include="Pages\PhotosPage.cs">
+    <Compile Include="Code\Pages\PageUtils.cs" />
+    <Compile Include="Code\Pages\PhotosPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\PhotosPage.Designer.cs">
+    <Compile Include="Code\Pages\PhotosPage.Designer.cs">
       <DependentUpon>PhotosPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingPage.cs">
+    <Compile Include="Code\Pages\LoginSettingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\SettingPage.Designer.cs">
-      <DependentUpon>SettingPage.cs</DependentUpon>
+    <Compile Include="Code\Pages\LoginSettingPage.Designer.cs">
+      <DependentUpon>LoginSettingPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Data\Theme.cs" />
+    <Compile Include="Code\Pages\Data\Theme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Pages\AboutMePage.resx">
+    <EmbeddedResource Include="Code\Pages\AboutMePage.resx">
       <DependentUpon>AboutMePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\BasePage.resx">
+    <EmbeddedResource Include="Code\Pages\BasePage.resx">
       <DependentUpon>BasePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\FriendsPage.resx">
+    <EmbeddedResource Include="Code\Pages\FriendsPage.resx">
       <DependentUpon>FriendsPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\HomePage.resx">
+    <EmbeddedResource Include="Code\Pages\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\LoginPage.resx">
+    <EmbeddedResource Include="Code\Pages\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\PhotosPage.resx">
+    <EmbeddedResource Include="Code\Pages\PhotosPage.resx">
       <DependentUpon>PhotosPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\SettingPage.resx">
-      <DependentUpon>SettingPage.cs</DependentUpon>
+    <EmbeddedResource Include="Code\Pages\LoginSettingPage.resx">
+      <DependentUpon>LoginSettingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -140,6 +140,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FetchHandler\FetchHandler.csproj">
+      <Project>{b3f772bb-2b99-48b1-982c-81633a06924e}</Project>
+      <Name>FetchHandler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

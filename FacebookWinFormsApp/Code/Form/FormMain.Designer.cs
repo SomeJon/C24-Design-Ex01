@@ -1,6 +1,6 @@
 ﻿using FacebookPages.Pages;
 
-namespace BasicFacebookFeatures
+namespace FacebookClient.Code
 {
     partial class FormMain
     {
@@ -34,7 +34,7 @@ namespace BasicFacebookFeatures
             this.loginTab = new System.Windows.Forms.TabPage();
             this.loginPage1 = new FacebookPages.Pages.LoginPage();
             this.loginSettingTab = new System.Windows.Forms.TabPage();
-            this.settingPage1 = new FacebookPages.Pages.SettingPage();
+            this.settingPage1 = new FacebookPages.Pages.LoginPage();
             this.homeTab = new System.Windows.Forms.TabPage();
             this.homePage1 = new FacebookPages.Pages.HomePage();
             this.aboutMeTab = new System.Windows.Forms.TabPage();
@@ -72,10 +72,10 @@ namespace BasicFacebookFeatures
             // loginTab
             // 
             this.loginTab.Controls.Add(this.loginPage1);
-            this.loginTab.Location = new System.Drawing.Point(4, 22);
+            this.loginTab.Location = new System.Drawing.Point(4, 25);
             this.loginTab.Name = "loginTab";
             this.loginTab.Padding = new System.Windows.Forms.Padding(3);
-            this.loginTab.Size = new System.Drawing.Size(837, 567);
+            this.loginTab.Size = new System.Drawing.Size(837, 564);
             this.loginTab.TabIndex = 0;
             this.loginTab.Text = "Login Page";
             this.loginTab.UseVisualStyleBackColor = true;
@@ -85,18 +85,20 @@ namespace BasicFacebookFeatures
             this.loginPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPage1.Location = new System.Drawing.Point(3, 3);
             this.loginPage1.Name = "loginPage1";
-            this.loginPage1.Size = new System.Drawing.Size(831, 561);
+            this.loginPage1.PageTheme = null;
+            this.loginPage1.Size = new System.Drawing.Size(831, 558);
             this.loginPage1.TabIndex = 0;
+            this.loginPage1.RemeberLogin += new System.EventHandler<System.EventArgs>(this.loginPage1_RemeberLogin);
             this.loginPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
             this.loginPage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
             // 
             // loginSettingTab
             // 
             this.loginSettingTab.Controls.Add(this.settingPage1);
-            this.loginSettingTab.Location = new System.Drawing.Point(4, 22);
+            this.loginSettingTab.Location = new System.Drawing.Point(4, 25);
             this.loginSettingTab.Name = "loginSettingTab";
             this.loginSettingTab.Padding = new System.Windows.Forms.Padding(3);
-            this.loginSettingTab.Size = new System.Drawing.Size(192, 74);
+            this.loginSettingTab.Size = new System.Drawing.Size(192, 71);
             this.loginSettingTab.TabIndex = 1;
             this.loginSettingTab.Text = "LoginSettingsPage";
             this.loginSettingTab.UseVisualStyleBackColor = true;
@@ -107,7 +109,8 @@ namespace BasicFacebookFeatures
             this.settingPage1.Location = new System.Drawing.Point(3, 3);
             this.settingPage1.Margin = new System.Windows.Forms.Padding(4);
             this.settingPage1.Name = "settingPage1";
-            this.settingPage1.Size = new System.Drawing.Size(186, 68);
+            this.settingPage1.PageTheme = null;
+            this.settingPage1.Size = new System.Drawing.Size(186, 65);
             this.settingPage1.TabIndex = 0;
             this.settingPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
             this.settingPage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
@@ -115,10 +118,10 @@ namespace BasicFacebookFeatures
             // homeTab
             // 
             this.homeTab.Controls.Add(this.homePage1);
-            this.homeTab.Location = new System.Drawing.Point(4, 22);
+            this.homeTab.Location = new System.Drawing.Point(4, 25);
             this.homeTab.Name = "homeTab";
             this.homeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.homeTab.Size = new System.Drawing.Size(192, 74);
+            this.homeTab.Size = new System.Drawing.Size(192, 71);
             this.homeTab.TabIndex = 2;
             this.homeTab.Text = "Home Page";
             this.homeTab.UseVisualStyleBackColor = true;
@@ -128,6 +131,7 @@ namespace BasicFacebookFeatures
             this.homePage1.Location = new System.Drawing.Point(0, 0);
             this.homePage1.Margin = new System.Windows.Forms.Padding(4);
             this.homePage1.Name = "homePage1";
+            this.homePage1.PageTheme = null;
             this.homePage1.Size = new System.Drawing.Size(837, 567);
             this.homePage1.TabIndex = 0;
             this.homePage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
@@ -136,10 +140,10 @@ namespace BasicFacebookFeatures
             // aboutMeTab
             // 
             this.aboutMeTab.Controls.Add(this.aboutMePage1);
-            this.aboutMeTab.Location = new System.Drawing.Point(4, 22);
+            this.aboutMeTab.Location = new System.Drawing.Point(4, 25);
             this.aboutMeTab.Name = "aboutMeTab";
             this.aboutMeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.aboutMeTab.Size = new System.Drawing.Size(192, 74);
+            this.aboutMeTab.Size = new System.Drawing.Size(192, 71);
             this.aboutMeTab.TabIndex = 3;
             this.aboutMeTab.Text = "About";
             this.aboutMeTab.UseVisualStyleBackColor = true;
@@ -149,6 +153,7 @@ namespace BasicFacebookFeatures
             this.aboutMePage1.BackColor = System.Drawing.Color.DarkBlue;
             this.aboutMePage1.Location = new System.Drawing.Point(0, 0);
             this.aboutMePage1.Name = "aboutMePage1";
+            this.aboutMePage1.PageTheme = null;
             this.aboutMePage1.Size = new System.Drawing.Size(837, 571);
             this.aboutMePage1.TabIndex = 0;
             this.aboutMePage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
@@ -157,10 +162,10 @@ namespace BasicFacebookFeatures
             // freindstave
             // 
             this.freindstave.Controls.Add(this.friendsPage1);
-            this.freindstave.Location = new System.Drawing.Point(4, 22);
+            this.freindstave.Location = new System.Drawing.Point(4, 25);
             this.freindstave.Name = "freindstave";
             this.freindstave.Padding = new System.Windows.Forms.Padding(3);
-            this.freindstave.Size = new System.Drawing.Size(192, 74);
+            this.freindstave.Size = new System.Drawing.Size(192, 71);
             this.freindstave.TabIndex = 4;
             this.freindstave.Text = "Friends";
             this.freindstave.UseVisualStyleBackColor = true;
@@ -169,8 +174,9 @@ namespace BasicFacebookFeatures
             // 
             this.friendsPage1.BackColor = System.Drawing.Color.DarkBlue;
             this.friendsPage1.Location = new System.Drawing.Point(0, 0);
-            this.friendsPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.friendsPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.friendsPage1.Name = "friendsPage1";
+            this.friendsPage1.PageTheme = null;
             this.friendsPage1.Size = new System.Drawing.Size(837, 567);
             this.friendsPage1.TabIndex = 0;
             this.friendsPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
@@ -179,10 +185,10 @@ namespace BasicFacebookFeatures
             // photoTab
             // 
             this.photoTab.Controls.Add(this.photosPage1);
-            this.photoTab.Location = new System.Drawing.Point(4, 22);
+            this.photoTab.Location = new System.Drawing.Point(4, 25);
             this.photoTab.Name = "photoTab";
             this.photoTab.Padding = new System.Windows.Forms.Padding(3);
-            this.photoTab.Size = new System.Drawing.Size(192, 74);
+            this.photoTab.Size = new System.Drawing.Size(192, 71);
             this.photoTab.TabIndex = 5;
             this.photoTab.Text = "Photos";
             this.photoTab.UseVisualStyleBackColor = true;
@@ -193,6 +199,7 @@ namespace BasicFacebookFeatures
             this.photosPage1.Location = new System.Drawing.Point(0, 0);
             this.photosPage1.Margin = new System.Windows.Forms.Padding(2);
             this.photosPage1.Name = "photosPage1";
+            this.photosPage1.PageTheme = null;
             this.photosPage1.Size = new System.Drawing.Size(835, 567);
             this.photosPage1.TabIndex = 0;
             this.photosPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
@@ -219,7 +226,7 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.TabPage loginTab;
         private System.Windows.Forms.TabPage loginSettingTab;
         private LoginPage loginPage1;
-        private FacebookPages.Pages.SettingPage settingPage1;
+        private FacebookPages.Pages.LoginPage settingPage1;
 
         #endregion
 

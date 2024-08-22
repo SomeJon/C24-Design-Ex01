@@ -1,56 +1,57 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using FacebookPages.Buttons;
-using CefSharp.DevTools.Debugger;
 using FacebookPages.Pages;
-using FacebookPages.Pages.Data;
-using FacebookClient.Code;
-using System.Dynamic;
+using FacebookPages.Code.Pages.Data;
 
-namespace BasicFacebookFeatures
+namespace FacebookClient.Code
 {
     public partial class FormMain : Form
     {
         public LoginResult LoginResult { get; set; }
         public User LoggedUser { get; private set; }
-        private HomePageData m_HomePageData = new HomePageData();
-        private AboutMePageData m_AboutMePageData = new AboutMePageData();
-        private FacebookUtils Utils;
-        
+        private PageDataManager m_PagesData = new PageDataManager();
+        private UserFetchData m_UserFetchData;
+        private bool m_SaveLogin = false;
+
 
         public FormMain()
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
-            
+
+
+            if(!string.IsNullOrEmpty(Properties.Settings.Default.AccessToken))
+            {
+                LoginResult = FacebookService.Connect(
+                    Properties.Settings.Default.AccessToken);
+                tryFirstFetch();
+            }
         }
 
         private void login()
         {
             LoginResult = FacebookService.Login(AppSettings.s_AppID,
-                    AppSettings.s_Permissions);
+                AppSettings.s_Permissions);
 
+            tryFirstFetch();
+        }
+
+        private void tryFirstFetch()
+        {
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
                 LoggedUser = LoginResult.LoggedInUser;
-                Utils = new FacebookUtils(LoggedUser.Id, LoginResult.AccessToken);
+                m_UserFetchData = new UserFetchData(LoggedUser.Id, LoginResult.AccessToken);
+                if(m_SaveLogin)
+                {
+                    Properties.Settings.Default.AccessToken = LoginResult.AccessToken;
+                    Properties.Settings.Default.Save();
+                }
 
-                m_HomePageData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
-                m_HomePageData.FirstName = LoggedUser?.FirstName;
-                m_HomePageData.LastName = LoggedUser?.LastName;
-
-                Facebook.JsonObject fetchResultLocation = Utils.Fetch("location{location}");
-                
-                m_AboutMePageData.Country = LoggedUser?.Location?.Location?.Country;
+                switchToHomePage();
             }
             else
             {
@@ -107,12 +108,9 @@ namespace BasicFacebookFeatures
                     {
                         login();
                     }
-
-                    if (LoggedUser != null)
+                    else
                     {
-                        homePage1.Data = m_HomePageData;
-                        aboutMePage1.Data = m_AboutMePageData;
-                        tabControl.SelectedIndex = 2;
+                        switchToHomePage();
                     }
 
                     break;
@@ -123,20 +121,22 @@ namespace BasicFacebookFeatures
                     tabControl.SelectedIndex = 1;
                     break;
                 case PageSwitchButton.ePageChoice.AboutMePage:
+                    m_PagesData.AboutData
+                        .fetchAndLoadData(m_UserFetchData);
+                    aboutMePage1.Data = m_PagesData.AboutData;
                     tabControl.SelectedIndex = 3;
                     break;
                 case PageSwitchButton.ePageChoice.FriendPage:
+                    m_PagesData.FriendsData
+                        .fetchAndLoadData(m_UserFetchData);
+                    friendsPage1.Data = m_PagesData.FriendsData;
                     tabControl.SelectedIndex = 4;
                     break;
                 case PageSwitchButton.ePageChoice.PicturePage:
                     tabControl.SelectedIndex = 5;
                     break;
                 case PageSwitchButton.ePageChoice.Logout:
-                    FacebookService.LogoutWithUI();
-                    LoginResult = null;
-                    LoggedUser = null;
-                    m_HomePageData = new HomePageData();
-                    tabControl.SelectedIndex = 0;
+                    logoutActions();
                     break;
                 case PageSwitchButton.ePageChoice.Exit:
                     Application.Exit();
@@ -144,9 +144,35 @@ namespace BasicFacebookFeatures
             }
         }
 
+        private void logoutActions()
+        {
+            FacebookService.LogoutWithUI();
+            LoginResult = null;
+            LoggedUser = null;
+            m_PagesData = new PageDataManager();
+            tabControl.SelectedIndex = 0;
+            Properties.Settings.Default.AccessToken = null;
+            Properties.Settings.Default.Save();
+        }
+
+        private void switchToHomePage()
+        {
+            m_PagesData.HomeData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
+            m_PagesData.HomeData.FirstName = LoggedUser?.FirstName;
+            m_PagesData.HomeData.LastName = LoggedUser?.LastName;
+            m_PagesData.HomeData.fetchAndLoadData(m_UserFetchData);
+            homePage1.Data = m_PagesData.HomeData;
+            tabControl.SelectedIndex = 2;
+        }
+
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = !PageUtils.CloseConfirm();
+        }
+
+        private void loginPage1_RemeberLogin(object sender, EventArgs e)
+        {
+            m_SaveLogin = (sender as CheckBox).Checked;
         }
     }
 }
