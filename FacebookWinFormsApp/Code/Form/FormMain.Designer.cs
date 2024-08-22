@@ -38,11 +38,11 @@ namespace FacebookClient.Code
             this.homeTab = new System.Windows.Forms.TabPage();
             this.homePage1 = new FacebookPages.Pages.HomePage();
             this.aboutMeTab = new System.Windows.Forms.TabPage();
-            this.aboutMePage1 = new FacebookPages.Pages.AboutMePage();
             this.freindstave = new System.Windows.Forms.TabPage();
             this.friendsPage1 = new FacebookPages.Pages.FriendsPage();
             this.photoTab = new System.Windows.Forms.TabPage();
             this.photosPage1 = new FacebookPages.Pages.PhotosPage();
+            this.aboutMePage1 = new FacebookPages.Pages.AboutMePage();
             this.tabControl.SuspendLayout();
             this.loginTab.SuspendLayout();
             this.loginSettingTab.SuspendLayout();
@@ -121,7 +121,7 @@ namespace FacebookClient.Code
             this.homeTab.Location = new System.Drawing.Point(4, 25);
             this.homeTab.Name = "homeTab";
             this.homeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.homeTab.Size = new System.Drawing.Size(192, 71);
+            this.homeTab.Size = new System.Drawing.Size(837, 564);
             this.homeTab.TabIndex = 2;
             this.homeTab.Text = "Home Page";
             this.homeTab.UseVisualStyleBackColor = true;
@@ -143,21 +143,10 @@ namespace FacebookClient.Code
             this.aboutMeTab.Location = new System.Drawing.Point(4, 25);
             this.aboutMeTab.Name = "aboutMeTab";
             this.aboutMeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.aboutMeTab.Size = new System.Drawing.Size(192, 71);
+            this.aboutMeTab.Size = new System.Drawing.Size(837, 564);
             this.aboutMeTab.TabIndex = 3;
             this.aboutMeTab.Text = "About";
             this.aboutMeTab.UseVisualStyleBackColor = true;
-            // 
-            // aboutMePage1
-            // 
-            this.aboutMePage1.BackColor = System.Drawing.Color.DarkBlue;
-            this.aboutMePage1.Location = new System.Drawing.Point(0, 0);
-            this.aboutMePage1.Name = "aboutMePage1";
-            this.aboutMePage1.PageTheme = null;
-            this.aboutMePage1.Size = new System.Drawing.Size(837, 571);
-            this.aboutMePage1.TabIndex = 0;
-            this.aboutMePage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
-            this.aboutMePage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
             // 
             // freindstave
             // 
@@ -205,6 +194,17 @@ namespace FacebookClient.Code
             this.photosPage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
             this.photosPage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
             // 
+            // aboutMePage1
+            // 
+            this.aboutMePage1.BackColor = System.Drawing.Color.White;
+            this.aboutMePage1.Location = new System.Drawing.Point(0, 0);
+            this.aboutMePage1.Name = "aboutMePage1";
+            this.aboutMePage1.PageTheme = null;
+            this.aboutMePage1.Size = new System.Drawing.Size(837, 571);
+            this.aboutMePage1.TabIndex = 0;
+            this.aboutMePage1.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
+            this.aboutMePage1.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
+            // 
             // FormMain
             // 
             this.ClientSize = new System.Drawing.Size(846, 593);
@@ -236,8 +236,8 @@ namespace FacebookClient.Code
         private System.Windows.Forms.TabPage photoTab;
         private HomePage homePage1;
         private FacebookPages.Pages.FriendsPage friendsPage1;
-        private FacebookPages.Pages.AboutMePage aboutMePage1;
         private FacebookPages.Pages.PhotosPage photosPage1;
+        private AboutMePage aboutMePage1;
     }
 }
 
