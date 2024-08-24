@@ -33,9 +33,8 @@ namespace FetchHandler.Fetch
             }
             
             fieldsValue.fields = i_Fields;
-            
             dynamic loadObject = facebookClient.Get(path, fieldsValue);
-            //JsonObject keyValuePairs = loadObject;
+
             return ConvertJsonTo<T>(loadObject.ToString());
         }
 
@@ -43,6 +42,24 @@ namespace FetchHandler.Fetch
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             return serializer.Deserialize<T>(i_Json);
+        }
+
+        public Object Fetch(string i_Fields, string i_Path = null)
+        {
+            FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToekn);
+            dynamic fieldsValue = new ExpandoObject();
+            string path = $"/{UserFetchData.UserId}";
+
+            if (!string.IsNullOrEmpty(i_Path))
+            {
+                path += "/" + i_Path;
+            }
+
+            fieldsValue.fields = i_Fields;
+
+            dynamic loadObject = facebookClient.Get(path, fieldsValue);
+
+            return loadObject;
         }
     }
 }

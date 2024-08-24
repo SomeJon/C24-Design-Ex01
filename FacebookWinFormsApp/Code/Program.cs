@@ -21,5 +21,7 @@ namespace FacebookClient.Code
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
         }
+
+
     }
 }

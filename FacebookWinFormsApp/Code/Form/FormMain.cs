@@ -52,9 +52,6 @@ namespace FacebookClient.Code
                     Properties.Settings.Default.Save();
                 }
 
-
-                //FacebookService.GetCollection;
-
                 switchToHomePage();
             }
             else
@@ -178,5 +175,7 @@ namespace FacebookClient.Code
         {
             m_SaveLogin = (sender as CheckBox).Checked;
         }
+
+
     }
 }

@@ -1,38 +1,91 @@
 ﻿using Facebook;
+using FacebookPostsWrapper;
+using FacebookWrapper.ObjectModel;
+using FetchHandler.Fetch;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
-using FetchHandler.Fetch;
 using System.Threading.Tasks;
-using FetchHandler.Fetch.About;
-using FacebookPages.Code.Pages.Data;
 
-namespace FacebookPages.Pages.Data
+namespace FacebookPages.Code.Pages.Data
 {
     public class AboutMePageData : PageData
     {
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string Birthday { get; set; }
-        public string FullName { get; set; }
-        public string HomeTown { get; set; }
-        public string Email { get; set; }
-        public string Gender { get; set; }
-
-        public override void FetchAndLoadData(UserFetchData i_Fetcher)
+        private City m_Location;
+        private City m_Hometown;
+        public string Birthday
         {
-            Fetcher fetchHandler = new Fetcher(i_Fetcher);
-            AboutDataWarpper userData = fetchHandler.FetchToObj<AboutDataWarpper>
-                ("birthday,location{location},email,gender,hometown,name");
+            get
+            {
+                return m_DynamicData.birthday;
+            }
+        }
+        public City Location 
+        {
+            get
+            {
+            return WrapOrGet<City>(ref m_Location, m_DynamicData.location, eLoadOptions.Full);
+            }
+        }
+        public string Email
+        {
+            get
+            {
+                return m_DynamicData.email;
+            }
+        }
+        public string Gender
+        {
+            get
+            {
+                return m_DynamicData.gender;
+            }
+        }
+        public City Hometown
+        {
+            get
+            {
+                return WrapOrGet<City>(ref m_Hometown, m_DynamicData.hometown, eLoadOptions.Full);
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return m_DynamicData.name;
+            }
+        }
 
-            City = userData.Location.Location.City;
-            Country = userData.Location.Location.Country;
-            Birthday = userData.Birthday;
-            FullName = userData.Name;
-            HomeTown = userData.Hometown.Name;
-            Email = userData.Email;
-            Gender = userData.Gender;
+
+        private static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
+        {
+        {
+            eLoadOptions.None,
+            "id, name"
+        },
+        {
+            eLoadOptions.Basic,
+            "birthday,location{location},email,gender,hometown,name"
+        },
+        {
+            eLoadOptions.Full,
+            "birthday,location{location},email,gender,hometown,name"
+        },
+        {
+            eLoadOptions.FullWithConnections,
+            "birthday,location{location},email,gender,hometown,name"
+        }
+        };
+
+        protected override Dictionary<eLoadOptions, string> FieldsToLoad => sr_FieldsToLoad;
+
+        protected override void ResetForReFetch()
+        {
+            base.ResetForReFetch();
+            m_Hometown = null;
+            m_Location = null;
         }
     }
 }

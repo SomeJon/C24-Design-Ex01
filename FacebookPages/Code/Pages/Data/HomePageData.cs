@@ -1,7 +1,5 @@
 ﻿using FacebookPages.Code.Pages.Data;
 using FacebookPages.Pages.Data;
-using FetchHandler.Fetch.About;
-using FetchHandler.Fetch.WarrperClasses;
 using FetchHandler.Fetch;
 using System;
 using System.Collections.Generic;

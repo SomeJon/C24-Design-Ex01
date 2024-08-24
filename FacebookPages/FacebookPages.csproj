@@ -39,6 +39,9 @@
     <Reference Include="Facebook">
       <HintPath>..\FBApi\Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="FbGraphApiWrapper">
+      <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -70,11 +73,11 @@
     <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
     <Compile Include="Code\Pages\Data\FriendsPageData.cs" />
     <Compile Include="Code\Pages\Data\HomePageData.cs" />
     <Compile Include="Code\Pages\Data\IPageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
+    <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
     <Compile Include="Code\Pages\FriendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +159,9 @@
       <Project>{b3f772bb-2b99-48b1-982c-81633a06924e}</Project>
       <Name>FetchHandler</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

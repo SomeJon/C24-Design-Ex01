@@ -1,4 +1,5 @@
-﻿using FacebookPages.Pages.Data;
+﻿using FacebookPages.Code.Pages.Data;
+using FacebookPages.Pages.Data;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -309,12 +310,12 @@ namespace FacebookPages.Pages
             if (Data != null)
             {
                 fillBirthDayLabel.Text = Data.Birthday;
-                fillCityLabel.Text = Data.City;
-                fillCountryLabel.Text = Data.Country;
+                fillCityLabel.Text = Data.Location?.Location.City;
+                fillCountryLabel.Text = Data.Location.Location.Country;
                 fillEmailLabel.Text = Data.Email;
                 fillGenderLabel.Text = Data.Gender;
-                fillNameLabel.Text = Data.FullName;
-                fillHometownLabel.Text = Data.HomeTown;
+                fillNameLabel.Text = Data.Name;
+                fillHometownLabel.Text = Data.Hometown?.Name;
             }
         }
     }
