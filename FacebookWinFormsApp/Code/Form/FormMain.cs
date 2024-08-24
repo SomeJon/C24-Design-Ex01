@@ -22,7 +22,6 @@ namespace FacebookClient.Code
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
 
-
             if(!string.IsNullOrEmpty(Properties.Settings.Default.AccessToken))
             {
                 LoginResult = FacebookService.Connect(
@@ -44,12 +43,17 @@ namespace FacebookClient.Code
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
                 LoggedUser = LoginResult.LoggedInUser;
+
+                //m_UserFetchData = new UserFetchData("8479151698775183", LoginResult.AccessToken);
                 m_UserFetchData = new UserFetchData(LoggedUser.Id, LoginResult.AccessToken);
                 if(m_SaveLogin)
                 {
                     Properties.Settings.Default.AccessToken = LoginResult.AccessToken;
                     Properties.Settings.Default.Save();
                 }
+
+
+                //FacebookService.GetCollection;
 
                 switchToHomePage();
             }
@@ -122,13 +126,13 @@ namespace FacebookClient.Code
                     break;
                 case PageSwitchButton.ePageChoice.AboutMePage:
                     m_PagesData.AboutData
-                        .fetchAndLoadData(m_UserFetchData);
+                        .TryFetchAndLoadData(m_UserFetchData);
                     aboutMePage1.Data = m_PagesData.AboutData;
                     tabControl.SelectedIndex = 3;
                     break;
                 case PageSwitchButton.ePageChoice.FriendPage:
                     m_PagesData.FriendsData
-                        .fetchAndLoadData(m_UserFetchData);
+                        .TryFetchAndLoadData(m_UserFetchData);
                     friendsPage1.Data = m_PagesData.FriendsData;
                     tabControl.SelectedIndex = 4;
                     break;
@@ -160,7 +164,7 @@ namespace FacebookClient.Code
             m_PagesData.HomeData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
             m_PagesData.HomeData.FirstName = LoggedUser?.FirstName;
             m_PagesData.HomeData.LastName = LoggedUser?.LastName;
-            m_PagesData.HomeData.fetchAndLoadData(m_UserFetchData);
+            m_PagesData.HomeData.TryFetchAndLoadData(m_UserFetchData);
             homePage1.Data = m_PagesData.HomeData;
             tabControl.SelectedIndex = 2;
         }

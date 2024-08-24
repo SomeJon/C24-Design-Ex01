@@ -11,12 +11,12 @@ using FacebookDataWrapper;
 
 namespace FacebookPages.Code.Pages.Data
 {
-    public class FriendsPageData 
+    public class FriendsPageData : PageData
     { 
         
         public FacebookFriendsResponse Data { get; set; }
 
-        public void fetchAndLoadData(UserFetchData i_Fetcher)
+        public override void FetchAndLoadData(UserFetchData i_Fetcher)
         {
             Fetcher fetchHandler = new Fetcher(i_Fetcher);
             Data = fetchHandler.FetchToObj<FacebookFriendsResponse>

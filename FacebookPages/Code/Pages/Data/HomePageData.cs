@@ -20,7 +20,7 @@ namespace FacebookPages.Pages.Data
         public string LastName { get; set; }
         public FacebookPostWrapper Posts { get; private set; }
 
-        public void fetchAndLoadData(UserFetchData i_Fetcher)
+        public override void FetchAndLoadData(UserFetchData i_Fetcher)
         {
             Fetcher fetchHandler = new Fetcher(i_Fetcher);
             Posts = fetchHandler.FetchToObj<FacebookPostWrapper>
@@ -33,7 +33,6 @@ namespace FacebookPages.Pages.Data
                 "insights.metric(post_impressions,post_engaged_users)," +
                 "status_type,type,is_popular,application{namespace,name}" +
                 ",event{name,place,owner,start_time,end_time}}");
-
         }
     }
 }

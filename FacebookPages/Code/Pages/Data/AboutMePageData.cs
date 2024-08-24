@@ -20,7 +20,7 @@ namespace FacebookPages.Pages.Data
         public string Email { get; set; }
         public string Gender { get; set; }
 
-        public void fetchAndLoadData(UserFetchData i_Fetcher)
+        public override void FetchAndLoadData(UserFetchData i_Fetcher)
         {
             Fetcher fetchHandler = new Fetcher(i_Fetcher);
             AboutDataWarpper userData = fetchHandler.FetchToObj<AboutDataWarpper>
