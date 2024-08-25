@@ -1,4 +1,5 @@
-﻿using FacebookPages.Pages.Data;
+﻿using FacebookPages.Code.Pages.Data.Post;
+using FacebookPages.Pages.Data;
 using FacebookWrapper.ObjectModel;
 using FetchHandler.Fetch;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FacebookPages.Code.Pages.Data
 {
-    public abstract class PageData : FacebookObject, IPageData
+    public abstract class PageData : FacebookObject, IPageData, HasSetData
     {
         private Fetcher m_PageFetcherObject;
         protected string DataUserId { get; set; } = string.Empty;
@@ -67,18 +68,24 @@ namespace FacebookPages.Code.Pages.Data
             dynamic i_DynamicCollection,
             ICollection<T> io_Collection,
             eLoadOptions i_LoadOptions = eLoadOptions.Full) 
-            where T : DynamicWrapper, new()
+            where T : HasSetData, new()
         {
             if(io_Collection != null && i_DynamicCollection != null)
             {
                 foreach (dynamic item in i_DynamicCollection)
                 {
                     T val = new T();
-                    m_DynamicData = item;
-                    LoadOption = i_LoadOptions;
+                    val.SetData(item, eLoadOptions.Full);
                     io_Collection.Add(val);
                 }
             }
         } 
+
+        public void SetData(dynamic i_DynamicData, eLoadOptions i_LoadOptions = eLoadOptions.None)
+        {
+            m_DynamicData = i_DynamicData;
+            LoadOption = i_LoadOptions;
+            InitializeAfterSet();
+        }
     }
 }

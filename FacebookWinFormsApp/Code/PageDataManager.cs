@@ -13,7 +13,7 @@ namespace FacebookClient.Code
     {
         public AboutMePageData AboutData { get; } = new AboutMePageData();
         public WallPageData UserHomeData { get; } = new WallPageData();
-        public FriendsPageData FriendsData { get; } = new FriendsPageData();
+        //public FriendsPageData FriendsData { get; } = new FriendsPageData();
         public User CurrentUser { get; set; }
     }
 }

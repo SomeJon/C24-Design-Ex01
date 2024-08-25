@@ -43,7 +43,7 @@ namespace FetchHandler.Fetch
             return serializer.Deserialize<T>(i_Json);
         }
 
-        public Object Fetch(string i_Fields, string i_Path = null)
+        public Object Fetch(string i_Fields, string i_Path = null, Type i_Type = null)
         {
             FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToekn);
             dynamic fieldsValue = new ExpandoObject();
@@ -56,7 +56,7 @@ namespace FetchHandler.Fetch
 
             fieldsValue.fields = i_Fields;
 
-            dynamic loadObject = facebookClient.Get(path, fieldsValue);
+            dynamic loadObject = facebookClient.Get(path, fieldsValue, i_Type);
 
             return loadObject;
         }

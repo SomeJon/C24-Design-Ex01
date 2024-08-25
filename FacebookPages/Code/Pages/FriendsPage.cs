@@ -14,7 +14,7 @@ namespace FacebookPages.Pages
 {
     public partial class FriendsPage : BasePage
     {
-        public FriendsPageData Data { private get; set; }
+        //public FriendsPageData Data { private get; set; }
         
         public FriendsPage()
         {

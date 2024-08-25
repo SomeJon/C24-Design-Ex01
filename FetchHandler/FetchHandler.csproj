@@ -58,8 +58,6 @@
   <ItemGroup>
     <Compile Include="Fetch\FacebookCollectionWithPaging.cs" />
     <Compile Include="Fetch\PagingResponse.cs" />
-    <Compile Include="Fetch\temp\temp.cs" />
-    <Compile Include="Fetch\temp\TempFriends.cs" />
     <Compile Include="Fetch\Fetcher.cs" />
     <Compile Include="Fetch\UserFetchData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

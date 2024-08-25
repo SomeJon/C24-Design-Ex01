@@ -79,7 +79,7 @@
     <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Code\Pages\Data\FriendsPageData.cs" />
+    <Compile Include="Code\Pages\Data\HasSetData.cs" />
     <Compile Include="Code\Pages\Data\Post\Paging.cs" />
     <Compile Include="Code\Pages\Data\Post\PostsWithPaging.cs" />
     <Compile Include="Code\Pages\Data\WallPageData.cs" />
@@ -178,8 +178,6 @@
       <Name>FetchHandler</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Code\Pages\Data\Collection\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
