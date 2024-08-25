@@ -44,14 +44,14 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.m_PostsList.FormattingEnabled = true;
             this.m_PostsList.Items.AddRange(new object[] {
-            "(dd/mm/yy) TimTim: hello world",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
+            "1. (dd/mm/yy) TimTim: hello world",
+            "2. ",
+            "3. ",
+            "4. ",
+            "5. ",
+            "6. ",
+            "7. ",
+            "8. "});
             this.m_PostsList.Location = new System.Drawing.Point(0, 0);
             this.m_PostsList.Name = "m_PostsList";
             this.m_PostsList.Size = new System.Drawing.Size(391, 69);
@@ -81,10 +81,8 @@
             this.m_PostTypeChoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.m_PostTypeChoice.FormattingEnabled = true;
             this.m_PostTypeChoice.Items.AddRange(new object[] {
-            "Posts",
-            "Wall Posts",
-            "Checkin posts",
-            "Posted links"});
+            "Feed",
+            "Posts"});
             this.m_PostTypeChoice.Location = new System.Drawing.Point(276, 81);
             this.m_PostTypeChoice.Name = "m_PostTypeChoice";
             this.m_PostTypeChoice.Size = new System.Drawing.Size(83, 17);

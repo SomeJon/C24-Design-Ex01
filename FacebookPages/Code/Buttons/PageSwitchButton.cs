@@ -16,6 +16,7 @@ namespace FacebookPages.Buttons
             Exit,
             LoginSetting,
             HomePage,
+            WallPage,
             PicturePage,
             AboutMePage,
             FriendPage,

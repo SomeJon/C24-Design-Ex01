@@ -5,6 +5,8 @@ using FacebookWrapper;
 using FacebookPages.Buttons;
 using FacebookPages.Pages;
 using FacebookPages.Code.Pages.Data;
+using System.Linq;
+using FacebookPages.Code.Pages;
 
 namespace FacebookClient.Code
 {
@@ -14,6 +16,7 @@ namespace FacebookClient.Code
         public User LoggedUser { get; private set; }
         private PageDataManager m_PagesData = new PageDataManager();
         private UserFetchData m_UserFetchData;
+        private WallPage m_CurrentWallPage;
         private bool m_SaveLogin = false;
 
 
@@ -21,8 +24,9 @@ namespace FacebookClient.Code
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
+            switchToLoginPage();
 
-            if(!string.IsNullOrEmpty(Properties.Settings.Default.AccessToken))
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.AccessToken))
             {
                 LoginResult = FacebookService.Connect(
                     Properties.Settings.Default.AccessToken);
@@ -43,14 +47,14 @@ namespace FacebookClient.Code
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
                 LoggedUser = LoginResult.LoggedInUser;
+                //LoggedUser = LoggedUser.Friends[0];
 
-                //m_UserFetchData = new UserFetchData("8479151698775183", LoginResult.AccessToken);
-                m_UserFetchData = new UserFetchData(LoggedUser.Id, LoginResult.AccessToken);
                 if(m_SaveLogin)
                 {
                     Properties.Settings.Default.AccessToken = LoginResult.AccessToken;
                     Properties.Settings.Default.Save();
                 }
+
 
                 switchToHomePage();
             }
@@ -100,8 +104,6 @@ namespace FacebookClient.Code
         {
             PageSwitchButton switchPageButton = sender as PageSwitchButton;
 
-            //todo: add a page factory, after which the data conainer would be loaded
-
             switch (switchPageButton.PageChoice)
             {
                 case PageSwitchButton.ePageChoice.HomePage:
@@ -115,26 +117,24 @@ namespace FacebookClient.Code
                     }
 
                     break;
+                case PageSwitchButton.ePageChoice.WallPage:
+                    returnToWall();
+                    break;
                 case PageSwitchButton.ePageChoice.Login:
-                    tabControl.SelectedIndex = 0;
+                    switchToLoginPage();
                     break;
                 case PageSwitchButton.ePageChoice.LoginSetting:
-                    tabControl.SelectedIndex = 1;
+                    switchToLoginSettingPage();
                     break;
                 case PageSwitchButton.ePageChoice.AboutMePage:
-                    m_PagesData.AboutData
-                        .TryFetchAndLoadData(m_UserFetchData);
-                    aboutMePage1.Data = m_PagesData.AboutData;
-                    tabControl.SelectedIndex = 3;
+                    switchToAboutPage();
                     break;
                 case PageSwitchButton.ePageChoice.FriendPage:
-                    m_PagesData.FriendsData
-                        .TryFetchAndLoadData(m_UserFetchData);
-                    friendsPage1.Data = m_PagesData.FriendsData;
-                    tabControl.SelectedIndex = 4;
+                    m_CurrentWallPage = new WallPage();
+                    switchToUserPage(LoggedUser.Friends[0]);
                     break;
                 case PageSwitchButton.ePageChoice.PicturePage:
-                    tabControl.SelectedIndex = 5;
+                    switchToPhotoPage();
                     break;
                 case PageSwitchButton.ePageChoice.Logout:
                     logoutActions();
@@ -151,19 +151,78 @@ namespace FacebookClient.Code
             LoginResult = null;
             LoggedUser = null;
             m_PagesData = new PageDataManager();
-            tabControl.SelectedIndex = 0;
+            switchToLoginPage();
             Properties.Settings.Default.AccessToken = null;
             Properties.Settings.Default.Save();
         }
 
+        private void loadEvents(BasePage i_Page) 
+        { 
+            i_Page.RecivedInfo += new System.EventHandler(this.loadInfoButton_RecievedInfo);
+            i_Page.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
+        }
+
+        private void returnToWall()
+        {
+            m_ViewPanelControl.CurrentPage = m_CurrentWallPage;
+        }
+
+        private void switchToPhotoPage()
+        {
+            PhotosPage photosPage = new PhotosPage();
+            //To comlete
+            loadEvents(photosPage);
+
+            m_ViewPanelControl.CurrentPage = photosPage;
+        }
+
+        private void switchToUserPage(User i_User)
+        {
+            loadEvents(m_CurrentWallPage);
+            m_PagesData.CurrentUser = i_User;
+            m_UserFetchData = new UserFetchData(i_User.Id, LoginResult.AccessToken);
+            m_PagesData.UserHomeData.LoadUserWallData(i_User);
+            m_PagesData.UserHomeData.TryFetchAndLoadData(m_UserFetchData);
+            m_CurrentWallPage.Data = m_PagesData.UserHomeData;
+
+            m_ViewPanelControl.CurrentPage = m_CurrentWallPage;
+        }
+
         private void switchToHomePage()
         {
-            m_PagesData.HomeData.ProfilePicUrl = LoggedUser?.PictureLargeURL;
-            m_PagesData.HomeData.FirstName = LoggedUser?.FirstName;
-            m_PagesData.HomeData.LastName = LoggedUser?.LastName;
-            m_PagesData.HomeData.TryFetchAndLoadData(m_UserFetchData);
-            homePage1.Data = m_PagesData.HomeData;
-            tabControl.SelectedIndex = 2;
+            m_CurrentWallPage = new HomePage();
+            switchToUserPage(LoggedUser);
+        }
+
+        private void switchToLoginPage()
+        {
+            LoginPage loginPage = new LoginPage();
+            
+            loadEvents(loginPage);
+            loginPage.RemeberLogin += new System.EventHandler(this.loginPage_RemeberLogin);
+
+            m_ViewPanelControl.CurrentPage = loginPage;
+        }
+
+        private void switchToAboutPage() 
+        {
+            AboutMePage aboutPage = new AboutMePage();
+
+            loadEvents(aboutPage);
+            m_PagesData.AboutData
+                        .TryFetchAndLoadData(m_UserFetchData);
+            aboutPage.Data = m_PagesData.AboutData;
+
+            m_ViewPanelControl.CurrentPage = aboutPage;
+        }
+
+        private void switchToLoginSettingPage()
+        {
+            LoginSettingPage loginSettingPage = new LoginSettingPage();
+
+            loadEvents(loginSettingPage);
+
+            m_ViewPanelControl.CurrentPage = loginSettingPage;
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -171,11 +230,9 @@ namespace FacebookClient.Code
             e.Cancel = !PageUtils.CloseConfirm();
         }
 
-        private void loginPage1_RemeberLogin(object sender, EventArgs e)
+        private void loginPage_RemeberLogin(object sender, EventArgs e)
         {
             m_SaveLogin = (sender as CheckBox).Checked;
         }
-
-
     }
 }

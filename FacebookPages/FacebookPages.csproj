@@ -67,17 +67,24 @@
     <Compile Include="Code\Buttons\PostViewButton.Designer.cs">
       <DependentUpon>PostViewButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Code\Buttons\ViewPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Code\Pages\AboutMePage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Code\Pages\AboutMePage.Designer.cs">
+      <DependentUpon>AboutMePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Code\Pages\Data\FriendsPageData.cs" />
-    <Compile Include="Code\Pages\Data\HomePageData.cs" />
+    <Compile Include="Code\Pages\Data\WallPageData.cs" />
     <Compile Include="Code\Pages\Data\IPageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
+    <Compile Include="Code\Pages\Data\Post\PostData.cs" />
     <Compile Include="Code\Pages\FriendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +96,12 @@
     </Compile>
     <Compile Include="Code\Pages\HomePage.Designer.cs">
       <DependentUpon>HomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Code\Pages\WallPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Code\Pages\WallPage.Designer.cs">
+      <DependentUpon>WallPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\Pages\LoginPage.cs">
       <SubType>UserControl</SubType>
@@ -125,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Pages\WallPage.resx">
+      <DependentUpon>WallPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
@@ -163,5 +179,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

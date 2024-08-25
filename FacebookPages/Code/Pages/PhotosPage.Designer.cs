@@ -41,7 +41,7 @@
             this.buttonReturn.Location = new System.Drawing.Point(4, 4);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.buttonReturn.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.WallPage;
             this.buttonReturn.Size = new System.Drawing.Size(70, 38);
             this.buttonReturn.TabIndex = 76;
             this.buttonReturn.Text = "return";

@@ -344,7 +344,7 @@ namespace BasicFacebookFeatures
                     MessageBox.Show(
 @"posting LIKEs is no longer supported :(
 (OAuthException - #3) 
-Publishing likes through the API is only available for page access tokens");
+Publishing likes through the API is only available for page access tokens" + ex.Message);
                 }
             }
         }
