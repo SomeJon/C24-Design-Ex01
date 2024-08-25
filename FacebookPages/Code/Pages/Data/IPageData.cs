@@ -9,8 +9,8 @@ namespace FacebookPages.Pages.Data
 {
     public interface IPageData 
     {
-        void FetchAndLoadData(UserFetchData i_Fetcher);
+        void FetchAndLoadData();
 
-        void TryFetchAndLoadData(UserFetchData i_Fetcher);
+        void TryFetchAndLoadData(UserFetchData i_FetchData);
     }
 }

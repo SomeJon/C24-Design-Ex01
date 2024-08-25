@@ -14,10 +14,9 @@ namespace FacebookPages.Code.Pages.Data
         
         public FacebookFriendsResponse Data { get; set; }
 
-        public override void FetchAndLoadData(UserFetchData i_Fetcher)
+        public override void FetchAndLoadData()
         {
-            Fetcher fetchHandler = new Fetcher(i_Fetcher);
-            Data = fetchHandler.FetchToObj<FacebookFriendsResponse>
+            Data = PageFetcherObject.FetchToObj<FacebookFriendsResponse>
                 ("fields=id,name,picture.width(400).height(400)", "friends");
         }
     }

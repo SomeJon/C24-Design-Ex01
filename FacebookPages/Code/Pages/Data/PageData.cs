@@ -2,6 +2,7 @@
 using FacebookWrapper.ObjectModel;
 using FetchHandler.Fetch;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,25 +12,43 @@ namespace FacebookPages.Code.Pages.Data
 {
     public abstract class PageData : FacebookObject, IPageData
     {
-        internal string DataUserId { get; set; }
+        private Fetcher m_PageFetcherObject;
+        protected string DataUserId { get; set; } = string.Empty;
+        public string Connection { get; set; } = string.Empty;
         public bool FetchNext { get; set; } = true;
+        public Fetcher PageFetcherObject {
+            get
+            {
+                return m_PageFetcherObject;
+            }
 
-        public virtual void FetchAndLoadData(UserFetchData i_FetcheData)
-        {
-            Fetcher fetch = new Fetcher(i_FetcheData);
-
-            m_DynamicData = fetch.Fetch(FieldsToLoad[eLoadOptions.Full]);
-            LoadOption = DynamicWrapper.eLoadOptions.Full;
-            base.InitializeAfterSet();
+            set 
+            {
+                DataUserId = value.UserFetchData.UserId;
+                FetchNext = true;
+                m_PageFetcherObject = value;
+            } 
         }
 
-        public void TryFetchAndLoadData(UserFetchData i_Fetcher)
+        public virtual void FetchAndLoadData()
         {
-            if (FetchNext || DataUserId != i_Fetcher.UserId)
+            m_DynamicData = PageFetcherObject.Fetch(FieldsToLoad[eLoadOptions.Full], Connection);
+            LoadOption = DynamicWrapper.eLoadOptions.Full;
+            InitializeAfterSet();
+        }
+
+        public void TryFetchAndLoadData(UserFetchData i_FetchData = null)
+        {
+            if (i_FetchData != null && !DataUserId.Equals(i_FetchData.UserId))
+            {
+                PageFetcherObject = new Fetcher(i_FetchData);
+            }
+
+            if (FetchNext && !string.IsNullOrEmpty(DataUserId))
             {
                 ResetForReFetch();
-                FetchAndLoadData(i_Fetcher);
-                ConfirmLoad(i_Fetcher.UserId);
+                FetchAndLoadData();
+                ConfirmLoad(i_FetchData.UserId);
             }
         }
 
@@ -43,5 +62,23 @@ namespace FacebookPages.Code.Pages.Data
         {
             base.ResetForReFetch();
         }
+
+        protected virtual void AddToCollection<T>(
+            dynamic i_DynamicCollection,
+            ICollection<T> io_Collection,
+            eLoadOptions i_LoadOptions = eLoadOptions.Full) 
+            where T : DynamicWrapper, new()
+        {
+            if(io_Collection != null && i_DynamicCollection != null)
+            {
+                foreach (dynamic item in i_DynamicCollection)
+                {
+                    T val = new T();
+                    m_DynamicData = item;
+                    LoadOption = i_LoadOptions;
+                    io_Collection.Add(val);
+                }
+            }
+        } 
     }
 }

@@ -56,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fetch\FacebookCollectionWithPaging.cs" />
+    <Compile Include="Fetch\PagingResponse.cs" />
     <Compile Include="Fetch\temp\temp.cs" />
     <Compile Include="Fetch\temp\TempFriends.cs" />
     <Compile Include="Fetch\Fetcher.cs" />
@@ -83,8 +85,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Fetch\Posts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

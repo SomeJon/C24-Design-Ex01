@@ -1,5 +1,4 @@
 ﻿using Facebook;
-using FacebookPostsWrapper;
 using FacebookWrapper.ObjectModel;
 using FetchHandler.Fetch;
 using System;

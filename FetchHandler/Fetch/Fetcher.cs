@@ -15,7 +15,6 @@ namespace FetchHandler.Fetch
     {
         public UserFetchData UserFetchData { get; }
 
-
         public Fetcher(UserFetchData i_FetchData)
         {
             UserFetchData = i_FetchData;

@@ -1,104 +1,132 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace FacebookPostsWrapper
+namespace FacebookPostData
 {
-    public class FacebookPostWrapper
+    public class PostResponse
     {
-        public Posts posts { get; set; }
-        public string id { get; set; }
-    }
-
-    public class Posts
-    {
-        public List<PostData> data { get; set; }
-        public Paging paging { get; set; }
+        public List<PostData> Data { get; set; }
+        public PagingInfo Paging { get; set; }
     }
 
     public class PostData
     {
-        public string id { get; set; }
-        public string message { get; set; }
-        public string created_time { get; set; }
-        public string updated_time { get; set; }
-        public string full_picture { get; set; }
-        public string link { get; set; }
-        public Attachments attachments { get; set; }
-        public From from { get; set; }
-        public Comments comments { get; set; }
-        public string status_type { get; set; }
-        public string type { get; set; }
+        public string Id { get; set; }
+        public string Message { get; set; }
+        public string CreatedTime { get; set; }
+        public string UpdatedTime { get; set; }
+        public string FullPicture { get; set; }
+        public string Link { get; set; }
+        public Attachments Attachments { get; set; }
+        public FromUser From { get; set; }
+        public Reactions Reactions { get; set; }
+        public Comments Comments { get; set; }
+        public string StatusType { get; set; }
+        public string Type { get; set; }
+        public Application Application { get; set; }
     }
 
     public class Attachments
     {
-        public List<AttachmentData> data { get; set; }
+        public List<AttachmentData> Data { get; set; }
     }
 
     public class AttachmentData
     {
-        public Media media { get; set; }
-        public Target target { get; set; }
-        public string title { get; set; }
-        public string type { get; set; }
-        public string url { get; set; }
-        public List<SubAttachment> subattachments { get; set; }
+        public Media Media { get; set; }
+        public Target Target { get; set; }
+        public string Title { get; set; }
+        public string Type { get; set; }
+        public string Url { get; set; }
+        public string Description { get; set; }
+        public SubAttachments SubAttachments { get; set; }
     }
 
     public class Media
     {
-        public Image image { get; set; }
-        public string source { get; set; }
+        public Image Image { get; set; }
     }
 
     public class Image
     {
-        public int height { get; set; }
-        public string src { get; set; }
-        public int width { get; set; }
+        public int Height { get; set; }
+        public string Src { get; set; }
+        public int Width { get; set; }
     }
 
     public class Target
     {
-        public string id { get; set; }
-        public string url { get; set; }
+        public string Id { get; set; }
+        public string Url { get; set; }
     }
 
-    public class SubAttachment
+    public class SubAttachments
     {
-        public Media media { get; set; }
-        public string type { get; set; }
+        public List<AttachmentData> Data { get; set; }
     }
 
-    public class From
+    public class FromUser
     {
-        public string name { get; set; }
-        public string id { get; set; }
+        public string Name { get; set; }
+        public string Id { get; set; }
+    }
+
+    public class Reactions
+    {
+        public List<ReactionData> Data { get; set; }
+        public ReactionSummary Summary { get; set; }
+        public ReactionPaging Paging { get; set; }
+    }
+
+    public class ReactionData
+    {
+        // Add properties here if needed
+    }
+
+    public class ReactionSummary
+    {
+        public int TotalCount { get; set; }
+        public string ViewerReaction { get; set; }
+    }
+
+    public class ReactionPaging
+    {
+        public Cursors Cursors { get; set; }
+    }
+
+    public class Cursors
+    {
+        public string Before { get; set; }
+        public string After { get; set; }
     }
 
     public class Comments
     {
-        public List<CommentData> data { get; set; }
-        public CommentSummary summary { get; set; }
+        public List<CommentData> Data { get; set; }
+        public CommentSummary Summary { get; set; }
     }
 
     public class CommentData
     {
-        public string message { get; set; }
-        public From from { get; set; }
-        public string created_time { get; set; }
+        // Add properties here if needed
     }
 
     public class CommentSummary
     {
-        public int total_count { get; set; }
-        public bool can_comment { get; set; }
-        public string order { get; set; }
+        public string Order { get; set; }
+        public int TotalCount { get; set; }
+        public bool CanComment { get; set; }
     }
 
-    public class Paging
+    public class Application
     {
-        public string previous { get; set; }
-        public string next { get; set; }
+        public string Namespace { get; set; }
+        public string Name { get; set; }
+        public string Id { get; set; }
+    }
+
+    public class PagingInfo
+    {
+        public string Previous { get; set; }
+        public string Next { get; set; }
     }
 }

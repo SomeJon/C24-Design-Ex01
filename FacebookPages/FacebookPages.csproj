@@ -80,6 +80,8 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Code\Pages\Data\FriendsPageData.cs" />
+    <Compile Include="Code\Pages\Data\Post\Paging.cs" />
+    <Compile Include="Code\Pages\Data\Post\PostsWithPaging.cs" />
     <Compile Include="Code\Pages\Data\WallPageData.cs" />
     <Compile Include="Code\Pages\Data\IPageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
@@ -177,8 +179,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Folder Include="Code\Pages\Data\Collection\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
