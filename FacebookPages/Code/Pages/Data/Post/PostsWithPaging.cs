@@ -17,6 +17,15 @@ namespace FacebookPages.Code.Pages.Data.Post
             {
                 return WrapOrGet<Paging>(ref m_Paging, m_DynamicData.paging, eLoadOptions.Full);
             }
+            set
+            {
+                m_Paging = value;
+            }
+        }
+
+        public PostsWithPaging()
+        {
+            Connection = "posts";
         }
 
         private static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
@@ -79,6 +88,23 @@ namespace FacebookPages.Code.Pages.Data.Post
         protected override void InitializeAfterSet()
         {
             AddToCollection(m_DynamicData.data, Posts);
+        }
+
+        protected override void ResetForReFetch()
+        {
+            base.ResetForReFetch();
+            Posts?.Clear();
+            m_Paging?.Clear();
+        }
+
+        public void SwitchConnection(string i_Connection)
+        {
+            if (!string.Equals(i_Connection, Connection))
+            {
+                ResetForReFetch();
+                Connection = i_Connection;
+                TryFetchAndLoadData();
+            }
         }
     }
 }

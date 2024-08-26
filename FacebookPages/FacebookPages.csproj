@@ -87,7 +87,6 @@
     <Compile Include="Code\Pages\Data\IPageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
-    <Compile Include="Code\Pages\Data\Post\PostData.cs" />
     <Compile Include="Code\Pages\FriendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>

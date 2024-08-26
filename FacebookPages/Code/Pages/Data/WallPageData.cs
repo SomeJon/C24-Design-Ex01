@@ -17,6 +17,7 @@ namespace FacebookPages.Pages.Data
         public string CoverPicUrl { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string PostsWithPaging { get; set; }
 
         public override void FetchAndLoadData()
         {
