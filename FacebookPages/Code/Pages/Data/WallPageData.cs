@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using FacebookWrapper.ObjectModel;
 using FacebookPages.Code.Pages.Data.Post;
 
@@ -18,13 +17,13 @@ namespace FacebookPages.Pages.Data
         public string CoverPicUrl { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        //public PostResponse Posts { get; private set; }
 
         public override void FetchAndLoadData()
         {
             PostsWithPaging tryThis = new PostsWithPaging();
             tryThis.Connection = "posts";
             tryThis.TryFetchAndLoadData(PageFetcherObject.UserFetchData);
+            tryThis.Posts[0].ToString();
         }
 
         public void LoadUserWallData(User i_User)

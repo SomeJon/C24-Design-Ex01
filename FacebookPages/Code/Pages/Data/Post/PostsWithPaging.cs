@@ -10,7 +10,7 @@ namespace FacebookPages.Code.Pages.Data.Post
     public class PostsWithPaging : PageData
     {
         private Paging m_Paging;
-        public List<PostData> Data { get; } = new List<PostData>();
+        public List<UpdatedPostData> Posts { get; } = new List<UpdatedPostData>();
         public Paging Paging
         {
             get
@@ -23,7 +23,7 @@ namespace FacebookPages.Code.Pages.Data.Post
         {
         {
             eLoadOptions.None,
-            "id, name"
+            "id, message"
         },
         {
             eLoadOptions.Basic,
@@ -78,7 +78,7 @@ namespace FacebookPages.Code.Pages.Data.Post
 
         protected override void InitializeAfterSet()
         {
-            AddToCollection(m_DynamicData.data, Data);
+            AddToCollection(m_DynamicData.data, Posts);
         }
     }
 }

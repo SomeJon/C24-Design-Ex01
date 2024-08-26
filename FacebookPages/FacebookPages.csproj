@@ -82,6 +82,7 @@
     <Compile Include="Code\Pages\Data\HasSetData.cs" />
     <Compile Include="Code\Pages\Data\Post\Paging.cs" />
     <Compile Include="Code\Pages\Data\Post\PostsWithPaging.cs" />
+    <Compile Include="Code\Pages\Data\Post\UpdatedPostData.cs" />
     <Compile Include="Code\Pages\Data\WallPageData.cs" />
     <Compile Include="Code\Pages\Data\IPageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
