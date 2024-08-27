@@ -13,18 +13,20 @@ namespace FacebookPages.Pages.Data
 {
     public class WallPageData : PageData
     {
-        public string ProfilePicUrl { get; set; }
-        public string CoverPicUrl { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PostsWithPaging { get; set; }
+        public string ProfilePicUrl { get; protected set; }
+        public string CoverPicUrl { get; protected set; }
+        public string FirstName { get; protected set; }
+        public string LastName { get; protected set; }
+        public FacebookObjectCollection<User> Friends { get; protected set; }
+        public PostsWithPaging<UpdatedPostData> Posts { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
 
-        public override void FetchAndLoadData()
+        public override void TryFetchAndLoadData(
+            UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
-            PostsWithPaging tryThis = new PostsWithPaging();
-            tryThis.Connection = "posts";
-            tryThis.TryFetchAndLoadData(PageFetcherObject.UserFetchData);
-            tryThis.Posts[0].ToString();
+            base.TryFetchAndLoadData(i_FetchData, i_KeyValueParamtersPairs);
+            Posts.Connection = "feed";
+            Posts.PageFetcherObject = this.PageFetcherObject;
+            Posts.TryFetchAndLoadData();
         }
 
         public void LoadUserWallData(User i_User)
@@ -39,6 +41,7 @@ namespace FacebookPages.Pages.Data
             ProfilePicUrl = i_User?.PictureLargeURL;
             FirstName = i_User?.FirstName;
             LastName = i_User?.LastName;
+            Friends = i_User?.Friends;
         }
     }
 }

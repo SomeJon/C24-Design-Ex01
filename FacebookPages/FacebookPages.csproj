@@ -55,7 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Buttons\Interfaces\eInfoChoice.cs" />
+    <Compile Include="Code\Buttons\Interfaces\ePageChoice.cs" />
+    <Compile Include="Code\Buttons\Interfaces\HasDataInfo.cs" />
+    <Compile Include="Code\Buttons\Interfaces\HasSwitchPage.cs" />
     <Compile Include="Code\Buttons\LoadInfoButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Buttons\LoadInfoListBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Code\Buttons\PageSwitchButton.cs">

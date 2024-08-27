@@ -31,14 +31,17 @@ namespace FacebookPages.Code.Pages.Data
             } 
         }
 
-        public virtual void FetchAndLoadData()
+        protected virtual void FetchAndLoadData(Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
-            m_DynamicData = PageFetcherObject.Fetch(FieldsToLoad[eLoadOptions.Full], Connection);
+            string requestData = FieldsToLoad[eLoadOptions.Full];
+
+            m_DynamicData = PageFetcherObject.Fetch(requestData, Connection, i_KeyValueParamtersPairs);
             LoadOption = DynamicWrapper.eLoadOptions.Full;
             InitializeAfterSet();
         }
 
-        public void TryFetchAndLoadData(UserFetchData i_FetchData = null)
+        public virtual void TryFetchAndLoadData(
+            UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
             if (i_FetchData != null && !DataUserId.Equals(i_FetchData.UserId))
             {
@@ -48,19 +51,21 @@ namespace FacebookPages.Code.Pages.Data
             if (FetchNext && !string.IsNullOrEmpty(DataUserId))
             {
                 ResetForReFetch();
-                FetchAndLoadData();
-                ConfirmLoad(i_FetchData.UserId);
+                FetchAndLoadData(i_KeyValueParamtersPairs);
+                ConfirmLoad();
             }
         }
 
-        protected void ConfirmLoad(string i_UserId)
+        protected void ConfirmLoad()
         {
-            DataUserId = i_UserId;
+            DataUserId = PageFetcherObject.UserFetchData.UserId;
             FetchNext = false;
         }
 
         protected override void ResetForReFetch()
         {
+            DataUserId = null;
+            FetchNext = true;
             base.ResetForReFetch();
         }
 

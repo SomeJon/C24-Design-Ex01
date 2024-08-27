@@ -1,4 +1,6 @@
-﻿namespace FacebookPages.Pages
+﻿using FacebookPages.Code.Buttons;
+
+namespace FacebookPages.Pages
 {
     partial class FriendsPage
     {
@@ -124,7 +126,7 @@
             this.pageSwitchButton1.Location = new System.Drawing.Point(2, 2);
             this.pageSwitchButton1.Margin = new System.Windows.Forms.Padding(2);
             this.pageSwitchButton1.Name = "pageSwitchButton1";
-            this.pageSwitchButton1.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.pageSwitchButton1.PageChoice = ePageChoice.HomePage;
             this.pageSwitchButton1.Size = new System.Drawing.Size(44, 35);
             this.pageSwitchButton1.TabIndex = 78;
             this.pageSwitchButton1.Text = "back";

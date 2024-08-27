@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.m_PostsList = new System.Windows.Forms.ListBox();
+            this.m_PostsList = new LoadInfoListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.m_NumOfPostsInfo = new System.Windows.Forms.TextBox();
             this.m_PostTypeChoice = new System.Windows.Forms.ListBox();
@@ -143,7 +143,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox m_PostsList;
+        private LoadInfoListBox m_PostsList;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox m_NumOfPostsInfo;
         private System.Windows.Forms.ListBox m_PostTypeChoice;

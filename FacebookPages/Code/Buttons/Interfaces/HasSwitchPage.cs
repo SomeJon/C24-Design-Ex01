@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacebookClient.Code
+namespace FacebookPages.Code.Buttons
 {
-    internal class ModifiedFacebookUser
+    public interface HasSwitchPage
     {
+        ePageChoice PageChoice { get; set; }
     }
 }

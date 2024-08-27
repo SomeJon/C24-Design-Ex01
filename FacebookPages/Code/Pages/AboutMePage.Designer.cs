@@ -1,4 +1,6 @@
-﻿namespace FacebookPages.Code.Pages
+﻿using FacebookPages.Code.Buttons;
+
+namespace FacebookPages.Code.Pages
 {
     partial class AboutMePage
     {
@@ -253,7 +255,7 @@
             this.m_BackButton.ForeColor = System.Drawing.Color.White;
             this.m_BackButton.Location = new System.Drawing.Point(0, 0);
             this.m_BackButton.Name = "m_BackButton";
-            this.m_BackButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.WallPage;
+            this.m_BackButton.PageChoice = ePageChoice.WallPage;
             this.m_BackButton.Size = new System.Drawing.Size(99, 32);
             this.m_BackButton.TabIndex = 81;
             this.m_BackButton.Text = "Return";

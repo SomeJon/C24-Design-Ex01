@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace FacebookPages.Code.Pages.Data.Post
 {
-    public class PostsWithPaging : PageData
+    public class PostsWithPaging<T> : PageData where T : FacebookWrapper.ObjectModel.Post
     {
         private Paging m_Paging;
-        public List<UpdatedPostData> Posts { get; } = new List<UpdatedPostData>();
+        public List<T> Posts { get; } = new List<T>();
         public Paging Paging
         {
             get
@@ -83,7 +83,9 @@ namespace FacebookPages.Code.Pages.Data.Post
         }
         };
 
-        protected override Dictionary<eLoadOptions, string> FieldsToLoad => sr_FieldsToLoad;
+        protected Dictionary<eLoadOptions, string> CurrentFieldsToLoad = sr_FieldsToLoad; //allowing some modification for the future! its importent
+
+        protected override Dictionary<eLoadOptions, string> FieldsToLoad => CurrentFieldsToLoad;
 
         protected override void InitializeAfterSet()
         {
@@ -105,6 +107,21 @@ namespace FacebookPages.Code.Pages.Data.Post
                 Connection = i_Connection;
                 TryFetchAndLoadData();
             }
+        }
+
+        public void TryToAddNextPage()
+        {
+            Dictionary<string, string> keyValuePairs;
+            PostsWithPaging<T> nextPosts = new PostsWithPaging<T>();
+
+
+            nextPosts.Connection = Connection;
+            nextPosts.PageFetcherObject = PageFetcherObject;
+            keyValuePairs = Paging.GetKeyValueParamtersFromUrl(this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
+            
+            nextPosts.TryFetchAndLoadData(null, keyValuePairs);
+            Posts.AddRange(nextPosts.Posts);
+            Paging = nextPosts.Paging;
         }
     }
 }

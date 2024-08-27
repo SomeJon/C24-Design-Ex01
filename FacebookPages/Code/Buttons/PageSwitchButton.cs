@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FacebookPages.Code.Buttons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,23 +8,8 @@ using System.Windows.Forms;
 
 namespace FacebookPages.Buttons
 {
-    public class PageSwitchButton : Button
+    public class PageSwitchButton : Button, HasSwitchPage
     {
-        public enum ePageChoice
-        {
-            Login,
-            Logout,
-            Exit,
-            LoginSetting,
-            HomePage,
-            WallPage,
-            PicturePage,
-            AboutMePage,
-            FriendPage,
-            UseCase1Page,
-            UseCase2Page,
-        }
-
         public ePageChoice PageChoice { get; set; }
     }
 }

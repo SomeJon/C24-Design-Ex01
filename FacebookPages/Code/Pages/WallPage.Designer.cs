@@ -1,4 +1,6 @@
-﻿namespace FacebookPages.Pages
+﻿using FacebookPages.Code.Buttons;
+
+namespace FacebookPages.Pages
 {
     partial class WallPage
     {
@@ -46,7 +48,7 @@
             this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.logoutButton.Location = new System.Drawing.Point(3, 3);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.HomePage;
+            this.logoutButton.PageChoice = ePageChoice.HomePage;
             this.logoutButton.Size = new System.Drawing.Size(96, 42);
             this.logoutButton.TabIndex = 67;
             this.logoutButton.Text = "Back";
@@ -70,7 +72,7 @@
             this.frienedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.frienedButton.Location = new System.Drawing.Point(420, 150);
             this.frienedButton.Name = "frienedButton";
-            this.frienedButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.FriendPage;
+            this.frienedButton.PageChoice = ePageChoice.FriendPage;
             this.frienedButton.Size = new System.Drawing.Size(133, 30);
             this.frienedButton.TabIndex = 65;
             this.frienedButton.Text = "Friends";
@@ -82,7 +84,7 @@
             this.aboutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.aboutButton.Location = new System.Drawing.Point(238, 150);
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.AboutMePage;
+            this.aboutButton.PageChoice = ePageChoice.AboutMePage;
             this.aboutButton.Size = new System.Drawing.Size(133, 30);
             this.aboutButton.TabIndex = 63;
             this.aboutButton.Text = "About ME";
@@ -94,7 +96,7 @@
             this.pictureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.pictureButton.Location = new System.Drawing.Point(239, 182);
             this.pictureButton.Name = "pictureButton";
-            this.pictureButton.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.PicturePage;
+            this.pictureButton.PageChoice = ePageChoice.PicturePage;
             this.pictureButton.Size = new System.Drawing.Size(132, 30);
             this.pictureButton.TabIndex = 62;
             this.pictureButton.Text = "Pictures";

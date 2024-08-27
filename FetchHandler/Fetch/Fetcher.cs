@@ -43,10 +43,10 @@ namespace FetchHandler.Fetch
             return serializer.Deserialize<T>(i_Json);
         }
 
-        public Object Fetch(string i_Fields, string i_Path = null, Type i_Type = null)
+        public Object Fetch(string i_Fields, string i_Path = null, Dictionary<string, string> i_ParamtersToAdd = null, Type i_Type = null)
         {
             FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToekn);
-            dynamic fieldsValue = new ExpandoObject();
+            dynamic paramtersKeyValueRequest = new ExpandoObject();
             string path = $"/{UserFetchData.UserId}";
 
             if (!string.IsNullOrEmpty(i_Path))
@@ -54,11 +54,29 @@ namespace FetchHandler.Fetch
                 path += "/" + i_Path;
             }
 
-            fieldsValue.fields = i_Fields;
+            if (i_ParamtersToAdd != null)
+            {
+                paramtersKeyValueRequest = ToExpando(i_ParamtersToAdd);
+            }
+            paramtersKeyValueRequest.fields = i_Fields;
 
-            dynamic loadObject = facebookClient.Get(path, fieldsValue, i_Type);
+
+            dynamic loadObject = facebookClient.Get(path, paramtersKeyValueRequest, i_Type);
 
             return loadObject;
+        }
+
+        public static ExpandoObject ToExpando(Dictionary<string, string> i_KeyValuePairs)
+        {
+            var expando = new ExpandoObject();
+            var expandoDict = (IDictionary<string, object>)expando;
+
+            foreach (var kvp in i_KeyValuePairs)
+            {
+                expandoDict[kvp.Key] = kvp.Value;
+            }
+
+            return expando;
         }
     }
 }

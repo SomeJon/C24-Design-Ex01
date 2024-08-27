@@ -7,6 +7,7 @@ using FacebookPages.Pages;
 using FacebookPages.Code.Pages.Data;
 using System.Linq;
 using FacebookPages.Code.Pages;
+using FacebookPages.Code.Buttons;
 
 namespace FacebookClient.Code
 {
@@ -86,11 +87,11 @@ namespace FacebookClient.Code
 
         private void loadInfoButton_RecievedInfo(object sender, EventArgs e)
         {
-            LoadInfoButton loadInfoButton = sender as LoadInfoButton;
+            HasDataInfo loadInfoButton = sender as HasDataInfo;
             
             switch (loadInfoButton.InfoChoice)
             {
-                case LoadInfoButton.eInfoChoice.AppId:
+                case eInfoChoice.AppId:
                     AppSettings.s_AppID = loadInfoButton.RecivedInfo.ToString();
                     break;
                 default:
@@ -102,11 +103,11 @@ namespace FacebookClient.Code
 
         private void switchPageButton_ChangePage(object sender, EventArgs e)
         {
-            PageSwitchButton switchPageButton = sender as PageSwitchButton;
+            HasSwitchPage switchPageButton = sender as HasSwitchPage;
 
             switch (switchPageButton.PageChoice)
             {
-                case PageSwitchButton.ePageChoice.HomePage:
+                case ePageChoice.HomePage:
                     if (LoginResult == null)
                     {
                         login();
@@ -117,29 +118,29 @@ namespace FacebookClient.Code
                     }
 
                     break;
-                case PageSwitchButton.ePageChoice.WallPage:
+                case ePageChoice.WallPage:
                     returnToWall();
                     break;
-                case PageSwitchButton.ePageChoice.Login:
+                case ePageChoice.Login:
                     switchToLoginPage();
                     break;
-                case PageSwitchButton.ePageChoice.LoginSetting:
+                case ePageChoice.LoginSetting:
                     switchToLoginSettingPage();
                     break;
-                case PageSwitchButton.ePageChoice.AboutMePage:
+                case ePageChoice.AboutMePage:
                     switchToAboutPage();
                     break;
-                case PageSwitchButton.ePageChoice.FriendPage:
+                case ePageChoice.FriendPage:
                     m_CurrentWallPage = new WallPage();
                     switchToUserPage(LoggedUser.Friends[0]);
                     break;
-                case PageSwitchButton.ePageChoice.PicturePage:
+                case ePageChoice.PicturePage:
                     switchToPhotoPage();
                     break;
-                case PageSwitchButton.ePageChoice.Logout:
+                case ePageChoice.Logout:
                     logoutActions();
                     break;
-                case PageSwitchButton.ePageChoice.Exit:
+                case ePageChoice.Exit:
                     Application.Exit();
                     break;
             }
