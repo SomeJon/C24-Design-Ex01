@@ -8,6 +8,7 @@ using FacebookPages.Code.Pages.Data;
 using System.Linq;
 using FacebookPages.Code.Pages;
 using FacebookPages.Code.Buttons;
+using System.Drawing;
 
 namespace FacebookClient.Code
 {
@@ -27,11 +28,19 @@ namespace FacebookClient.Code
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
             switchToLoginPage();
 
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.AccessToken))
+            if (Properties.Settings.Default.SaveData)
             {
-                LoginResult = FacebookService.Connect(
-                    Properties.Settings.Default.AccessToken);
-                tryFirstFetch();
+                m_SaveLogin = true;
+                this.Width = Properties.Settings.Default.Width;
+                this.Height = Properties.Settings.Default.Height;
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = Properties.Settings.Default.StartingPostion;
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.AccessToken))
+                {
+                    LoginResult = FacebookService.Connect(
+                        Properties.Settings.Default.AccessToken);
+                    tryFirstFetch();
+                }
             }
         }
 
@@ -241,6 +250,18 @@ namespace FacebookClient.Code
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = !PageUtils.CloseConfirm();
+
+            if (!e.Cancel)
+            {
+                if (m_SaveLogin)
+                {
+                    Properties.Settings.Default.SaveData = true;
+                    Properties.Settings.Default.Height = this.Height;
+                    Properties.Settings.Default.Width = this.Width;
+                    Properties.Settings.Default.StartingPostion = this.Location;
+                    Properties.Settings.Default.Save();
+                }
+            }
         }
 
         private void loginPage_RemeberLogin(object sender, EventArgs e)

@@ -82,7 +82,7 @@
             this.m_PostImage.Location = new System.Drawing.Point(595, 0);
             this.m_PostImage.Name = "m_PostImage";
             this.m_PostImage.Size = new System.Drawing.Size(90, 71);
-            this.m_PostImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.m_PostImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.m_PostImage.TabIndex = 6;
             this.m_PostImage.TabStop = false;
             // 
@@ -170,14 +170,7 @@
             this.m_PostsList.FormattingEnabled = true;
             this.m_PostsList.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.AppId;
             this.m_PostsList.Items.AddRange(new object[] {
-            "1. (dd/mm/yy) TimTim: hello world",
-            "2. ",
-            "3. ",
-            "4. ",
-            "5. ",
-            "6. ",
-            "7. ",
-            "8. "});
+            "(dd/mm/yy)|TYPE| Waiting For Info"});
             this.m_PostsList.Location = new System.Drawing.Point(0, 0);
             this.m_PostsList.Name = "m_PostsList";
             this.m_PostsList.RecivedInfo = null;

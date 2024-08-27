@@ -114,18 +114,18 @@ namespace FacebookPages.Pages
             this.profilePicture.Location = new System.Drawing.Point(0, 106);
             this.profilePicture.Name = "profilePicture";
             this.profilePicture.Size = new System.Drawing.Size(234, 182);
-            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profilePicture.TabIndex = 68;
             this.profilePicture.TabStop = false;
             // 
             // coverPicture
             // 
-            this.coverPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.coverPicture.BackColor = System.Drawing.Color.Navy;
+            this.coverPicture.Dock = System.Windows.Forms.DockStyle.Top;
             this.coverPicture.Location = new System.Drawing.Point(0, 0);
             this.coverPicture.Name = "coverPicture";
-            this.coverPicture.Size = new System.Drawing.Size(660, 106);
+            this.coverPicture.Size = new System.Drawing.Size(661, 106);
+            this.coverPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coverPicture.TabIndex = 69;
             this.coverPicture.TabStop = false;
             // 

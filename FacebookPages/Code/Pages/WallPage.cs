@@ -70,9 +70,14 @@ namespace FacebookPages.Pages
             PageData.TryFetchAndLoadPageData();
 
             // Invoke back to the main thread to update the UI
-            this.Invoke((MethodInvoker)delegate {
+            //try
+            this.Invoke((MethodInvoker)delegate
+            {
                 updatePageWithData(PageData.Posts.Posts);
             });
+            
+            //catch(Exception i_Ignore) { } find name of specific crash case
+
         }
 
         private void updatePageWithData(List<UpdatedPostData> data)
