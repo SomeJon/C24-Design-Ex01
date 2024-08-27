@@ -11,6 +11,7 @@ namespace FacebookPages.Code.Buttons
         AppId,
         Login,
         Post,
+        Picture,
         Friend,
         Exit,
     }

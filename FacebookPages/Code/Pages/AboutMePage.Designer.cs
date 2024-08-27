@@ -287,7 +287,6 @@ namespace FacebookPages.Code.Pages
             this.Controls.Add(this.labelAboutMe);
             this.Name = "AboutMePage";
             this.Size = new System.Drawing.Size(534, 310);
-            this.Load += new System.EventHandler(this.AboutMePage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

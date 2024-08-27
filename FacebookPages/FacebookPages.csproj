@@ -68,6 +68,9 @@
     <Compile Include="Code\Buttons\LoadInfoComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Code\Buttons\LoadInfoPicture.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Code\Buttons\PageSwitchAndLoadButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -100,12 +103,6 @@
     <Compile Include="Code\Pages\Data\IPageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
-    <Compile Include="Code\Pages\FriendsPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\FriendsPage.Designer.cs">
-      <DependentUpon>FriendsPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Code\Pages\HomePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -137,7 +134,6 @@
     <Compile Include="Code\Pages\LoginSettingPage.Designer.cs">
       <DependentUpon>LoginSettingPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Pages\Data\Theme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Code\Buttons\PostViewButton.resx">
       <DependentUpon>PostViewButton.cs</DependentUpon>
@@ -147,9 +143,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\BasePage.resx">
       <DependentUpon>BasePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\FriendsPage.resx">
-      <DependentUpon>FriendsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>

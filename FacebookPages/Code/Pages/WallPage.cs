@@ -1,4 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Pages.Data.Post;
 using FacebookPages.Pages.Data;
 using FacebookWrapper.ObjectModel;
 using System;
@@ -9,15 +10,17 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FacebookPages.Pages
 {
     public partial class WallPage : BasePage
     {
         public override Color BackColor { get; set; }
-        public WallPageData Data { private get; set; }
+        public WallPageData PageData { private get; set; }
 
         public WallPage()
         {
@@ -29,26 +32,29 @@ namespace FacebookPages.Pages
             OnChangePage(sender, e);
         }
 
-        private void WallPage_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            if (Data?.ProfilePicUrl != null)
+            base.OnLoad(e);
+
+            if (PageData?.ProfilePicUrl != null)
             {
-                profilePicture.LoadAsync(Data.ProfilePicUrl);
+                profilePicture.LoadAsync(PageData.ProfilePicUrl);
             }
 
-            if(Data?.CoverPicUrl != null)
+            if (PageData?.CoverPicUrl != null)
             {
-                coverPicture.LoadAsync(Data.CoverPicUrl);
+                coverPicture.LoadAsync(PageData.CoverPicUrl);
                 coverPicture.SizeMode = PictureBoxSizeMode.CenterImage;
             }
 
+            m_ChooseFriend.DataSource = PageData?.Friends;
+            m_FillNumberOfFriends.Text = PageData?.Friends.Count.ToString();
+            textBoxFullName.Text = PageData?.FirstName
+                + " " + PageData?.LastName;
 
-            m_ChooseFriend.DataSource = Data?.Friends;
-            m_FillNumberOfFriends.Text = Data?.Friends.Count.ToString();
-            m_PostViewButton.LoadInfoListBox.DataSource = Data?.Posts.Posts;
+            FetchThread = new Thread(new ThreadStart(FetchDataInBackground));
 
-            textBoxFullName.Text = Data?.FirstName
-                + " " + Data?.LastName;
+            FetchThread.Start();
         }
 
         private void m_ViewFriendButton_Click(object sender, EventArgs e)
@@ -57,6 +63,22 @@ namespace FacebookPages.Pages
             (sender as HasDataInfo).InfoChoice = eInfoChoice.Friend;
 
             PageSwitchButton_Click(sender, e);
+        }
+
+        private void FetchDataInBackground()
+        {
+            PageData.TryFetchAndLoadPageData();
+
+            // Invoke back to the main thread to update the UI
+            this.Invoke((MethodInvoker)delegate {
+                updatePageWithData(PageData.Posts.Posts);
+            });
+        }
+
+        private void updatePageWithData(List<UpdatedPostData> data)
+        {
+            m_PostViewButton.LoadInfoListBox.DataSource = data;
+            m_PostViewButton.LoadInfoListBox.Refresh();
         }
     }
 }

@@ -9,6 +9,8 @@ namespace FacebookPages.Pages.Data
 {
     public interface IPageData 
     {
-        void TryFetchAndLoadData(UserFetchData i_FetchData, Dictionary<string, string> i_KeyValueParamtersPairs = null);
+        void TryFetchAndLoadPageData(UserFetchData i_FetchData, Dictionary<string, string> i_KeyValueParamtersPairs = null);
+
+        void LoadFetchData(UserFetchData i_FetchData);
     }
 }

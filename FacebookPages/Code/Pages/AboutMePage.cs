@@ -1,4 +1,6 @@
-﻿using FacebookPages.Code.Pages.Data;
+﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Pages.Data;
+using FacebookPages.Code.Pages.Data.Post;
 using FacebookPages.Pages;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,7 +17,7 @@ namespace FacebookPages.Code.Pages
 {
     public partial class AboutMePage : BasePage
     {
-        public AboutMePageData Data { private get; set; }
+        public AboutMePageData PageData { private get; set; }
 
         public AboutMePage()
         {
@@ -26,17 +29,33 @@ namespace FacebookPages.Code.Pages
             OnChangePage(sender, e);
         }
 
-        private void AboutMePage_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            if (Data != null)
+            FetchThread = new Thread(new ThreadStart(FetchDataInBackground));
+
+            FetchThread.Start();
+        }
+
+        private void FetchDataInBackground()
+        {
+            PageData.TryFetchAndLoadPageData();
+
+            this.Invoke((MethodInvoker)delegate {
+                updatePageWithData();
+            });
+        }
+
+        private void updatePageWithData()
+        {
+            if (PageData != null)
             {
-                m_FillBirthDayLabel.Text = Data.Birthday;
-                m_FillCityLabel.Text = Data.Location?.Location.City;
-                m_FillCountryLabel.Text = Data.Location.Location.Country;
-                m_FillEmailLabel.Text = Data.Email;
-                m_FillGenderLabel.Text = Data.Gender;
-                m_FillNameLabel.Text = Data.Name;
-                m_FillHometownLabel.Text = Data.Hometown?.Name;
+                m_FillBirthDayLabel.Text = PageData.Birthday;
+                m_FillCityLabel.Text = PageData.Location?.Location.City;
+                m_FillCountryLabel.Text = PageData.Location.Location.Country;
+                m_FillEmailLabel.Text = PageData.Email;
+                m_FillGenderLabel.Text = PageData.Gender;
+                m_FillNameLabel.Text = PageData.Name;
+                m_FillHometownLabel.Text = PageData.Hometown?.Name;
             }
         }
     }

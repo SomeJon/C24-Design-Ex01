@@ -207,7 +207,6 @@ namespace FacebookPages.Pages
             this.Controls.Add(this.pictureButton);
             this.Name = "WallPage";
             this.Size = new System.Drawing.Size(661, 390);
-            this.Load += new System.EventHandler(this.WallPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPicture)).EndInit();
             this.ResumeLayout(false);

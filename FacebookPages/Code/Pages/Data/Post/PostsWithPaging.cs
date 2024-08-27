@@ -105,7 +105,7 @@ namespace FacebookPages.Code.Pages.Data.Post
             {
                 ResetForReFetch();
                 Connection = i_Connection;
-                TryFetchAndLoadData();
+                TryFetchAndLoadPageData();
             }
         }
 
@@ -119,7 +119,7 @@ namespace FacebookPages.Code.Pages.Data.Post
             nextPosts.PageFetcherObject = PageFetcherObject;
             keyValuePairs = Paging.GetKeyValueParamtersFromUrl(this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
             
-            nextPosts.TryFetchAndLoadData(null, keyValuePairs);
+            nextPosts.TryFetchAndLoadPageData(null, keyValuePairs);
             Posts.AddRange(nextPosts.Posts);
             Paging = nextPosts.Paging;
         }

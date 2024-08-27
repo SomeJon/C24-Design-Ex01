@@ -20,13 +20,13 @@ namespace FacebookPages.Pages.Data
         public FacebookObjectCollection<User> Friends { get; protected set; }
         public PostsWithPaging<UpdatedPostData> Posts { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
 
-        public override void TryFetchAndLoadData(
+        public override void TryFetchAndLoadPageData(
             UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
-            base.TryFetchAndLoadData(i_FetchData, i_KeyValueParamtersPairs);
+            base.TryFetchAndLoadPageData(i_FetchData, i_KeyValueParamtersPairs);
             Posts.Connection = "feed";
             Posts.PageFetcherObject = this.PageFetcherObject;
-            Posts.TryFetchAndLoadData();
+            Posts.TryFetchAndLoadPageData();
         }
 
         public void LoadUserWallData(User i_User)

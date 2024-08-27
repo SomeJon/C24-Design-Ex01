@@ -131,8 +131,18 @@ namespace FacebookClient.Code
                     switchToAboutPage();
                     break;
                 case ePageChoice.FriendPage:
-                    m_CurrentWallPage = new WallPage();
-                    switchToUserPage((sender as HasDataInfo).RecivedInfo as User);
+                    User recievedFriend = (sender as HasDataInfo).RecivedInfo as User;
+
+                    if(recievedFriend.Id == LoggedUser.Id)
+                    {
+                        switchToHomePage();
+                    }
+                    else
+                    {
+                        m_CurrentWallPage = new WallPage();
+                        switchToUserPage(recievedFriend);
+                    }
+                    
                     break;
                 case ePageChoice.PicturePage:
                     switchToPhotoPage();
@@ -171,22 +181,28 @@ namespace FacebookClient.Code
         private void switchToPhotoPage()
         {
             PhotosPage photosPage = new PhotosPage();
-            //To comlete
-            loadEvents(photosPage);
 
+            loadEvents(photosPage);
+            photosPage.PageData = m_PagesData.CurrentUser.Albums;
             m_ViewPanelControl.CurrentPage = photosPage;
+        }
+
+        private void startNewPageBuild
+            (BasePage i_Page, PageData i_Data, UserFetchData i_FetcherData)
+        {
+            loadEvents(i_Page);
+            i_Data.LoadFetchData(m_UserFetchData);
+            m_ViewPanelControl.CurrentPage = i_Page;
         }
 
         private void switchToUserPage(User i_User)
         {
-            loadEvents(m_CurrentWallPage);
             m_PagesData.CurrentUser = i_User;
             m_UserFetchData = new UserFetchData(i_User.Id, LoginResult.AccessToken);
             m_PagesData.UserHomeData.LoadUserWallData(i_User);
-            m_PagesData.UserHomeData.TryFetchAndLoadData(m_UserFetchData);
-            m_CurrentWallPage.Data = m_PagesData.UserHomeData;
+            m_CurrentWallPage.PageData = m_PagesData.UserHomeData;
 
-            m_ViewPanelControl.CurrentPage = m_CurrentWallPage;
+            startNewPageBuild(m_CurrentWallPage, m_PagesData.UserHomeData, m_UserFetchData);
         }
 
         private void switchToHomePage()
@@ -209,12 +225,8 @@ namespace FacebookClient.Code
         {
             AboutMePage aboutPage = new AboutMePage();
 
-            loadEvents(aboutPage);
-            m_PagesData.AboutData
-                        .TryFetchAndLoadData(m_UserFetchData);
-            aboutPage.Data = m_PagesData.AboutData;
-
-            m_ViewPanelControl.CurrentPage = aboutPage;
+            aboutPage.PageData = m_PagesData.AboutData;
+            startNewPageBuild(aboutPage, m_PagesData.AboutData, m_UserFetchData);
         }
 
         private void switchToLoginSettingPage()

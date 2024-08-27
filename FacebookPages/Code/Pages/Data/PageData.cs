@@ -40,7 +40,7 @@ namespace FacebookPages.Code.Pages.Data
             InitializeAfterSet();
         }
 
-        public virtual void TryFetchAndLoadData(
+        public virtual void TryFetchAndLoadPageData(
             UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
             if (i_FetchData != null && !DataUserId.Equals(i_FetchData.UserId))
@@ -54,6 +54,11 @@ namespace FacebookPages.Code.Pages.Data
                 FetchAndLoadData(i_KeyValueParamtersPairs);
                 ConfirmLoad();
             }
+        }
+
+        public virtual void LoadFetchData(UserFetchData i_FetchData)
+        {
+            PageFetcherObject = new Fetcher(i_FetchData);
         }
 
         protected void ConfirmLoad()
