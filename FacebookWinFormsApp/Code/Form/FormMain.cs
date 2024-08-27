@@ -132,7 +132,7 @@ namespace FacebookClient.Code
                     break;
                 case ePageChoice.FriendPage:
                     m_CurrentWallPage = new WallPage();
-                    switchToUserPage(LoggedUser.Friends[0]);
+                    switchToUserPage((sender as HasDataInfo).RecivedInfo as User);
                     break;
                 case ePageChoice.PicturePage:
                     switchToPhotoPage();

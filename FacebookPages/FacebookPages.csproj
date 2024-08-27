@@ -65,6 +65,12 @@
     <Compile Include="Code\Buttons\LoadInfoListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Code\Buttons\LoadInfoComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Buttons\PageSwitchAndLoadButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Code\Buttons\PageSwitchButton.cs">
       <SubType>Component</SubType>
     </Compile>

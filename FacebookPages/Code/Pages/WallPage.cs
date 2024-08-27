@@ -1,9 +1,12 @@
-﻿using FacebookPages.Pages.Data;
+﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Pages.Data;
+using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,8 +42,21 @@ namespace FacebookPages.Pages
                 coverPicture.SizeMode = PictureBoxSizeMode.CenterImage;
             }
 
+
+            m_ChooseFriend.DataSource = Data?.Friends;
+            m_FillNumberOfFriends.Text = Data?.Friends.Count.ToString();
+            m_PostViewButton.LoadInfoListBox.DataSource = Data?.Posts.Posts;
+
             textBoxFullName.Text = Data?.FirstName
                 + " " + Data?.LastName;
+        }
+
+        private void m_ViewFriendButton_Click(object sender, EventArgs e)
+        {
+            (sender as HasDataInfo).RecivedInfo = m_ChooseFriend.RecivedInfo;
+            (sender as HasDataInfo).InfoChoice = eInfoChoice.Friend;
+
+            PageSwitchButton_Click(sender, e);
         }
     }
 }

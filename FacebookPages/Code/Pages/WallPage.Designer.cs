@@ -32,13 +32,16 @@ namespace FacebookPages.Pages
         {
             this.logoutButton = new FacebookPages.Buttons.PageSwitchButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.frienedButton = new FacebookPages.Buttons.PageSwitchButton();
             this.aboutButton = new FacebookPages.Buttons.PageSwitchButton();
             this.pictureButton = new FacebookPages.Buttons.PageSwitchButton();
             this.textBoxFullName = new System.Windows.Forms.TextBox();
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.coverPicture = new System.Windows.Forms.PictureBox();
             this.m_PostViewButton = new FacebookPages.Code.Buttons.PostViewButton();
+            this.m_NumberOfFriendsLabel = new System.Windows.Forms.Label();
+            this.m_FillNumberOfFriends = new System.Windows.Forms.Label();
+            this.m_ChooseFriend = new FacebookPages.Code.Buttons.LoadInfoComboBox();
+            this.m_ViewFriendButton = new FacebookPages.Code.Buttons.PageSwitchAndLoadButton();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPicture)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +51,7 @@ namespace FacebookPages.Pages
             this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.logoutButton.Location = new System.Drawing.Point(3, 3);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.PageChoice = ePageChoice.HomePage;
+            this.logoutButton.PageChoice = FacebookPages.Code.Buttons.ePageChoice.HomePage;
             this.logoutButton.Size = new System.Drawing.Size(96, 42);
             this.logoutButton.TabIndex = 67;
             this.logoutButton.Text = "Back";
@@ -67,24 +70,12 @@ namespace FacebookPages.Pages
             this.textBox1.Text = "profile pic";
             this.textBox1.Visible = false;
             // 
-            // frienedButton
-            // 
-            this.frienedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.frienedButton.Location = new System.Drawing.Point(420, 150);
-            this.frienedButton.Name = "frienedButton";
-            this.frienedButton.PageChoice = ePageChoice.FriendPage;
-            this.frienedButton.Size = new System.Drawing.Size(133, 30);
-            this.frienedButton.TabIndex = 65;
-            this.frienedButton.Text = "Friends";
-            this.frienedButton.UseVisualStyleBackColor = true;
-            this.frienedButton.Click += new System.EventHandler(this.PageSwitchButton_Click);
-            // 
             // aboutButton
             // 
             this.aboutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.aboutButton.Location = new System.Drawing.Point(238, 150);
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.PageChoice = ePageChoice.AboutMePage;
+            this.aboutButton.PageChoice = FacebookPages.Code.Buttons.ePageChoice.AboutMePage;
             this.aboutButton.Size = new System.Drawing.Size(133, 30);
             this.aboutButton.TabIndex = 63;
             this.aboutButton.Text = "About ME";
@@ -96,7 +87,7 @@ namespace FacebookPages.Pages
             this.pictureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.pictureButton.Location = new System.Drawing.Point(239, 182);
             this.pictureButton.Name = "pictureButton";
-            this.pictureButton.PageChoice = ePageChoice.PicturePage;
+            this.pictureButton.PageChoice = FacebookPages.Code.Buttons.ePageChoice.PicturePage;
             this.pictureButton.Size = new System.Drawing.Size(132, 30);
             this.pictureButton.TabIndex = 62;
             this.pictureButton.Text = "Pictures";
@@ -149,18 +140,69 @@ namespace FacebookPages.Pages
             this.m_PostViewButton.Size = new System.Drawing.Size(661, 101);
             this.m_PostViewButton.TabIndex = 73;
             // 
+            // m_NumberOfFriendsLabel
+            // 
+            this.m_NumberOfFriendsLabel.AutoSize = true;
+            this.m_NumberOfFriendsLabel.Font = new System.Drawing.Font("Segoe UI", 12.8F);
+            this.m_NumberOfFriendsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.m_NumberOfFriendsLabel.Location = new System.Drawing.Point(417, 153);
+            this.m_NumberOfFriendsLabel.Name = "m_NumberOfFriendsLabel";
+            this.m_NumberOfFriendsLabel.Size = new System.Drawing.Size(73, 25);
+            this.m_NumberOfFriendsLabel.TabIndex = 75;
+            this.m_NumberOfFriendsLabel.Text = "Friends:";
+            // 
+            // m_FillNumberOfFriends
+            // 
+            this.m_FillNumberOfFriends.AutoSize = true;
+            this.m_FillNumberOfFriends.Font = new System.Drawing.Font("Segoe UI", 12.8F);
+            this.m_FillNumberOfFriends.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.m_FillNumberOfFriends.Location = new System.Drawing.Point(496, 155);
+            this.m_FillNumberOfFriends.Name = "m_FillNumberOfFriends";
+            this.m_FillNumberOfFriends.Size = new System.Drawing.Size(22, 25);
+            this.m_FillNumberOfFriends.TabIndex = 76;
+            this.m_FillNumberOfFriends.Text = "0";
+            // 
+            // m_ChooseFriend
+            // 
+            this.m_ChooseFriend.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.m_ChooseFriend.FormattingEnabled = true;
+            this.m_ChooseFriend.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Friend;
+            this.m_ChooseFriend.ItemHeight = 18;
+            this.m_ChooseFriend.Location = new System.Drawing.Point(422, 190);
+            this.m_ChooseFriend.Name = "m_ChooseFriend";
+            this.m_ChooseFriend.RecivedInfo = null;
+            this.m_ChooseFriend.Size = new System.Drawing.Size(153, 26);
+            this.m_ChooseFriend.TabIndex = 77;
+            // 
+            // m_ViewFriendButton
+            // 
+            this.m_ViewFriendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.m_ViewFriendButton.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Friend;
+            this.m_ViewFriendButton.Location = new System.Drawing.Point(422, 218);
+            this.m_ViewFriendButton.Name = "m_ViewFriendButton";
+            this.m_ViewFriendButton.PageChoice = FacebookPages.Code.Buttons.ePageChoice.FriendPage;
+            this.m_ViewFriendButton.RecivedInfo = null;
+            this.m_ViewFriendButton.Size = new System.Drawing.Size(153, 28);
+            this.m_ViewFriendButton.TabIndex = 78;
+            this.m_ViewFriendButton.Text = "View Selected Friend";
+            this.m_ViewFriendButton.UseVisualStyleBackColor = true;
+            this.m_ViewFriendButton.Click += new System.EventHandler(this.m_ViewFriendButton_Click);
+            // 
             // WallPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkBlue;
+            this.Controls.Add(this.m_ViewFriendButton);
+            this.Controls.Add(this.m_ChooseFriend);
+            this.Controls.Add(this.m_FillNumberOfFriends);
+            this.Controls.Add(this.m_NumberOfFriendsLabel);
             this.Controls.Add(this.m_PostViewButton);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.coverPicture);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.profilePicture);
             this.Controls.Add(this.textBoxFullName);
-            this.Controls.Add(this.frienedButton);
             this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.pictureButton);
             this.Name = "WallPage";
@@ -177,11 +219,14 @@ namespace FacebookPages.Pages
         private System.Windows.Forms.TextBox textBox1;
         private Buttons.PageSwitchButton pictureButton;
         private Buttons.PageSwitchButton aboutButton;
-        private Buttons.PageSwitchButton frienedButton;
         private System.Windows.Forms.TextBox textBoxFullName;
         private System.Windows.Forms.PictureBox profilePicture;
         private System.Windows.Forms.PictureBox coverPicture;
         private Code.Buttons.PostViewButton m_PostViewButton;
         protected Buttons.PageSwitchButton logoutButton;
+        private System.Windows.Forms.Label m_NumberOfFriendsLabel;
+        private System.Windows.Forms.Label m_FillNumberOfFriends;
+        protected LoadInfoComboBox m_ChooseFriend;
+        private PageSwitchAndLoadButton m_ViewFriendButton;
     }
 }
