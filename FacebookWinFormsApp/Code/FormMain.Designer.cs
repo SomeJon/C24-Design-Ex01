@@ -48,6 +48,7 @@ namespace FacebookClient.Code
             this.ClientSize = new System.Drawing.Size(846, 593);
             this.Controls.Add(this.m_ViewPanelControl);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.ResumeLayout(false);
 

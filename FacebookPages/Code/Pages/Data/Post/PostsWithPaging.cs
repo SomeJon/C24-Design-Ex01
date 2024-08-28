@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages.Data.Post
 {
-    public class PostsWithPaging<T> : PageData where T : FacebookWrapper.ObjectModel.Post
+    public class PostsWithPaging<T> : PageData where T : UpdatedPostData
     {
         private Paging m_Paging;
         public List<T> Posts { get; } = new List<T>();
@@ -97,7 +97,7 @@ namespace FacebookPages.Code.Pages.Data.Post
         {
             base.ResetForReFetch();
             Posts?.Clear();
-            m_Paging?.Clear();
+            m_Paging = null;
         }
 
         public void SwitchConnection(string i_Connection)
@@ -118,7 +118,7 @@ namespace FacebookPages.Code.Pages.Data.Post
             nextPosts.Connection = Connection;
             nextPosts.PageFetcherObject = PageFetcherObject;
             keyValuePairs = Paging.GetKeyValueParamtersFromUrl(this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
-            
+
             nextPosts.TryFetchAndLoadPageData(null, keyValuePairs);
 
             if (nextPosts.Posts.Count > 0)

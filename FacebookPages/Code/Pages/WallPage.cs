@@ -21,6 +21,7 @@ namespace FacebookPages.Pages
     {
         public override Color BackColor { get; set; }
         public WallPageData PageData { private get; set; }
+        public static readonly object sr_PageDataLock = new object();
 
         public WallPage()
         {
@@ -65,39 +66,18 @@ namespace FacebookPages.Pages
             PageSwitchButton_Click(sender, e);
         }
 
-        private void FetchMorePostsInBackground()
-        {
-            lock (PageData)
-            {
-                PageData.Posts.TryToAddNextPage();
-            }
-
-            // Invoke back to the main thread to update the UI
-            //try
-            this.Invoke((MethodInvoker)delegate
-            {
-                updatePageWithData(PageData.Posts.Posts);
-            });
-
-            //catch(Exception i_Ignore) { } find name of specific crash case
-        }
 
         private void FetchDataInBackground()
         {
-            lock (PageData)
+            lock (sr_PageDataLock)
             {
                 PageData.TryFetchAndLoadPageData();
             }
 
-            // Invoke back to the main thread to update the UI
-            //try
             this.Invoke((MethodInvoker)delegate
             {
                 updatePageWithData(PageData.Posts.Posts);
             });
-            
-            //catch(Exception i_Ignore) { } find name of specific crash case
-
         }
 
         private void updatePageWithData(List<UpdatedPostData> data)
@@ -108,7 +88,7 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_ChangeConnectionRequest(object sender, EventArgs e)
         {
-            lock(PageData)
+            lock(sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
                 PageData.Posts.SwitchConnection
@@ -120,7 +100,7 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_MorePostsRequest(object sender, EventArgs e)
         {
-            lock (PageData)
+            lock (sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
                 PageData.Posts.TryToAddNextPage();

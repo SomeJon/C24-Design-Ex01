@@ -96,8 +96,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Code\Pages\Data\HasSetData.cs" />
+    <Compile Include="Code\Pages\Data\Post\Filter\FilterData.cs" />
     <Compile Include="Code\Pages\Data\Post\Paging.cs" />
     <Compile Include="Code\Pages\Data\Post\PostsWithPaging.cs" />
+    <Compile Include="Code\Pages\Data\Post\Sort\SortByDatePublished.cs" />
     <Compile Include="Code\Pages\Data\Post\UpdatedPostData.cs" />
     <Compile Include="Code\Pages\Data\WallPageData.cs" />
     <Compile Include="Code\Pages\Data\IPageData.cs" />
@@ -184,9 +186,6 @@
       <Name>FetchHandler</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Code\Pages\Data\Post\Filter\" />
-    <Folder Include="Code\Pages\Data\Post\Sort\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

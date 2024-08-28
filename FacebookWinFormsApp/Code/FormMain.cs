@@ -27,6 +27,8 @@ namespace FacebookClient.Code
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
             switchToLoginPage();
+            FilterForm filterForm = new FilterForm();
+            filterForm.Show();
 
             if (Properties.Settings.Default.SaveData)
             {
