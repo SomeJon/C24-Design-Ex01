@@ -40,14 +40,14 @@ namespace FacebookPages.Pages
             // 
             // buttonReturn
             // 
-            this.buttonReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.buttonReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReturn.Location = new System.Drawing.Point(4, 4);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReturn.Name = "buttonReturn";
             this.buttonReturn.PageChoice = FacebookPages.Code.Buttons.ePageChoice.WallPage;
             this.buttonReturn.Size = new System.Drawing.Size(70, 38);
             this.buttonReturn.TabIndex = 76;
-            this.buttonReturn.Text = "return";
+            this.buttonReturn.Text = "Return";
             this.buttonReturn.UseVisualStyleBackColor = true;
             this.buttonReturn.Click += new System.EventHandler(this.switchPageButton_Click);
             // 
