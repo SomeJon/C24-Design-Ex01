@@ -45,8 +45,8 @@
             this.m_MaxDateLabel = new System.Windows.Forms.Label();
             this.m_MinDateLabel = new System.Windows.Forms.Label();
             this.m_ReverseOrderCheckBox = new System.Windows.Forms.CheckBox();
-            this.m_Confirm = new FacebookPages.Buttons.LoadInfoButton();
             this.m_MatchAllFiltersCheckBox = new System.Windows.Forms.CheckBox();
+            this.m_Confirm = new FacebookPages.Buttons.LoadInfoButton();
             this.SuspendLayout();
             // 
             // m_Cancel
@@ -88,10 +88,11 @@
             "Post Date Updated",
             "Post Writer",
             "Post Type",
-            "Post Likes"});
+            "Post Likes",
+            "Post Comments"});
             this.m_SortList.Location = new System.Drawing.Point(32, 46);
             this.m_SortList.Name = "m_SortList";
-            this.m_SortList.Size = new System.Drawing.Size(143, 94);
+            this.m_SortList.Size = new System.Drawing.Size(143, 112);
             this.m_SortList.TabIndex = 3;
             // 
             // m_FromHeader
@@ -213,23 +214,12 @@
             // 
             this.m_ReverseOrderCheckBox.AutoSize = true;
             this.m_ReverseOrderCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_ReverseOrderCheckBox.Location = new System.Drawing.Point(32, 146);
+            this.m_ReverseOrderCheckBox.Location = new System.Drawing.Point(32, 164);
             this.m_ReverseOrderCheckBox.Name = "m_ReverseOrderCheckBox";
             this.m_ReverseOrderCheckBox.Size = new System.Drawing.Size(134, 22);
             this.m_ReverseOrderCheckBox.TabIndex = 22;
             this.m_ReverseOrderCheckBox.Text = "Reverse order";
             this.m_ReverseOrderCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // m_Confirm
-            // 
-            this.m_Confirm.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.AppId;
-            this.m_Confirm.Location = new System.Drawing.Point(689, 273);
-            this.m_Confirm.Name = "m_Confirm";
-            this.m_Confirm.RecivedInfo = null;
-            this.m_Confirm.Size = new System.Drawing.Size(105, 52);
-            this.m_Confirm.TabIndex = 0;
-            this.m_Confirm.Text = "Confirm";
-            this.m_Confirm.UseVisualStyleBackColor = true;
             // 
             // m_MatchAllFiltersCheckBox
             // 
@@ -241,6 +231,18 @@
             this.m_MatchAllFiltersCheckBox.TabIndex = 23;
             this.m_MatchAllFiltersCheckBox.Text = "Match All Filters";
             this.m_MatchAllFiltersCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // m_Confirm
+            // 
+            this.m_Confirm.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.AppId;
+            this.m_Confirm.Location = new System.Drawing.Point(689, 273);
+            this.m_Confirm.Name = "m_Confirm";
+            this.m_Confirm.RecivedInfo = null;
+            this.m_Confirm.Size = new System.Drawing.Size(105, 52);
+            this.m_Confirm.TabIndex = 0;
+            this.m_Confirm.Text = "Confirm";
+            this.m_Confirm.UseVisualStyleBackColor = true;
+            this.m_Confirm.Click += new System.EventHandler(this.m_Confirm_Click);
             // 
             // FilterForm
             // 

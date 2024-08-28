@@ -13,7 +13,7 @@ namespace FacebookPages.Code.Pages.Data.Post
         public int NumOfComments => 
             m_DynamicData.comments.summary.total_count != null ?
             (int)m_DynamicData.comments.summary.total_count : 0;
-        public int NumOfLikes => m_DynamicData.reactions.summary.total_count != null ?
+        public int NumOfLikes => m_DynamicData.reactions?.summary?.total_count != null ?
             (int)m_DynamicData.reactions.summary.total_count : 0;
         public string ImageUrl => m_DynamicData.full_picture != null? 
             (string)m_DynamicData.full_picture : "";

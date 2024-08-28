@@ -35,8 +35,8 @@ namespace FacebookPages.Pages.Data
         {
             FilterData = new DataFilter();
 
-            PostsWithPaging.FilterData = FilterData;
             FilterData.UserSource = i_User;
+            PostsWithPaging.FilterData = FilterData;
             FilterData.AvailableUsersToSelect.Add(i_User);
 
             foreach (User friend in i_User.Friends)

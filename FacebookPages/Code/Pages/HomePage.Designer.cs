@@ -31,7 +31,6 @@ namespace FacebookPages.Code.Pages
         private void InitializeComponent()
         {
             this.useCase1Button = new FacebookPages.Buttons.PageSwitchButton();
-            this.pageSwitchButton1 = new FacebookPages.Buttons.PageSwitchButton();
             this.SuspendLayout();
             // 
             // logoutButton
@@ -51,28 +50,14 @@ namespace FacebookPages.Code.Pages
             this.useCase1Button.UseVisualStyleBackColor = true;
             this.useCase1Button.Click += new System.EventHandler(this.PageSwitchButton_Click);
             // 
-            // pageSwitchButton1
-            // 
-            this.pageSwitchButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.pageSwitchButton1.Location = new System.Drawing.Point(238, 246);
-            this.pageSwitchButton1.Name = "pageSwitchButton1";
-            this.pageSwitchButton1.PageChoice = ePageChoice.UseCase1Page;
-            this.pageSwitchButton1.Size = new System.Drawing.Size(133, 31);
-            this.pageSwitchButton1.TabIndex = 77;
-            this.pageSwitchButton1.Text = "Use Case 2";
-            this.pageSwitchButton1.UseVisualStyleBackColor = true;
-            this.pageSwitchButton1.Click += new System.EventHandler(this.PageSwitchButton_Click);
-            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pageSwitchButton1);
             this.Controls.Add(this.useCase1Button);
             this.Name = "HomePage";
             this.Controls.SetChildIndex(this.logoutButton, 0);
             this.Controls.SetChildIndex(this.useCase1Button, 0);
-            this.Controls.SetChildIndex(this.pageSwitchButton1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,6 +66,5 @@ namespace FacebookPages.Code.Pages
         #endregion
 
         private FacebookPages.Buttons.PageSwitchButton useCase1Button;
-        private FacebookPages.Buttons.PageSwitchButton pageSwitchButton1;
     }
 }

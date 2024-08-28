@@ -16,6 +16,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
             Status,
             Photo,
             ContainsPhoto,
+            DateFilter,
             ContainsText
         }
 
@@ -67,7 +68,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
                 case eFilterCondition.ContainsText:
                     return filterByContainsText;
                 default:
-                    throw new ArgumentException("Invalid filter condition", nameof(i_FilterCondition));
+                    return i_PostData => true;
             }
         }
 

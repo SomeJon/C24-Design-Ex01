@@ -15,6 +15,8 @@ namespace FacebookClient.Code
 {
     public partial class FilterForm : Form
     {
+        public bool Confirmed { get; private set; } = false;
+
         public FilterForm()
         {
             InitializeComponent();
@@ -95,6 +97,11 @@ namespace FacebookClient.Code
         private void m_Cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void m_Confirm_Click(object sender, EventArgs e)
+        {
+            Confirmed = true;
         }
     }
 }

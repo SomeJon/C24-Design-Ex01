@@ -59,14 +59,12 @@ namespace FacebookClient.Code
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
                 LoggedUser = LoginResult.LoggedInUser;
-                //LoggedUser = LoggedUser.Friends[0];
 
                 if(m_SaveLogin)
                 {
                     Properties.Settings.Default.AccessToken = LoginResult.AccessToken;
                     Properties.Settings.Default.Save();
                 }
-
 
                 switchToHomePage();
             }
@@ -116,19 +114,26 @@ namespace FacebookClient.Code
                     AppSettings.s_AppID = loadInfoHolder.RecivedInfo.ToString();
                     break;
                 case eInfoChoice.Filter:
-                    FilterForm getFilters = new FilterForm();
-                    PostsWithPaging<UpdatedPostData> dataToProcess = 
-                        loadInfoHolder.RecivedInfo as PostsWithPaging<UpdatedPostData>;
-
-                    getFilters.LoadData(dataToProcess.FilterData);
-                    getFilters.ShowDialog();
-
-                    dataToProcess.FilterData = getFilters.GetData();
-
+                    filterLoadRequest(loadInfoHolder);
                     break;
                 default:
                     MessageBox.Show("Unkown Error!");
                     break;
+            }
+        }
+
+        private static void filterLoadRequest(HasDataInfo loadInfoHolder)
+        {
+            FilterForm getFilters = new FilterForm();
+            PostsWithPaging<UpdatedPostData> dataToProcess =
+                loadInfoHolder.RecivedInfo as PostsWithPaging<UpdatedPostData>;
+
+            getFilters.LoadData(dataToProcess.FilterData);
+            getFilters.ShowDialog();
+
+            if (getFilters.Confirmed)
+            {
+                dataToProcess.FilterData = getFilters.GetData();
             }
         }
 

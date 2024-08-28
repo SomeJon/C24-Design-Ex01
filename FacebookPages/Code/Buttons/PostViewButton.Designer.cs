@@ -32,7 +32,6 @@
             this.m_MorePostsButton = new System.Windows.Forms.Button();
             this.m_NumOfPostsInfo = new System.Windows.Forms.TextBox();
             this.m_PostImage = new System.Windows.Forms.PictureBox();
-            this.m_InstructionLabel = new System.Windows.Forms.Label();
             this.m_FromLabel = new System.Windows.Forms.Label();
             this.m_ReactionNumLabel = new System.Windows.Forms.Label();
             this.m_CommentsNumLabel = new System.Windows.Forms.Label();
@@ -41,9 +40,9 @@
             this.m_FillName = new System.Windows.Forms.Label();
             this.m_PostTypeChoiceComboBox = new System.Windows.Forms.ComboBox();
             this.m_ChangeConnectionButton = new System.Windows.Forms.Button();
+            this.m_LoadAllButton = new System.Windows.Forms.Button();
             this.m_FilterButton = new FacebookPages.Buttons.LoadInfoButton();
             this.m_PostsList = new FacebookPages.Code.Buttons.LoadInfoListBox();
-            this.m_LoadAllButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.m_PostImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +60,7 @@
             // m_NumOfPostsInfo
             // 
             this.m_NumOfPostsInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_NumOfPostsInfo.Location = new System.Drawing.Point(2, 69);
+            this.m_NumOfPostsInfo.Location = new System.Drawing.Point(4, 75);
             this.m_NumOfPostsInfo.Name = "m_NumOfPostsInfo";
             this.m_NumOfPostsInfo.ReadOnly = true;
             this.m_NumOfPostsInfo.Size = new System.Drawing.Size(113, 20);
@@ -80,16 +79,6 @@
             this.m_PostImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.m_PostImage.TabIndex = 6;
             this.m_PostImage.TabStop = false;
-            // 
-            // m_InstructionLabel
-            // 
-            this.m_InstructionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_InstructionLabel.AutoSize = true;
-            this.m_InstructionLabel.Location = new System.Drawing.Point(3, 88);
-            this.m_InstructionLabel.Name = "m_InstructionLabel";
-            this.m_InstructionLabel.Size = new System.Drawing.Size(163, 13);
-            this.m_InstructionLabel.TabIndex = 7;
-            this.m_InstructionLabel.Text = "(Doublt click on a post to open it)";
             // 
             // m_FromLabel
             // 
@@ -181,6 +170,17 @@
             this.m_ChangeConnectionButton.UseVisualStyleBackColor = true;
             this.m_ChangeConnectionButton.Click += new System.EventHandler(this.m_ChangeConnectionButton_Click);
             // 
+            // m_LoadAllButton
+            // 
+            this.m_LoadAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_LoadAllButton.Location = new System.Drawing.Point(396, 75);
+            this.m_LoadAllButton.Name = "m_LoadAllButton";
+            this.m_LoadAllButton.Size = new System.Drawing.Size(102, 25);
+            this.m_LoadAllButton.TabIndex = 19;
+            this.m_LoadAllButton.Text = "Load All Matching";
+            this.m_LoadAllButton.UseVisualStyleBackColor = true;
+            this.m_LoadAllButton.Click += new System.EventHandler(this.m_LoadAllButton_Click);
+            // 
             // m_FilterButton
             // 
             this.m_FilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -199,7 +199,7 @@
             this.m_PostsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.m_PostsList.FormattingEnabled = true;
-            this.m_PostsList.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.AppId;
+            this.m_PostsList.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Post;
             this.m_PostsList.Items.AddRange(new object[] {
             "(dd/mm/yy)|TYPE| Waiting For Info"});
             this.m_PostsList.Location = new System.Drawing.Point(0, 0);
@@ -208,17 +208,7 @@
             this.m_PostsList.Size = new System.Drawing.Size(391, 69);
             this.m_PostsList.TabIndex = 0;
             this.m_PostsList.SelectedIndexChanged += new System.EventHandler(this.m_PostsList_SelectedIndexChanged);
-            // 
-            // m_LoadAllButton
-            // 
-            this.m_LoadAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_LoadAllButton.Location = new System.Drawing.Point(396, 75);
-            this.m_LoadAllButton.Name = "m_LoadAllButton";
-            this.m_LoadAllButton.Size = new System.Drawing.Size(102, 25);
-            this.m_LoadAllButton.TabIndex = 19;
-            this.m_LoadAllButton.Text = "Load All Matching";
-            this.m_LoadAllButton.UseVisualStyleBackColor = true;
-            this.m_LoadAllButton.Click += new System.EventHandler(this.m_LoadAllButton_Click);
+            this.m_PostsList.DoubleClick += new System.EventHandler(this.m_PostsList_DoubleClick);
             // 
             // PostViewButton
             // 
@@ -235,7 +225,6 @@
             this.Controls.Add(this.m_CommentsNumLabel);
             this.Controls.Add(this.m_ReactionNumLabel);
             this.Controls.Add(this.m_FromLabel);
-            this.Controls.Add(this.m_InstructionLabel);
             this.Controls.Add(this.m_PostImage);
             this.Controls.Add(this.m_NumOfPostsInfo);
             this.Controls.Add(this.m_MorePostsButton);
@@ -252,7 +241,6 @@
         private System.Windows.Forms.Button m_MorePostsButton;
         private System.Windows.Forms.TextBox m_NumOfPostsInfo;
         private System.Windows.Forms.PictureBox m_PostImage;
-        private System.Windows.Forms.Label m_InstructionLabel;
         protected LoadInfoListBox m_PostsList;
         private System.Windows.Forms.Label m_FromLabel;
         private System.Windows.Forms.Label m_ReactionNumLabel;

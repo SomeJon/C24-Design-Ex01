@@ -15,6 +15,7 @@ namespace FacebookPages.Code.Pages.Data.Post
         private Paging m_Paging;
         private DataFilter DataFilter;
         private List<T> m_Posts = new List<T>();
+        public bool HasNext { get; private set; } = true;
         public DataFilter FilterData 
         {
             get
@@ -24,11 +25,19 @@ namespace FacebookPages.Code.Pages.Data.Post
             set
             {
                 bool refatchNeeded = false;
+                bool dateRefatchNeeded = false;
 
-                if(DataFilter?.UserSource != value.UserSource)
+                if(DataFilter?.UserSource != value.UserSource && PageFetcherObject != null)
                 {
                     PageFetcherObject.UserFetchData.UserId = value.UserSource.Id;
                     refatchNeeded = true;
+                }
+
+                value.Conditions.TryGetValue(FilterMethod.eFilterCondition.DateFilter, out dateRefatchNeeded);
+                if (dateRefatchNeeded)
+                {
+                    tryToGetAllInDates(value.MaxDate, value.MinDate);
+                    refatchNeeded = !dateRefatchNeeded;
                 }
 
                 if (refatchNeeded)
@@ -149,6 +158,7 @@ namespace FacebookPages.Code.Pages.Data.Post
             base.ResetForReFetch();
             m_Posts?.Clear();
             m_Paging = null;
+            HasNext = true;
         }
 
         public void SwitchConnection(string i_Connection)
@@ -166,22 +176,48 @@ namespace FacebookPages.Code.Pages.Data.Post
             Dictionary<string, string> keyValuePairs;
             PostsWithPaging<T> nextPosts = new PostsWithPaging<T>();
 
-
-            nextPosts.Connection = Connection;
-            nextPosts.PageFetcherObject = PageFetcherObject;
-            keyValuePairs = Paging.GetKeyValueParamtersFromUrl
-                (this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
-
-            nextPosts.TryFetchAndLoadPageData(null, keyValuePairs);
-
-            if (nextPosts.m_Posts.Count > 0)
+            if (HasNext)
             {
-                m_Posts.AddRange(nextPosts.m_Posts);
-                Paging = nextPosts.Paging;
-                success = true;
+                nextPosts.Connection = Connection;
+                nextPosts.PageFetcherObject = PageFetcherObject;
+                keyValuePairs = Paging.GetKeyValueParamtersFromUrl
+                    (this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
+
+                nextPosts.TryFetchAndLoadPageData(null, keyValuePairs);
+
+                if (nextPosts.m_Posts.Count > 0)
+                {
+                    m_Posts.AddRange(nextPosts.m_Posts);
+                    Paging = nextPosts.Paging;
+                    success = true;
+                }
+                else
+                {
+                    HasNext = false;
+                }
             }
 
             return success;
+        }
+
+        private void tryToGetAllInDates(DateTime i_Until, DateTime i_since)
+        {
+            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
+
+            keyValuePairs.Add("until", DataFilter.ToUnixTimestamp(i_Until).ToString());
+            keyValuePairs.Add("since", DataFilter.ToUnixTimestamp(i_since).ToString());
+
+            this.FetchNext = true;
+            this.TryFetchAndLoadPageData(null, keyValuePairs);
+
+            try
+            {
+                while (TryToAddNextPage()) ;
+            }
+            catch (System.InvalidOperationException i_InvalidOperation)
+            {
+                MessageBox.Show(i_InvalidOperation.Message + " :: Plesae wait a little while and try again.", "Error");
+            }
         }
     }
 }

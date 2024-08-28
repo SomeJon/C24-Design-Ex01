@@ -141,7 +141,9 @@ namespace FacebookPages.Pages
             this.m_PostViewButton.TabIndex = 73;
             this.m_PostViewButton.MorePostsRequest += new System.EventHandler(this.m_PostViewButton_MorePostsRequest);
             this.m_PostViewButton.ChangeConnectionRequest += new System.EventHandler(this.m_PostViewButton_ChangeConnectionRequest);
+            this.m_PostViewButton.PostSelected += new System.EventHandler(this.m_PostViewButton_PostSelected);
             this.m_PostViewButton.FilterRequest += new System.EventHandler(this.m_PostViewButton_FilterRequest);
+            this.m_PostViewButton.LoadAllPosts += new System.EventHandler(this.m_PostViewButton_LoadAllPosts);
             // 
             // m_NumberOfFriendsLabel
             // 

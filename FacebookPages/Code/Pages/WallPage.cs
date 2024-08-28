@@ -81,9 +81,9 @@ namespace FacebookPages.Pages
                     updatePageWithData(PageData.PostsWithPaging.Posts);
                 });
             } 
-            catch (System.InvalidOperationException e) 
+            catch (System.InvalidOperationException i_InvalidOperation) 
             {
-                MessageBox.Show(e.Message, "Error");
+                MessageBox.Show(i_InvalidOperation.Message, "Error");
             }
 
         }
@@ -125,6 +125,30 @@ namespace FacebookPages.Pages
             (sender as HasDataInfo).RecivedInfo = PageData.PostsWithPaging;
             OnRecivedInfo(sender, e);
             updatePageWithData(PageData.PostsWithPaging.Posts);
+        }
+
+        private void m_PostViewButton_LoadAllPosts(object sender, EventArgs e)
+        {
+            lock (sr_PageDataLock)
+            {
+                try
+                {
+                    while (PageData.PostsWithPaging.TryToAddNextPage())
+                    {
+                        m_PostViewButton.Refresh();
+                    }
+                }
+                catch (System.InvalidOperationException i_InvalidOperation)
+                {
+                    MessageBox.Show(i_InvalidOperation.Message, "Error");
+                }
+                updatePageWithData(PageData.PostsWithPaging.Posts);
+            }
+        }
+
+        private void m_PostViewButton_PostSelected(object sender, EventArgs e)
+        {
+            OnRecivedInfo(sender, e);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace FacebookPages.Code.Buttons
     {
         public event EventHandler MorePostsRequest;
         public event EventHandler ChangeConnectionRequest;
+        public event EventHandler PostSelected;
         public event EventHandler FilterRequest;
         public event EventHandler LoadAllPosts;
 
@@ -91,6 +92,11 @@ namespace FacebookPages.Code.Buttons
         private void m_LoadAllButton_Click(object sender, EventArgs e)
         {
             LoadAllPosts?.Invoke(sender, e);
+        }
+
+        private void m_PostsList_DoubleClick(object sender, EventArgs e)
+        {
+            PostSelected?.Invoke(sender, e);
         }
     }
 }
