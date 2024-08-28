@@ -21,5 +21,17 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
         public bool ReverseOrder { get; set; } = false;
         public bool MatchAllFilters { get; set; } = false;
         public string TextContainsString { get; set; } = null;
+
+        public static long ToUnixTimestamp(DateTime i_DateTime)
+        {
+            DateTimeOffset dateTimeOffset = new DateTimeOffset(i_DateTime.ToUniversalTime());
+            return dateTimeOffset.ToUnixTimeSeconds();
+        }
+
+        public static DateTime FromUnixTimestamp(long i_UnixTimestamp)
+        {
+            DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(i_UnixTimestamp);
+            return dateTimeOffset.UtcDateTime;
+        }
     }
 }

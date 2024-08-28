@@ -20,13 +20,12 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
         }
 
         public static Func<UpdatedPostData, bool> GetCombinedFilter
-            (Dictionary<eFilterCondition, bool> i_FilterConditions, string i_ContainTextString = null)
+            (Dictionary<eFilterCondition, bool> i_FilterConditions,
+                string i_ContainTextString = null)
         {
-            Func<UpdatedPostData, bool> combinedFilter = i_PostData => true;
-
             if (i_FilterConditions == null || i_FilterConditions.Count == 0)
             {
-                return combinedFilter; // No filters applied, return all posts
+                return i_PostData => true;
             }
 
             if (!string.IsNullOrEmpty(i_ContainTextString))
@@ -34,16 +33,22 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
                 ContainTextString = i_ContainTextString;
             }
 
-            foreach (var filterCondition in i_FilterConditions)
+            var activeFilters = i_FilterConditions
+                .Where(filter => filter.Value)
+                .Select(filter => GetFilter(filter.Key))
+                .ToList();
+
+            if (activeFilters.Count == 0)
             {
-                if (filterCondition.Value) // Only apply the filter if the condition is set to true
-                {
-                    Func<UpdatedPostData, bool> currentFilter = GetFilter(filterCondition.Key);
-                    combinedFilter = combineFilters(combinedFilter, currentFilter);
-                }
+                return i_PostData => true;
             }
 
-            return combinedFilter;
+            return i_PostData =>
+            {
+                return MatchAllFilters
+                    ? activeFilters.All(filter => filter(i_PostData))
+                    : activeFilters.Any(filter => filter(i_PostData));
+            };
         }
 
 
@@ -91,19 +96,6 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
         {
             return !string.IsNullOrEmpty(i_PostData.Message) && 
                 i_PostData.Message.Contains(ContainTextString);
-        }
-
-        private static Func<UpdatedPostData, bool> combineFilters
-            (Func<UpdatedPostData, bool> i_FirstFilter, Func<UpdatedPostData, bool> i_SecondFilter)
-        {
-            if (MatchAllFilters)
-            {
-                return i_PostData => i_FirstFilter(i_PostData) && i_SecondFilter(i_PostData);
-            }
-            else
-            {
-                return i_PostData => i_FirstFilter(i_PostData) || i_SecondFilter(i_PostData);
-            }
         }
     }
 }

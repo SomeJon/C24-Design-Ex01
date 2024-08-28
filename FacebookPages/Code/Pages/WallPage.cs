@@ -111,7 +111,11 @@ namespace FacebookPages.Pages
             lock (sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
-                PageData.PostsWithPaging.TryToAddNextPage();
+                if (!PageData.PostsWithPaging.TryToAddNextPage())
+                {
+                    MessageBox.Show("No more Posts were found", "Posts request", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
                 updatePageWithData(PageData.PostsWithPaging.Posts);
             }
         }

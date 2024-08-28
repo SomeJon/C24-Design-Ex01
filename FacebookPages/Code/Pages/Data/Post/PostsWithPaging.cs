@@ -23,9 +23,16 @@ namespace FacebookPages.Code.Pages.Data.Post
             }
             set
             {
+                bool refatchNeeded = false;
+
                 if(DataFilter?.UserSource != value.UserSource)
                 {
                     PageFetcherObject.UserFetchData.UserId = value.UserSource.Id;
+                    refatchNeeded = true;
+                }
+
+                if (refatchNeeded)
+                {
                     TryFetchAndLoadPageData();
                 }
 
@@ -36,6 +43,7 @@ namespace FacebookPages.Code.Pages.Data.Post
         {
             get
             {
+                FilterMethod.MatchAllFilters = FilterData.MatchAllFilters;
                 Func<UpdatedPostData, bool> combinedFilter = FilterMethod.GetCombinedFilter
                     (FilterData.Conditions, FilterData.TextContainsString);
                 List<T> filteredPosts = new List<T>(m_Posts);
@@ -152,15 +160,17 @@ namespace FacebookPages.Code.Pages.Data.Post
             }
         }
 
-        public void TryToAddNextPage()
+        public bool TryToAddNextPage()
         {
+            bool success = false;
             Dictionary<string, string> keyValuePairs;
             PostsWithPaging<T> nextPosts = new PostsWithPaging<T>();
 
 
             nextPosts.Connection = Connection;
             nextPosts.PageFetcherObject = PageFetcherObject;
-            keyValuePairs = Paging.GetKeyValueParamtersFromUrl(this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
+            keyValuePairs = Paging.GetKeyValueParamtersFromUrl
+                (this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
 
             nextPosts.TryFetchAndLoadPageData(null, keyValuePairs);
 
@@ -168,11 +178,10 @@ namespace FacebookPages.Code.Pages.Data.Post
             {
                 m_Posts.AddRange(nextPosts.m_Posts);
                 Paging = nextPosts.Paging;
+                success = true;
             }
-            else
-            {
-                MessageBox.Show("No more Posts to retrieve", "Posts request", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+
+            return success;
         }
     }
 }
