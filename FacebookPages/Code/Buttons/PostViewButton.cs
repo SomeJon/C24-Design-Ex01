@@ -56,7 +56,7 @@ namespace FacebookPages.Code.Buttons
 
             if (post != null)
             {
-                if (post.ImageUrl != null)
+                if (!string.IsNullOrEmpty(post.ImageUrl))
                 {
                     m_PostImage.LoadAsync(post.ImageUrl);
                 }

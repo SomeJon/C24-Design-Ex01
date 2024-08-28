@@ -1,4 +1,6 @@
-﻿using FacebookWrapper.ObjectModel;
+﻿using FacebookPages.Code.Pages.Data.Post.Filter;
+using FacebookPages.Code.Pages.Data.Post.Sort;
+using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,30 @@ namespace FacebookPages.Code.Pages.Data.Post
     public class PostsWithPaging<T> : PageData where T : UpdatedPostData
     {
         private Paging m_Paging;
-        public List<T> Posts { get; } = new List<T>();
+        private List<T> m_Posts = new List<T>();
+        public FilterData FilterData { get; set; }
+        public List<T> Posts
+        {
+            get
+            {
+                Func<UpdatedPostData, bool> combinedFilter = FilterMethod.GetCombinedFilter(FilterData.Conditions);
+                List<T> filteredPosts = new List<T>(m_Posts);
+
+                if (FilterData != null)
+                {
+                    filteredPosts = m_Posts.Where(post => combinedFilter(post)).ToList();
+
+                    filteredPosts.Sort(SortingMethod.GetComparer(FilterData.SortingMethod));
+
+                    if (FilterData.ReverseOrder)
+                    {
+                        filteredPosts.Reverse();
+                    }
+                }
+
+                return filteredPosts;
+            }
+        }
         public Paging Paging
         {
             get
@@ -84,19 +109,19 @@ namespace FacebookPages.Code.Pages.Data.Post
         }
         };
 
-        protected Dictionary<eLoadOptions, string> CurrentFieldsToLoad = sr_FieldsToLoad; //allowing some modification for the future! its importent
+        protected Dictionary<eLoadOptions, string> CurrentFieldsToLoad = sr_FieldsToLoad;
 
         protected override Dictionary<eLoadOptions, string> FieldsToLoad => CurrentFieldsToLoad;
 
         protected override void InitializeAfterSet()
         {
-            AddToCollection(m_DynamicData.data, Posts);
+            AddToCollection(m_DynamicData.data, m_Posts);
         }
 
         protected override void ResetForReFetch()
         {
             base.ResetForReFetch();
-            Posts?.Clear();
+            m_Posts?.Clear();
             m_Paging = null;
         }
 
@@ -121,9 +146,9 @@ namespace FacebookPages.Code.Pages.Data.Post
 
             nextPosts.TryFetchAndLoadPageData(null, keyValuePairs);
 
-            if (nextPosts.Posts.Count > 0)
+            if (nextPosts.m_Posts.Count > 0)
             {
-                Posts.AddRange(nextPosts.Posts);
+                m_Posts.AddRange(nextPosts.m_Posts);
                 Paging = nextPosts.Paging;
             }
             else

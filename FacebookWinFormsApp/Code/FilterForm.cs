@@ -26,5 +26,14 @@ namespace FacebookClient.Code
                 e.Handled = true;
             }
         }
+
+        private void m_AddUserButton_Click(object sender, EventArgs e)
+        {
+            if(m_PossibleUsersComboBox.SelectedItem != null) 
+            {
+                m_ListOfSelectedUsers.Items.Add(m_PossibleUsersComboBox.SelectedItem);
+                m_PossibleUsersComboBox.Items.Remove(m_PossibleUsersComboBox.SelectedItem);
+            }
+        }
     }
 }

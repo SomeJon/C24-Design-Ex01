@@ -76,7 +76,7 @@ namespace FacebookPages.Pages
 
             this.Invoke((MethodInvoker)delegate
             {
-                updatePageWithData(PageData.Posts.Posts);
+                updatePageWithData(PageData.PostsWithPaging.Posts);
             });
         }
 
@@ -91,9 +91,9 @@ namespace FacebookPages.Pages
             lock(sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
-                PageData.Posts.SwitchConnection
+                PageData.PostsWithPaging.SwitchConnection
                     (((sender as System.Windows.Forms.ComboBox).SelectedItem as string).ToLower());
-                updatePageWithData(PageData.Posts.Posts);
+                updatePageWithData(PageData.PostsWithPaging.Posts);
             }
 
         }
@@ -103,8 +103,8 @@ namespace FacebookPages.Pages
             lock (sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
-                PageData.Posts.TryToAddNextPage();
-                updatePageWithData(PageData.Posts.Posts);
+                PageData.PostsWithPaging.TryToAddNextPage();
+                updatePageWithData(PageData.PostsWithPaging.Posts);
             }
         }
     }

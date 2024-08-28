@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 using FacebookPages.Code.Pages.Data.Post;
+using FacebookPages.Code.Pages.Data.Post.Filter;
 
 namespace FacebookPages.Pages.Data
 {
@@ -18,19 +19,29 @@ namespace FacebookPages.Pages.Data
         public string FirstName { get; protected set; }
         public string LastName { get; protected set; }
         public FacebookObjectCollection<User> Friends { get; protected set; }
-        public PostsWithPaging<UpdatedPostData> Posts { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
+        public PostsWithPaging<UpdatedPostData> PostsWithPaging { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
+        public FilterData FilterData { get; protected set; }
 
         public override void TryFetchAndLoadPageData(
             UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
             base.TryFetchAndLoadPageData(i_FetchData, i_KeyValueParamtersPairs);
-            Posts.Connection = "feed";
-            Posts.PageFetcherObject = this.PageFetcherObject;
-            Posts.TryFetchAndLoadPageData();
+            PostsWithPaging.Connection = "feed";
+            PostsWithPaging.PageFetcherObject = this.PageFetcherObject;
+            PostsWithPaging.TryFetchAndLoadPageData();
         }
 
         public void LoadUserWallData(User i_User)
         {
+            FilterData = new FilterData();
+
+            PostsWithPaging.FilterData = FilterData;
+            FilterData.UsersSource.Add(i_User);
+            foreach (User friend in i_User.Friends)
+            {
+                FilterData.AvailableUsersToSelect.Add(friend);
+            }
+
             CoverPicUrl =
                 i_User?.Albums
                 .FirstOrDefault<Album>(

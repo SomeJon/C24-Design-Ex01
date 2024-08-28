@@ -39,10 +39,8 @@
             this.m_AddHeaderLabel = new System.Windows.Forms.Label();
             this.m_PossibleUsersComboBox = new System.Windows.Forms.ComboBox();
             this.m_MinLikesLabel = new System.Windows.Forms.Label();
-            this.m_NumberOfPostsLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.m_FillNumOfPostsBox = new System.Windows.Forms.TextBox();
             this.m_Confirm = new FacebookPages.Buttons.LoadInfoButton();
             this.m_TextContainsLabel = new System.Windows.Forms.Label();
             this.m_TextContainsBox = new System.Windows.Forms.TextBox();
@@ -51,6 +49,7 @@
             this.m_MaxDateLabel = new System.Windows.Forms.Label();
             this.m_MinDateLabel = new System.Windows.Forms.Label();
             this.m_ReverseOrderCheckBox = new System.Windows.Forms.CheckBox();
+            this.m_AddUserButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // m_Cancel
@@ -116,11 +115,10 @@
             "Photo",
             "Contains Photo",
             "Date Filter",
-            "Text Filter",
-            "Number Of Posts Filter"});
+            "Text Filter"});
             this.m_FilterCheckedList.Location = new System.Drawing.Point(191, 46);
             this.m_FilterCheckedList.Name = "m_FilterCheckedList";
-            this.m_FilterCheckedList.Size = new System.Drawing.Size(189, 137);
+            this.m_FilterCheckedList.Size = new System.Drawing.Size(189, 118);
             this.m_FilterCheckedList.TabIndex = 5;
             // 
             // m_ListOfSelectedUsers
@@ -169,16 +167,6 @@
             this.m_MinLikesLabel.Size = new System.Drawing.Size(0, 25);
             this.m_MinLikesLabel.TabIndex = 11;
             // 
-            // m_NumberOfPostsLabel
-            // 
-            this.m_NumberOfPostsLabel.AutoSize = true;
-            this.m_NumberOfPostsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_NumberOfPostsLabel.Location = new System.Drawing.Point(186, 302);
-            this.m_NumberOfPostsLabel.Name = "m_NumberOfPostsLabel";
-            this.m_NumberOfPostsLabel.Size = new System.Drawing.Size(197, 25);
-            this.m_NumberOfPostsLabel.TabIndex = 12;
-            this.m_NumberOfPostsLabel.Text = "Number Of Posts:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -196,15 +184,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 25);
             this.label2.TabIndex = 13;
-            // 
-            // m_FillNumOfPostsBox
-            // 
-            this.m_FillNumOfPostsBox.Location = new System.Drawing.Point(386, 304);
-            this.m_FillNumOfPostsBox.Name = "m_FillNumOfPostsBox";
-            this.m_FillNumOfPostsBox.Size = new System.Drawing.Size(70, 24);
-            this.m_FillNumOfPostsBox.TabIndex = 15;
-            this.m_FillNumOfPostsBox.Text = "25";
-            this.m_FillNumOfPostsBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_FillNumOfPostsBox_KeyPress);
             // 
             // m_Confirm
             // 
@@ -283,12 +262,23 @@
             this.m_ReverseOrderCheckBox.Text = "Reverse order";
             this.m_ReverseOrderCheckBox.UseVisualStyleBackColor = true;
             // 
+            // m_AddUserButton
+            // 
+            this.m_AddUserButton.Location = new System.Drawing.Point(515, 106);
+            this.m_AddUserButton.Name = "m_AddUserButton";
+            this.m_AddUserButton.Size = new System.Drawing.Size(57, 23);
+            this.m_AddUserButton.TabIndex = 23;
+            this.m_AddUserButton.Text = "Add";
+            this.m_AddUserButton.UseVisualStyleBackColor = true;
+            this.m_AddUserButton.Click += new System.EventHandler(this.m_AddUserButton_Click);
+            // 
             // FilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(806, 337);
+            this.Controls.Add(this.m_AddUserButton);
             this.Controls.Add(this.m_ReverseOrderCheckBox);
             this.Controls.Add(this.m_MinDateLabel);
             this.Controls.Add(this.m_MaxDateLabel);
@@ -296,10 +286,8 @@
             this.Controls.Add(this.m_MinDatePicker);
             this.Controls.Add(this.m_TextContainsBox);
             this.Controls.Add(this.m_TextContainsLabel);
-            this.Controls.Add(this.m_FillNumOfPostsBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.m_NumberOfPostsLabel);
             this.Controls.Add(this.m_MinLikesLabel);
             this.Controls.Add(this.m_PossibleUsersComboBox);
             this.Controls.Add(this.m_AddHeaderLabel);
@@ -313,6 +301,7 @@
             this.Controls.Add(this.m_Cancel);
             this.Controls.Add(this.m_Confirm);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -336,10 +325,8 @@
         private System.Windows.Forms.Label m_AddHeaderLabel;
         private System.Windows.Forms.ComboBox m_PossibleUsersComboBox;
         private System.Windows.Forms.Label m_MinLikesLabel;
-        private System.Windows.Forms.Label m_NumberOfPostsLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox m_FillNumOfPostsBox;
         private System.Windows.Forms.Label m_TextContainsLabel;
         private System.Windows.Forms.TextBox m_TextContainsBox;
         private System.Windows.Forms.DateTimePicker m_MinDatePicker;
@@ -347,5 +334,6 @@
         private System.Windows.Forms.Label m_MaxDateLabel;
         private System.Windows.Forms.Label m_MinDateLabel;
         private System.Windows.Forms.CheckBox m_ReverseOrderCheckBox;
+        private System.Windows.Forms.Button m_AddUserButton;
     }
 }
