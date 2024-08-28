@@ -43,13 +43,14 @@
             this.m_ChangeConnectionButton = new System.Windows.Forms.Button();
             this.m_FilterButton = new FacebookPages.Buttons.LoadInfoButton();
             this.m_PostsList = new FacebookPages.Code.Buttons.LoadInfoListBox();
+            this.m_LoadAllButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.m_PostImage)).BeginInit();
             this.SuspendLayout();
             // 
             // m_MorePostsButton
             // 
             this.m_MorePostsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_MorePostsButton.Location = new System.Drawing.Point(396, 75);
+            this.m_MorePostsButton.Location = new System.Drawing.Point(396, 51);
             this.m_MorePostsButton.Name = "m_MorePostsButton";
             this.m_MorePostsButton.Size = new System.Drawing.Size(102, 25);
             this.m_MorePostsButton.TabIndex = 1;
@@ -172,7 +173,7 @@
             // m_ChangeConnectionButton
             // 
             this.m_ChangeConnectionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_ChangeConnectionButton.Location = new System.Drawing.Point(304, 75);
+            this.m_ChangeConnectionButton.Location = new System.Drawing.Point(307, 75);
             this.m_ChangeConnectionButton.Name = "m_ChangeConnectionButton";
             this.m_ChangeConnectionButton.Size = new System.Drawing.Size(87, 25);
             this.m_ChangeConnectionButton.TabIndex = 17;
@@ -184,7 +185,7 @@
             // 
             this.m_FilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.m_FilterButton.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Filter;
-            this.m_FilterButton.Location = new System.Drawing.Point(504, 75);
+            this.m_FilterButton.Location = new System.Drawing.Point(500, 75);
             this.m_FilterButton.Name = "m_FilterButton";
             this.m_FilterButton.RecivedInfo = null;
             this.m_FilterButton.Size = new System.Drawing.Size(83, 25);
@@ -208,11 +209,23 @@
             this.m_PostsList.TabIndex = 0;
             this.m_PostsList.SelectedIndexChanged += new System.EventHandler(this.m_PostsList_SelectedIndexChanged);
             // 
+            // m_LoadAllButton
+            // 
+            this.m_LoadAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_LoadAllButton.Location = new System.Drawing.Point(396, 75);
+            this.m_LoadAllButton.Name = "m_LoadAllButton";
+            this.m_LoadAllButton.Size = new System.Drawing.Size(102, 25);
+            this.m_LoadAllButton.TabIndex = 19;
+            this.m_LoadAllButton.Text = "Load All Matching";
+            this.m_LoadAllButton.UseVisualStyleBackColor = true;
+            this.m_LoadAllButton.Click += new System.EventHandler(this.m_LoadAllButton_Click);
+            // 
             // PostViewButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Controls.Add(this.m_LoadAllButton);
             this.Controls.Add(this.m_FilterButton);
             this.Controls.Add(this.m_ChangeConnectionButton);
             this.Controls.Add(this.m_PostTypeChoiceComboBox);
@@ -250,5 +263,6 @@
         private System.Windows.Forms.ComboBox m_PostTypeChoiceComboBox;
         private System.Windows.Forms.Button m_ChangeConnectionButton;
         private FacebookPages.Buttons.LoadInfoButton m_FilterButton;
+        private System.Windows.Forms.Button m_LoadAllButton;
     }
 }

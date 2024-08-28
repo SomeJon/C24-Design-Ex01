@@ -17,6 +17,7 @@ namespace FacebookPages.Code.Buttons
         public event EventHandler MorePostsRequest;
         public event EventHandler ChangeConnectionRequest;
         public event EventHandler FilterRequest;
+        public event EventHandler LoadAllPosts;
 
         public LoadInfoListBox LoadInfoListBox 
         {
@@ -85,6 +86,11 @@ namespace FacebookPages.Code.Buttons
         private void m_FilterButton_Click(object sender, EventArgs e)
         {
             FilterRequest?.Invoke(sender, e);
+        }
+
+        private void m_LoadAllButton_Click(object sender, EventArgs e)
+        {
+            LoadAllPosts?.Invoke(sender, e);
         }
     }
 }
