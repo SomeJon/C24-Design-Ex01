@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages.Data
 {
@@ -34,7 +35,6 @@ namespace FacebookPages.Code.Pages.Data
         protected virtual void FetchAndLoadData(Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
             string requestData = FieldsToLoad[eLoadOptions.Full];
-
             m_DynamicData = PageFetcherObject.Fetch(requestData, Connection, i_KeyValueParamtersPairs);
             LoadOption = DynamicWrapper.eLoadOptions.Full;
             InitializeAfterSet();
@@ -48,11 +48,18 @@ namespace FacebookPages.Code.Pages.Data
                 PageFetcherObject = new Fetcher(i_FetchData);
             }
 
-            if (FetchNext && !string.IsNullOrEmpty(DataUserId))
+            if (FetchNext || !string.IsNullOrEmpty(DataUserId))
             {
-                ResetForReFetch();
-                FetchAndLoadData(i_KeyValueParamtersPairs);
-                ConfirmLoad();
+                try
+                {
+                    ResetForReFetch();
+                    FetchAndLoadData(i_KeyValueParamtersPairs);
+                    ConfirmLoad();
+                } catch (Facebook.FacebookOAuthException i_FailedLoad)
+                {
+                    MessageBox.Show(i_FailedLoad.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
         }
 

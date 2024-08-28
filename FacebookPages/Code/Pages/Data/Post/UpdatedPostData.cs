@@ -10,9 +10,13 @@ namespace FacebookPages.Code.Pages.Data.Post
 {
     public class UpdatedPostData : FacebookWrapper.ObjectModel.Post, HasSetData
     {
-        public int NumOfComments => (int)m_DynamicData.comments.summary.total_count;
-        public int NumOfLikes => (int)m_DynamicData.reactions.summary.total_count;
-        public string ImageUrl => (string)m_DynamicData.full_picture;
+        public int NumOfComments => 
+            m_DynamicData.comments.summary.total_count != null ?
+            (int)m_DynamicData.comments.summary.total_count : 0;
+        public int NumOfLikes => m_DynamicData.reactions.summary.total_count != null ?
+            (int)m_DynamicData.reactions.summary.total_count : 0;
+        public string ImageUrl => m_DynamicData.full_picture != null? 
+            (string)m_DynamicData.full_picture : "";
         public DateTime? LastPostEdit
         {
             get

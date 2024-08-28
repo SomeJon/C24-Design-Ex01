@@ -139,6 +139,8 @@ namespace FacebookPages.Pages
             this.m_PostViewButton.Name = "m_PostViewButton";
             this.m_PostViewButton.Size = new System.Drawing.Size(661, 101);
             this.m_PostViewButton.TabIndex = 73;
+            this.m_PostViewButton.MorePostsRequest += new System.EventHandler(this.m_PostViewButton_MorePostsRequest);
+            this.m_PostViewButton.ChangeConnectionRequest += new System.EventHandler(this.m_PostViewButton_ChangeConnectionRequest);
             // 
             // m_NumberOfFriendsLabel
             // 

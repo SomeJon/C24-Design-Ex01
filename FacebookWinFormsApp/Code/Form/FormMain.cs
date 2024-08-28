@@ -96,23 +96,32 @@ namespace FacebookClient.Code
 
         private void loadInfoButton_RecievedInfo(object sender, EventArgs e)
         {
-            HasDataInfo loadInfoButton = sender as HasDataInfo;
-            
+            ProcessReceivedData(sender);
+        }
+
+        private void switchPageButton_ChangePage(object sender, EventArgs e)
+        {
+            pageSwitching(sender);
+        }
+
+        private static void ProcessReceivedData(object i_DataHolder)
+        {
+            HasDataInfo loadInfoButton = i_DataHolder as HasDataInfo;
+
             switch (loadInfoButton.InfoChoice)
             {
                 case eInfoChoice.AppId:
                     AppSettings.s_AppID = loadInfoButton.RecivedInfo.ToString();
                     break;
                 default:
-                    MessageBox.Show("Big big error happened!");
+                    MessageBox.Show("Unkown Error!");
                     break;
-
             }
         }
 
-        private void switchPageButton_ChangePage(object sender, EventArgs e)
+        private void pageSwitching(object i_ChoiceDataHolder)
         {
-            HasSwitchPage switchPageButton = sender as HasSwitchPage;
+            HasSwitchPage switchPageButton = i_ChoiceDataHolder as HasSwitchPage;
 
             switch (switchPageButton.PageChoice)
             {
@@ -140,9 +149,9 @@ namespace FacebookClient.Code
                     switchToAboutPage();
                     break;
                 case ePageChoice.FriendPage:
-                    User recievedFriend = (sender as HasDataInfo).RecivedInfo as User;
+                    User recievedFriend = (i_ChoiceDataHolder as HasDataInfo).RecivedInfo as User;
 
-                    if(recievedFriend.Id == LoggedUser.Id)
+                    if (recievedFriend.Id == LoggedUser.Id)
                     {
                         switchToHomePage();
                     }
@@ -151,7 +160,7 @@ namespace FacebookClient.Code
                         m_CurrentWallPage = new WallPage();
                         switchToUserPage(recievedFriend);
                     }
-                    
+
                     break;
                 case ePageChoice.PicturePage:
                     switchToPhotoPage();

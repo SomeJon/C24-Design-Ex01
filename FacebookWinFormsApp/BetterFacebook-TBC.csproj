@@ -155,12 +155,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\back-icon-6-603907859.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\gear-computer-icons-clip-art-gears-vector-c77d15e91af4e43fe5b26693eebf3c3d.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Examples Project\Example.csproj">
       <Project>{1ab44001-b417-474f-90b7-96176b7a98f8}</Project>
       <Name>Example</Name>
@@ -173,6 +167,9 @@
       <Project>{b3f772bb-2b99-48b1-982c-81633a06924e}</Project>
       <Name>FetchHandler</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

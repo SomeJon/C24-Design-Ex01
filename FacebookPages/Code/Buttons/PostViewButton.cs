@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,9 @@ namespace FacebookPages.Code.Buttons
 {
     public partial class PostViewButton : UserControl
     {
+        public event EventHandler MorePostsRequest;
+        public event EventHandler ChangeConnectionRequest;
+
         public LoadInfoListBox LoadInfoListBox 
         {
             get
@@ -25,9 +29,25 @@ namespace FacebookPages.Code.Buttons
             } 
         }
 
+        public void Clear()
+        {
+            m_NumOfPostsInfo.Text = "Waiting for posts";
+            m_NumOfPostsInfo.Text = "Waiting for data";
+            LoadInfoListBox.DataSource = null;
+            LoadInfoListBox.Items.Clear();
+            this.m_PostImage.Image = null;
+            this.Refresh();
+        }
+
         public PostViewButton()
         {
             InitializeComponent();
+        }
+
+        public override void Refresh()
+        {
+            m_NumOfPostsInfo.Text = "Showing - " + m_PostsList.Items.Count + " posts";
+            base.Refresh();
         }
 
         private void m_PostsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,6 +69,16 @@ namespace FacebookPages.Code.Buttons
                 m_FillReactions.Text = post.NumOfLikes.ToString();
                 m_FillName.Text = post.From?.ToString();
             }
+        }
+
+        private void m_MorePostsButton_Click(object sender, EventArgs e)
+        {
+            MorePostsRequest?.Invoke(sender, e);
+        }
+
+        private void m_ChangeConnectionButton_Click(object sender, EventArgs e)
+        {
+            ChangeConnectionRequest?.Invoke(m_PostTypeChoiceComboBox, e);
         }
     }
 }

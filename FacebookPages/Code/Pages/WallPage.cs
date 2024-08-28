@@ -65,9 +65,29 @@ namespace FacebookPages.Pages
             PageSwitchButton_Click(sender, e);
         }
 
+        private void FetchMorePostsInBackground()
+        {
+            lock (PageData)
+            {
+                PageData.Posts.TryToAddNextPage();
+            }
+
+            // Invoke back to the main thread to update the UI
+            //try
+            this.Invoke((MethodInvoker)delegate
+            {
+                updatePageWithData(PageData.Posts.Posts);
+            });
+
+            //catch(Exception i_Ignore) { } find name of specific crash case
+        }
+
         private void FetchDataInBackground()
         {
-            PageData.TryFetchAndLoadPageData();
+            lock (PageData)
+            {
+                PageData.TryFetchAndLoadPageData();
+            }
 
             // Invoke back to the main thread to update the UI
             //try
@@ -83,7 +103,29 @@ namespace FacebookPages.Pages
         private void updatePageWithData(List<UpdatedPostData> data)
         {
             m_PostViewButton.LoadInfoListBox.DataSource = data;
-            m_PostViewButton.LoadInfoListBox.Refresh();
+            m_PostViewButton.Refresh();
+        }
+
+        private void m_PostViewButton_ChangeConnectionRequest(object sender, EventArgs e)
+        {
+            lock(PageData)
+            {
+                m_PostViewButton.Clear();
+                PageData.Posts.SwitchConnection
+                    (((sender as System.Windows.Forms.ComboBox).SelectedItem as string).ToLower());
+                updatePageWithData(PageData.Posts.Posts);
+            }
+
+        }
+
+        private void m_PostViewButton_MorePostsRequest(object sender, EventArgs e)
+        {
+            lock (PageData)
+            {
+                m_PostViewButton.Clear();
+                PageData.Posts.TryToAddNextPage();
+                updatePageWithData(PageData.Posts.Posts);
+            }
         }
     }
 }

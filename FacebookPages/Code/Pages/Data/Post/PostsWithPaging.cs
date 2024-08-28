@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages.Data.Post
 {
@@ -103,7 +104,6 @@ namespace FacebookPages.Code.Pages.Data.Post
         {
             if (!string.Equals(i_Connection, Connection))
             {
-                ResetForReFetch();
                 Connection = i_Connection;
                 TryFetchAndLoadPageData();
             }
@@ -120,8 +120,16 @@ namespace FacebookPages.Code.Pages.Data.Post
             keyValuePairs = Paging.GetKeyValueParamtersFromUrl(this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
             
             nextPosts.TryFetchAndLoadPageData(null, keyValuePairs);
-            Posts.AddRange(nextPosts.Posts);
-            Paging = nextPosts.Paging;
+
+            if (nextPosts.Posts.Count > 0)
+            {
+                Posts.AddRange(nextPosts.Posts);
+                Paging = nextPosts.Paging;
+            }
+            else
+            {
+                MessageBox.Show("No more Posts to retrieve", "Posts request", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

@@ -56,7 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fetch\PagingResponse.cs" />
     <Compile Include="Fetch\Fetcher.cs" />
     <Compile Include="Fetch\UserFetchData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

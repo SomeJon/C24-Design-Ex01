@@ -20,29 +20,6 @@ namespace FetchHandler.Fetch
             UserFetchData = i_FetchData;
         }
 
-        public T FetchToObj<T>(string i_Fields, string i_Path = null)
-        {
-            FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToekn);
-            dynamic fieldsValue = new ExpandoObject();
-            string path = $"/{UserFetchData.UserId}";
-
-            if (!string.IsNullOrEmpty(i_Path))
-            {
-                path += "/" + i_Path;
-            }
-            
-            fieldsValue.fields = i_Fields;
-            dynamic loadObject = facebookClient.Get(path, fieldsValue);
-
-            return ConvertJsonTo<T>(loadObject.ToString());
-        }
-
-        private static T ConvertJsonTo<T>(string i_Json)
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            return serializer.Deserialize<T>(i_Json);
-        }
-
         public Object Fetch(string i_Fields, string i_Path = null, Dictionary<string, string> i_ParamtersToAdd = null, Type i_Type = null)
         {
             FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToekn);

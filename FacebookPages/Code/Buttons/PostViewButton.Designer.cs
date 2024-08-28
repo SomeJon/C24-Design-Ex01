@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostViewButton));
+            this.m_MorePostsButton = new System.Windows.Forms.Button();
             this.m_NumOfPostsInfo = new System.Windows.Forms.TextBox();
-            this.m_PostTypeChoice = new System.Windows.Forms.ListBox();
             this.m_PostImage = new System.Windows.Forms.PictureBox();
             this.m_InstructionLabel = new System.Windows.Forms.Label();
             this.m_FromLabel = new System.Windows.Forms.Label();
@@ -39,46 +39,39 @@
             this.m_FillComments = new System.Windows.Forms.Label();
             this.m_FillReactions = new System.Windows.Forms.Label();
             this.m_FillName = new System.Windows.Forms.Label();
+            this.m_PostTypeChoiceComboBox = new System.Windows.Forms.ComboBox();
+            this.m_ChangeConnectionButton = new System.Windows.Forms.Button();
             this.m_PostsList = new FacebookPages.Code.Buttons.LoadInfoListBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_PostImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // m_MorePostsButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(470, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 25);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "More posts";
-            this.button1.UseVisualStyleBackColor = true;
+            this.m_MorePostsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_MorePostsButton.Location = new System.Drawing.Point(396, 75);
+            this.m_MorePostsButton.Name = "m_MorePostsButton";
+            this.m_MorePostsButton.Size = new System.Drawing.Size(102, 25);
+            this.m_MorePostsButton.TabIndex = 1;
+            this.m_MorePostsButton.Text = "More posts";
+            this.m_MorePostsButton.UseVisualStyleBackColor = true;
+            this.m_MorePostsButton.Click += new System.EventHandler(this.m_MorePostsButton_Click);
             // 
             // m_NumOfPostsInfo
             // 
             this.m_NumOfPostsInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_NumOfPostsInfo.Location = new System.Drawing.Point(365, 80);
+            this.m_NumOfPostsInfo.Location = new System.Drawing.Point(2, 69);
             this.m_NumOfPostsInfo.Name = "m_NumOfPostsInfo";
-            this.m_NumOfPostsInfo.Size = new System.Drawing.Size(99, 20);
+            this.m_NumOfPostsInfo.ReadOnly = true;
+            this.m_NumOfPostsInfo.Size = new System.Drawing.Size(113, 20);
             this.m_NumOfPostsInfo.TabIndex = 3;
-            this.m_NumOfPostsInfo.Text = "Showing - 25 posts";
-            // 
-            // m_PostTypeChoice
-            // 
-            this.m_PostTypeChoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_PostTypeChoice.FormattingEnabled = true;
-            this.m_PostTypeChoice.Items.AddRange(new object[] {
-            "Feed",
-            "Posts"});
-            this.m_PostTypeChoice.Location = new System.Drawing.Point(276, 81);
-            this.m_PostTypeChoice.Name = "m_PostTypeChoice";
-            this.m_PostTypeChoice.Size = new System.Drawing.Size(83, 17);
-            this.m_PostTypeChoice.TabIndex = 4;
+            this.m_NumOfPostsInfo.Text = "Waiting for posts";
             // 
             // m_PostImage
             // 
             this.m_PostImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_PostImage.Image = ((System.Drawing.Image)(resources.GetObject("m_PostImage.Image")));
             this.m_PostImage.Location = new System.Drawing.Point(595, 0);
             this.m_PostImage.Name = "m_PostImage";
             this.m_PostImage.Size = new System.Drawing.Size(90, 71);
@@ -90,11 +83,11 @@
             // 
             this.m_InstructionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.m_InstructionLabel.AutoSize = true;
-            this.m_InstructionLabel.Location = new System.Drawing.Point(3, 87);
+            this.m_InstructionLabel.Location = new System.Drawing.Point(3, 88);
             this.m_InstructionLabel.Name = "m_InstructionLabel";
-            this.m_InstructionLabel.Size = new System.Drawing.Size(258, 13);
+            this.m_InstructionLabel.Size = new System.Drawing.Size(163, 13);
             this.m_InstructionLabel.TabIndex = 7;
-            this.m_InstructionLabel.Text = "(Single click to view short data, double click for more)";
+            this.m_InstructionLabel.Text = "(Doublt click on a post to open it)";
             // 
             // m_FromLabel
             // 
@@ -163,6 +156,29 @@
             this.m_FillName.TabIndex = 14;
             this.m_FillName.Text = "FillName";
             // 
+            // m_PostTypeChoiceComboBox
+            // 
+            this.m_PostTypeChoiceComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_PostTypeChoiceComboBox.FormattingEnabled = true;
+            this.m_PostTypeChoiceComboBox.Items.AddRange(new object[] {
+            "Feed",
+            "Posts"});
+            this.m_PostTypeChoiceComboBox.Location = new System.Drawing.Point(190, 75);
+            this.m_PostTypeChoiceComboBox.Name = "m_PostTypeChoiceComboBox";
+            this.m_PostTypeChoiceComboBox.Size = new System.Drawing.Size(108, 21);
+            this.m_PostTypeChoiceComboBox.TabIndex = 16;
+            // 
+            // m_ChangeConnectionButton
+            // 
+            this.m_ChangeConnectionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_ChangeConnectionButton.Location = new System.Drawing.Point(304, 75);
+            this.m_ChangeConnectionButton.Name = "m_ChangeConnectionButton";
+            this.m_ChangeConnectionButton.Size = new System.Drawing.Size(87, 25);
+            this.m_ChangeConnectionButton.TabIndex = 17;
+            this.m_ChangeConnectionButton.Text = "Chose Type";
+            this.m_ChangeConnectionButton.UseVisualStyleBackColor = true;
+            this.m_ChangeConnectionButton.Click += new System.EventHandler(this.m_ChangeConnectionButton_Click);
+            // 
             // m_PostsList
             // 
             this.m_PostsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -183,6 +199,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Controls.Add(this.m_ChangeConnectionButton);
+            this.Controls.Add(this.m_PostTypeChoiceComboBox);
             this.Controls.Add(this.m_FillName);
             this.Controls.Add(this.m_FillReactions);
             this.Controls.Add(this.m_FillComments);
@@ -191,9 +209,8 @@
             this.Controls.Add(this.m_FromLabel);
             this.Controls.Add(this.m_InstructionLabel);
             this.Controls.Add(this.m_PostImage);
-            this.Controls.Add(this.m_PostTypeChoice);
             this.Controls.Add(this.m_NumOfPostsInfo);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.m_MorePostsButton);
             this.Controls.Add(this.m_PostsList);
             this.Name = "PostViewButton";
             this.Size = new System.Drawing.Size(685, 101);
@@ -204,9 +221,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button m_MorePostsButton;
         private System.Windows.Forms.TextBox m_NumOfPostsInfo;
-        private System.Windows.Forms.ListBox m_PostTypeChoice;
         private System.Windows.Forms.PictureBox m_PostImage;
         private System.Windows.Forms.Label m_InstructionLabel;
         protected LoadInfoListBox m_PostsList;
@@ -216,5 +232,7 @@
         private System.Windows.Forms.Label m_FillComments;
         private System.Windows.Forms.Label m_FillReactions;
         private System.Windows.Forms.Label m_FillName;
+        private System.Windows.Forms.ComboBox m_PostTypeChoiceComboBox;
+        private System.Windows.Forms.Button m_ChangeConnectionButton;
     }
 }
