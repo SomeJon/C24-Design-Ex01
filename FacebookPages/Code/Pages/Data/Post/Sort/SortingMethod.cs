@@ -74,7 +74,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Sort
         {
             return Comparer<UpdatedPostData>.Create((x, y) =>
             {
-                return x.NumOfLikes.CompareTo(y.NumOfLikes);
+                return y.NumOfLikes.CompareTo(x.NumOfLikes);
             });
         }
 
@@ -82,7 +82,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Sort
         {
             return Comparer<UpdatedPostData>.Create((x, y) =>
             {
-                return x.NumOfComments.CompareTo(y.NumOfComments);
+                return y.NumOfComments.CompareTo(x.NumOfComments);
             });
         }
     }

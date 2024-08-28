@@ -20,7 +20,7 @@ namespace FacebookPages.Pages
     public partial class WallPage : BasePage
     {
         public override Color BackColor { get; set; }
-        public WallPageData PageData { private get; set; }
+        public WallPageData PageData { get; set; }
         public static readonly object sr_PageDataLock = new object();
 
         public WallPage()
@@ -74,10 +74,18 @@ namespace FacebookPages.Pages
                 PageData.TryFetchAndLoadPageData();
             }
 
-            this.Invoke((MethodInvoker)delegate
+            try
             {
-                updatePageWithData(PageData.PostsWithPaging.Posts);
-            });
+                this.Invoke((MethodInvoker)delegate
+                {
+                    updatePageWithData(PageData.PostsWithPaging.Posts);
+                });
+            } 
+            catch (System.InvalidOperationException e) 
+            {
+                MessageBox.Show(e.Message, "Error");
+            }
+
         }
 
         private void updatePageWithData(List<UpdatedPostData> data)
@@ -106,6 +114,13 @@ namespace FacebookPages.Pages
                 PageData.PostsWithPaging.TryToAddNextPage();
                 updatePageWithData(PageData.PostsWithPaging.Posts);
             }
+        }
+
+        private void m_PostViewButton_FilterRequest(object sender, EventArgs e)
+        {
+            (sender as HasDataInfo).RecivedInfo = PageData.PostsWithPaging;
+            OnRecivedInfo(sender, e);
+            updatePageWithData(PageData.PostsWithPaging.Posts);
         }
     }
 }

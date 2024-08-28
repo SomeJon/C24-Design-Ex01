@@ -13,13 +13,31 @@ namespace FacebookPages.Code.Pages.Data.Post
     public class PostsWithPaging<T> : PageData where T : UpdatedPostData
     {
         private Paging m_Paging;
+        private DataFilter DataFilter;
         private List<T> m_Posts = new List<T>();
-        public FilterData FilterData { get; set; }
+        public DataFilter FilterData 
+        {
+            get
+            {
+                return DataFilter;
+            }
+            set
+            {
+                if(DataFilter?.UserSource != value.UserSource)
+                {
+                    PageFetcherObject.UserFetchData.UserId = value.UserSource.Id;
+                    TryFetchAndLoadPageData();
+                }
+
+                DataFilter = value;
+            }
+        }
         public List<T> Posts
         {
             get
             {
-                Func<UpdatedPostData, bool> combinedFilter = FilterMethod.GetCombinedFilter(FilterData.Conditions);
+                Func<UpdatedPostData, bool> combinedFilter = FilterMethod.GetCombinedFilter
+                    (FilterData.Conditions, FilterData.TextContainsString);
                 List<T> filteredPosts = new List<T>(m_Posts);
 
                 if (FilterData != null)

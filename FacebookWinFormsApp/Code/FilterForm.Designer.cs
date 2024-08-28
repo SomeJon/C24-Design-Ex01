@@ -34,14 +34,10 @@
             this.m_SortList = new System.Windows.Forms.ListBox();
             this.m_FromHeader = new System.Windows.Forms.Label();
             this.m_FilterCheckedList = new System.Windows.Forms.CheckedListBox();
-            this.m_ListOfSelectedUsers = new System.Windows.Forms.ListBox();
-            this.m_ChosenHeaderLabel = new System.Windows.Forms.Label();
-            this.m_AddHeaderLabel = new System.Windows.Forms.Label();
             this.m_PossibleUsersComboBox = new System.Windows.Forms.ComboBox();
             this.m_MinLikesLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.m_Confirm = new FacebookPages.Buttons.LoadInfoButton();
             this.m_TextContainsLabel = new System.Windows.Forms.Label();
             this.m_TextContainsBox = new System.Windows.Forms.TextBox();
             this.m_MinDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -49,7 +45,8 @@
             this.m_MaxDateLabel = new System.Windows.Forms.Label();
             this.m_MinDateLabel = new System.Windows.Forms.Label();
             this.m_ReverseOrderCheckBox = new System.Windows.Forms.CheckBox();
-            this.m_AddUserButton = new System.Windows.Forms.Button();
+            this.m_Confirm = new FacebookPages.Buttons.LoadInfoButton();
+            this.m_MatchAllFiltersCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // m_Cancel
@@ -60,6 +57,7 @@
             this.m_Cancel.TabIndex = 1;
             this.m_Cancel.Text = "Cancel";
             this.m_Cancel.UseVisualStyleBackColor = true;
+            this.m_Cancel.Click += new System.EventHandler(this.m_Cancel_Click);
             // 
             // m_SortingHeaderLabel
             // 
@@ -100,7 +98,7 @@
             // 
             this.m_FromHeader.AutoSize = true;
             this.m_FromHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_FromHeader.Location = new System.Drawing.Point(402, 9);
+            this.m_FromHeader.Location = new System.Drawing.Point(459, 9);
             this.m_FromHeader.Name = "m_FromHeader";
             this.m_FromHeader.Size = new System.Drawing.Size(149, 25);
             this.m_FromHeader.TabIndex = 6;
@@ -121,39 +119,10 @@
             this.m_FilterCheckedList.Size = new System.Drawing.Size(189, 118);
             this.m_FilterCheckedList.TabIndex = 5;
             // 
-            // m_ListOfSelectedUsers
-            // 
-            this.m_ListOfSelectedUsers.FormattingEnabled = true;
-            this.m_ListOfSelectedUsers.ItemHeight = 18;
-            this.m_ListOfSelectedUsers.Location = new System.Drawing.Point(609, 71);
-            this.m_ListOfSelectedUsers.Name = "m_ListOfSelectedUsers";
-            this.m_ListOfSelectedUsers.Size = new System.Drawing.Size(143, 112);
-            this.m_ListOfSelectedUsers.TabIndex = 7;
-            // 
-            // m_ChosenHeaderLabel
-            // 
-            this.m_ChosenHeaderLabel.AutoSize = true;
-            this.m_ChosenHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_ChosenHeaderLabel.Location = new System.Drawing.Point(604, 43);
-            this.m_ChosenHeaderLabel.Name = "m_ChosenHeaderLabel";
-            this.m_ChosenHeaderLabel.Size = new System.Drawing.Size(92, 25);
-            this.m_ChosenHeaderLabel.TabIndex = 8;
-            this.m_ChosenHeaderLabel.Text = "Chosen";
-            // 
-            // m_AddHeaderLabel
-            // 
-            this.m_AddHeaderLabel.AutoSize = true;
-            this.m_AddHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_AddHeaderLabel.Location = new System.Drawing.Point(429, 46);
-            this.m_AddHeaderLabel.Name = "m_AddHeaderLabel";
-            this.m_AddHeaderLabel.Size = new System.Drawing.Size(53, 25);
-            this.m_AddHeaderLabel.TabIndex = 9;
-            this.m_AddHeaderLabel.Text = "Add";
-            // 
             // m_PossibleUsersComboBox
             // 
             this.m_PossibleUsersComboBox.FormattingEnabled = true;
-            this.m_PossibleUsersComboBox.Location = new System.Drawing.Point(434, 74);
+            this.m_PossibleUsersComboBox.Location = new System.Drawing.Point(614, 8);
             this.m_PossibleUsersComboBox.Name = "m_PossibleUsersComboBox";
             this.m_PossibleUsersComboBox.Size = new System.Drawing.Size(138, 26);
             this.m_PossibleUsersComboBox.TabIndex = 10;
@@ -184,17 +153,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 25);
             this.label2.TabIndex = 13;
-            // 
-            // m_Confirm
-            // 
-            this.m_Confirm.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.AppId;
-            this.m_Confirm.Location = new System.Drawing.Point(689, 273);
-            this.m_Confirm.Name = "m_Confirm";
-            this.m_Confirm.RecivedInfo = null;
-            this.m_Confirm.Size = new System.Drawing.Size(105, 52);
-            this.m_Confirm.TabIndex = 0;
-            this.m_Confirm.Text = "Confirm";
-            this.m_Confirm.UseVisualStyleBackColor = true;
             // 
             // m_TextContainsLabel
             // 
@@ -255,22 +213,34 @@
             // 
             this.m_ReverseOrderCheckBox.AutoSize = true;
             this.m_ReverseOrderCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_ReverseOrderCheckBox.Location = new System.Drawing.Point(32, 161);
+            this.m_ReverseOrderCheckBox.Location = new System.Drawing.Point(32, 146);
             this.m_ReverseOrderCheckBox.Name = "m_ReverseOrderCheckBox";
             this.m_ReverseOrderCheckBox.Size = new System.Drawing.Size(134, 22);
             this.m_ReverseOrderCheckBox.TabIndex = 22;
             this.m_ReverseOrderCheckBox.Text = "Reverse order";
             this.m_ReverseOrderCheckBox.UseVisualStyleBackColor = true;
             // 
-            // m_AddUserButton
+            // m_Confirm
             // 
-            this.m_AddUserButton.Location = new System.Drawing.Point(515, 106);
-            this.m_AddUserButton.Name = "m_AddUserButton";
-            this.m_AddUserButton.Size = new System.Drawing.Size(57, 23);
-            this.m_AddUserButton.TabIndex = 23;
-            this.m_AddUserButton.Text = "Add";
-            this.m_AddUserButton.UseVisualStyleBackColor = true;
-            this.m_AddUserButton.Click += new System.EventHandler(this.m_AddUserButton_Click);
+            this.m_Confirm.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.AppId;
+            this.m_Confirm.Location = new System.Drawing.Point(689, 273);
+            this.m_Confirm.Name = "m_Confirm";
+            this.m_Confirm.RecivedInfo = null;
+            this.m_Confirm.Size = new System.Drawing.Size(105, 52);
+            this.m_Confirm.TabIndex = 0;
+            this.m_Confirm.Text = "Confirm";
+            this.m_Confirm.UseVisualStyleBackColor = true;
+            // 
+            // m_MatchAllFiltersCheckBox
+            // 
+            this.m_MatchAllFiltersCheckBox.AutoSize = true;
+            this.m_MatchAllFiltersCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m_MatchAllFiltersCheckBox.Location = new System.Drawing.Point(191, 170);
+            this.m_MatchAllFiltersCheckBox.Name = "m_MatchAllFiltersCheckBox";
+            this.m_MatchAllFiltersCheckBox.Size = new System.Drawing.Size(148, 22);
+            this.m_MatchAllFiltersCheckBox.TabIndex = 23;
+            this.m_MatchAllFiltersCheckBox.Text = "Match All Filters";
+            this.m_MatchAllFiltersCheckBox.UseVisualStyleBackColor = true;
             // 
             // FilterForm
             // 
@@ -278,7 +248,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(806, 337);
-            this.Controls.Add(this.m_AddUserButton);
+            this.Controls.Add(this.m_MatchAllFiltersCheckBox);
             this.Controls.Add(this.m_ReverseOrderCheckBox);
             this.Controls.Add(this.m_MinDateLabel);
             this.Controls.Add(this.m_MaxDateLabel);
@@ -290,9 +260,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.m_MinLikesLabel);
             this.Controls.Add(this.m_PossibleUsersComboBox);
-            this.Controls.Add(this.m_AddHeaderLabel);
-            this.Controls.Add(this.m_ChosenHeaderLabel);
-            this.Controls.Add(this.m_ListOfSelectedUsers);
             this.Controls.Add(this.m_FromHeader);
             this.Controls.Add(this.m_FilterCheckedList);
             this.Controls.Add(this.m_FetchFilterHeaderLabel);
@@ -320,9 +287,6 @@
         private System.Windows.Forms.ListBox m_SortList;
         private System.Windows.Forms.Label m_FromHeader;
         private System.Windows.Forms.CheckedListBox m_FilterCheckedList;
-        private System.Windows.Forms.ListBox m_ListOfSelectedUsers;
-        private System.Windows.Forms.Label m_ChosenHeaderLabel;
-        private System.Windows.Forms.Label m_AddHeaderLabel;
         private System.Windows.Forms.ComboBox m_PossibleUsersComboBox;
         private System.Windows.Forms.Label m_MinLikesLabel;
         private System.Windows.Forms.Label label1;
@@ -334,6 +298,6 @@
         private System.Windows.Forms.Label m_MaxDateLabel;
         private System.Windows.Forms.Label m_MinDateLabel;
         private System.Windows.Forms.CheckBox m_ReverseOrderCheckBox;
-        private System.Windows.Forms.Button m_AddUserButton;
+        private System.Windows.Forms.CheckBox m_MatchAllFiltersCheckBox;
     }
 }

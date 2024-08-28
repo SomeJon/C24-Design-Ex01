@@ -13,6 +13,7 @@ namespace FacebookPages.Code.Buttons
         Post,
         Picture,
         Friend,
+        Filter,
         Exit,
     }
 }

@@ -9,6 +9,8 @@ using System.Linq;
 using FacebookPages.Code.Pages;
 using FacebookPages.Code.Buttons;
 using System.Drawing;
+using FacebookPages.Code.Pages.Data.Post.Filter;
+using FacebookPages.Code.Pages.Data.Post;
 
 namespace FacebookClient.Code
 {
@@ -27,8 +29,6 @@ namespace FacebookClient.Code
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
             switchToLoginPage();
-            FilterForm filterForm = new FilterForm();
-            filterForm.Show();
 
             if (Properties.Settings.Default.SaveData)
             {
@@ -108,12 +108,23 @@ namespace FacebookClient.Code
 
         private static void ProcessReceivedData(object i_DataHolder)
         {
-            HasDataInfo loadInfoButton = i_DataHolder as HasDataInfo;
+            HasDataInfo loadInfoHolder = i_DataHolder as HasDataInfo;
 
-            switch (loadInfoButton.InfoChoice)
+            switch (loadInfoHolder.InfoChoice)
             {
                 case eInfoChoice.AppId:
-                    AppSettings.s_AppID = loadInfoButton.RecivedInfo.ToString();
+                    AppSettings.s_AppID = loadInfoHolder.RecivedInfo.ToString();
+                    break;
+                case eInfoChoice.Filter:
+                    FilterForm getFilters = new FilterForm();
+                    PostsWithPaging<UpdatedPostData> dataToProcess = 
+                        loadInfoHolder.RecivedInfo as PostsWithPaging<UpdatedPostData>;
+
+                    getFilters.LoadData(dataToProcess.FilterData);
+                    getFilters.ShowDialog();
+
+                    dataToProcess.FilterData = getFilters.GetData();
+
                     break;
                 default:
                     MessageBox.Show("Unkown Error!");

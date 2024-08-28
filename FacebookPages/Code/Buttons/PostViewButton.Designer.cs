@@ -41,6 +41,7 @@
             this.m_FillName = new System.Windows.Forms.Label();
             this.m_PostTypeChoiceComboBox = new System.Windows.Forms.ComboBox();
             this.m_ChangeConnectionButton = new System.Windows.Forms.Button();
+            this.m_FilterButton = new FacebookPages.Buttons.LoadInfoButton();
             this.m_PostsList = new FacebookPages.Code.Buttons.LoadInfoListBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_PostImage)).BeginInit();
             this.SuspendLayout();
@@ -179,6 +180,19 @@
             this.m_ChangeConnectionButton.UseVisualStyleBackColor = true;
             this.m_ChangeConnectionButton.Click += new System.EventHandler(this.m_ChangeConnectionButton_Click);
             // 
+            // m_FilterButton
+            // 
+            this.m_FilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_FilterButton.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Filter;
+            this.m_FilterButton.Location = new System.Drawing.Point(504, 75);
+            this.m_FilterButton.Name = "m_FilterButton";
+            this.m_FilterButton.RecivedInfo = null;
+            this.m_FilterButton.Size = new System.Drawing.Size(83, 25);
+            this.m_FilterButton.TabIndex = 18;
+            this.m_FilterButton.Text = "Filter Posts";
+            this.m_FilterButton.UseVisualStyleBackColor = true;
+            this.m_FilterButton.Click += new System.EventHandler(this.m_FilterButton_Click);
+            // 
             // m_PostsList
             // 
             this.m_PostsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -199,6 +213,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Controls.Add(this.m_FilterButton);
             this.Controls.Add(this.m_ChangeConnectionButton);
             this.Controls.Add(this.m_PostTypeChoiceComboBox);
             this.Controls.Add(this.m_FillName);
@@ -234,5 +249,6 @@
         private System.Windows.Forms.Label m_FillName;
         private System.Windows.Forms.ComboBox m_PostTypeChoiceComboBox;
         private System.Windows.Forms.Button m_ChangeConnectionButton;
+        private FacebookPages.Buttons.LoadInfoButton m_FilterButton;
     }
 }

@@ -16,6 +16,7 @@ namespace FacebookPages.Code.Buttons
     {
         public event EventHandler MorePostsRequest;
         public event EventHandler ChangeConnectionRequest;
+        public event EventHandler FilterRequest;
 
         public LoadInfoListBox LoadInfoListBox 
         {
@@ -79,6 +80,11 @@ namespace FacebookPages.Code.Buttons
         private void m_ChangeConnectionButton_Click(object sender, EventArgs e)
         {
             ChangeConnectionRequest?.Invoke(m_PostTypeChoiceComboBox, e);
+        }
+
+        private void m_FilterButton_Click(object sender, EventArgs e)
+        {
+            FilterRequest?.Invoke(sender, e);
         }
     }
 }

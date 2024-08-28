@@ -20,7 +20,7 @@ namespace FacebookPages.Pages.Data
         public string LastName { get; protected set; }
         public FacebookObjectCollection<User> Friends { get; protected set; }
         public PostsWithPaging<UpdatedPostData> PostsWithPaging { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
-        public FilterData FilterData { get; protected set; }
+        public DataFilter FilterData { get; protected set; }
 
         public override void TryFetchAndLoadPageData(
             UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
@@ -33,10 +33,12 @@ namespace FacebookPages.Pages.Data
 
         public void LoadUserWallData(User i_User)
         {
-            FilterData = new FilterData();
+            FilterData = new DataFilter();
 
             PostsWithPaging.FilterData = FilterData;
-            FilterData.UsersSource.Add(i_User);
+            FilterData.UserSource = i_User;
+            FilterData.AvailableUsersToSelect.Add(i_User);
+
             foreach (User friend in i_User.Friends)
             {
                 FilterData.AvailableUsersToSelect.Add(friend);

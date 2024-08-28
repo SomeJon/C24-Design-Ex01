@@ -9,15 +9,17 @@ using static FacebookPages.Code.Pages.Data.Post.Sort.SortingMethod;
 
 namespace FacebookPages.Code.Pages.Data.Post.Filter
 {
-    public class FilterData
+    public class DataFilter
     {
-        public List<User> UsersSource { get; } = new List<User>();
-        public List<User> AvailableUsersToSelect { get; } = new List<User>();
-        public List<FilterMethod.eFilterCondition> Conditions { get; set; } = new List<FilterMethod.eFilterCondition>();
+        public User UserSource { get; set; }
+        public List<User> AvailableUsersToSelect { get; set; } = new List<User>();
+        public Dictionary<FilterMethod.eFilterCondition, bool> Conditions { get; set; } = 
+            new Dictionary<FilterMethod.eFilterCondition, bool>();
         public DateTime MinDate { get; set; }
         public DateTime MaxDate { get; set; }
         public SortingMethod.eSortingMethod SortingMethod { get; set; } = Sort.SortingMethod.eSortingMethod.ByDatePublished;
         public bool ReverseOrder { get; set; } = false;
+        public bool MatchAllFilters { get; set; } = false;
         public string TextContainsString { get; set; } = null;
     }
 }

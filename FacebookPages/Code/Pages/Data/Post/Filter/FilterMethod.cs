@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookPages.Code.Pages.Data.Post.Filter
 {
     public static class FilterMethod
     {
+        public static string ContainTextString { get; set; } = string.Empty;
+        public static bool MatchAllFilters { get; set; } = false;
         public enum eFilterCondition
         {
             Links,
             Status,
             Photo,
-            ContainsPhoto
+            ContainsPhoto,
+            ContainsText
         }
 
-        public static Func<UpdatedPostData, bool> GetCombinedFilter(List<eFilterCondition> i_FilterConditions)
+        public static Func<UpdatedPostData, bool> GetCombinedFilter
+            (Dictionary<eFilterCondition, bool> i_FilterConditions, string i_ContainTextString = null)
         {
             Func<UpdatedPostData, bool> combinedFilter = i_PostData => true;
 
@@ -24,14 +29,23 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
                 return combinedFilter; // No filters applied, return all posts
             }
 
-            foreach (eFilterCondition condition in i_FilterConditions)
+            if (!string.IsNullOrEmpty(i_ContainTextString))
             {
-                Func<UpdatedPostData, bool> currentFilter = GetFilter(condition);
-                combinedFilter = combineFilters(combinedFilter, currentFilter);
+                ContainTextString = i_ContainTextString;
+            }
+
+            foreach (var filterCondition in i_FilterConditions)
+            {
+                if (filterCondition.Value) // Only apply the filter if the condition is set to true
+                {
+                    Func<UpdatedPostData, bool> currentFilter = GetFilter(filterCondition.Key);
+                    combinedFilter = combineFilters(combinedFilter, currentFilter);
+                }
             }
 
             return combinedFilter;
         }
+
 
         private static Func<UpdatedPostData, bool> GetFilter(eFilterCondition i_FilterCondition)
         {
@@ -45,10 +59,13 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
                     return filterByPhoto;
                 case eFilterCondition.ContainsPhoto:
                     return filterByContainsPhoto;
+                case eFilterCondition.ContainsText:
+                    return filterByContainsText;
                 default:
                     throw new ArgumentException("Invalid filter condition", nameof(i_FilterCondition));
             }
         }
+
 
         private static bool filterByLink(UpdatedPostData i_PostData)
         {
@@ -67,13 +84,26 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
 
         private static bool filterByContainsPhoto(UpdatedPostData i_PostData)
         {
-            return string.IsNullOrEmpty(i_PostData.ImageUrl);
+            return !string.IsNullOrEmpty(i_PostData.ImageUrl);
+        }
+
+        private static bool filterByContainsText(UpdatedPostData i_PostData)
+        {
+            return !string.IsNullOrEmpty(i_PostData.Message) && 
+                i_PostData.Message.Contains(ContainTextString);
         }
 
         private static Func<UpdatedPostData, bool> combineFilters
             (Func<UpdatedPostData, bool> i_FirstFilter, Func<UpdatedPostData, bool> i_SecondFilter)
         {
-            return i_PostData => i_FirstFilter(i_PostData) && i_SecondFilter(i_PostData);
+            if (MatchAllFilters)
+            {
+                return i_PostData => i_FirstFilter(i_PostData) && i_SecondFilter(i_PostData);
+            }
+            else
+            {
+                return i_PostData => i_FirstFilter(i_PostData) || i_SecondFilter(i_PostData);
+            }
         }
     }
 }
