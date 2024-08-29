@@ -19,6 +19,7 @@ namespace FacebookPages.Code.Buttons
         public event EventHandler PostSelected;
         public event EventHandler FilterRequest;
         public event EventHandler LoadAllPosts;
+        public event EventHandler PostAnalyticRequest;
 
         public LoadInfoListBox LoadInfoListBox 
         {
@@ -97,6 +98,11 @@ namespace FacebookPages.Code.Buttons
         private void m_PostsList_DoubleClick(object sender, EventArgs e)
         {
             PostSelected?.Invoke(sender, e);
+        }
+
+        private void loadInfoButton1_Click(object sender, EventArgs e)
+        {
+            PostAnalyticRequest?.Invoke(sender, e);
         }
     }
 }

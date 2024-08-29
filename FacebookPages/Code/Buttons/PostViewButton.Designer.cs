@@ -41,6 +41,7 @@
             this.m_PostTypeChoiceComboBox = new System.Windows.Forms.ComboBox();
             this.m_ChangeConnectionButton = new System.Windows.Forms.Button();
             this.m_LoadAllButton = new System.Windows.Forms.Button();
+            this.loadInfoButton1 = new FacebookPages.Buttons.LoadInfoButton();
             this.m_FilterButton = new FacebookPages.Buttons.LoadInfoButton();
             this.m_PostsList = new FacebookPages.Code.Buttons.LoadInfoListBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_PostImage)).BeginInit();
@@ -181,6 +182,19 @@
             this.m_LoadAllButton.UseVisualStyleBackColor = true;
             this.m_LoadAllButton.Click += new System.EventHandler(this.m_LoadAllButton_Click);
             // 
+            // loadInfoButton1
+            // 
+            this.loadInfoButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.loadInfoButton1.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Analytics;
+            this.loadInfoButton1.Location = new System.Drawing.Point(500, 51);
+            this.loadInfoButton1.Name = "loadInfoButton1";
+            this.loadInfoButton1.RecivedInfo = null;
+            this.loadInfoButton1.Size = new System.Drawing.Size(83, 25);
+            this.loadInfoButton1.TabIndex = 20;
+            this.loadInfoButton1.Text = "Post Analytics";
+            this.loadInfoButton1.UseVisualStyleBackColor = true;
+            this.loadInfoButton1.Click += new System.EventHandler(this.loadInfoButton1_Click);
+            // 
             // m_FilterButton
             // 
             this.m_FilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -215,6 +229,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Controls.Add(this.loadInfoButton1);
             this.Controls.Add(this.m_LoadAllButton);
             this.Controls.Add(this.m_FilterButton);
             this.Controls.Add(this.m_ChangeConnectionButton);
@@ -252,5 +267,6 @@
         private System.Windows.Forms.Button m_ChangeConnectionButton;
         private FacebookPages.Buttons.LoadInfoButton m_FilterButton;
         private System.Windows.Forms.Button m_LoadAllButton;
+        private FacebookPages.Buttons.LoadInfoButton loadInfoButton1;
     }
 }

@@ -11,6 +11,7 @@ using FacebookPages.Code.Buttons;
 using System.Drawing;
 using FacebookPages.Code.Pages.Data.Post.Filter;
 using FacebookPages.Code.Pages.Data.Post;
+using System.Collections.Generic;
 
 namespace FacebookClient.Code
 {
@@ -104,7 +105,7 @@ namespace FacebookClient.Code
             pageSwitching(sender);
         }
 
-        private static void ProcessReceivedData(object i_DataHolder)
+        private void ProcessReceivedData(object i_DataHolder)
         {
             HasDataInfo loadInfoHolder = i_DataHolder as HasDataInfo;
 
@@ -116,13 +117,33 @@ namespace FacebookClient.Code
                 case eInfoChoice.Filter:
                     filterLoadRequest(loadInfoHolder);
                     break;
+                case eInfoChoice.Analytics:
+                    postAnalyticsDataHandling(loadInfoHolder);
+                    break;
+                case eInfoChoice.Post:
+                    PostView postView = new PostView();
+
+                    postView.LoadPostData(loadInfoHolder.RecivedInfo as UpdatedPostData);
+                    postView.Show();
+                    break;
                 default:
                     MessageBox.Show("Unkown Error!");
                     break;
             }
         }
 
-        private static void filterLoadRequest(HasDataInfo loadInfoHolder)
+        private void postAnalyticsDataHandling(HasDataInfo loadInfoHolder)
+        {
+            PostAnalyticData postAnalyticData = new PostAnalyticData();
+            PostAnalyticPage postAnalyticPage = new PostAnalyticPage();
+
+            postAnalyticData.PostData = loadInfoHolder.RecivedInfo as List<UpdatedPostData>;
+            postAnalyticPage.PageData = postAnalyticData;
+            loadEvents(postAnalyticPage);
+            m_ViewPanelControl.CurrentPage = postAnalyticPage;
+        }
+
+        private void filterLoadRequest(HasDataInfo loadInfoHolder)
         {
             FilterForm getFilters = new FilterForm();
             PostsWithPaging<UpdatedPostData> dataToProcess =

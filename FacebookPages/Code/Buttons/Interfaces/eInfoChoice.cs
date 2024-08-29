@@ -14,6 +14,7 @@ namespace FacebookPages.Code.Buttons
         Picture,
         Friend,
         Filter,
+        Analytics,
         Exit,
     }
 }

@@ -144,6 +144,7 @@ namespace FacebookPages.Pages
             this.m_PostViewButton.PostSelected += new System.EventHandler(this.m_PostViewButton_PostSelected);
             this.m_PostViewButton.FilterRequest += new System.EventHandler(this.m_PostViewButton_FilterRequest);
             this.m_PostViewButton.LoadAllPosts += new System.EventHandler(this.m_PostViewButton_LoadAllPosts);
+            this.m_PostViewButton.PostAnalyticRequest += new System.EventHandler(this.m_PostViewButton_PostAnalyticRequest);
             // 
             // m_NumberOfFriendsLabel
             // 

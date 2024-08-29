@@ -102,6 +102,7 @@ namespace FacebookClient.Code
         private void m_Confirm_Click(object sender, EventArgs e)
         {
             Confirmed = true;
+            this.Close();
         }
     }
 }

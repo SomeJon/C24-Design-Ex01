@@ -18,12 +18,12 @@ namespace FacebookPages.Pages
         public event EventHandler ChangePage;
         protected internal Thread FetchThread { get; set; }
 
-        protected void OnRecivedInfo(object sender, EventArgs e)
+        protected virtual void OnRecivedInfo(object sender, EventArgs e)
         {
             RecivedInfo?.Invoke(sender, e);
         }
 
-        protected void OnChangePage(object sender, EventArgs e)
+        protected virtual void OnChangePage(object sender, EventArgs e)
         {
             ChangePage?.Invoke(sender, e);
         }

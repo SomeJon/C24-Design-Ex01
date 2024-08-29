@@ -135,6 +135,8 @@ namespace FacebookPages.Pages
                 {
                     while (PageData.PostsWithPaging.TryToAddNextPage())
                     {
+                        m_PostViewButton.Clear();
+                        m_PostViewButton.LoadInfoListBox.DataSource = PageData.PostsWithPaging.Posts;
                         m_PostViewButton.Refresh();
                     }
                 }
@@ -148,6 +150,12 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_PostSelected(object sender, EventArgs e)
         {
+            OnRecivedInfo(sender, e);
+        }
+
+        private void m_PostViewButton_PostAnalyticRequest(object sender, EventArgs e)
+        {
+            (sender as HasDataInfo).RecivedInfo = PageData.PostsWithPaging.Posts;
             OnRecivedInfo(sender, e);
         }
     }
