@@ -12,7 +12,7 @@ namespace FacebookPages.Code.Buttons
     {
         private BasePage m_CurrentActivePage = new BasePage();
 
-        public BasePage CurrentPage 
+        public BasePage CurrentActivePage 
         { 
             get
             {

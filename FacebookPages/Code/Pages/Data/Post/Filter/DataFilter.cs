@@ -27,11 +27,5 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
             DateTimeOffset dateTimeOffset = new DateTimeOffset(i_DateTime.ToUniversalTime());
             return dateTimeOffset.ToUnixTimeSeconds();
         }
-
-        public static DateTime FromUnixTimestamp(long i_UnixTimestamp)
-        {
-            DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(i_UnixTimestamp);
-            return dateTimeOffset.UtcDateTime;
-        }
     }
 }

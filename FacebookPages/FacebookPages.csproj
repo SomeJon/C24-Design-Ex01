@@ -109,12 +109,6 @@
     <Compile Include="Code\Pages\Data\IPageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
-    <Compile Include="Code\Pages\HomePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\HomePage.Designer.cs">
-      <DependentUpon>HomePage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Code\Pages\PostAnalyticPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,7 +127,6 @@
     <Compile Include="Code\Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Pages\PageUtils.cs" />
     <Compile Include="Code\Pages\PhotosPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,9 +148,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\BasePage.resx">
       <DependentUpon>BasePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\HomePage.resx">
-      <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\PostAnalyticPage.resx">
       <DependentUpon>PostAnalyticPage.cs</DependentUpon>

@@ -13,21 +13,21 @@ namespace FacebookPages.Code.Pages.Data.Post
     public class PostsWithPaging<T> : PageData where T : UpdatedPostData
     {
         private Paging m_Paging;
-        private DataFilter DataFilter;
+        private DataFilter m_DataFilter;
         private List<T> m_Posts = new List<T>();
         public bool HasNext { get; private set; } = true;
         public DataFilter FilterData 
         {
             get
             {
-                return DataFilter;
+                return m_DataFilter;
             }
             set
             {
                 bool refatchNeeded = false;
                 bool dateRefatchNeeded = false;
 
-                if(DataFilter?.UserSource != value.UserSource && PageFetcherObject != null)
+                if(m_DataFilter?.UserSource != value.UserSource && PageFetcherObject != null)
                 {
                     PageFetcherObject.UserFetchData.UserId = value.UserSource.Id;
                     refatchNeeded = true;
@@ -45,7 +45,7 @@ namespace FacebookPages.Code.Pages.Data.Post
                     TryFetchAndLoadPageData();
                 }
 
-                DataFilter = value;
+                m_DataFilter = value;
             }
         }
         public List<T> Posts
@@ -144,9 +144,7 @@ namespace FacebookPages.Code.Pages.Data.Post
         }
         };
 
-        protected Dictionary<eLoadOptions, string> CurrentFieldsToLoad = sr_FieldsToLoad;
-
-        protected override Dictionary<eLoadOptions, string> FieldsToLoad => CurrentFieldsToLoad;
+        protected override Dictionary<eLoadOptions, string> FieldsToLoad => sr_FieldsToLoad;
 
         protected override void InitializeAfterSet()
         {

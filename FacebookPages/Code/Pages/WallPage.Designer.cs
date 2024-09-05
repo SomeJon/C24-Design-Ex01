@@ -30,7 +30,7 @@ namespace FacebookPages.Pages
         /// </summary>
         private void InitializeComponent()
         {
-            this.logoutButton = new FacebookPages.Buttons.PageSwitchButton();
+            this.m_ExitButton = new FacebookPages.Buttons.PageSwitchButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.aboutButton = new FacebookPages.Buttons.PageSwitchButton();
             this.pictureButton = new FacebookPages.Buttons.PageSwitchButton();
@@ -46,17 +46,17 @@ namespace FacebookPages.Pages
             ((System.ComponentModel.ISupportInitialize)(this.coverPicture)).BeginInit();
             this.SuspendLayout();
             // 
-            // logoutButton
+            // m_ExitButton
             // 
-            this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.logoutButton.Location = new System.Drawing.Point(3, 3);
-            this.logoutButton.Name = "logoutButton";
-            this.logoutButton.PageChoice = FacebookPages.Code.Buttons.ePageChoice.HomePage;
-            this.logoutButton.Size = new System.Drawing.Size(96, 42);
-            this.logoutButton.TabIndex = 67;
-            this.logoutButton.Text = "Back";
-            this.logoutButton.UseVisualStyleBackColor = true;
-            this.logoutButton.Click += new System.EventHandler(this.PageSwitchButton_Click);
+            this.m_ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.m_ExitButton.Location = new System.Drawing.Point(3, 3);
+            this.m_ExitButton.Name = "m_ExitButton";
+            this.m_ExitButton.PageChoice = FacebookPages.Code.Buttons.ePageChoice.HomePage;
+            this.m_ExitButton.Size = new System.Drawing.Size(96, 42);
+            this.m_ExitButton.TabIndex = 67;
+            this.m_ExitButton.Text = "Back";
+            this.m_ExitButton.UseVisualStyleBackColor = true;
+            this.m_ExitButton.Click += new System.EventHandler(this.PageSwitchButton_Click);
             // 
             // textBox1
             // 
@@ -204,7 +204,7 @@ namespace FacebookPages.Pages
             this.Controls.Add(this.m_FillNumberOfFriends);
             this.Controls.Add(this.m_NumberOfFriendsLabel);
             this.Controls.Add(this.m_PostViewButton);
-            this.Controls.Add(this.logoutButton);
+            this.Controls.Add(this.m_ExitButton);
             this.Controls.Add(this.coverPicture);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.profilePicture);
@@ -228,7 +228,7 @@ namespace FacebookPages.Pages
         private System.Windows.Forms.PictureBox profilePicture;
         private System.Windows.Forms.PictureBox coverPicture;
         private Code.Buttons.PostViewButton m_PostViewButton;
-        protected Buttons.PageSwitchButton logoutButton;
+        protected Buttons.PageSwitchButton m_ExitButton;
         private System.Windows.Forms.Label m_NumberOfFriendsLabel;
         private System.Windows.Forms.Label m_FillNumberOfFriends;
         protected LoadInfoComboBox m_ChooseFriend;

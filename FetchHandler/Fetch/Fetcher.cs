@@ -43,7 +43,7 @@ namespace FetchHandler.Fetch
             return loadObject;
         }
 
-        public static ExpandoObject ToExpando(Dictionary<string, string> i_KeyValuePairs)
+        private ExpandoObject ToExpando(Dictionary<string, string> i_KeyValuePairs)
         {
             var expando = new ExpandoObject();
             var expandoDict = (IDictionary<string, object>)expando;

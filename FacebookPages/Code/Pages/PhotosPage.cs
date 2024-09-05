@@ -41,20 +41,18 @@ namespace FacebookPages.Pages
 
             foreach (Photo photo in i_Album.Photos)
             {
-                // Create a new PictureBox for each image
                 LoadInfoPicture picBox = new LoadInfoPicture
                 {
-                    SizeMode = PictureBoxSizeMode.Zoom, // Use Zoom to maintain the aspect ratio
-                    Width = 150, // Set width for PictureBox
-                    Height = 150, // Set height for PictureBox
-                    Margin = new Padding(5) // Add some margin around the PictureBox
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Width = 150,
+                    Height = 150,
+                    Margin = new Padding(5)
                 };
 
-                picBox.LoadAsync(photo.PictureNormalURL); // Assign the image
+                picBox.LoadAsync(photo.PictureNormalURL);
 
-                picBox.Click += OnRecivedInfo; //check it works
+                picBox.Click += OnRecivedInfo;
 
-                // Add the PictureBox to the FlowLayoutPanel
                 m_PicturesFlow.Controls.Add(picBox);
             }
         }

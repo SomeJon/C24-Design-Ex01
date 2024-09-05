@@ -20,7 +20,6 @@ namespace FacebookPages.Code.Buttons
         public event EventHandler FilterRequest;
         public event EventHandler LoadAllPosts;
         public event EventHandler PostAnalyticRequest;
-
         public LoadInfoListBox LoadInfoListBox 
         {
             get

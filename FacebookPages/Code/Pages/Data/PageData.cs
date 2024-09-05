@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FacebookPages.Code.Pages.Data
+namespace FacebookPages.Code.Pages.Data 
 {
     public abstract class PageData : FacebookObject, IPageData, HasSetData
     {
@@ -32,7 +32,7 @@ namespace FacebookPages.Code.Pages.Data
             } 
         }
 
-        protected virtual void FetchAndLoadData(Dictionary<string, string> i_KeyValueParamtersPairs = null)
+        private void FetchAndLoadData(Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
             string requestData = FieldsToLoad[eLoadOptions.Full];
             m_DynamicData = PageFetcherObject.Fetch(requestData, Connection, i_KeyValueParamtersPairs);
@@ -68,7 +68,7 @@ namespace FacebookPages.Code.Pages.Data
             PageFetcherObject = new Fetcher(i_FetchData);
         }
 
-        protected void ConfirmLoad()
+        private void ConfirmLoad()
         {
             DataUserId = PageFetcherObject.UserFetchData.UserId;
             FetchNext = false;

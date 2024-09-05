@@ -46,7 +46,11 @@ namespace FacebookPages.Code.Pages
             }
 
             m_PostFrequencyLabel.Text = $"Post Frequency: {postFrequency:F2} posts/day";
-            m_PostTimingImpactLabel.Text = $"Optimal Post Timing: {PageData.PostTimingImpact.OrderByDescending(x => x.Value).First().Key} with {PageData.PostTimingImpact.OrderByDescending(x => x.Value).First().Value:F2} engagement";
+            m_PostTimingImpactLabel.Text = 
+                $"Optimal Post Timing: " +
+                $"{PageData.PostTimingImpact.OrderByDescending(x => x.Value).First().Key} " +
+                $"with {PageData.PostTimingImpact.OrderByDescending(x => x.Value).First().Value:F2} " +
+                $"engagement";
         }
 
         private void displayPostFrequencyAndTiming()

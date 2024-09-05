@@ -20,7 +20,6 @@ namespace FacebookPages.Pages.Data
         public string LastName { get; protected set; }
         public FacebookObjectCollection<User> Friends { get; protected set; }
         public PostsWithPaging<UpdatedPostData> PostsWithPaging { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
-        public DataFilter FilterData { get; protected set; }
 
         public override void TryFetchAndLoadPageData(
             UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
@@ -33,15 +32,15 @@ namespace FacebookPages.Pages.Data
 
         public void LoadUserWallData(User i_User)
         {
-            FilterData = new DataFilter();
+            DataFilter newFilter = new DataFilter();
 
-            FilterData.UserSource = i_User;
-            PostsWithPaging.FilterData = FilterData;
-            FilterData.AvailableUsersToSelect.Add(i_User);
+            newFilter.UserSource = i_User;
+            PostsWithPaging.FilterData = newFilter;
+            newFilter.AvailableUsersToSelect.Add(i_User);
 
             foreach (User friend in i_User.Friends)
             {
-                FilterData.AvailableUsersToSelect.Add(friend);
+                newFilter.AvailableUsersToSelect.Add(friend);
             }
 
             CoverPicUrl =

@@ -28,6 +28,12 @@ namespace FacebookPages.Pages
             InitializeComponent();
         }
 
+        public void SetAsHomePage()
+        {
+            m_ExitButton.Text = "Logout";
+            m_ExitButton.PageChoice = ePageChoice.Logout;
+        }
+
         protected virtual void PageSwitchButton_Click(object sender, EventArgs e)
         {
             OnChangePage(sender, e);
