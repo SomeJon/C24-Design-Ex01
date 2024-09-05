@@ -15,7 +15,7 @@ namespace FacebookPages.Pages
         private Timer m_RotationTimer;
         private int m_RotationAngle = 0;
         private Image m_OriginalImage;
-        public event EventHandler<EventArgs> RemeberLogin;
+        public event EventHandler RemeberLogin;
         public override Color BackColor { get; set; }
 
         public LoginPage()

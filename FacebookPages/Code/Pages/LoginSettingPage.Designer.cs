@@ -1,4 +1,6 @@
-﻿namespace FacebookPages.Pages
+﻿using FacebookPages.Code.Buttons;
+
+namespace FacebookPages.Pages
 {
     partial class LoginSettingPage
     {
@@ -76,7 +78,7 @@
             this.buttonBack.Location = new System.Drawing.Point(834, 453);
             this.buttonBack.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.PageChoice = FacebookPages.Buttons.PageSwitchButton.ePageChoice.Login;
+            this.buttonBack.PageChoice = ePageChoice.Login;
             this.buttonBack.Size = new System.Drawing.Size(100, 25);
             this.buttonBack.TabIndex = 5;
             this.buttonBack.Text = "back";
@@ -91,7 +93,7 @@
             this.addIdButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addIdButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.addIdButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addIdButton.InfoChoice = FacebookPages.Buttons.LoadInfoButton.eInfoChoice.AppId;
+            this.addIdButton.InfoChoice = eInfoChoice.AppId;
             this.addIdButton.Location = new System.Drawing.Point(488, 65);
             this.addIdButton.Margin = new System.Windows.Forms.Padding(4);
             this.addIdButton.Name = "addIdButton";
