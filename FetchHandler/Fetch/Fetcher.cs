@@ -1,11 +1,7 @@
 ﻿using Facebook;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Dynamic;
-using System.Web.Script.Serialization;
-using System.Threading.Tasks;
 using FacebookPages.Code.Pages.Data;
 
 
@@ -15,40 +11,40 @@ namespace FetchHandler.Fetch
     {
         public UserFetchData UserFetchData { get; }
 
-        public Fetcher(UserFetchData i_FetchData)
+        public Fetcher(UserFetchData iFetchData)
         {
-            UserFetchData = i_FetchData;
+            UserFetchData = iFetchData;
         }
 
-        public Object Fetch(string i_Fields, string i_Path = null, Dictionary<string, string> i_ParamtersToAdd = null, Type i_Type = null)
+        public Object Fetch(string iFields, string iPath = null, Dictionary<string, string> iParamtersToAdd = null, Type iType = null)
         {
             FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToekn);
             dynamic paramtersKeyValueRequest = new ExpandoObject();
             string path = $"/{UserFetchData.UserId}";
 
-            if (!string.IsNullOrEmpty(i_Path))
+            if (!string.IsNullOrEmpty(iPath))
             {
-                path += "/" + i_Path;
+                path += "/" + iPath;
             }
 
-            if (i_ParamtersToAdd != null)
+            if (iParamtersToAdd != null)
             {
-                paramtersKeyValueRequest = ToExpando(i_ParamtersToAdd);
+                paramtersKeyValueRequest = toExpando(iParamtersToAdd);
             }
-            paramtersKeyValueRequest.fields = i_Fields;
+            paramtersKeyValueRequest.fields = iFields;
 
 
-            dynamic loadObject = facebookClient.Get(path, paramtersKeyValueRequest, i_Type);
+            dynamic loadObject = facebookClient.Get(path, paramtersKeyValueRequest, iType);
 
             return loadObject;
         }
 
-        private ExpandoObject ToExpando(Dictionary<string, string> i_KeyValuePairs)
+        private ExpandoObject toExpando(Dictionary<string, string> iKeyValuePairs)
         {
             var expando = new ExpandoObject();
             var expandoDict = (IDictionary<string, object>)expando;
 
-            foreach (var kvp in i_KeyValuePairs)
+            foreach (var kvp in iKeyValuePairs)
             {
                 expandoDict[kvp.Key] = kvp.Value;
             }

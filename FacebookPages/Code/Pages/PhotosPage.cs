@@ -1,15 +1,6 @@
 ﻿using FacebookPages.Code.Buttons;
-using FacebookPages.Pages;
 using FacebookWrapper.ObjectModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Channels;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FacebookPages.Pages
@@ -35,11 +26,11 @@ namespace FacebookPages.Pages
             OnChangePage(sender, e);
         }
 
-        private void loadAlbumIntoFlowLayoutPanel(Album i_Album)
+        private void loadAlbumIntoFlowLayoutPanel(Album iAlbum)
         {
             m_PicturesFlow.Controls.Clear();
 
-            foreach (Photo photo in i_Album.Photos)
+            foreach (Photo photo in iAlbum.Photos)
             {
                 LoadInfoPicture picBox = new LoadInfoPicture
                 {

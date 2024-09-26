@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.ComponentModel;
-using FacebookPages.Pages.Data;
-using FacebookPages.Code;
 using System.Threading;
 
 namespace FacebookPages.Pages
@@ -28,7 +26,7 @@ namespace FacebookPages.Pages
             ChangePage?.Invoke(sender, e);
         }
 
-        private void InitializeComponent()
+        private void initializeComponent()
         {
             this.SuspendLayout();
             // 

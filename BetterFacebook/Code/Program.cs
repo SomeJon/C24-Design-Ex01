@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using FacebookWrapper;
 
 namespace FacebookClient.Code
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application
         /// check something
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();

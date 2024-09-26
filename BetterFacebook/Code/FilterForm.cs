@@ -2,13 +2,7 @@
 using FacebookPages.Code.Pages.Data.Post.Sort;
 using FacebookWrapper.ObjectModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FacebookClient.Code
@@ -24,17 +18,17 @@ namespace FacebookClient.Code
             m_SortList.SelectedIndex = 0;
         }
 
-        public void LoadData(DataFilter i_DataToLoad)
+        public void LoadData(DataFilter iDataToLoad)
         {
-            if (i_DataToLoad != null)
+            if (iDataToLoad != null)
             {
-                m_PossibleUsersComboBox.DataSource = i_DataToLoad.AvailableUsersToSelect;
+                m_PossibleUsersComboBox.DataSource = iDataToLoad.AvailableUsersToSelect;
                 m_PossibleUsersComboBox.DisplayMember = "Name";
-                m_PossibleUsersComboBox.SelectedItem = i_DataToLoad.UserSource;
+                m_PossibleUsersComboBox.SelectedItem = iDataToLoad.UserSource;
 
-                m_SortList.SelectedIndex = (int)i_DataToLoad.SortingMethod;
+                m_SortList.SelectedIndex = (int)iDataToLoad.SortingMethod;
 
-                foreach (var condition in i_DataToLoad.Conditions)
+                foreach (var condition in iDataToLoad.Conditions)
                 {
                     int index = (int)condition.Key;
                     if (index >= 0 && index < m_FilterCheckedList.Items.Count && condition.Value)
@@ -44,21 +38,20 @@ namespace FacebookClient.Code
                 }
 
                 m_MinDatePicker.Value =
-                    i_DataToLoad.MinDate > m_MinDatePicker.MinDate && i_DataToLoad.MinDate <= m_MaxDatePicker.MaxDate
-                    ? i_DataToLoad.MinDate
+                    iDataToLoad.MinDate > m_MinDatePicker.MinDate && iDataToLoad.MinDate <= m_MaxDatePicker.MaxDate
+                    ? iDataToLoad.MinDate
                     : m_MinDatePicker.MinDate;
 
                 m_MaxDatePicker.Value =
-                    i_DataToLoad.MaxDate >= m_MinDatePicker.MinDate && i_DataToLoad.MaxDate <= m_MaxDatePicker.MaxDate
-                    ? i_DataToLoad.MaxDate
+                    iDataToLoad.MaxDate >= m_MinDatePicker.MinDate && iDataToLoad.MaxDate <= m_MaxDatePicker.MaxDate
+                    ? iDataToLoad.MaxDate
                     : m_MaxDatePicker.MaxDate;
 
-                m_ReverseOrderCheckBox.Checked = i_DataToLoad.ReverseOrder;
-                m_MatchAllFiltersCheckBox.Checked = i_DataToLoad.MatchAllFilters;
-                m_TextContainsBox.Text = i_DataToLoad.TextContainsString ?? string.Empty;
+                m_ReverseOrderCheckBox.Checked = iDataToLoad.ReverseOrder;
+                m_MatchAllFiltersCheckBox.Checked = iDataToLoad.MatchAllFilters;
+                m_TextContainsBox.Text = iDataToLoad.TextContainsString ?? string.Empty;
             }
         }
-
 
         public DataFilter GetData()
         {
@@ -84,14 +77,6 @@ namespace FacebookClient.Code
             }
 
             return dataFilter;
-        }
-
-        private void m_FillNumOfPostsBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
         }
 
         private void m_Cancel_Click(object sender, EventArgs e)

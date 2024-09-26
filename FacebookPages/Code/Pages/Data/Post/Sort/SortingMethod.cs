@@ -15,28 +15,28 @@ namespace FacebookPages.Code.Pages.Data.Post.Sort
             ByNumOfComments,
         }
 
-        public static IComparer<UpdatedPostData> GetComparer(eSortingMethod i_SortingMethod)
+        public static IComparer<UpdatedPostData> GetComparer(eSortingMethod iSortingMethod)
         {
-            switch (i_SortingMethod)
+            switch (iSortingMethod)
             {
                 case eSortingMethod.ByDatePublished:
-                    return SortByDatePublished();
+                    return sortByDatePublished();
                 case eSortingMethod.ByDateUpdated:
-                    return SortByDateUpdated();
+                    return sortByDateUpdated();
                 case eSortingMethod.ByWriter:
-                    return SortByWriter();
+                    return sortByWriter();
                 case eSortingMethod.ByPostType:
-                    return SortByPostType();
+                    return sortByPostType();
                 case eSortingMethod.ByLikes:
-                    return SortByLikes();
+                    return sortByLikes();
                 case eSortingMethod.ByNumOfComments:
-                    return SortByNumOfComments();
+                    return sortByNumOfComments();
                 default:
-                    throw new ArgumentException("Invalid sorting method", nameof(i_SortingMethod));
+                    throw new ArgumentException("Invalid sorting method", nameof(iSortingMethod));
             }
         }
 
-        private static IComparer<UpdatedPostData> SortByDatePublished()
+        private static IComparer<UpdatedPostData> sortByDatePublished()
         {
             return Comparer<UpdatedPostData>.Create((x, y) =>
             {
@@ -44,7 +44,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Sort
             });
         }
 
-        private static IComparer<UpdatedPostData> SortByDateUpdated()
+        private static IComparer<UpdatedPostData> sortByDateUpdated()
         {
             return Comparer<UpdatedPostData>.Create((x, y) =>
             {
@@ -52,7 +52,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Sort
             });
         }
 
-        private static IComparer<UpdatedPostData> SortByWriter()
+        private static IComparer<UpdatedPostData> sortByWriter()
         {
             return Comparer<UpdatedPostData>.Create((x, y) =>
             {
@@ -60,7 +60,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Sort
             });
         }
 
-        private static IComparer<UpdatedPostData> SortByPostType()
+        private static IComparer<UpdatedPostData> sortByPostType()
         {
             return Comparer<UpdatedPostData>.Create((x, y) =>
             {
@@ -70,7 +70,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Sort
             });
         }
 
-        private static IComparer<UpdatedPostData> SortByLikes()
+        private static IComparer<UpdatedPostData> sortByLikes()
         {
             return Comparer<UpdatedPostData>.Create((x, y) =>
             {
@@ -78,7 +78,7 @@ namespace FacebookPages.Code.Pages.Data.Post.Sort
             });
         }
 
-        private static IComparer<UpdatedPostData> SortByNumOfComments()
+        private static IComparer<UpdatedPostData> sortByNumOfComments()
         {
             return Comparer<UpdatedPostData>.Create((x, y) =>
             {

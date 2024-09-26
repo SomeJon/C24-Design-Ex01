@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FacebookPages.Code.Buttons
+﻿namespace FacebookPages.Code.Buttons
 {
-    public interface HasSwitchPage
+    public interface IHasSwitchPage
     {
         ePageChoice PageChoice { get; set; }
     }

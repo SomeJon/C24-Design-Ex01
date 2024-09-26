@@ -1,18 +1,12 @@
-﻿using FacebookPages.Code.Pages.Data.Post;
-using FacebookPages.Pages.Data;
+﻿using FacebookPages.Pages.Data;
 using FacebookWrapper.ObjectModel;
 using FetchHandler.Fetch;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages.Data 
 {
-    public abstract class PageData : FacebookObject, IPageData, HasSetData
+    public abstract class PageData : FacebookObject, IPageData, IHasSetData
     {
         private Fetcher m_PageFetcherObject;
         protected string DataUserId { get; set; } = string.Empty;
@@ -32,20 +26,20 @@ namespace FacebookPages.Code.Pages.Data
             } 
         }
 
-        private void FetchAndLoadData(Dictionary<string, string> i_KeyValueParamtersPairs = null)
+        private void fetchAndLoadData(Dictionary<string, string> iKeyValueParamtersPairs = null)
         {
             string requestData = FieldsToLoad[eLoadOptions.Full];
-            m_DynamicData = PageFetcherObject.Fetch(requestData, Connection, i_KeyValueParamtersPairs);
+            m_DynamicData = PageFetcherObject.Fetch(requestData, Connection, iKeyValueParamtersPairs);
             LoadOption = DynamicWrapper.eLoadOptions.Full;
             InitializeAfterSet();
         }
 
         public virtual void TryFetchAndLoadPageData(
-            UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
+            UserFetchData iFetchData = null, Dictionary<string, string> iKeyValueParamtersPairs = null)
         {
-            if (i_FetchData != null && !DataUserId.Equals(i_FetchData.UserId))
+            if (iFetchData != null && !DataUserId.Equals(iFetchData.UserId))
             {
-                PageFetcherObject = new Fetcher(i_FetchData);
+                PageFetcherObject = new Fetcher(iFetchData);
             }
 
             if (FetchNext || !string.IsNullOrEmpty(DataUserId))
@@ -53,22 +47,22 @@ namespace FacebookPages.Code.Pages.Data
                 try
                 {
                     ResetForReFetch();
-                    FetchAndLoadData(i_KeyValueParamtersPairs);
-                    ConfirmLoad();
-                } catch (Facebook.FacebookOAuthException i_FailedLoad)
+                    fetchAndLoadData(iKeyValueParamtersPairs);
+                    confirmLoad();
+                } catch (Facebook.FacebookOAuthException iFailedLoad)
                 {
-                    MessageBox.Show(i_FailedLoad.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(iFailedLoad.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
             }
         }
 
-        public virtual void LoadFetchData(UserFetchData i_FetchData)
+        public virtual void LoadFetchData(UserFetchData iFetchData)
         {
-            PageFetcherObject = new Fetcher(i_FetchData);
+            PageFetcherObject = new Fetcher(iFetchData);
         }
 
-        private void ConfirmLoad()
+        private void confirmLoad()
         {
             DataUserId = PageFetcherObject.UserFetchData.UserId;
             FetchNext = false;
@@ -82,26 +76,26 @@ namespace FacebookPages.Code.Pages.Data
         }
 
         protected virtual void AddToCollection<T>(
-            dynamic i_DynamicCollection,
-            ICollection<T> io_Collection,
-            eLoadOptions i_LoadOptions = eLoadOptions.Full) 
-            where T : HasSetData, new()
+            dynamic iDynamicCollection,
+            ICollection<T> ioCollection,
+            eLoadOptions iLoadOptions = eLoadOptions.Full) 
+            where T : IHasSetData, new()
         {
-            if(io_Collection != null && i_DynamicCollection != null)
+            if(ioCollection != null && iDynamicCollection != null)
             {
-                foreach (dynamic item in i_DynamicCollection)
+                foreach (dynamic item in iDynamicCollection)
                 {
                     T val = new T();
                     val.SetData(item, eLoadOptions.Full);
-                    io_Collection.Add(val);
+                    ioCollection.Add(val);
                 }
             }
         } 
 
-        public void SetData(dynamic i_DynamicData, eLoadOptions i_LoadOptions = eLoadOptions.None)
+        public void SetData(dynamic iDynamicData, eLoadOptions iLoadOptions = eLoadOptions.None)
         {
-            m_DynamicData = i_DynamicData;
-            LoadOption = i_LoadOptions;
+            m_DynamicData = iDynamicData;
+            LoadOption = iLoadOptions;
             InitializeAfterSet();
         }
     }

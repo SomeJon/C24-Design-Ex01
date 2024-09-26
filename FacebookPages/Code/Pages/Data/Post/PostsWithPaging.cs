@@ -1,11 +1,8 @@
 ﻿using FacebookPages.Code.Pages.Data.Post.Filter;
 using FacebookPages.Code.Pages.Data.Post.Sort;
-using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages.Data.Post
@@ -89,7 +86,7 @@ namespace FacebookPages.Code.Pages.Data.Post
             Connection = "posts";
         }
 
-        private static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
+        private static readonly Dictionary<eLoadOptions, string> SrFieldsToLoad = new Dictionary<eLoadOptions, string>
         {
         {
             eLoadOptions.None,
@@ -144,7 +141,7 @@ namespace FacebookPages.Code.Pages.Data.Post
         }
         };
 
-        protected override Dictionary<eLoadOptions, string> FieldsToLoad => sr_FieldsToLoad;
+        protected override Dictionary<eLoadOptions, string> FieldsToLoad => SrFieldsToLoad;
 
         protected override void InitializeAfterSet()
         {
@@ -159,11 +156,11 @@ namespace FacebookPages.Code.Pages.Data.Post
             HasNext = true;
         }
 
-        public void SwitchConnection(string i_Connection)
+        public void SwitchConnection(string iConnection)
         {
-            if (!string.Equals(i_Connection, Connection))
+            if (!string.Equals(iConnection, Connection))
             {
-                Connection = i_Connection;
+                Connection = iConnection;
                 TryFetchAndLoadPageData();
             }
         }
@@ -198,12 +195,12 @@ namespace FacebookPages.Code.Pages.Data.Post
             return success;
         }
 
-        private void tryToGetAllInDates(DateTime i_Until, DateTime i_since)
+        private void tryToGetAllInDates(DateTime iUntil, DateTime iSince)
         {
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
 
-            keyValuePairs.Add("until", DataFilter.ToUnixTimestamp(i_Until).ToString());
-            keyValuePairs.Add("since", DataFilter.ToUnixTimestamp(i_since).ToString());
+            keyValuePairs.Add("until", DataFilter.ToUnixTimestamp(iUntil).ToString());
+            keyValuePairs.Add("since", DataFilter.ToUnixTimestamp(iSince).ToString());
 
             this.FetchNext = true;
             this.TryFetchAndLoadPageData(null, keyValuePairs);
@@ -212,9 +209,9 @@ namespace FacebookPages.Code.Pages.Data.Post
             {
                 while (TryToAddNextPage()) ;
             }
-            catch (System.InvalidOperationException i_InvalidOperation)
+            catch (System.InvalidOperationException iInvalidOperation)
             {
-                MessageBox.Show(i_InvalidOperation.Message + " :: Plesae wait a little while and try again.", "Error");
+                MessageBox.Show(iInvalidOperation.Message + " :: Plesae wait a little while and try again.", "Error");
             }
         }
     }

@@ -1,19 +1,11 @@
 ﻿using FacebookPages.Code.Buttons;
 using FacebookPages.Code.Pages.Data.Post;
 using FacebookPages.Pages.Data;
-using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FacebookPages.Pages
 {
@@ -21,7 +13,7 @@ namespace FacebookPages.Pages
     {
         public override Color BackColor { get; set; }
         public WallPageData PageData { get; set; }
-        public static readonly object sr_PageDataLock = new object();
+        public static readonly object SrPageDataLock = new object();
 
         public WallPage()
         {
@@ -59,23 +51,23 @@ namespace FacebookPages.Pages
             textBoxFullName.Text = PageData?.FirstName
                 + " " + PageData?.LastName;
 
-            FetchThread = new Thread(new ThreadStart(FetchDataInBackground));
+            FetchThread = new Thread(new ThreadStart(fetchDataInBackground));
 
             FetchThread.Start();
         }
 
         private void m_ViewFriendButton_Click(object sender, EventArgs e)
         {
-            (sender as HasDataInfo).RecivedInfo = m_ChooseFriend.RecivedInfo;
-            (sender as HasDataInfo).InfoChoice = eInfoChoice.Friend;
+            (sender as IHasDataInfo).RecivedInfo = m_ChooseFriend.RecivedInfo;
+            (sender as IHasDataInfo).InfoChoice = eInfoChoice.Friend;
 
             PageSwitchButton_Click(sender, e);
         }
 
 
-        private void FetchDataInBackground()
+        private void fetchDataInBackground()
         {
-            lock (sr_PageDataLock)
+            lock (SrPageDataLock)
             {
                 PageData.TryFetchAndLoadPageData();
             }
@@ -87,9 +79,9 @@ namespace FacebookPages.Pages
                     updatePageWithData(PageData.PostsWithPaging.Posts);
                 });
             } 
-            catch (System.InvalidOperationException i_InvalidOperation) 
+            catch (System.InvalidOperationException iInvalidOperation) 
             {
-                MessageBox.Show(i_InvalidOperation.Message, "Error");
+                MessageBox.Show(iInvalidOperation.Message, "Error");
             }
 
         }
@@ -102,7 +94,7 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_ChangeConnectionRequest(object sender, EventArgs e)
         {
-            lock(sr_PageDataLock)
+            lock(SrPageDataLock)
             {
                 m_PostViewButton.Clear();
                 PageData.PostsWithPaging.SwitchConnection
@@ -114,7 +106,7 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_MorePostsRequest(object sender, EventArgs e)
         {
-            lock (sr_PageDataLock)
+            lock (SrPageDataLock)
             {
                 m_PostViewButton.Clear();
                 if (!PageData.PostsWithPaging.TryToAddNextPage())
@@ -128,14 +120,14 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_FilterRequest(object sender, EventArgs e)
         {
-            (sender as HasDataInfo).RecivedInfo = PageData.PostsWithPaging;
+            (sender as IHasDataInfo).RecivedInfo = PageData.PostsWithPaging;
             OnRecivedInfo(sender, e);
             updatePageWithData(PageData.PostsWithPaging.Posts);
         }
 
         private void m_PostViewButton_LoadAllPosts(object sender, EventArgs e)
         {
-            lock (sr_PageDataLock)
+            lock (SrPageDataLock)
             {
                 try
                 {
@@ -146,9 +138,9 @@ namespace FacebookPages.Pages
                         m_PostViewButton.Refresh();
                     }
                 }
-                catch (System.InvalidOperationException i_InvalidOperation)
+                catch (System.InvalidOperationException iInvalidOperation)
                 {
-                    MessageBox.Show(i_InvalidOperation.Message, "Error");
+                    MessageBox.Show(iInvalidOperation.Message, "Error");
                 }
                 updatePageWithData(PageData.PostsWithPaging.Posts);
             }
@@ -161,7 +153,7 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_PostAnalyticRequest(object sender, EventArgs e)
         {
-            (sender as HasDataInfo).RecivedInfo = PageData.PostsWithPaging.Posts;
+            (sender as IHasDataInfo).RecivedInfo = PageData.PostsWithPaging.Posts;
             OnRecivedInfo(sender, e);
         }
     }

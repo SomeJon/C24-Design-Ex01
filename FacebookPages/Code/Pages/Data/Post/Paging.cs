@@ -1,11 +1,5 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace FacebookPages.Code.Pages.Data.Post
 {
@@ -36,21 +30,21 @@ namespace FacebookPages.Code.Pages.Data.Post
             }
         }
 
-        public static Dictionary<string, string> GetKeyValueParamtersFromUrl(string i_Url, List<string> i_ParamterNames)
+        public static Dictionary<string, string> GetKeyValueParamtersFromUrl(string iUrl, List<string> iParamterNames)
         {
-            Dictionary<string, string> queryParams = ParseQueryString(i_Url);
+            Dictionary<string, string> queryParams = ParseQueryString(iUrl);
             Dictionary<string, string> returningPairs = null;
 
-            foreach (string paramterName in i_ParamterNames)
+            foreach (string paramterName in iParamterNames)
             {
-                if (queryParams.TryGetValue(paramterName, out string ParamterValue))
+                if (queryParams.TryGetValue(paramterName, out string paramterValue))
                 {
                     if(returningPairs == null)
                     {
                         returningPairs = new Dictionary<string, string>();
                     }
 
-                    returningPairs.Add(paramterName, ParamterValue);
+                    returningPairs.Add(paramterName, paramterValue);
                 }
             }
 
@@ -64,9 +58,9 @@ namespace FacebookPages.Code.Pages.Data.Post
             base.ResetForReFetch();
         }
 
-        public static Dictionary<string, string> ParseQueryString(string i_Url)
+        public static Dictionary<string, string> ParseQueryString(string iUrl)
         {
-            Uri uri = new Uri(i_Url);
+            Uri uri = new Uri(iUrl);
             Dictionary<string, string> queryParams = new Dictionary<string, string>();
 
             string[] querySegments = uri.Query.TrimStart('?').Split('&');

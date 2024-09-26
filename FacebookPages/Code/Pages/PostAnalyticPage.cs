@@ -1,15 +1,9 @@
 ﻿using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages.Data.Post;
 using FacebookPages.Pages;
-using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages
@@ -62,13 +56,13 @@ namespace FacebookPages.Code.Pages
             m_OptimalPostTimingLabel.Text = $"Best Time: {timingImpact.Key} with {timingImpact.Value:F2} average engagement";
         }
 
-        private void displayPostTypeAnalysis(PostTypeAnalysis i_Analysis)
+        private void displayPostTypeAnalysis(PostTypeAnalysis iAnalysis)
         {
-            if (i_Analysis != null)
+            if (iAnalysis != null)
             {
-                m_TotalTypeLikes.Text = $"Total Likes: {i_Analysis.TotalLikes}";
-                m_TotatlTypeCommments.Text = $"Total Comments: {i_Analysis.TotalComments}";
-                m_AverageTypeEngagement.Text = $"Average Engagement: {i_Analysis.AverageEngagement:F2}";
+                m_TotalTypeLikes.Text = $"Total Likes: {iAnalysis.TotalLikes}";
+                m_TotatlTypeCommments.Text = $"Total Comments: {iAnalysis.TotalComments}";
+                m_AverageTypeEngagement.Text = $"Average Engagement: {iAnalysis.AverageEngagement:F2}";
             }
             else
             {

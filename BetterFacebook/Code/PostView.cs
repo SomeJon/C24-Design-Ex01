@@ -1,12 +1,6 @@
 ﻿using FacebookPages.Code.Pages.Data.Post;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FacebookClient.Code
@@ -20,15 +14,15 @@ namespace FacebookClient.Code
             InitializeComponent();
         }
 
-        public void LoadPostData(UpdatedPostData i_PostData)
+        public void LoadPostData(UpdatedPostData iPostData)
         {
-            if (i_PostData == null)
+            if (iPostData == null)
             {
                 MessageBox.Show("No post data available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                PostData = i_PostData;
+                PostData = iPostData;
 
                 m_LikesLabel.Text = $"Likes: {PostData.NumOfLikes}";
                 m_CommeantsLable.Text = $"Comments: {PostData.NumOfComments}";
@@ -52,7 +46,7 @@ namespace FacebookClient.Code
                     {
                         m_PostPicture.Load(PostData.ImageUrl);
                     }
-                    catch(System.Net.WebException i_Exception) 
+                    catch(System.Net.WebException iException) 
                     {
                         m_PostPicture.Image = SystemIcons.Error.ToBitmap();
                     }
@@ -64,10 +58,10 @@ namespace FacebookClient.Code
                 }
 
                 m_PublishedDate.Text = PostData.CreatedTime.HasValue
-                    ? $"Published: {PostData.CreatedTime.Value.ToString("g")}"
+                    ? $"Published: {PostData.CreatedTime.Value:g}"
                     : "Published: N/A";
                 m_LastModifiedDate.Text = PostData.UpdateTime.HasValue
-                    ? $"Last Modified: {PostData.UpdateTime.Value.ToString("g")}"
+                    ? $"Last Modified: {PostData.UpdateTime.Value:g}"
                     : "Last Modified: N/A";
 
                 m_MessageBox.Text = PostData.Message ?? "No message content available.";

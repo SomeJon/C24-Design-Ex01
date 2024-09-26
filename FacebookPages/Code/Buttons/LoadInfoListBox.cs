@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace FacebookPages.Code.Buttons
 {
-    public class LoadInfoListBox : ListBox, HasDataInfo
+    public class LoadInfoListBox : ListBox, IHasDataInfo
     {
         private object m_RecievedInfo = null;
         public eInfoChoice InfoChoice { get; set; }

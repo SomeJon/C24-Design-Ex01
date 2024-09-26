@@ -1,12 +1,5 @@
-﻿using Facebook;
-using FacebookWrapper.ObjectModel;
-using FetchHandler.Fetch;
-using System;
+﻿using FacebookWrapper.ObjectModel;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FacebookPages.Code.Pages.Data
 {
@@ -58,7 +51,7 @@ namespace FacebookPages.Code.Pages.Data
         }
 
 
-        private static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
+        private static readonly Dictionary<eLoadOptions, string> SrFieldsToLoad = new Dictionary<eLoadOptions, string>
         {
         {
             eLoadOptions.None,
@@ -78,7 +71,7 @@ namespace FacebookPages.Code.Pages.Data
         }
         };
 
-        protected override Dictionary<eLoadOptions, string> FieldsToLoad => sr_FieldsToLoad;
+        protected override Dictionary<eLoadOptions, string> FieldsToLoad => SrFieldsToLoad;
 
         protected override void ResetForReFetch()
         {

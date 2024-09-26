@@ -2,10 +2,6 @@
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static FacebookPages.Code.Pages.Data.Post.Sort.SortingMethod;
 
 namespace FacebookPages.Code.Pages.Data.Post.Filter
 {
@@ -22,9 +18,9 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
         public bool MatchAllFilters { get; set; } = false;
         public string TextContainsString { get; set; } = null;
 
-        public static long ToUnixTimestamp(DateTime i_DateTime)
+        public static long ToUnixTimestamp(DateTime iDateTime)
         {
-            DateTimeOffset dateTimeOffset = new DateTimeOffset(i_DateTime.ToUniversalTime());
+            DateTimeOffset dateTimeOffset = new DateTimeOffset(iDateTime.ToUniversalTime());
             return dateTimeOffset.ToUnixTimeSeconds();
         }
     }

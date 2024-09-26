@@ -1,14 +1,8 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace FacebookPages.Code.Pages.Data.Post
 {
-    public class UpdatedPostData : FacebookWrapper.ObjectModel.Post, HasSetData
+    public class UpdatedPostData : FacebookWrapper.ObjectModel.Post, IHasSetData
     {
         public int NumOfComments => 
             m_DynamicData.comments.summary.total_count != null ?
@@ -30,10 +24,10 @@ namespace FacebookPages.Code.Pages.Data.Post
             }
         }
 
-        public void SetData(dynamic i_DynamicData, eLoadOptions i_LoadOptions = eLoadOptions.None)
+        public void SetData(dynamic iDynamicData, eLoadOptions iLoadOptions = eLoadOptions.None)
         {
-            m_DynamicData = i_DynamicData;
-            LoadOption = i_LoadOptions;
+            m_DynamicData = iDynamicData;
+            LoadOption = iLoadOptions;
             InitializeAfterSet();
         }
 

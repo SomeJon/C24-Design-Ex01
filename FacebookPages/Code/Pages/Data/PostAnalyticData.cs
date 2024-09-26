@@ -1,12 +1,8 @@
 ﻿using FacebookPages.Code.Pages.Data.Post;
-using FacebookPages.Pages;
 using FacebookPages.Pages.Data;
-using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace FacebookPages.Code.Pages.Data

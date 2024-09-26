@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace FacebookClient.Code
 {
@@ -11,9 +6,9 @@ namespace FacebookClient.Code
     {
         public static bool CloseConfirm()
         {
-            const string message = "Are you sure that you would to exit this amazing facebook app?";
-            const string caption = "Exit the best facebook experience";
-            DialogResult result = MessageBox.Show(message, caption,
+            const string k_Message = "Are you sure that you would to exit this amazing facebook app?";
+            const string k_Caption = "Exit the best facebook experience";
+            DialogResult result = MessageBox.Show(k_Message, k_Caption,
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question);
 
