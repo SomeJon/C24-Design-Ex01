@@ -1,4 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Buttons.Interfaces;
 
 namespace FacebookPages.Pages
 {
@@ -33,8 +34,8 @@ namespace FacebookPages.Pages
             this.appIdComboBox = new System.Windows.Forms.ComboBox();
             this.addAppIdTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonBack = new FacebookPages.Buttons.PageSwitchButton();
-            this.addIdButton = new FacebookPages.Buttons.LoadInfoButton();
+            this.buttonBack = new PageSwitchButton();
+            this.addIdButton = new LoadInfoButton();
             this.SuspendLayout();
             // 
             // appIdComboBox
@@ -70,7 +71,7 @@ namespace FacebookPages.Pages
             this.buttonBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonBack.Location = new System.Drawing.Point(722, 368);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.PageChoice = FacebookPages.Code.Buttons.ePageChoice.Login;
+            this.buttonBack.PageChoice = ePageChoice.Login;
             this.buttonBack.Size = new System.Drawing.Size(75, 20);
             this.buttonBack.TabIndex = 5;
             this.buttonBack.Text = "back";
@@ -85,10 +86,10 @@ namespace FacebookPages.Pages
             this.addIdButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addIdButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.addIdButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addIdButton.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.AppId;
+            this.addIdButton.InfoChoice = eInfoChoice.AppId;
             this.addIdButton.Location = new System.Drawing.Point(366, 53);
             this.addIdButton.Name = "addIdButton";
-            this.addIdButton.RecivedInfo = null;
+            this.addIdButton.ReceivedInfo = null;
             this.addIdButton.Size = new System.Drawing.Size(46, 31);
             this.addIdButton.TabIndex = 6;
             this.addIdButton.Text = "Add";
@@ -118,7 +119,7 @@ namespace FacebookPages.Pages
         private System.Windows.Forms.ComboBox appIdComboBox;
         private System.Windows.Forms.TextBox addAppIdTextBox;
         private System.Windows.Forms.Label label1;
-        private Buttons.PageSwitchButton buttonBack;
-        private Buttons.LoadInfoButton addIdButton;
+        private PageSwitchButton buttonBack;
+        private LoadInfoButton addIdButton;
     }
 }

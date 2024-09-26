@@ -1,7 +1,7 @@
-﻿using FacebookPages.Buttons;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using FacebookPages.Code.Buttons;
 
 namespace FacebookPages.Pages
 {
@@ -36,7 +36,7 @@ namespace FacebookPages.Pages
         private void addIdButton_Click(object sender, EventArgs e)
         {
             if (addAppIdTextBox.Text.Length > 0) {
-                (sender as LoadInfoButton).RecivedInfo = addAppIdTextBox.Text;
+                (sender as LoadInfoButton).ReceivedInfo = addAppIdTextBox.Text;
                 appIdComboBox.Items.Add(addAppIdTextBox.Text);
                 appIdComboBox.SelectedIndex = appIdComboBox.Items.Count - 1;
                 OnRecivedInfo(sender, e);

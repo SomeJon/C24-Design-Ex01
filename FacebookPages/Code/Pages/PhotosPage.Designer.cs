@@ -1,4 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Buttons.Interfaces;
 
 namespace FacebookPages.Pages
 {
@@ -30,7 +31,7 @@ namespace FacebookPages.Pages
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonReturn = new FacebookPages.Buttons.PageSwitchButton();
+            this.buttonReturn = new PageSwitchButton();
             this.label1 = new System.Windows.Forms.Label();
             this.m_AlbumChoiceComboBox = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -44,7 +45,7 @@ namespace FacebookPages.Pages
             this.buttonReturn.Location = new System.Drawing.Point(4, 4);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.PageChoice = FacebookPages.Code.Buttons.ePageChoice.WallPage;
+            this.buttonReturn.PageChoice = ePageChoice.WallPage;
             this.buttonReturn.Size = new System.Drawing.Size(70, 38);
             this.buttonReturn.TabIndex = 76;
             this.buttonReturn.Text = "Return";
@@ -113,7 +114,7 @@ namespace FacebookPages.Pages
         }
 
         #endregion
-        private Buttons.PageSwitchButton buttonReturn;
+        private PageSwitchButton buttonReturn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox m_AlbumChoiceComboBox;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;

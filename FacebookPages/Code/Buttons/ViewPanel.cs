@@ -9,10 +9,7 @@ namespace FacebookPages.Code.Buttons
 
         public BasePage CurrentActivePage 
         { 
-            get
-            {
-               return m_CurrentActivePage;
-            }
+            get => m_CurrentActivePage;
             set 
             {
                 // If the current page is set, remove it from the panel

@@ -1,10 +1,10 @@
-﻿using FacebookPages.Buttons;
+﻿using FacebookPages.Code.Buttons.Interfaces;
 
 namespace FacebookPages.Code.Buttons
 {
     public class PageSwitchAndLoadButton : PageSwitchButton, IHasDataInfo
     {
         public eInfoChoice InfoChoice { get; set; }
-        public object RecivedInfo { get; set; }
+        public object ReceivedInfo { get; set; }
     }
 }

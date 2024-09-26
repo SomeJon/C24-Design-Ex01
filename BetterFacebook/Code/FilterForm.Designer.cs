@@ -1,4 +1,7 @@
-﻿namespace FacebookClient.Code
+﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Buttons.Interfaces;
+
+namespace FacebookClient.Code
 {
     partial class FilterForm
     {
@@ -46,7 +49,7 @@
             this.m_MinDateLabel = new System.Windows.Forms.Label();
             this.m_ReverseOrderCheckBox = new System.Windows.Forms.CheckBox();
             this.m_MatchAllFiltersCheckBox = new System.Windows.Forms.CheckBox();
-            this.m_Confirm = new FacebookPages.Buttons.LoadInfoButton();
+            this.m_Confirm = new LoadInfoButton();
             this.SuspendLayout();
             // 
             // m_Cancel
@@ -234,10 +237,10 @@
             // 
             // m_Confirm
             // 
-            this.m_Confirm.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.AppId;
+            this.m_Confirm.InfoChoice = eInfoChoice.AppId;
             this.m_Confirm.Location = new System.Drawing.Point(689, 273);
             this.m_Confirm.Name = "m_Confirm";
-            this.m_Confirm.RecivedInfo = null;
+            this.m_Confirm.ReceivedInfo = null;
             this.m_Confirm.Size = new System.Drawing.Size(105, 52);
             this.m_Confirm.TabIndex = 0;
             this.m_Confirm.Text = "Confirm";
@@ -282,7 +285,7 @@
 
         #endregion
 
-        private FacebookPages.Buttons.LoadInfoButton m_Confirm;
+        private LoadInfoButton m_Confirm;
         private System.Windows.Forms.Button m_Cancel;
         private System.Windows.Forms.Label m_SortingHeaderLabel;
         private System.Windows.Forms.Label m_FetchFilterHeaderLabel;

@@ -1,4 +1,7 @@
-﻿    namespace FacebookPages.Code.Pages
+﻿    using FacebookPages.Code.Buttons;
+    using FacebookPages.Code.Buttons.Interfaces;
+
+    namespace FacebookPages.Code.Pages
     {
         partial class PostAnalyticPage
         {
@@ -28,7 +31,7 @@
             /// </summary>
             private void InitializeComponent()
             {
-            this.m_ReturnSwitchButton = new FacebookPages.Buttons.PageSwitchButton();
+            this.m_ReturnSwitchButton = new PageSwitchButton();
             this.m_EngagementMetricsHeader = new System.Windows.Forms.Label();
             this.m_TotalLikesLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -65,7 +68,7 @@
             this.m_ReturnSwitchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.m_ReturnSwitchButton.Location = new System.Drawing.Point(3, 3);
             this.m_ReturnSwitchButton.Name = "m_ReturnSwitchButton";
-            this.m_ReturnSwitchButton.PageChoice = FacebookPages.Code.Buttons.ePageChoice.WallPage;
+            this.m_ReturnSwitchButton.PageChoice = ePageChoice.WallPage;
             this.m_ReturnSwitchButton.Size = new System.Drawing.Size(77, 46);
             this.m_ReturnSwitchButton.TabIndex = 0;
             this.m_ReturnSwitchButton.Text = "Return";
@@ -170,12 +173,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.m_TopPerformingListBox.FormattingEnabled = true;
-            this.m_TopPerformingListBox.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Post;
+            this.m_TopPerformingListBox.InfoChoice = eInfoChoice.Post;
             this.m_TopPerformingListBox.Items.AddRange(new object[] {
             "Waiting for data...."});
             this.m_TopPerformingListBox.Location = new System.Drawing.Point(3, 104);
             this.m_TopPerformingListBox.Name = "m_TopPerformingListBox";
-            this.m_TopPerformingListBox.RecivedInfo = null;
+            this.m_TopPerformingListBox.ReceivedInfo = null;
             this.m_TopPerformingListBox.Size = new System.Drawing.Size(722, 82);
             this.m_TopPerformingListBox.TabIndex = 5;
             this.m_TopPerformingListBox.DoubleClick += new System.EventHandler(this.m_TopPerformingListBox_DoubleClick);
@@ -377,7 +380,7 @@
 
             #endregion
 
-            private FacebookPages.Buttons.PageSwitchButton m_ReturnSwitchButton;
+            private PageSwitchButton m_ReturnSwitchButton;
             private System.Windows.Forms.Label m_EngagementMetricsHeader;
             private System.Windows.Forms.Label m_TotalLikesLabel;
             private System.Windows.Forms.Panel panel1;

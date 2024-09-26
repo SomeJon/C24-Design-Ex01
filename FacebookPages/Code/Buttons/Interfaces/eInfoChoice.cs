@@ -1,4 +1,4 @@
-﻿namespace FacebookPages.Code.Buttons
+﻿namespace FacebookPages.Code.Buttons.Interfaces
 {
     public enum eInfoChoice
     {

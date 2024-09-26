@@ -14,14 +14,8 @@ namespace FacebookPages.Code.Buttons
         public event EventHandler PostAnalyticRequest;
         public LoadInfoListBox LoadInfoListBox 
         {
-            get
-            {
-                return m_PostsList;
-            }
-            private set 
-            { 
-                m_PostsList = value;
-            } 
+            get => m_PostsList;
+            private set => m_PostsList = value;
         }
 
         public void Clear()
@@ -45,11 +39,9 @@ namespace FacebookPages.Code.Buttons
             base.Refresh();
         }
 
-        private void m_PostsList_SelectedIndexChanged(object sender, EventArgs e)
+        private void m_PostsList_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
-            UpdatedPostData post = m_PostsList.SelectedValue as UpdatedPostData;
-
-            if (post != null)
+            if (m_PostsList.SelectedValue is UpdatedPostData post)
             {
                 if (!string.IsNullOrEmpty(post.ImageUrl))
                 {
@@ -66,34 +58,34 @@ namespace FacebookPages.Code.Buttons
             }
         }
 
-        private void m_MorePostsButton_Click(object sender, EventArgs e)
+        private void m_MorePostsButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            MorePostsRequest?.Invoke(sender, e);
+            MorePostsRequest?.Invoke(i_Sender, i_EventArgs);
         }
 
-        private void m_ChangeConnectionButton_Click(object sender, EventArgs e)
+        private void m_ChangeConnectionButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            ChangeConnectionRequest?.Invoke(m_PostTypeChoiceComboBox, e);
+            ChangeConnectionRequest?.Invoke(m_PostTypeChoiceComboBox, i_EventArgs);
         }
 
-        private void m_FilterButton_Click(object sender, EventArgs e)
+        private void m_FilterButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            FilterRequest?.Invoke(sender, e);
+            FilterRequest?.Invoke(i_Sender, i_EventArgs);
         }
 
-        private void m_LoadAllButton_Click(object sender, EventArgs e)
+        private void m_LoadAllButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            LoadAllPosts?.Invoke(sender, e);
+            LoadAllPosts?.Invoke(i_Sender, i_EventArgs);
         }
 
-        private void m_PostsList_DoubleClick(object sender, EventArgs e)
+        private void m_PostsList_DoubleClick(object i_Sender, EventArgs i_EventArgs)
         {
-            PostSelected?.Invoke(sender, e);
+            PostSelected?.Invoke(i_Sender, i_EventArgs);
         }
 
-        private void loadInfoButton1_Click(object sender, EventArgs e)
+        private void loadInfoButton1_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            PostAnalyticRequest?.Invoke(sender, e);
+            PostAnalyticRequest?.Invoke(i_Sender, i_EventArgs);
         }
     }
 }

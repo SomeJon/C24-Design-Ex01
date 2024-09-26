@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using FacebookPages.Code.Buttons.Interfaces;
 
 namespace FacebookPages.Pages
 {
@@ -58,7 +59,7 @@ namespace FacebookPages.Pages
 
         private void m_ViewFriendButton_Click(object sender, EventArgs e)
         {
-            (sender as IHasDataInfo).RecivedInfo = m_ChooseFriend.RecivedInfo;
+            (sender as IHasDataInfo).ReceivedInfo = m_ChooseFriend.ReceivedInfo;
             (sender as IHasDataInfo).InfoChoice = eInfoChoice.Friend;
 
             PageSwitchButton_Click(sender, e);
@@ -120,7 +121,7 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_FilterRequest(object sender, EventArgs e)
         {
-            (sender as IHasDataInfo).RecivedInfo = PageData.PostsWithPaging;
+            (sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging;
             OnRecivedInfo(sender, e);
             updatePageWithData(PageData.PostsWithPaging.Posts);
         }
@@ -153,7 +154,7 @@ namespace FacebookPages.Pages
 
         private void m_PostViewButton_PostAnalyticRequest(object sender, EventArgs e)
         {
-            (sender as IHasDataInfo).RecivedInfo = PageData.PostsWithPaging.Posts;
+            (sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging.Posts;
             OnRecivedInfo(sender, e);
         }
     }

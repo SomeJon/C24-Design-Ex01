@@ -1,4 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Buttons.Interfaces;
 
 namespace FacebookPages.Pages
 {
@@ -34,14 +35,14 @@ namespace FacebookPages.Pages
             this.dateLabel = new System.Windows.Forms.Label();
             this.timePanel = new System.Windows.Forms.Panel();
             this.facebooklogo = new System.Windows.Forms.PictureBox();
-            this.ButtonExit = new FacebookPages.Buttons.PageSwitchButton();
+            this.ButtonExit = new PageSwitchButton();
             this.textBoxWelcomeMsg = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.settingButton = new FacebookPages.Buttons.PageSwitchButton();
+            this.settingButton = new PageSwitchButton();
             this.rememberLoginChackBox = new System.Windows.Forms.CheckBox();
-            this.loginButton = new FacebookPages.Buttons.PageSwitchButton();
+            this.loginButton = new PageSwitchButton();
             this.timePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebooklogo)).BeginInit();
             this.SuspendLayout();
@@ -221,13 +222,13 @@ namespace FacebookPages.Pages
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.PictureBox facebooklogo;
-        private Buttons.PageSwitchButton ButtonExit;
+        private PageSwitchButton ButtonExit;
         private System.Windows.Forms.TextBox textBoxWelcomeMsg;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private Buttons.PageSwitchButton settingButton;
+        private PageSwitchButton settingButton;
         private System.Windows.Forms.CheckBox rememberLoginChackBox;
-        private Buttons.PageSwitchButton loginButton;
+        private PageSwitchButton loginButton;
     }
 }

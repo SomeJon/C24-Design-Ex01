@@ -1,7 +1,7 @@
-﻿using FacebookPages.Code.Buttons;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using FacebookPages.Code.Buttons.Interfaces;
 
-namespace FacebookPages.Buttons
+namespace FacebookPages.Code.Buttons
 {
     public class PageSwitchButton : Button, IHasSwitchPage
     {

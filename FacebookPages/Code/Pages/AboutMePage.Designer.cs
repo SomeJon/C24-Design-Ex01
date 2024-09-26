@@ -1,4 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Buttons.Interfaces;
 
 namespace FacebookPages.Code.Pages
 {
@@ -47,7 +48,7 @@ namespace FacebookPages.Code.Pages
             this.m_FillCountryLabel = new System.Windows.Forms.Label();
             this.m_FillCityLabel = new System.Windows.Forms.Label();
             this.m_FillHometownLabel = new System.Windows.Forms.Label();
-            this.m_BackButton = new FacebookPages.Buttons.PageSwitchButton();
+            this.m_BackButton = new PageSwitchButton();
             this.SuspendLayout();
             // 
             // labelAboutMe
@@ -311,6 +312,6 @@ namespace FacebookPages.Code.Pages
         private System.Windows.Forms.Label m_FillCityLabel;
         private System.Windows.Forms.Label m_FillHometownLabel;
         private System.Windows.Forms.Label m_ResidenceLabel;
-        private FacebookPages.Buttons.PageSwitchButton m_BackButton;
+        private PageSwitchButton m_BackButton;
     }
 }

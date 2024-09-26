@@ -8,6 +8,7 @@ using FacebookPages.Code.Pages;
 using FacebookPages.Code.Buttons;
 using FacebookPages.Code.Pages.Data.Post;
 using System.Collections.Generic;
+using FacebookPages.Code.Buttons.Interfaces;
 
 namespace FacebookClient.Code
 {
@@ -109,7 +110,7 @@ namespace FacebookClient.Code
             switch (loadInfoHolder?.InfoChoice)
             {
                 case eInfoChoice.AppId:
-                    AppSettings.SAppId = loadInfoHolder.RecivedInfo.ToString();
+                    AppSettings.SAppId = loadInfoHolder.ReceivedInfo.ToString();
                     break;
                 case eInfoChoice.Filter:
                     filterLoadRequest(loadInfoHolder);
@@ -120,7 +121,7 @@ namespace FacebookClient.Code
                 case eInfoChoice.Post:
                     PostView postView = new PostView();
 
-                    postView.LoadPostData(loadInfoHolder.RecivedInfo as UpdatedPostData);
+                    postView.LoadPostData(loadInfoHolder.ReceivedInfo as UpdatedPostData);
                     postView.Show();
                     break;
                 default:
@@ -134,7 +135,7 @@ namespace FacebookClient.Code
             PostAnalyticData postAnalyticData = new PostAnalyticData();
             PostAnalyticPage postAnalyticPage = new PostAnalyticPage();
 
-            postAnalyticData.PostData = i_LoadInfoHolder.RecivedInfo as List<UpdatedPostData>;
+            postAnalyticData.PostData = i_LoadInfoHolder.ReceivedInfo as List<UpdatedPostData>;
             postAnalyticPage.PageData = postAnalyticData;
             loadEvents(postAnalyticPage);
             m_ViewPanelControl.CurrentActivePage = postAnalyticPage;
@@ -144,7 +145,7 @@ namespace FacebookClient.Code
         {
             FilterForm getFilters = new FilterForm();
             PostsWithPaging<UpdatedPostData> dataToProcess =
-                i_LoadInfoHolder.RecivedInfo as PostsWithPaging<UpdatedPostData>;
+                i_LoadInfoHolder.ReceivedInfo as PostsWithPaging<UpdatedPostData>;
 
             getFilters.LoadData(dataToProcess?.FilterData);
             getFilters.ShowDialog();
@@ -188,7 +189,7 @@ namespace FacebookClient.Code
                     switchToAboutPage();
                     break;
                 case ePageChoice.FriendPage:
-                    User receivedFriend = (iChoiceDataHolder as IHasDataInfo)?.RecivedInfo as User;
+                    User receivedFriend = (iChoiceDataHolder as IHasDataInfo)?.ReceivedInfo as User;
 
                     if (receivedFriend?.Id == LoggedUser.Id)
                     {

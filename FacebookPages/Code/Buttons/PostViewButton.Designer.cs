@@ -1,4 +1,6 @@
-﻿namespace FacebookPages.Code.Buttons
+﻿using FacebookPages.Code.Buttons.Interfaces;
+
+namespace FacebookPages.Code.Buttons
 {
     partial class PostViewButton
     {
@@ -41,8 +43,8 @@
             this.m_PostTypeChoiceComboBox = new System.Windows.Forms.ComboBox();
             this.m_ChangeConnectionButton = new System.Windows.Forms.Button();
             this.m_LoadAllButton = new System.Windows.Forms.Button();
-            this.loadInfoButton1 = new FacebookPages.Buttons.LoadInfoButton();
-            this.m_FilterButton = new FacebookPages.Buttons.LoadInfoButton();
+            this.loadInfoButton1 = new LoadInfoButton();
+            this.m_FilterButton = new LoadInfoButton();
             this.m_PostsList = new FacebookPages.Code.Buttons.LoadInfoListBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_PostImage)).BeginInit();
             this.SuspendLayout();
@@ -185,10 +187,10 @@
             // loadInfoButton1
             // 
             this.loadInfoButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.loadInfoButton1.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Analytics;
+            this.loadInfoButton1.InfoChoice = eInfoChoice.Analytics;
             this.loadInfoButton1.Location = new System.Drawing.Point(500, 51);
             this.loadInfoButton1.Name = "loadInfoButton1";
-            this.loadInfoButton1.RecivedInfo = null;
+            this.loadInfoButton1.ReceivedInfo = null;
             this.loadInfoButton1.Size = new System.Drawing.Size(83, 25);
             this.loadInfoButton1.TabIndex = 20;
             this.loadInfoButton1.Text = "Post Analytics";
@@ -198,10 +200,10 @@
             // m_FilterButton
             // 
             this.m_FilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_FilterButton.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Filter;
+            this.m_FilterButton.InfoChoice = eInfoChoice.Filter;
             this.m_FilterButton.Location = new System.Drawing.Point(500, 75);
             this.m_FilterButton.Name = "m_FilterButton";
-            this.m_FilterButton.RecivedInfo = null;
+            this.m_FilterButton.ReceivedInfo = null;
             this.m_FilterButton.Size = new System.Drawing.Size(83, 25);
             this.m_FilterButton.TabIndex = 18;
             this.m_FilterButton.Text = "Filter Posts";
@@ -213,12 +215,12 @@
             this.m_PostsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.m_PostsList.FormattingEnabled = true;
-            this.m_PostsList.InfoChoice = FacebookPages.Code.Buttons.eInfoChoice.Post;
+            this.m_PostsList.InfoChoice = eInfoChoice.Post;
             this.m_PostsList.Items.AddRange(new object[] {
             "(dd/mm/yy)|TYPE| Waiting For Info"});
             this.m_PostsList.Location = new System.Drawing.Point(0, 0);
             this.m_PostsList.Name = "m_PostsList";
-            this.m_PostsList.RecivedInfo = null;
+            this.m_PostsList.ReceivedInfo = null;
             this.m_PostsList.Size = new System.Drawing.Size(391, 69);
             this.m_PostsList.TabIndex = 0;
             this.m_PostsList.SelectedIndexChanged += new System.EventHandler(this.m_PostsList_SelectedIndexChanged);
@@ -265,8 +267,8 @@
         private System.Windows.Forms.Label m_FillName;
         private System.Windows.Forms.ComboBox m_PostTypeChoiceComboBox;
         private System.Windows.Forms.Button m_ChangeConnectionButton;
-        private FacebookPages.Buttons.LoadInfoButton m_FilterButton;
+        private LoadInfoButton m_FilterButton;
         private System.Windows.Forms.Button m_LoadAllButton;
-        private FacebookPages.Buttons.LoadInfoButton loadInfoButton1;
+        private LoadInfoButton loadInfoButton1;
     }
 }

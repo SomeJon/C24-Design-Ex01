@@ -1,11 +1,11 @@
-﻿using FacebookPages.Code.Buttons;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using FacebookPages.Code.Buttons.Interfaces;
 
-namespace FacebookPages.Buttons
+namespace FacebookPages.Code.Buttons
 {
     public class LoadInfoButton : Button, IHasDataInfo
     {
         public eInfoChoice InfoChoice { get; set;}
-        public object RecivedInfo { get; set;}
+        public object ReceivedInfo { get; set;}
     }
 }
