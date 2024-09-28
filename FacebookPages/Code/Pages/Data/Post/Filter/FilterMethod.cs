@@ -19,41 +19,41 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
         }
 
         public static Func<UpdatedPostData, bool> GetCombinedFilter
-            (Dictionary<eFilterCondition, bool> iFilterConditions,
-                string iContainTextString = null)
+            (Dictionary<eFilterCondition, bool> i_FilterConditions,
+                string i_ContainTextString = null)
         {
-            if (iFilterConditions == null || iFilterConditions.Count == 0)
+            if (i_FilterConditions == null || i_FilterConditions.Count == 0)
             {
-                return iPostData => true;
+                return i_PostData => true;
             }
 
-            if (!string.IsNullOrEmpty(iContainTextString))
+            if (!string.IsNullOrEmpty(i_ContainTextString))
             {
-                ContainTextString = iContainTextString;
+                ContainTextString = i_ContainTextString;
             }
 
-            var activeFilters = iFilterConditions
-                .Where(filter => filter.Value)
-                .Select(filter => getFilter(filter.Key))
+            List<Func<UpdatedPostData, bool>> activeFilters = i_FilterConditions
+                .Where(i_Filter => i_Filter.Value)
+                .Select(i_Filter => getFilter(i_Filter.Key))
                 .ToList();
 
             if (activeFilters.Count == 0)
             {
-                return iPostData => true;
+                return i_PostData => true;
             }
 
-            return iPostData =>
+            return i_PostData =>
             {
                 return MatchAllFilters
-                    ? activeFilters.All(filter => filter(iPostData))
-                    : activeFilters.Any(filter => filter(iPostData));
+                    ? activeFilters.All(i_Filter => i_Filter(i_PostData))
+                    : activeFilters.Any(i_Filter => i_Filter(i_PostData));
             };
         }
 
 
-        private static Func<UpdatedPostData, bool> getFilter(eFilterCondition iFilterCondition)
+        private static Func<UpdatedPostData, bool> getFilter(eFilterCondition i_FilterCondition)
         {
-            switch (iFilterCondition)
+            switch (i_FilterCondition)
             {
                 case eFilterCondition.Links:
                     return filterByLink;
@@ -66,35 +66,35 @@ namespace FacebookPages.Code.Pages.Data.Post.Filter
                 case eFilterCondition.ContainsText:
                     return filterByContainsText;
                 default:
-                    return iPostData => true;
+                    return i_PostData => true;
             }
         }
 
 
-        private static bool filterByLink(UpdatedPostData iPostData)
+        private static bool filterByLink(UpdatedPostData i_PostData)
         {
-            return iPostData.Type == FacebookWrapper.ObjectModel.Post.eType.link;
+            return i_PostData.Type == FacebookWrapper.ObjectModel.Post.eType.link;
         }
 
-        private static bool filterByStatus(UpdatedPostData iPostData)
+        private static bool filterByStatus(UpdatedPostData i_PostData)
         {
-            return iPostData.Type == FacebookWrapper.ObjectModel.Post.eType.status;
+            return i_PostData.Type == FacebookWrapper.ObjectModel.Post.eType.status;
         }
 
-        private static bool filterByPhoto(UpdatedPostData iPostData)
+        private static bool filterByPhoto(UpdatedPostData i_PostData)
         {
-            return iPostData.Type == FacebookWrapper.ObjectModel.Post.eType.photo;
+            return i_PostData.Type == FacebookWrapper.ObjectModel.Post.eType.photo;
         }
 
-        private static bool filterByContainsPhoto(UpdatedPostData iPostData)
+        private static bool filterByContainsPhoto(UpdatedPostData i_PostData)
         {
-            return !string.IsNullOrEmpty(iPostData.ImageUrl);
+            return !string.IsNullOrEmpty(i_PostData.ImageUrl);
         }
 
-        private static bool filterByContainsText(UpdatedPostData iPostData)
+        private static bool filterByContainsText(UpdatedPostData i_PostData)
         {
-            return !string.IsNullOrEmpty(iPostData.Message) && 
-                iPostData.Message.Contains(ContainTextString);
+            return !string.IsNullOrEmpty(i_PostData.Message) && 
+                i_PostData.Message.Contains(ContainTextString);
         }
     }
 }

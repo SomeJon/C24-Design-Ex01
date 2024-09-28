@@ -14,15 +14,15 @@ namespace FacebookClient.Code
             InitializeComponent();
         }
 
-        public void LoadPostData(UpdatedPostData iPostData)
+        public void LoadPostData(UpdatedPostData i_PostData)
         {
-            if (iPostData == null)
+            if (i_PostData == null)
             {
                 MessageBox.Show("No post data available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                PostData = iPostData;
+                PostData = i_PostData;
 
                 m_LikesLabel.Text = $"Likes: {PostData.NumOfLikes}";
                 m_CommeantsLable.Text = $"Comments: {PostData.NumOfComments}";
@@ -69,7 +69,7 @@ namespace FacebookClient.Code
         }
 
 
-        private void m_ExitButton_Click(object sender, EventArgs e)
+        private void m_ExitButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
             this.Close();
         }

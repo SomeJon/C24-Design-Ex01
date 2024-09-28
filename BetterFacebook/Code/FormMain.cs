@@ -24,8 +24,8 @@ namespace FacebookClient.Code
 
         public static class AppSettings
         {
-            public static string SAppId = "867142571975316";
-            public static string[] SPermissions = new string[] {
+            public static string m_SAppId = "867142571975316";
+            public static string[] m_SPermissions = new string[] {
                                                                    "email",
                                                                    "public_profile",
                                                                    "user_age_range",
@@ -66,8 +66,8 @@ namespace FacebookClient.Code
 
         private void login()
         {
-            LoginResult = FacebookService.Login(AppSettings.SAppId,
-                AppSettings.SPermissions);
+            LoginResult = FacebookService.Login(AppSettings.m_SAppId,
+                AppSettings.m_SPermissions);
 
             tryFirstFetch();
         }
@@ -103,14 +103,14 @@ namespace FacebookClient.Code
             pageSwitching(i_Sender);
         }
 
-        private void processReceivedData(object i_IDataHolder)
+        private void processReceivedData(object i_DataHolder)
         {
-            IHasDataInfo loadInfoHolder = i_IDataHolder as IHasDataInfo;
+            IHasDataInfo loadInfoHolder = i_DataHolder as IHasDataInfo;
 
             switch (loadInfoHolder?.InfoChoice)
             {
                 case eInfoChoice.AppId:
-                    AppSettings.SAppId = loadInfoHolder.ReceivedInfo.ToString();
+                    AppSettings.m_SAppId = loadInfoHolder.ReceivedInfo.ToString();
                     break;
                 case eInfoChoice.Filter:
                     filterLoadRequest(loadInfoHolder);
@@ -159,9 +159,9 @@ namespace FacebookClient.Code
             }
         }
 
-        private void pageSwitching(object iChoiceDataHolder)
+        private void pageSwitching(object i_ChoiceDataHolder)
         {
-            IHasSwitchPage switchPageButton = iChoiceDataHolder as IHasSwitchPage;
+            IHasSwitchPage switchPageButton = i_ChoiceDataHolder as IHasSwitchPage;
 
             switch (switchPageButton?.PageChoice)
             {
@@ -189,7 +189,7 @@ namespace FacebookClient.Code
                     switchToAboutPage();
                     break;
                 case ePageChoice.FriendPage:
-                    User receivedFriend = (iChoiceDataHolder as IHasDataInfo)?.ReceivedInfo as User;
+                    User receivedFriend = (i_ChoiceDataHolder as IHasDataInfo)?.ReceivedInfo as User;
 
                     if (receivedFriend?.Id == LoggedUser.Id)
                     {
@@ -225,10 +225,10 @@ namespace FacebookClient.Code
             Properties.Settings.Default.Save();
         }
 
-        private void loadEvents(BasePage iPage) 
+        private void loadEvents(BasePage i_Page) 
         { 
-            iPage.RecivedInfo += this.loadInfoButton_ReceivedInfo;
-            iPage.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
+            i_Page.RecivedInfo += this.loadInfoButton_ReceivedInfo;
+            i_Page.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
         }
 
         private void returnToWall()
@@ -246,18 +246,18 @@ namespace FacebookClient.Code
         }
 
         private void startNewPageBuild
-            (BasePage iPage, PageData iData, UserFetchData iFetcherData)
+            (BasePage i_Page, PageData i_Data, UserFetchData i_FetcherData)
         {
-            loadEvents(iPage);
-            iData.LoadFetchData(m_UserFetchData);
-            m_ViewPanelControl.CurrentActivePage = iPage;
+            loadEvents(i_Page);
+            i_Data.LoadFetchData(m_UserFetchData);
+            m_ViewPanelControl.CurrentActivePage = i_Page;
         }
 
-        private void switchToUserPage(User iUser)
+        private void switchToUserPage(User i_User)
         {
-            m_PagesData.CurrentUser = iUser;
-            m_UserFetchData = new UserFetchData(iUser.Id, LoginResult.AccessToken);
-            m_PagesData.UserHomeData.LoadUserWallData(iUser);
+            m_PagesData.CurrentUser = i_User;
+            m_UserFetchData = new UserFetchData(i_User.Id, LoginResult.AccessToken);
+            m_PagesData.UserHomeData.LoadUserWallData(i_User);
             m_CurrentWallPage.PageData = m_PagesData.UserHomeData;
 
             startNewPageBuild(m_CurrentWallPage, m_PagesData.UserHomeData, m_UserFetchData);
@@ -297,11 +297,11 @@ namespace FacebookClient.Code
             m_ViewPanelControl.CurrentActivePage = loginSettingPage;
         }
 
-        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormMain_FormClosing(object i_Sender, FormClosingEventArgs i_EventArgs)
         {
-            e.Cancel = !Utils.CloseConfirm();
+            i_EventArgs.Cancel = !Utils.CloseConfirm();
 
-            if (!e.Cancel)
+            if (!i_EventArgs.Cancel)
             {
                 if (m_SaveLogin)
                 {
@@ -314,9 +314,9 @@ namespace FacebookClient.Code
             }
         }
 
-        private void loginPage_RememberLogin(object sender, EventArgs e)
+        private void loginPage_RememberLogin(object i_Sender, EventArgs i_EventArgs)
         {
-            m_SaveLogin = ((CheckBox)sender).Checked;
+            m_SaveLogin = ((CheckBox)i_Sender).Checked;
         }
     }
 }

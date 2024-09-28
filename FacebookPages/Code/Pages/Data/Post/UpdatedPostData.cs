@@ -24,18 +24,18 @@ namespace FacebookPages.Code.Pages.Data.Post
             }
         }
 
-        public void SetData(dynamic iDynamicData, eLoadOptions iLoadOptions = eLoadOptions.None)
+        public void SetData(
+            dynamic i_DynamicData, 
+            eLoadOptions i_LoadOptions = eLoadOptions.None)
         {
-            m_DynamicData = iDynamicData;
-            LoadOption = iLoadOptions;
+            m_DynamicData = i_DynamicData;
+            LoadOption = i_LoadOptions;
             InitializeAfterSet();
         }
 
         public override string ToString()
         {
-            string returningString = string.Empty;
-            
-            returningString = $"{CreatedTime}|{Type}|";
+            string returningString = $"{CreatedTime}|{Type}|";
             if (!string.IsNullOrEmpty(Message))
             {
                 returningString += $"{Message}|";

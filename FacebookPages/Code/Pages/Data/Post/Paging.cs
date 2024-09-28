@@ -7,44 +7,32 @@ namespace FacebookPages.Code.Pages.Data.Post
     {
         public string PreviousPageUrl
         {
-            get
-            {
-                return (string)m_DynamicData.previous;
-            }
+            get => (string)m_DynamicData.previous;
 
-            set
-            {
-                m_DynamicData.previous = value;
-            }
+            set => m_DynamicData.previous = value;
         }
         public string NextPageUrl
         {
-            get
-            {
-                return (string)m_DynamicData.next;
-            }
+            get => (string)m_DynamicData.next;
 
-            set
-            {
-                m_DynamicData.next = value;
-            }
+            set => m_DynamicData.next = value;
         }
 
-        public static Dictionary<string, string> GetKeyValueParamtersFromUrl(string iUrl, List<string> iParamterNames)
+        public static Dictionary<string, string> GetKeyValueParametersFromUrl(string i_Url, List<string> i_ParameterNames)
         {
-            Dictionary<string, string> queryParams = ParseQueryString(iUrl);
+            Dictionary<string, string> queryParams = ParseQueryString(i_Url);
             Dictionary<string, string> returningPairs = null;
 
-            foreach (string paramterName in iParamterNames)
+            foreach (string parameterName in i_ParameterNames)
             {
-                if (queryParams.TryGetValue(paramterName, out string paramterValue))
+                if (queryParams.TryGetValue(parameterName, out string parameterValue))
                 {
                     if(returningPairs == null)
                     {
                         returningPairs = new Dictionary<string, string>();
                     }
 
-                    returningPairs.Add(paramterName, paramterValue);
+                    returningPairs.Add(parameterName, parameterValue);
                 }
             }
 
@@ -58,9 +46,9 @@ namespace FacebookPages.Code.Pages.Data.Post
             base.ResetForReFetch();
         }
 
-        public static Dictionary<string, string> ParseQueryString(string iUrl)
+        public static Dictionary<string, string> ParseQueryString(string i_Url)
         {
-            Uri uri = new Uri(iUrl);
+            Uri uri = new Uri(i_Url);
             Dictionary<string, string> queryParams = new Dictionary<string, string>();
 
             string[] querySegments = uri.Query.TrimStart('?').Split('&');

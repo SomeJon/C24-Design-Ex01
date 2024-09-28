@@ -15,29 +15,26 @@ namespace FacebookPages.Code.Pages.Data.Post
         public bool HasNext { get; private set; } = true;
         public DataFilter FilterData 
         {
-            get
-            {
-                return m_DataFilter;
-            }
+            get => m_DataFilter;
             set
             {
-                bool refatchNeeded = false;
-                bool dateRefatchNeeded = false;
+                bool rematchNeeded = false;
 
                 if(m_DataFilter?.UserSource != value.UserSource && PageFetcherObject != null)
                 {
                     PageFetcherObject.UserFetchData.UserId = value.UserSource.Id;
-                    refatchNeeded = true;
+                    rematchNeeded = true;
                 }
 
-                value.Conditions.TryGetValue(FilterMethod.eFilterCondition.DateFilter, out dateRefatchNeeded);
-                if (dateRefatchNeeded)
+                value.Conditions.TryGetValue
+                    (FilterMethod.eFilterCondition.DateFilter, out bool dateRematchNeeded);
+                if (dateRematchNeeded)
                 {
                     tryToGetAllInDates(value.MaxDate, value.MinDate);
-                    refatchNeeded = !dateRefatchNeeded;
+                    rematchNeeded = !dateRematchNeeded;
                 }
 
-                if (refatchNeeded)
+                if (rematchNeeded)
                 {
                     TryFetchAndLoadPageData();
                 }
@@ -71,14 +68,9 @@ namespace FacebookPages.Code.Pages.Data.Post
         }
         public Paging Paging
         {
-            get
-            {
-                return WrapOrGet<Paging>(ref m_Paging, m_DynamicData.paging, eLoadOptions.Full);
-            }
-            set
-            {
-                m_Paging = value;
-            }
+            get => WrapOrGet<Paging>(ref m_Paging, m_DynamicData.paging, eLoadOptions.Full);
+
+            set => m_Paging = value;
         }
 
         public PostsWithPaging()
@@ -86,7 +78,7 @@ namespace FacebookPages.Code.Pages.Data.Post
             Connection = "posts";
         }
 
-        private static readonly Dictionary<eLoadOptions, string> SrFieldsToLoad = new Dictionary<eLoadOptions, string>
+        private static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
         {
         {
             eLoadOptions.None,
@@ -141,7 +133,7 @@ namespace FacebookPages.Code.Pages.Data.Post
         }
         };
 
-        protected override Dictionary<eLoadOptions, string> FieldsToLoad => SrFieldsToLoad;
+        protected override Dictionary<eLoadOptions, string> FieldsToLoad => sr_FieldsToLoad;
 
         protected override void InitializeAfterSet()
         {
@@ -156,11 +148,11 @@ namespace FacebookPages.Code.Pages.Data.Post
             HasNext = true;
         }
 
-        public void SwitchConnection(string iConnection)
+        public void SwitchConnection(string i_Connection)
         {
-            if (!string.Equals(iConnection, Connection))
+            if (!string.Equals(i_Connection, Connection))
             {
-                Connection = iConnection;
+                Connection = i_Connection;
                 TryFetchAndLoadPageData();
             }
         }
@@ -168,15 +160,17 @@ namespace FacebookPages.Code.Pages.Data.Post
         public bool TryToAddNextPage()
         {
             bool success = false;
-            Dictionary<string, string> keyValuePairs;
             PostsWithPaging<T> nextPosts = new PostsWithPaging<T>();
 
             if (HasNext)
             {
                 nextPosts.Connection = Connection;
                 nextPosts.PageFetcherObject = PageFetcherObject;
-                keyValuePairs = Paging.GetKeyValueParamtersFromUrl
-                    (this.Paging.NextPageUrl, new List<string> { "until", "since", "pretty", "__paging_token" });
+                Dictionary<string, string> keyValuePairs = 
+                    Paging.GetKeyValueParametersFromUrl(
+                        this.Paging.NextPageUrl, 
+                        new List<string> { "until", "since", "pretty", "__paging_token" }
+                        );
 
                 nextPosts.TryFetchAndLoadPageData(null, keyValuePairs);
 
@@ -195,23 +189,25 @@ namespace FacebookPages.Code.Pages.Data.Post
             return success;
         }
 
-        private void tryToGetAllInDates(DateTime iUntil, DateTime iSince)
+        private void tryToGetAllInDates(DateTime i_Until, DateTime i_Since)
         {
-            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
-
-            keyValuePairs.Add("until", DataFilter.ToUnixTimestamp(iUntil).ToString());
-            keyValuePairs.Add("since", DataFilter.ToUnixTimestamp(iSince).ToString());
+            Dictionary<string, string> keyValuePairs = 
+                new Dictionary<string, string>
+                    {
+                        { "until", DataFilter.ToUnixTimestamp(i_Until).ToString() },
+                        { "since", DataFilter.ToUnixTimestamp(i_Since).ToString() }
+                    };
 
             this.FetchNext = true;
             this.TryFetchAndLoadPageData(null, keyValuePairs);
 
             try
             {
-                while (TryToAddNextPage()) ;
+                while (TryToAddNextPage());
             }
-            catch (System.InvalidOperationException iInvalidOperation)
+            catch (System.InvalidOperationException i_InvalidOperation)
             {
-                MessageBox.Show(iInvalidOperation.Message + " :: Plesae wait a little while and try again.", "Error");
+                MessageBox.Show(i_InvalidOperation.Message + " :: Plesae wait a little while and try again.", "Error");
             }
         }
     }
