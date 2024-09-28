@@ -1,9 +1,9 @@
-﻿using FacebookPages.Code.Buttons;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using FacebookPages.Code.Buttons;
+using FacebookWrapper.ObjectModel;
 
-namespace FacebookPages.Pages
+namespace FacebookPages.Code.Pages
 {
     public partial class PhotosPage : BasePage
     {
@@ -14,23 +14,23 @@ namespace FacebookPages.Pages
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnLoad(EventArgs i_)
         {
-            base.OnLoad(e);
+            base.OnLoad(i_);
 
             m_AlbumChoiceComboBox.DataSource = PageData;
         }
 
-        private void switchPageButton_Click(object sender, EventArgs e)
+        private void switchPageButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            OnChangePage(sender, e);
+            OnChangePage(i_Sender, i_EventArgs);
         }
 
-        private void loadAlbumIntoFlowLayoutPanel(Album iAlbum)
+        private void loadAlbumIntoFlowLayoutPanel(Album i_IAlbum)
         {
             m_PicturesFlow.Controls.Clear();
 
-            foreach (Photo photo in iAlbum.Photos)
+            foreach (Photo photo in i_IAlbum.Photos)
             {
                 LoadInfoPicture picBox = new LoadInfoPicture
                 {
@@ -42,17 +42,17 @@ namespace FacebookPages.Pages
 
                 picBox.LoadAsync(photo.PictureNormalURL);
 
-                picBox.Click += OnRecivedInfo;
+                picBox.Click += OnReceivedInfo;
 
                 m_PicturesFlow.Controls.Add(picBox);
             }
         }
 
-        private void m_AlbumChoiceComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void m_AlbumChoiceComboBox_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
-            if(sender != null)
+            if(i_Sender != null)
             {
-                loadAlbumIntoFlowLayoutPanel(((sender as ComboBox).SelectedItem as Album));
+                loadAlbumIntoFlowLayoutPanel((((ComboBox)i_Sender).SelectedItem as Album));
             }
             
         }

@@ -227,7 +227,7 @@ namespace FacebookClient.Code
 
         private void loadEvents(BasePage i_Page) 
         { 
-            i_Page.RecivedInfo += this.loadInfoButton_ReceivedInfo;
+            i_Page.ReceivedInfo += this.loadInfoButton_ReceivedInfo;
             i_Page.ChangePage += new System.EventHandler(this.switchPageButton_ChangePage);
         }
 

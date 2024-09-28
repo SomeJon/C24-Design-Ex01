@@ -1,7 +1,7 @@
 ﻿using FacebookPages.Code.Buttons;
 using FacebookPages.Code.Buttons.Interfaces;
 
-namespace FacebookPages.Pages
+namespace FacebookPages.Code.Pages
 {
     partial class PhotosPage
     {

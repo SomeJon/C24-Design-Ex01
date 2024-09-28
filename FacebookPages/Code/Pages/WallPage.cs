@@ -1,21 +1,19 @@
-﻿using FacebookPages.Code.Buttons;
-using FacebookPages.Code.Pages.Data.Post;
-using FacebookPages.Pages.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using FacebookPages.Code.Buttons.Interfaces;
 using FacebookPages.Code.Pages.Data;
+using FacebookPages.Code.Pages.Data.Post;
 
-namespace FacebookPages.Pages
+namespace FacebookPages.Code.Pages
 {
     public partial class WallPage : BasePage
     {
         public override Color BackColor { get; set; }
         public WallPageData PageData { get; set; }
-        public static readonly object SrPageDataLock = new object();
+        public static readonly object sr_PageDataLock = new object();
 
         public WallPage()
         {
@@ -24,18 +22,18 @@ namespace FacebookPages.Pages
 
         public void SetAsHomePage()
         {
-            m_ExitButton.Text = "Logout";
+            m_ExitButton.Text = @"Logout";
             m_ExitButton.PageChoice = ePageChoice.Logout;
         }
 
-        protected virtual void PageSwitchButton_Click(object sender, EventArgs e)
+        protected virtual void PageSwitchButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            OnChangePage(sender, e);
+            OnChangePage(i_Sender, i_EventArgs);
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnLoad(EventArgs i_EventArgs)
         {
-            base.OnLoad(e);
+            base.OnLoad(i_EventArgs);
 
             if (PageData?.ProfilePicUrl != null)
             {
@@ -53,23 +51,23 @@ namespace FacebookPages.Pages
             textBoxFullName.Text = PageData?.FirstName
                 + " " + PageData?.LastName;
 
-            FetchThread = new Thread(new ThreadStart(fetchDataInBackground));
+            FetchThread = new Thread(fetchDataInBackground);
 
             FetchThread.Start();
         }
 
-        private void m_ViewFriendButton_Click(object sender, EventArgs e)
+        private void m_ViewFriendButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            (sender as IHasDataInfo).ReceivedInfo = m_ChooseFriend.ReceivedInfo;
-            (sender as IHasDataInfo).InfoChoice = eInfoChoice.Friend;
+            (i_Sender as IHasDataInfo).ReceivedInfo = m_ChooseFriend.ReceivedInfo;
+            (i_Sender as IHasDataInfo).InfoChoice = eInfoChoice.Friend;
 
-            PageSwitchButton_Click(sender, e);
+            PageSwitchButton_Click(i_Sender, i_EventArgs);
         }
 
 
         private void fetchDataInBackground()
         {
-            lock (SrPageDataLock)
+            lock (sr_PageDataLock)
             {
                 PageData.TryFetchAndLoadPageData();
             }
@@ -83,32 +81,32 @@ namespace FacebookPages.Pages
             } 
             catch (System.InvalidOperationException iInvalidOperation) 
             {
-                MessageBox.Show(iInvalidOperation.Message, "Error");
+                MessageBox.Show(iInvalidOperation.Message, @"Error");
             }
 
         }
 
-        private void updatePageWithData(List<UpdatedPostData> data)
+        private void updatePageWithData(List<UpdatedPostData> i_Data)
         {
-            m_PostViewButton.LoadInfoListBox.DataSource = data;
+            m_PostViewButton.LoadInfoListBox.DataSource = i_Data;
             m_PostViewButton.Refresh();
         }
 
-        private void m_PostViewButton_ChangeConnectionRequest(object sender, EventArgs e)
+        private void m_PostViewButton_ChangeConnectionRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            lock(SrPageDataLock)
+            lock(sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
                 PageData.PostsWithPaging.SwitchConnection
-                    (((sender as System.Windows.Forms.ComboBox).SelectedItem as string).ToLower());
+                    (((string)(i_Sender as System.Windows.Forms.ComboBox)?.SelectedItem).ToLower());
                 updatePageWithData(PageData.PostsWithPaging.Posts);
             }
 
         }
 
-        private void m_PostViewButton_MorePostsRequest(object sender, EventArgs e)
+        private void m_PostViewButton_MorePostsRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            lock (SrPageDataLock)
+            lock (sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
                 if (!PageData.PostsWithPaging.TryToAddNextPage())
@@ -120,16 +118,16 @@ namespace FacebookPages.Pages
             }
         }
 
-        private void m_PostViewButton_FilterRequest(object sender, EventArgs e)
+        private void m_PostViewButton_FilterRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            (sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging;
-            OnRecivedInfo(sender, e);
+            (i_Sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging;
+            OnReceivedInfo(i_Sender, i_EventArgs);
             updatePageWithData(PageData.PostsWithPaging.Posts);
         }
 
-        private void m_PostViewButton_LoadAllPosts(object sender, EventArgs e)
+        private void m_PostViewButton_LoadAllPosts(object i_Sender, EventArgs i_EventArgs)
         {
-            lock (SrPageDataLock)
+            lock (sr_PageDataLock)
             {
                 try
                 {
@@ -148,15 +146,15 @@ namespace FacebookPages.Pages
             }
         }
 
-        private void m_PostViewButton_PostSelected(object sender, EventArgs e)
+        private void m_PostViewButton_PostSelected(object i_Sender, EventArgs i_EventArgs)
         {
-            OnRecivedInfo(sender, e);
+            OnReceivedInfo(i_Sender, i_EventArgs);
         }
 
-        private void m_PostViewButton_PostAnalyticRequest(object sender, EventArgs e)
+        private void m_PostViewButton_PostAnalyticRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            (sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging.Posts;
-            OnRecivedInfo(sender, e);
+            (i_Sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging.Posts;
+            OnReceivedInfo(i_Sender, i_EventArgs);
         }
     }
 }

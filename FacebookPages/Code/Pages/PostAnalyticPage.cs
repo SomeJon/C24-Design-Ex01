@@ -23,9 +23,9 @@ namespace FacebookPages.Code.Pages
             int totalComments = PageData.TotalComments;
             double averageEngagementRate = PageData.AverageEngagementRate;
 
-            m_TotalLikesLabel.Text = $"Total Likes: {totalLikes}";
-            m_TotalCommentsLabel.Text = $"Total Comments: {totalComments}";
-            m_EngagementRateLabel.Text = $"Average Engagement Rate: {averageEngagementRate:F2}";
+            m_TotalLikesLabel.Text = $@"Total Likes: {totalLikes}";
+            m_TotalCommentsLabel.Text = $@"Total Comments: {totalComments}";
+            m_EngagementRateLabel.Text = $@"Average Engagement Rate: {averageEngagementRate:F2}";
         }
 
         private void displayContentPerformance()
@@ -39,49 +39,49 @@ namespace FacebookPages.Code.Pages
                 m_TopPerformingListBox.Items.Add(post);
             }
 
-            m_PostFrequencyLabel.Text = $"Post Frequency: {postFrequency:F2} posts/day";
+            m_PostFrequencyLabel.Text = $@"Post Frequency: {postFrequency:F2} posts/day";
             m_PostTimingImpactLabel.Text = 
-                $"Optimal Post Timing: " +
-                $"{PageData.PostTimingImpact.OrderByDescending(x => x.Value).First().Key} " +
-                $"with {PageData.PostTimingImpact.OrderByDescending(x => x.Value).First().Value:F2} " +
-                $"engagement";
+                $@"Optimal Post Timing: " +
+                $"{PageData.PostTimingImpact.OrderByDescending(i_X => i_X.Value).First().Key} " +
+                $"with {PageData.PostTimingImpact.OrderByDescending(i_X => i_X.Value).First().Value:F2} " +
+                $@"engagement";
         }
 
         private void displayPostFrequencyAndTiming()
         {
             double postFrequency = PageData.PostFrequency;
-            var timingImpact = PageData.PostTimingImpact.OrderByDescending(x => x.Value).First();
+            var timingImpact = PageData.PostTimingImpact.OrderByDescending(i_X => i_X.Value).First();
 
-            m_FrequencyImpactLabel.Text = $"Post Frequency: {postFrequency:F2} posts/day";
-            m_OptimalPostTimingLabel.Text = $"Best Time: {timingImpact.Key} with {timingImpact.Value:F2} average engagement";
+            m_FrequencyImpactLabel.Text = $@"Post Frequency: {postFrequency:F2} posts/day";
+            m_OptimalPostTimingLabel.Text = $@"Best Time: {timingImpact.Key} with {timingImpact.Value:F2} average engagement";
         }
 
-        private void displayPostTypeAnalysis(PostTypeAnalysis iAnalysis)
+        private void displayPostTypeAnalysis(PostTypeAnalysis i_Analysis)
         {
-            if (iAnalysis != null)
+            if (i_Analysis != null)
             {
-                m_TotalTypeLikes.Text = $"Total Likes: {iAnalysis.TotalLikes}";
-                m_TotatlTypeCommments.Text = $"Total Comments: {iAnalysis.TotalComments}";
-                m_AverageTypeEngagement.Text = $"Average Engagement: {iAnalysis.AverageEngagement:F2}";
+                m_TotalTypeLikes.Text = $@"Total Likes: {i_Analysis.TotalLikes}";
+                m_TotatlTypeCommments.Text = $@"Total Comments: {i_Analysis.TotalComments}";
+                m_AverageTypeEngagement.Text = $@"Average Engagement: {i_Analysis.AverageEngagement:F2}";
             }
             else
             {
-                m_TotalTypeLikes.Text = "Total Likes: N/A";
-                m_TotatlTypeCommments.Text = "Total Comments: N/A";
-                m_AverageTypeEngagement.Text = "Average Engagement: N/A";
+                m_TotalTypeLikes.Text = @"Total Likes: N/A";
+                m_TotatlTypeCommments.Text = @"Total Comments: N/A";
+                m_AverageTypeEngagement.Text = @"Average Engagement: N/A";
             }
         }
 
-        private void PostTypeAnalysisButton_Click(object sender, EventArgs e)
+        private void PostTypeAnalysisButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
             List<PostTypeAnalysis> options = PageData.PostTypeAnalyses;
 
             m_ChoseType.DataSource = options;
         }
 
-        private void m_ChoseType_SelectedIndexChanged(object sender, EventArgs e)
+        private void m_ChoseType_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
-            ComboBox dataHolder = sender as ComboBox;
+            ComboBox dataHolder = i_Sender as ComboBox;
 
             if (dataHolder.SelectedItem != null)
             {
@@ -89,29 +89,29 @@ namespace FacebookPages.Code.Pages
             }
         }
 
-        private void m_EngagementMetricsButton_Click(object sender, EventArgs e)
+        private void m_EngagementMetricsButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
             displayEngagementMetrics();
         }
 
-        private void m_PostFrequencyTimingButton_Click(object sender, EventArgs e)
+        private void m_PostFrequencyTimingButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
             displayPostFrequencyAndTiming();
         }
 
-        private void m_ContentPerformanceButton_Click(object sender, EventArgs e)
+        private void m_ContentPerformanceButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
             displayContentPerformance();
         }
 
-        private void m_TopPerformingListBox_DoubleClick(object sender, EventArgs e)
+        private void m_TopPerformingListBox_DoubleClick(object i_Sender, EventArgs i_EventArgs)
         {
-            OnRecivedInfo(sender, e);
+            OnReceivedInfo(i_Sender, i_EventArgs);
         }
 
-        private void m_ReturnSwitchButton_Click(object sender, EventArgs e)
+        private void m_ReturnSwitchButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            OnChangePage(sender, e);
+            OnChangePage(i_Sender, i_EventArgs);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FacebookPages.Pages;
 using System.Windows.Forms;
+using FacebookPages.Code.Pages;
 
 namespace FacebookPages.Code.Buttons
 {

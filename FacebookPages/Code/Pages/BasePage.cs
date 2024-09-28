@@ -1,41 +1,29 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows.Forms;
 
-namespace FacebookPages.Pages
+namespace FacebookPages.Code.Pages
 {
     public class BasePage : UserControl
     {
         [Category(".Page Events")]
         [Description("Occurs when information is received " +
             "and needs to be proccessed.")]
-        public event EventHandler RecivedInfo;
+        public event EventHandler ReceivedInfo;
         [Category(".Page Events")]
         [Description("Occurs when recieve a page change request.")]
         public event EventHandler ChangePage;
         protected internal Thread FetchThread { get; set; }
 
-        protected virtual void OnRecivedInfo(object sender, EventArgs e)
+        protected virtual void OnReceivedInfo(object i_Sender, EventArgs i_EventArgs)
         {
-            RecivedInfo?.Invoke(sender, e);
+            ReceivedInfo?.Invoke(i_Sender, i_EventArgs);
         }
 
-        protected virtual void OnChangePage(object sender, EventArgs e)
+        protected virtual void OnChangePage(object i_Sender, EventArgs i_EventArgs)
         {
-            ChangePage?.Invoke(sender, e);
-        }
-
-        private void initializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // BasePage
-            // 
-            this.Name = "BasePage";
-            this.Size = new System.Drawing.Size(858, 500);
-            this.ResumeLayout(false);
-
+            ChangePage?.Invoke(i_Sender, i_EventArgs);
         }
     }
 }

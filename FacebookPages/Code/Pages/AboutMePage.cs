@@ -15,12 +15,12 @@ namespace FacebookPages.Code.Pages
             InitializeComponent();
         }
 
-        private void switchPageButton_Click(object sender, EventArgs e)
+        private void switchPageButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            OnChangePage(sender, e);
+            OnChangePage(i_Sender, i_EventArgs);
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnLoad(EventArgs i_EventArgs)
         {
             FetchThread = new Thread(new ThreadStart(fetchDataInBackground));
 
@@ -31,9 +31,7 @@ namespace FacebookPages.Code.Pages
         {
             PageData.TryFetchAndLoadPageData();
 
-            this.Invoke((MethodInvoker)delegate {
-                updatePageWithData();
-            });
+            this.Invoke((MethodInvoker)updatePageWithData);
         }
 
         private void updatePageWithData()

@@ -1,7 +1,7 @@
 ﻿using FacebookPages.Code.Buttons;
 using FacebookPages.Code.Buttons.Interfaces;
 
-namespace FacebookPages.Pages
+namespace FacebookPages.Code.Pages
 {
     partial class LoginPage
     {
@@ -79,7 +79,7 @@ namespace FacebookPages.Pages
             this.facebooklogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.facebooklogo.TabIndex = 60;
             this.facebooklogo.TabStop = false;
-            this.facebooklogo.Click += new System.EventHandler(this.facebooklogo_Click);
+            this.facebooklogo.Click += new System.EventHandler(this.facebookLogo_Click);
             // 
             // ButtonExit
             // 
@@ -176,7 +176,7 @@ namespace FacebookPages.Pages
             this.rememberLoginChackBox.TabIndex = 77;
             this.rememberLoginChackBox.Text = "Remember Login";
             this.rememberLoginChackBox.UseVisualStyleBackColor = true;
-            this.rememberLoginChackBox.Click += new System.EventHandler(this.rememberLoginChackBox_Click);
+            this.rememberLoginChackBox.Click += new System.EventHandler(this.rememberLoginCheckBox_Click);
             // 
             // loginButton
             // 

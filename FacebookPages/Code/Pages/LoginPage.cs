@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace FacebookPages.Pages
+namespace FacebookPages.Code.Pages
 {
     public partial class LoginPage : BasePage
     {
@@ -21,23 +21,23 @@ namespace FacebookPages.Pages
             m_OriginalImage = facebooklogo.Image;
         }
 
-        private void LoginPage_Load(object sender, EventArgs e)
+        private void LoginPage_Load(object i_Sender, EventArgs i_EventArgs)
         {
             dateLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
-        private void switchPageButton_Click(object sender, EventArgs e)
+        private void switchPageButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            OnChangePage(sender, e);
+            OnChangePage(i_Sender, i_EventArgs);
         }
 
-        private void facebooklogo_Click(object sender, EventArgs e)
+        private void facebookLogo_Click(object i_Sender, EventArgs i_EventArgs)
         {
             m_RotationAngle = 0;
             m_RotationTimer.Start();
         }
 
-        private void RotationTimer_Tick(object sender, EventArgs e)
+        private void RotationTimer_Tick(object i_Sender, EventArgs i_EventArgs)
         {
             m_RotationAngle += 10;
             Bitmap rotatedImage = new Bitmap(m_OriginalImage.Width, m_OriginalImage.Height);
@@ -60,9 +60,9 @@ namespace FacebookPages.Pages
             }
         }
 
-        private void rememberLoginChackBox_Click(object sender, EventArgs e)
+        private void rememberLoginCheckBox_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            RemeberLogin?.Invoke(sender, new EventArgs());
+            RemeberLogin?.Invoke(i_Sender, i_EventArgs);
         }
     }
 }

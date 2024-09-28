@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FacebookPages.Code.Buttons;
 
-namespace FacebookPages.Pages
+namespace FacebookPages.Code.Pages
 {
     public partial class LoginSettingPage : BasePage
     {
@@ -12,43 +12,43 @@ namespace FacebookPages.Pages
         public LoginSettingPage()
         {
             InitializeComponent();
-            appIdComboBox.Items.AddRange(new string[] {
-                "867142571975316",
-                "696056928008003",
-                "1450160541956417"});
+            appIdComboBox.Items.AddRange(new object[] {
+                                                          "867142571975316",
+                                                          "696056928008003",
+                                                          "1450160541956417"});
 
             appIdComboBox.SelectedIndex = 0;
         }
 
-        private void addAppIdTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void addAppIdTextBox_KeyPress(object i_Sender, KeyPressEventArgs i_EventArgs)
         {
-            if(!char.IsDigit(e.KeyChar))
+            if(!char.IsDigit(i_EventArgs.KeyChar))
             {
-                e.Handled = true;
+                i_EventArgs.Handled = true;
             }
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        private void backButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            OnChangePage(sender, e);
+            OnChangePage(i_Sender, i_EventArgs);
         }
 
-        private void addIdButton_Click(object sender, EventArgs e)
+        private void addIdButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
             if (addAppIdTextBox.Text.Length > 0) {
-                (sender as LoadInfoButton).ReceivedInfo = addAppIdTextBox.Text;
+                ((LoadInfoButton)i_Sender).ReceivedInfo = addAppIdTextBox.Text;
                 appIdComboBox.Items.Add(addAppIdTextBox.Text);
                 appIdComboBox.SelectedIndex = appIdComboBox.Items.Count - 1;
-                OnRecivedInfo(sender, e);
+                OnReceivedInfo(i_Sender, i_EventArgs);
             } else
             {
                 MessageBox.Show("You need to first input an id in the Text Box!");
             }
         }
 
-        private void pictureBoxReturn_Click(object sender, EventArgs e)
+        private void pictureBoxReturn_Click(object i_Sender, EventArgs i_EventArgs)
         {
-           OnChangePage(sender, e);        
+           OnChangePage(i_Sender, i_EventArgs);        
         }
     }
 }
