@@ -96,7 +96,7 @@
     <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Code\Pages\Data\HasSetData.cs" />
+    <Compile Include="Code\Pages\Data\IHasSetData.cs" />
     <Compile Include="Code\Pages\Data\PostAnalyticData.cs" />
     <Compile Include="Code\Pages\Data\Post\Filter\DataFilter.cs" />
     <Compile Include="Code\Pages\Data\Post\Filter\FilterMethod.cs" />

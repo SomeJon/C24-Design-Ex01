@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using FacebookPages.Code.Buttons.Interfaces;
+using FacebookPages.Code.Pages.Data;
 
 namespace FacebookPages.Pages
 {

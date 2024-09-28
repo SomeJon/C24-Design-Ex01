@@ -1,12 +1,11 @@
-﻿using FacebookPages.Code.Pages.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FacebookWrapper.ObjectModel;
 using FacebookPages.Code.Pages.Data.Post;
 using FacebookPages.Code.Pages.Data.Post.Filter;
+using FacebookWrapper.ObjectModel;
 
-namespace FacebookPages.Pages.Data
+namespace FacebookPages.Code.Pages.Data
 {
     public class WallPageData : PageData
     {
@@ -18,38 +17,37 @@ namespace FacebookPages.Pages.Data
         public PostsWithPaging<UpdatedPostData> PostsWithPaging { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
 
         public override void TryFetchAndLoadPageData(
-            UserFetchData iFetchData = null, Dictionary<string, string> iKeyValueParamtersPairs = null)
+            UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
         {
-            base.TryFetchAndLoadPageData(iFetchData, iKeyValueParamtersPairs);
+            base.TryFetchAndLoadPageData(i_FetchData, i_KeyValueParamtersPairs);
             PostsWithPaging.Connection = "feed";
             PostsWithPaging.PageFetcherObject = this.PageFetcherObject;
             PostsWithPaging.TryFetchAndLoadPageData();
         }
 
-        public void LoadUserWallData(User iUser)
+        public void LoadUserWallData(User i_User)
         {
-            DataFilter newFilter = new DataFilter();
+            DataFilter newFilter = new DataFilter { UserSource = i_User };
 
-            newFilter.UserSource = iUser;
             PostsWithPaging.FilterData = newFilter;
-            newFilter.AvailableUsersToSelect.Add(iUser);
+            newFilter.AvailableUsersToSelect.Add(i_User);
 
-            foreach (User friend in iUser.Friends)
+            if(i_User != null)
             {
-                newFilter.AvailableUsersToSelect.Add(friend);
-            }
+                foreach(User friend in i_User.Friends)
+                {
+                    newFilter.AvailableUsersToSelect.Add(friend);
+                }
 
-            CoverPicUrl =
-                iUser?.Albums
-                .FirstOrDefault<Album>(
-                    T => String.Equals(T.Name, "Cover photos", StringComparison.OrdinalIgnoreCase)
-                    )?
-                    .CoverPhoto
-                    .PictureNormalURL;
-            ProfilePicUrl = iUser?.PictureLargeURL;
-            FirstName = iUser?.FirstName;
-            LastName = iUser?.LastName;
-            Friends = iUser?.Friends;
+                CoverPicUrl = i_User.Albums
+                    .FirstOrDefault(i_Album => 
+                        string.Equals(i_Album.Name, "Cover photos", StringComparison.OrdinalIgnoreCase))
+                    ?.CoverPhoto.PictureNormalURL;
+                ProfilePicUrl = i_User.PictureLargeURL;
+                FirstName = i_User.FirstName;
+                LastName = i_User.LastName;
+                Friends = i_User.Friends;
+            }
         }
     }
 }
