@@ -9,6 +9,12 @@ using FacebookPages.Code.Buttons;
 using FacebookPages.Code.Pages.Data.Post;
 using System.Collections.Generic;
 using FacebookPages.Code.Buttons.Interfaces;
+using FacebookWrapperEnhancements.Code;
+using FacebookWrapperEnhancements.Code.Collection;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using FacebookWrapperEnhancements.Code.UserManagement;
+using FetchHandler.Fetch;
+using Paging = FacebookWrapperEnhancements.Code.Collection.Paging;
 
 namespace FacebookClient.Code
 {
@@ -60,6 +66,12 @@ namespace FacebookClient.Code
                     LoginResult = FacebookService.Connect(
                         Properties.Settings.Default.AccessToken);
                     tryFirstFetch();
+                    EnhancedUser aa = FacebookServicesEnhancements.FetchLoggedInUser(LoginResult); //todo: to delete
+
+                    if(aa != null)
+                    {
+                        FacebookObjectCollectionWithPaging<EnhancedAlbums> fr = aa.Albums;
+                    }
                 }
             }
         }

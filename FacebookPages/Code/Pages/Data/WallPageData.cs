@@ -27,8 +27,9 @@ namespace FacebookPages.Code.Pages.Data
             PostsWithPaging.TryFetchAndLoadPageData();
 
             FacebookObjectCollectionWithPaging<UpdatedPostData> test = 
-                FacebookServicesEnhancements.GetCollection<UpdatedPostData>("feed", PageFetcherObject, 
-                    Post.PostsWithPaging<UpdatedPostData>.sr_FieldsToLoad[eLoadOptions.Full]);
+                FacebookServicesEnhancements.GetCollection<UpdatedPostData>("feed", 
+                    PageFetcherObject.UserFetchData.UserId, 
+                    Post.PostsWithPaging<UpdatedPostData>.sr_FieldsToLoad[eLoadOptions.Full]); //todo: delete
         }
 
         public void LoadUserWallData(User i_User)

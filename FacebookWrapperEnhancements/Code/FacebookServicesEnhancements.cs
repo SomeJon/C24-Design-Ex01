@@ -7,7 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Facebook;
 using System.Dynamic;
+using FacebookPages.Code.Pages.Data;
 using FacebookWrapperEnhancements.Code.Collection;
+using FacebookWrapperEnhancements.Code.UserManagement;
 using FetchHandler.Fetch;
 using static FacebookWrapper.ObjectModel.DynamicWrapper;
 
@@ -15,16 +17,39 @@ namespace FacebookWrapperEnhancements.Code
 {
     public class FacebookServicesEnhancements
     {
-        public static FacebookObjectCollectionWithPaging<T> GetCollection<T>(
+        public static string AccessToken { get; set; }
+
+        public static FacebookObjectCollectionWithPaging<T> RetrieveCollection<T>(
             string i_Connection,
-            Fetcher i_FetchObject,
+            ref FacebookObjectCollectionWithPaging<T> io_TheCollection,
+            string i_UserId,
             string i_Fields = "",
-            int? i_Limit = null,
-            DynamicWrapper.eLoadOptions i_LoadOptions = DynamicWrapper.eLoadOptions.Full,
-            Dictionary<string, string> i_KeyValueParametersPairs = null)
+            Dictionary<string, string> i_KeyValueParametersPairs = null,
+            eLoadOptions i_LoadOptions = eLoadOptions.Full,
+            int? i_Limit = null)
             where T : DynamicWrapper, new()
         {
-            dynamic dynamicData = i_FetchObject.Fetch(i_Fields, i_Connection, i_KeyValueParametersPairs, i_Limit);
+            if (io_TheCollection == null)
+            {
+                io_TheCollection = GetCollection<T>(i_Connection, i_UserId, i_Fields, 
+                    i_KeyValueParametersPairs, i_Limit ?? FacebookService.s_CollectionLimit, 
+                    i_LoadOptions);
+            }
+
+            return io_TheCollection;
+        }
+
+        public static FacebookObjectCollectionWithPaging<T> GetCollection<T>(
+            string i_Connection,
+            string i_UserId,
+            string i_Fields = "",
+            Dictionary<string, string> i_KeyValueParametersPairs = null,
+            int? i_Limit = null,
+            DynamicWrapper.eLoadOptions i_LoadOptions = DynamicWrapper.eLoadOptions.Full)
+            where T : DynamicWrapper, new()
+        {
+            Fetcher fetchObject = new Fetcher(new UserFetchData(i_UserId, AccessToken));
+            dynamic dynamicData = fetchObject.Fetch(i_Fields, i_Connection, i_KeyValueParametersPairs, i_Limit);
             return FacebookServicesEnhancements.CreateCollection<T>(dynamicData, i_LoadOptions);
         }
 
@@ -40,19 +65,20 @@ namespace FacebookWrapperEnhancements.Code
             if (dynamicData != null)
             {
                 collection = new FacebookObjectCollectionWithPaging<T>(dynamicData.Count);
+                T dynamicWrapper = new T();
                 foreach (dynamic item in dynamicData)
                 {
-                    T val = new T();
+                    T val = null;
 
-                    val.WrapOrGet(ref val, item, i_LoadOptions);
+                    dynamicWrapper.WrapOrGet(ref val, item, i_LoadOptions);
                     collection.Add(val);
                 }
 
                 if (dynamicPagingData != null)
                 {
-                    Paging pagingData = collection.PagingData;
+                    Paging pagingData = null;
 
-                    pagingData.WrapOrGet(ref pagingData, dynamicPagingData, i_LoadOptions);
+                    collection.PagingData = dynamicWrapper.WrapOrGet(ref pagingData, dynamicPagingData, i_LoadOptions);
                 }
             }
             else
@@ -61,6 +87,20 @@ namespace FacebookWrapperEnhancements.Code
             }
             
             return collection;
+        }
+
+        public static EnhancedUser FetchLoggedInUser(LoginResult i_LoginResult)
+        {
+            AccessToken = i_LoginResult.AccessToken;
+            FacebookClient facebookClient = new FacebookClient(AccessToken);
+            dynamic val = new ExpandoObject();
+            val.fields = User.sr_FieldsToLoad[DynamicWrapper.eLoadOptions.Full];
+            dynamic val2 = facebookClient.Get(string.Format("/{0}", "me"), val);
+            EnhancedUser user = new EnhancedUser();
+            EnhancedUser user2 = null;
+            user.WrapOrGet(ref user2, val2, eLoadOptions.Full);
+
+            return user2;
         }
     }
 }

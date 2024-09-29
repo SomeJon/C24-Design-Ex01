@@ -178,6 +178,10 @@
       <Project>{89ba5b9e-1a5a-4fa3-be9f-18af65f4c209}</Project>
       <Name>FacebookPages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FacebookWrapperEnhancements\FacebookWrapperEnhancements.csproj">
+      <Project>{75901fe7-8f9d-48e0-b971-90a9eadb3dbc}</Project>
+      <Name>FacebookWrapperEnhancements</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FetchHandler\FetchHandler.csproj">
       <Project>{b3f772bb-2b99-48b1-982c-81633a06924e}</Project>
       <Name>FetchHandler</Name>

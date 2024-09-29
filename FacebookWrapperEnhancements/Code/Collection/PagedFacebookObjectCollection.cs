@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FacebookWrapperEnhancements.Code.Collection
 {
-    public class PagedFacebookObjectCollection<T>
+    public class PagedCollection<T> where T : IHasPaging
     {
 
     }

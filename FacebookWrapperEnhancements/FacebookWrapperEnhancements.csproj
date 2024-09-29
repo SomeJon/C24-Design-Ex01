@@ -48,15 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\Collection\FacebookObjectCollectionWithPaging.cs" />
-    <Compile Include="Code\Collection\IPagingInterface.cs" />
+    <Compile Include="Code\Collection\IHasPaging.cs" />
     <Compile Include="Code\Collection\PagedFacebookObjectCollection.cs" />
     <Compile Include="Code\Collection\Paging.cs" />
+    <Compile Include="Code\EnhancedObjects\EnhancedAlbums.cs" />
     <Compile Include="Code\FacebookServicesEnhancements.cs" />
-    <Compile Include="Code\Post\UpdatedPostData.cs" />
+    <Compile Include="Code\EnhancedObjects\EnhancedPost.cs" />
+    <Compile Include="Code\EnhancedObjects\EnhancedUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Code\User\" />
+    <Folder Include="Code\UserManagement\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FetchHandler\FetchHandler.csproj">

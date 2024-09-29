@@ -2,7 +2,7 @@
 
 namespace FacebookWrapperEnhancements.Code.Post
 {
-    public class UpdatedPostData : FacebookWrapper.ObjectModel.Post
+    public class EnhancedPost : FacebookWrapper.ObjectModel.Post
     {
         public int NumOfComments => 
             m_DynamicData.comments.summary.total_count != null ?
