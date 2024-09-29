@@ -8,7 +8,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookWrapperEnhancements.Code.Collection
 {
-    public class FacebookObjectCollectionWithPaging<T> : IEnumerable<T> where T : DynamicWrapper, new()
+    public class FacebookObjectCollectionWithPaging<T> : IEnumerable<T>, IHasPaging where T : DynamicWrapper, new()
     {
         private FacebookObjectCollection<T> m_Collection;
 
