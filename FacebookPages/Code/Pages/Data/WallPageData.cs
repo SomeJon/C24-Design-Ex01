@@ -4,6 +4,8 @@ using System.Linq;
 using FacebookPages.Code.Pages.Data.Post;
 using FacebookPages.Code.Pages.Data.Post.Filter;
 using FacebookWrapper.ObjectModel;
+using FacebookWrapperEnhancements.Code;
+using FacebookWrapperEnhancements.Code.Collection;
 
 namespace FacebookPages.Code.Pages.Data
 {
@@ -23,6 +25,10 @@ namespace FacebookPages.Code.Pages.Data
             PostsWithPaging.Connection = "feed";
             PostsWithPaging.PageFetcherObject = this.PageFetcherObject;
             PostsWithPaging.TryFetchAndLoadPageData();
+
+            FacebookObjectCollectionWithPaging<UpdatedPostData> test = 
+                FacebookServicesEnhancements.GetCollection<UpdatedPostData>("feed", PageFetcherObject, 
+                    Post.PostsWithPaging<UpdatedPostData>.sr_FieldsToLoad[eLoadOptions.Full]);
         }
 
         public void LoadUserWallData(User i_User)

@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using FacebookPages.Code.Pages.Data;
+using FacebookWrapper;
+using System.Windows.Forms.VisualStyles;
 
 
 namespace FetchHandler.Fetch
@@ -17,9 +19,10 @@ namespace FetchHandler.Fetch
         }
 
         public object Fetch(string i_Fields, string i_Path = null, 
-                            Dictionary<string, string> i_ParametersToAdd = null, Type i_Type = null)
+                            Dictionary<string, string> i_ParametersToAdd = null,
+                            int? i_Limit = null, Type i_Type = null)
         {
-            FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToekn);
+            FacebookClient facebookClient = new FacebookClient(UserFetchData.AccessToken);
             dynamic parametersKeyValueRequest = new ExpandoObject();
             string path = $"/{UserFetchData.UserId}";
 
@@ -33,7 +36,7 @@ namespace FetchHandler.Fetch
                 parametersKeyValueRequest = toExpando(i_ParametersToAdd);
             }
             parametersKeyValueRequest.fields = i_Fields;
-
+            parametersKeyValueRequest.limit = i_Limit ?? FacebookService.s_CollectionLimit;
 
             dynamic loadObject = facebookClient.Get(path, parametersKeyValueRequest, i_Type);
 

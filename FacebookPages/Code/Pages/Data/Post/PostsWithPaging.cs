@@ -78,7 +78,7 @@ namespace FacebookPages.Code.Pages.Data.Post
             Connection = "posts";
         }
 
-        private static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
+        public static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
         {
         {
             eLoadOptions.None,

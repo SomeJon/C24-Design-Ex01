@@ -3,12 +3,12 @@
     public class UserFetchData
     {
         public string UserId { get; set; }
-        public string AccessToekn { get; }
+        public string AccessToken { get; }
 
-        public UserFetchData(string iUserId, string iAccessToekn)
+        public UserFetchData(string i_UserId, string i_AccessToken)
         {
-            UserId = iUserId;
-            AccessToekn = iAccessToekn;
+            UserId = i_UserId;
+            AccessToken = i_AccessToken;
         }
     }
 }
