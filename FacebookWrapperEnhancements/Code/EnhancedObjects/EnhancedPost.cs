@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FacebookWrapperEnhancements.Code.Post
 {
@@ -23,6 +24,60 @@ namespace FacebookWrapperEnhancements.Code.Post
                 return null;
             }
         }
+        public static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
+            {
+                {
+                    eLoadOptions.None,
+                    "id, message"
+                },
+                {
+                    eLoadOptions.Basic,
+                    "id," +
+                    "message,story," +
+                    "created_time," +
+                    "updated_time," +
+                    "place," +
+                    "full_picture," +
+                    "from{name,id}," +
+                    "reactions.limit(1000).summary(true)," +
+                    "comments.limit(1000).summary(true)," +
+                    "status_type," +
+                    "type"
+                },
+                {
+                    eLoadOptions.Full,
+                    "id," +
+                    "message,story," +
+                    "created_time," +
+                    "updated_time," +
+                    "place," +
+                    "full_picture," +
+                    "attachments," +
+                    "from{name,id}," +
+                    "to{id,name}," +
+                    "reactions.limit(1000).summary(true)," +
+                    "comments.limit(1000).summary(true)," +
+                    "status_type," +
+                    "type"
+
+                },
+                {
+                    eLoadOptions.FullWithConnections,
+                    "id," +
+                    "message,story," +
+                    "created_time," +
+                    "updated_time," +
+                    "place," +
+                    "full_picture," +
+                    "attachments," +
+                    "from{name,id}," +
+                    "to{id,name}," +
+                    "reactions.limit(1000).summary(true)," +
+                    "comments.limit(1000).summary(true)," +
+                    "status_type," +
+                    "type"
+                }
+            };
 
         public void SetData(
             dynamic i_DynamicData, 
