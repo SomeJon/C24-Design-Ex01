@@ -54,7 +54,6 @@ namespace FacebookPages.Code.Pages
             {
                 loadAlbumIntoFlowLayoutPanel((((ComboBox)i_Sender).SelectedItem as Album));
             }
-            
         }
     }
 }

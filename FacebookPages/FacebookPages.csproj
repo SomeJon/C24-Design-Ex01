@@ -109,6 +109,7 @@
     <Compile Include="Code\Pages\Data\IPageData.cs" />
     <Compile Include="Code\Pages\Data\PageData.cs" />
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
+    <Compile Include="Code\Pages\PhotosPageLogic.cs" />
     <Compile Include="Code\Pages\PostAnalyticPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
