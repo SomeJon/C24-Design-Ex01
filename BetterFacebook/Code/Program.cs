@@ -16,7 +16,10 @@ namespace FacebookClient.Code
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+
+            Client runningClient = new Client();
+
+            runningClient.Run();
         }
 
 

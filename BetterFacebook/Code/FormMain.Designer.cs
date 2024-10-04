@@ -1,4 +1,5 @@
-﻿using FacebookPages.Pages;
+﻿using FacebookPages.Code.Buttons;
+using FacebookPages.Pages;
 
 namespace FacebookClient.Code
 {
@@ -39,7 +40,7 @@ namespace FacebookClient.Code
             this.m_ViewPanelControl.CurrentActivePage = null;
             this.m_ViewPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_ViewPanelControl.Location = new System.Drawing.Point(0, 0);
-            this.m_ViewPanelControl.Name = "m_ViewPanelControl";
+            this.m_ViewPanelControl.Name = "ViewPanel";
             this.m_ViewPanelControl.Size = new System.Drawing.Size(846, 593);
             this.m_ViewPanelControl.TabIndex = 0;
             // 
@@ -49,13 +50,12 @@ namespace FacebookClient.Code
             this.Controls.Add(this.m_ViewPanelControl);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.ResumeLayout(false);
-
         }
 
+        public ViewPanel m_ViewPanelControl;
+
         #endregion
-        private FacebookPages.Code.Buttons.ViewPanel m_ViewPanelControl;
     }
 }
 
