@@ -9,6 +9,9 @@ using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages;
 using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
+using FacebookWrapperEnhancements.Code;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using FacebookWrapperEnhancements.Code.Post;
 
 namespace FacebookClient.Code
 {
@@ -37,6 +40,11 @@ namespace FacebookClient.Code
                     r_FormMain.LoginResult = FacebookService.Connect(
                         Properties.Settings.Default.AccessToken);
                     tryFirstFetch();
+
+                    EnhancedUser ProxiedUser = FacebookServicesEnhancements.FetchLoggedInUser(r_FormMain.LoginResult);
+
+                    FacebookObjectCollection<EnhancedPost> newPosts = ProxiedUser.Posts;
+
                 }
             }
 

@@ -12,7 +12,6 @@ using FacebookPages.Code.Buttons.Interfaces;
 using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
-using FacebookWrapperEnhancements.Code.UserManagement;
 
 
 namespace FacebookClient.Code

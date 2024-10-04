@@ -9,7 +9,7 @@ using Facebook;
 using System.Dynamic;
 using FacebookPages.Code.Pages.Data;
 using FacebookWrapperEnhancements.Code.Collection;
-using FacebookWrapperEnhancements.Code.UserManagement;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using FetchHandler.Fetch;
 using static FacebookWrapper.ObjectModel.DynamicWrapper;
 
