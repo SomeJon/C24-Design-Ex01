@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using FacebookPages.Pages;
 using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages;
 using FacebookPages.Code.Buttons;
@@ -54,12 +53,12 @@ namespace FacebookClient.Code
 
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
 
-            if (Properties.Settings.Default.SaveData)
+            if (Settings.Default.SaveData)
             {
-                this.Width = Properties.Settings.Default.Width;
-                this.Height = Properties.Settings.Default.Height;
+                this.Width = Settings.Default.Width;
+                this.Height = Settings.Default.Height;
                 this.StartPosition = FormStartPosition.Manual;
-                this.Location = Properties.Settings.Default.StartingPostion;
+                this.Location = Settings.Default.StartingPostion;
             }
         }
 
@@ -68,17 +67,17 @@ namespace FacebookClient.Code
             FacebookService.LogoutWithUI();
             LoginResult = null;
             LoggedUser = null;
-            Properties.Settings.Default.AccessToken = null;
-            Properties.Settings.Default.Save();
+            Settings.Default.AccessToken = null;
+            Settings.Default.Save();
         }
 
         public void CloseFormSave()
         {
-            Properties.Settings.Default.SaveData = true;
-            Properties.Settings.Default.Height = this.Height;
-            Properties.Settings.Default.Width = this.Width;
-            Properties.Settings.Default.StartingPostion = this.Location;
-            Properties.Settings.Default.Save();
+            Settings.Default.SaveData = true;
+            Settings.Default.Height = this.Height;
+            Settings.Default.Width = this.Width;
+            Settings.Default.StartingPostion = this.Location;
+            Settings.Default.Save();
         }
         
     }

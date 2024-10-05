@@ -1,17 +1,17 @@
-﻿using FacebookPages.Code.Pages.Data.Post;
-using FacebookPages.Pages.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FacebookPages.Code.Pages.Data.Post;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 
 namespace FacebookPages.Code.Pages.Data
 {
-    public class PostAnalyticData : PageData, IPageData
+    public class PostAnalyticData : IPageData
     {
         private List<PostTypeAnalysis> m_PostTypeAnalyses;
-        public List<UpdatedPostData> PostData { get; set; }
-        public List<UpdatedPostData> Top5Posts =>
+        public List<EnhancedPost> PostData { get; set; }
+        public List<EnhancedPost> Top5Posts =>
             PostData
                 .OrderByDescending(i_Post => i_Post.NumOfLikes + i_Post.NumOfComments)
                 .Take(5)
@@ -57,7 +57,7 @@ namespace FacebookPages.Code.Pages.Data
 
                 for (int hour = 0; hour < 24; hour++)
                 {
-                    List<UpdatedPostData> postsAtHour = 
+                    List<EnhancedPost> postsAtHour = 
                         PostData
                             .Where(i_Post => i_Post.CreatedTime.HasValue && i_Post.CreatedTime.Value.Hour == hour)
                             .ToList();
@@ -100,6 +100,18 @@ namespace FacebookPages.Code.Pages.Data
             }
 
             return analysisResults;
+        }
+
+        public EnhancedUser PageUser { get; set; }
+
+        public void RefreshData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadAllCurrentData()
+        {
+            throw new NotImplementedException();
         }
     }
 }

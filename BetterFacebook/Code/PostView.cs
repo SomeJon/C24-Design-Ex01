@@ -2,19 +2,20 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookClient.Code
 {
     public partial class PostView : Form
     {
-        public UpdatedPostData PostData { get; private set; }
+        public EnhancedPost PostData { get; private set; }
 
         public PostView()
         {
             InitializeComponent();
         }
 
-        public void LoadPostData(UpdatedPostData i_PostData)
+        public void LoadPostData(EnhancedPost i_PostData)
         {
             if (i_PostData == null)
             {

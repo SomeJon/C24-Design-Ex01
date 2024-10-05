@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FacebookWrapperEnhancements.Code.Post
+namespace FacebookWrapperEnhancements.Code.EnhancedObjects
 {
     public class EnhancedPost : FacebookWrapper.ObjectModel.Post
     {

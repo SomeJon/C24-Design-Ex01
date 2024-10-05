@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code.Collection.Sort;
-using FacebookWrapperEnhancements.Code.Post;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookWrapperEnhancements.Code.Collection.Filter
 {
@@ -16,8 +16,8 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
             new System.DateTime
                 (1900, 1, 1, 0, 0, 0, 0);
         public DateTime MaxDate { get; set; } = DateTime.Now;
-        public EnhancedPostSortingMethodFactory.eSortingMethod PostSortingMethod { get; set; } = 
-            EnhancedPostSortingMethodFactory.eSortingMethod.ByDatePublished;
+        public SortingMethodFactory.eSortingMethod PostSortingMethod { get; set; } =
+            SortingMethodFactory.eSortingMethod.ByDatePublished;
         public bool ReverseOrder { get; set; } = false;
         public bool MatchAllFilters { get; set; } = false;
         public string TextContainsString { get; set; } = null;
@@ -37,7 +37,7 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
         // Method to generate a Comparison<EnhancedPost> based on sorting method and reverse order flag
         public Comparison<EnhancedPost> GetComparison()
         {
-            Comparison<EnhancedPost> baseComparison = EnhancedPostSortingMethodFactory.GetComparison(PostSortingMethod);
+            Comparison<EnhancedPost> baseComparison = SortingMethodFactory.GetComparison(PostSortingMethod);
 
             if (ReverseOrder)
             {

@@ -1,10 +1,10 @@
 ﻿using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages.Data.Post;
-using FacebookPages.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookPages.Code.Pages
 {
@@ -30,7 +30,7 @@ namespace FacebookPages.Code.Pages
 
         private void displayContentPerformance()
         {
-            List<UpdatedPostData> top5Posts = PageData.Top5Posts;
+            List<EnhancedPost> top5Posts = PageData.Top5Posts;
             double postFrequency = PageData.PostFrequency;
 
             m_TopPerformingListBox.Items.Clear();

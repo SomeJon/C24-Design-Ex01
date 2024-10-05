@@ -1,38 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FacebookPages.Code.Pages.Data.Post;
-using FacebookPages.Code.Pages.Data.Post.Filter;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.Collection;
+using FacebookWrapperEnhancements.Code.Collection.Filter;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using FetchHandler.Fetch;
 
 namespace FacebookPages.Code.Pages.Data
 {
-    public class WallPageData : PageData
+    public class WallPageData : IPageData
     {
         public string ProfilePicUrl { get; protected set; }
         public string CoverPicUrl { get; protected set; }
         public string FirstName { get; protected set; }
         public string LastName { get; protected set; }
         public FacebookObjectCollection<User> Friends { get; protected set; }
-        public PostsWithPaging<UpdatedPostData> PostsWithPaging { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
+        public FacebookObjectCollectionWithPaging<EnhancedUser> PostsWithPaging { get; protected set; } 
+            = new FacebookObjectCollectionWithPaging<EnhancedUser>();
 
-        public override void TryFetchAndLoadPageData(
-            UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
-        {
-            base.TryFetchAndLoadPageData(i_FetchData, i_KeyValueParamtersPairs);
-            PostsWithPaging.Connection = "feed";
-            PostsWithPaging.PageFetcherObject = this.PageFetcherObject;
-            PostsWithPaging.TryFetchAndLoadPageData();
 
-        }
 
         public void LoadUserWallData(User i_User)
         {
-            DataFilter newFilter = new DataFilter { UserSource = i_User };
+            FilterData newFilter = new FilterData { UserSource = i_User };
 
-            PostsWithPaging.FilterData = newFilter;
             newFilter.AvailableUsersToSelect.Add(i_User);
 
             if(i_User != null)
@@ -52,5 +45,17 @@ namespace FacebookPages.Code.Pages.Data
                 Friends = i_User.Friends;
             }
         }
+
+        public void LoadAllCurrentData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RefreshData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public EnhancedUser PageUser { get; set; }
     }
 }

@@ -1,12 +1,17 @@
-﻿using FacebookPages.Code.Pages.Data;
+﻿using FacebookWrapper.ObjectModel;
+using FetchHandler.Fetch;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
-namespace FacebookPages.Pages.Data
+namespace FacebookPages.Code.Pages.Data 
 {
-    public interface IPageData 
+    public interface IPageData
     {
-        void TryFetchAndLoadPageData(UserFetchData iFetchData, Dictionary<string, string> iKeyValueParamtersPairs = null);
+        EnhancedUser PageUser { get; }
 
-        void LoadFetchData(UserFetchData iFetchData);
+        void LoadAllCurrentData();
+
+        void RefreshData();
     }
 }

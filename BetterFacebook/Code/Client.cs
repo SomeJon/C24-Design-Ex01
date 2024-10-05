@@ -1,7 +1,6 @@
 ﻿using FacebookWrapper;
 using System;
 using System.Windows.Forms;
-using FacebookWrapper;
 using FacebookPages.Code.Buttons.Interfaces;
 using FacebookPages.Code.Pages.Data.Post;
 using static FacebookClient.Code.FormMain;
@@ -10,8 +9,9 @@ using FacebookPages.Code.Pages;
 using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code;
+using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
-using FacebookWrapperEnhancements.Code.Post;
+using FetchHandler.Fetch;
 
 namespace FacebookClient.Code
 {
@@ -33,17 +33,17 @@ namespace FacebookClient.Code
         {
             switchToLoginPage();
 
-            if (Properties.Settings.Default.SaveData)
+            if (Settings.Default.SaveData)
             {
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.AccessToken))
+                if (!string.IsNullOrEmpty(Settings.Default.AccessToken))
                 {
                     r_FormMain.LoginResult = FacebookService.Connect(
-                        Properties.Settings.Default.AccessToken);
+                        Settings.Default.AccessToken);
                     tryFirstFetch();
 
                     EnhancedUser ProxiedUser = FacebookServicesEnhancements.FetchLoggedInUser(r_FormMain.LoginResult); //todo: to delete
 
-                    FacebookObjectCollection<EnhancedPost> newPosts = ProxiedUser.Posts;
+                    FacebookObjectCollectionWithPaging<EnhancedPost> newPosts = ProxiedUser.Posts;
 
                 }
             }
@@ -79,7 +79,7 @@ namespace FacebookClient.Code
                 case eInfoChoice.Post:
                     PostView postView = new PostView();
 
-                    postView.LoadPostData(loadInfoHolder.ReceivedInfo as UpdatedPostData);
+                    // postView.LoadPostData(loadInfoHolder.ReceivedInfo as UpdatedPostData);
                     postView.Show();
                     break;
                 default:
@@ -91,19 +91,19 @@ namespace FacebookClient.Code
         private static void filterLoadRequest(IHasDataInfo i_LoadInfoHolder)
         {
             FilterForm getFilters = new FilterForm();
-            PostsWithPaging<UpdatedPostData> dataToProcess =
-                i_LoadInfoHolder.ReceivedInfo as PostsWithPaging<UpdatedPostData>;
+            FacebookObjectCollectionWithPaging<EnhancedPost> dataToProcess =
+                i_LoadInfoHolder.ReceivedInfo as FacebookObjectCollectionWithPaging<EnhancedPost>;
 
-            getFilters.LoadData(dataToProcess?.FilterData); //Todo: remove logic from form
-            getFilters.ShowDialog();
-
-            if (getFilters.Confirmed)
-            {
-                if (dataToProcess != null)
-                {
-                    dataToProcess.FilterData = getFilters.GetData();
-                }
-            }
+            // getFilters.LoadData(dataToProcess?.FilterData); //Todo: remove logic from form
+            // getFilters.ShowDialog();
+            //
+            // if (getFilters.Confirmed)
+            // {
+            //     if (dataToProcess != null)
+            //     {
+            //         dataToProcess.FilterData = getFilters.GetData();
+            //     }
+            // }
         }
 
         private void postAnalyticsDataHandling(IHasDataInfo i_LoadInfoHolder)
@@ -111,9 +111,9 @@ namespace FacebookClient.Code
             PostAnalyticData postAnalyticData = new PostAnalyticData();
             PostAnalyticPage postAnalyticPage = new PostAnalyticPage();
 
-            postAnalyticData.PostData = i_LoadInfoHolder.ReceivedInfo as List<UpdatedPostData>;
-            postAnalyticPage.PageData = postAnalyticData;
-            r_FormMain.CurrentActivePage = postAnalyticPage;
+            // postAnalyticData.PostData = i_LoadInfoHolder.ReceivedInfo as List<UpdatedPostData>;
+            // postAnalyticPage.PageData = postAnalyticData;
+            // r_FormMain.CurrentActivePage = postAnalyticPage;
         }
 
         private void pageSwitching(object i_ChoiceDataHolder)
@@ -185,11 +185,11 @@ namespace FacebookClient.Code
         }
 
         private void startNewPageBuild
-            (BasePage i_Page, PageData i_Data)
+            (BasePage i_Page, IPageData i_Data)
         {
             UserFetchData userFetchData = new UserFetchData(m_PagesData.CurrentUser.Id, r_FormMain.LoginResult.AccessToken);
 
-            i_Data.LoadFetchData(userFetchData);
+            // i_Data.LoadFetchData(userFetchData);
             r_FormMain.CurrentActivePage = i_Page;
         }
 
@@ -273,8 +273,8 @@ namespace FacebookClient.Code
 
                 if (m_SaveLogin)
                 {
-                    Properties.Settings.Default.AccessToken = r_FormMain.LoginResult.AccessToken;
-                    Properties.Settings.Default.Save();
+                    Settings.Default.AccessToken = r_FormMain.LoginResult.AccessToken;
+                    Settings.Default.Save();
                 }
 
                 switchToHomePage();

@@ -1,5 +1,4 @@
 ﻿using FacebookPages.Code.Buttons;
-using FacebookPages.Pages;
 
 namespace FacebookClient.Code
 {

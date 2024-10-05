@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 using FacebookWrapperEnhancements.Code.Collection.Filter.Strategy;
-using FacebookWrapperEnhancements.Code.Post;
 
 
 namespace FacebookWrapperEnhancements.Code.Collection

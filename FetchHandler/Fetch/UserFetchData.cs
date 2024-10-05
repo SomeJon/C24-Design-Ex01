@@ -1,4 +1,4 @@
-﻿namespace FacebookPages.Code.Pages.Data
+﻿namespace FetchHandler.Fetch
 {
     public class UserFetchData
     {

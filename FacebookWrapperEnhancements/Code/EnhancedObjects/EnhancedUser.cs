@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code.Collection;
-using FacebookWrapperEnhancements.Code.Post;
 
 namespace FacebookWrapperEnhancements.Code.EnhancedObjects
     {
@@ -9,7 +8,7 @@ namespace FacebookWrapperEnhancements.Code.EnhancedObjects
     {
         private FacebookObjectCollection<EnhancedUser> m_Friends;
         private FacebookObjectCollectionWithPaging<EnhancedPost> m_Posts;
-        private FacebookObjectCollectionWithPaging<EnhancedPost> m_PostedLinks;
+        private FacebookObjectCollectionWithPaging<EnhancedPost> m_Feed;
         private static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoadV900 = new Dictionary<eLoadOptions, string>
             {
                 {
@@ -39,13 +38,13 @@ namespace FacebookWrapperEnhancements.Code.EnhancedObjects
         }
         public new FacebookObjectCollectionWithPaging<EnhancedPost> Posts
         {
-            get => FacebookServicesEnhancements.RetrieveCollection("feed?filter=app_2915120374", ref m_Posts, Id, EnhancedPost.sr_FieldsToLoad[eLoadOptions.Full]);
+            get => FacebookServicesEnhancements.RetrieveCollection("posts?", ref m_Posts, Id, EnhancedPost.sr_FieldsToLoad[eLoadOptions.Full]);
             set => m_Posts = value;
         }
-        public new FacebookObjectCollectionWithPaging<EnhancedPost> PostedLinks
+        public FacebookObjectCollectionWithPaging<EnhancedPost> Feed
         {
-            get => FacebookServicesEnhancements.RetrieveCollection("feed?filter=app_2309869772", ref m_PostedLinks, Id, EnhancedPost.sr_FieldsToLoad[eLoadOptions.Full]);
-            set => m_PostedLinks = value;
+            get => FacebookServicesEnhancements.RetrieveCollection("feed?", ref m_Feed, Id, EnhancedPost.sr_FieldsToLoad[eLoadOptions.Full]);
+            set => m_Feed = value;
         }
 
     }

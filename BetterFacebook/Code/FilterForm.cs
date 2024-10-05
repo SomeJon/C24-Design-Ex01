@@ -1,9 +1,9 @@
-﻿using FacebookPages.Code.Pages.Data.Post.Filter;
-using FacebookPages.Code.Pages.Data.Post.Sort;
-using FacebookWrapper.ObjectModel;
+﻿using FacebookWrapper.ObjectModel;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using FacebookWrapperEnhancements.Code.Collection.Filter;
+using FacebookWrapperEnhancements.Code.Collection.Sort;
 
 namespace FacebookClient.Code
 {
@@ -18,7 +18,7 @@ namespace FacebookClient.Code
             m_SortList.SelectedIndex = 0;
         }
 
-        public void LoadData(DataFilter i_DataToLoad)
+        public void LoadData(FilterData i_DataToLoad)
         {
             if (i_DataToLoad != null)
             {
@@ -26,7 +26,7 @@ namespace FacebookClient.Code
                 m_PossibleUsersComboBox.DisplayMember = "Name";
                 m_PossibleUsersComboBox.SelectedItem = i_DataToLoad.UserSource;
 
-                m_SortList.SelectedIndex = (int)i_DataToLoad.SortingMethod;
+                m_SortList.SelectedIndex = (int)i_DataToLoad.PostSortingMethod;
 
                 foreach (var condition in i_DataToLoad.Conditions)
                 {
@@ -53,19 +53,19 @@ namespace FacebookClient.Code
             }
         }
 
-        public DataFilter GetData()
+        public FilterData GetData()
         {
-            DataFilter dataFilter = new DataFilter
+            FilterData dataFilter = new FilterData
             {
-                UserSource = m_PossibleUsersComboBox.SelectedItem as User,
-                AvailableUsersToSelect = m_PossibleUsersComboBox.Items.Cast<User>().ToList(),
-                SortingMethod = (SortingMethod.eSortingMethod)m_SortList.SelectedIndex,
-                MinDate = m_MinDatePicker.Value,
-                MaxDate = m_MaxDatePicker.Value,
-                ReverseOrder = m_ReverseOrderCheckBox.Checked,
-                MatchAllFilters = m_MatchAllFiltersCheckBox.Checked,
-                TextContainsString = string.IsNullOrEmpty(m_TextContainsBox.Text) ? null : m_TextContainsBox.Text
-            };
+                                            UserSource = m_PossibleUsersComboBox.SelectedItem as User,
+                                            AvailableUsersToSelect = m_PossibleUsersComboBox.Items.Cast<User>().ToList(),
+                                            PostSortingMethod = (SortingMethodFactory.eSortingMethod)m_SortList.SelectedIndex,
+                                            MinDate = m_MinDatePicker.Value,
+                                            MaxDate = m_MaxDatePicker.Value,
+                                            ReverseOrder = m_ReverseOrderCheckBox.Checked,
+                                            MatchAllFilters = m_MatchAllFiltersCheckBox.Checked,
+                                            TextContainsString = string.IsNullOrEmpty(m_TextContainsBox.Text) ? null : m_TextContainsBox.Text
+                                        };
 
             foreach (object condition in Enum.GetValues(typeof(FilterMethod.eFilterCondition)))
             {

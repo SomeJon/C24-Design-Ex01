@@ -1,5 +1,5 @@
-﻿using FacebookWrapperEnhancements.Code.Post;
-using System;
+﻿using System;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookWrapperEnhancements.Code.Collection.Filter.Strategy
 {

@@ -1,6 +1,7 @@
 ﻿using FacebookPages.Code.Pages.Data.Post;
 using System;
 using System.Windows.Forms;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookPages.Code.Buttons
 {
@@ -41,7 +42,7 @@ namespace FacebookPages.Code.Buttons
 
         private void m_PostsList_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
-            if (m_PostsList.SelectedValue is UpdatedPostData post)
+            if (m_PostsList.SelectedValue is EnhancedPost post)
             {
                 if (!string.IsNullOrEmpty(post.ImageUrl))
                 {

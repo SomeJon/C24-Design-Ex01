@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using FacebookPages.Code.Buttons.Interfaces;
 using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages.Data.Post;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookPages.Code.Pages
 {
@@ -69,14 +70,14 @@ namespace FacebookPages.Code.Pages
         {
             lock (sr_PageDataLock)
             {
-                PageData.TryFetchAndLoadPageData();
+                //todo
             }
 
             try
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    updatePageWithData(PageData.PostsWithPaging.Posts);
+                    // updatePageWithData(PageData.PostsWithPaging);
                 });
             } 
             catch (System.InvalidOperationException iInvalidOperation) 
@@ -86,7 +87,7 @@ namespace FacebookPages.Code.Pages
 
         }
 
-        private void updatePageWithData(List<UpdatedPostData> i_Data)
+        private void updatePageWithData(List<EnhancedPost> i_Data)
         {
             m_PostViewButton.LoadInfoListBox.DataSource = i_Data;
             m_PostViewButton.Refresh();
@@ -97,9 +98,9 @@ namespace FacebookPages.Code.Pages
             lock(sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
-                PageData.PostsWithPaging.SwitchConnection
-                    (((string)(i_Sender as System.Windows.Forms.ComboBox)?.SelectedItem).ToLower());
-                updatePageWithData(PageData.PostsWithPaging.Posts);
+                // PageData.PostsWithPaging.SwitchConnection
+                //     (((string)(i_Sender as System.Windows.Forms.ComboBox)?.SelectedItem).ToLower());
+                // updatePageWithData(PageData.PostsWithPaging.Posts);
             }
 
         }
@@ -109,12 +110,12 @@ namespace FacebookPages.Code.Pages
             lock (sr_PageDataLock)
             {
                 m_PostViewButton.Clear();
-                if (!PageData.PostsWithPaging.TryToAddNextPage())
-                {
-                    MessageBox.Show("No more Posts were found", "Posts request", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-
-                updatePageWithData(PageData.PostsWithPaging.Posts);
+                // if (!PageData.PostsWithPaging.TryToAddNextPage())
+                // {
+                //     MessageBox.Show("No more Posts were found", "Posts request", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // }
+                //
+                // updatePageWithData(PageData.PostsWithPaging.Posts);
             }
         }
 
@@ -122,7 +123,7 @@ namespace FacebookPages.Code.Pages
         {
             (i_Sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging;
             OnReceivedInfo(i_Sender, i_EventArgs);
-            updatePageWithData(PageData.PostsWithPaging.Posts);
+            // updatePageWithData(PageData.PostsWithPaging.Posts);
         }
 
         private void m_PostViewButton_LoadAllPosts(object i_Sender, EventArgs i_EventArgs)
@@ -131,18 +132,18 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    while (PageData.PostsWithPaging.TryToAddNextPage())
-                    {
-                        m_PostViewButton.Clear();
-                        m_PostViewButton.LoadInfoListBox.DataSource = PageData.PostsWithPaging.Posts;
-                        m_PostViewButton.Refresh();
-                    }
+                    // while (PageData.PostsWithPaging.TryToAddNextPage())
+                    // {
+                    //     m_PostViewButton.Clear();
+                    //     m_PostViewButton.LoadInfoListBox.DataSource = PageData.PostsWithPaging.Posts;
+                    //     m_PostViewButton.Refresh();
+                    // }
                 }
                 catch (System.InvalidOperationException iInvalidOperation)
                 {
                     MessageBox.Show(iInvalidOperation.Message, "Error");
                 }
-                updatePageWithData(PageData.PostsWithPaging.Posts);
+                // updatePageWithData(PageData.PostsWithPaging.Posts);
             }
         }
 
@@ -153,7 +154,7 @@ namespace FacebookPages.Code.Pages
 
         private void m_PostViewButton_PostAnalyticRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            (i_Sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging.Posts;
+            // (i_Sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging.Posts;
             OnReceivedInfo(i_Sender, i_EventArgs);
         }
     }

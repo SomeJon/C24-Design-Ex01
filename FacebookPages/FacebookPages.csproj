@@ -96,18 +96,12 @@
     <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Code\Pages\Data\IHasSetData.cs" />
     <Compile Include="Code\Pages\Data\PostAnalyticData.cs" />
-    <Compile Include="Code\Pages\Data\Post\Filter\DataFilter.cs" />
-    <Compile Include="Code\Pages\Data\Post\Filter\FilterMethod.cs" />
-    <Compile Include="Code\Pages\Data\Post\Paging.cs" />
-    <Compile Include="Code\Pages\Data\Post\PostsWithPaging.cs" />
     <Compile Include="Code\Pages\Data\Post\PostTypeAnalysis.cs" />
-    <Compile Include="Code\Pages\Data\Post\Sort\SortingMethod.cs" />
-    <Compile Include="Code\Pages\Data\Post\UpdatedPostData.cs" />
+    <Compile Include="Code\Pages\Data\UserManager\SingleUserPagesData.cs" />
+    <Compile Include="Code\Pages\Data\UserManager\UserDataManager.cs" />
     <Compile Include="Code\Pages\Data\WallPageData.cs" />
     <Compile Include="Code\Pages\Data\IPageData.cs" />
-    <Compile Include="Code\Pages\Data\PageData.cs" />
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
     <Compile Include="Code\Pages\PostAnalyticPage.cs">
       <SubType>UserControl</SubType>
@@ -173,6 +167,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\FacebookPages.Code.Pages.Data.AboutMePageData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
