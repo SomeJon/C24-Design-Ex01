@@ -13,7 +13,7 @@ namespace FacebookPages.Code.Pages.Data.UserManager
         {
             PageUser = i_User;
             AboutMeData = new AboutMePageData(i_User);
-            WallData = new WallPageData(i_User);
+            // WallData = new WallPageData(i_User);
         }
     }
 }

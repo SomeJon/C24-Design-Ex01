@@ -37,7 +37,7 @@ namespace FacebookPages.Code.Pages.Data.UserManager
         {
             if(!DataDictionary.ContainsKey(i_User.Id))
             {
-                SingleUserPagesData newPagesData = new SingleUserPagesData();
+                SingleUserPagesData newPagesData = new SingleUserPagesData(i_User);
                 DataDictionary[i_User.Id] = newPagesData;
             }
 
