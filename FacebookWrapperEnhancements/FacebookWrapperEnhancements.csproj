@@ -48,9 +48,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\Collection\FacebookObjectCollectionWithPaging.cs" />
+    <Compile Include="Code\Collection\Filter\FilterData.cs" />
+    <Compile Include="Code\Collection\Filter\Strategy\DefaultFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\FilterMethodFactory.cs" />
+    <Compile Include="Code\Collection\Filter\Strategy\ContainsPhotoFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\Strategy\ContainsTextFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\IFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\Strategy\PhotoFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\Strategy\StatusFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\Strategy\LinksFilterStrategy.cs" />
     <Compile Include="Code\Collection\IHasPaging.cs" />
-    <Compile Include="Code\Collection\PagedFacebookObjectCollection.cs" />
+    <Compile Include="Code\Collection\PagedCollection.cs" />
     <Compile Include="Code\Collection\Paging.cs" />
+    <Compile Include="Code\Collection\Sort\ISortingStrategy.cs" />
+    <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByDateUpdated.cs" />
+    <Compile Include="Code\Collection\Sort\EnhancedPostSortingMethodFactory.cs" />
+    <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByType.cs" />
+    <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByWriter.cs" />
+    <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostsByDatePublished.cs" />
+    <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostsByLikes.cs" />
+    <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostsByNumOfComments.cs" />
     <Compile Include="Code\EnhancedObjects\EnhancedAlbums.cs" />
     <Compile Include="Code\FacebookServicesEnhancements.cs" />
     <Compile Include="Code\EnhancedObjects\EnhancedPost.cs" />

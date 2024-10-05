@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using FacebookWrapper.ObjectModel;
 using FetchHandler.Fetch;
 
 namespace FacebookWrapperEnhancements.Code.Collection
 {
-    public class FacebookObjectCollectionWithPaging<T> : IEnumerable<T>, IHasPaging where T : DynamicWrapper, new()
+    public class FacebookObjectCollectionWithPaging<T> 
+        : IEnumerable<T>, IHasPaging where T : DynamicWrapper, new()
     {
         private readonly FacebookObjectCollection<T> r_Collection;
         public Paging PagingData { get; internal set; }
@@ -54,8 +56,15 @@ namespace FacebookWrapperEnhancements.Code.Collection
 
         public IHasPaging FetchNextPage(string i_Id)
         {
-            return FacebookServicesEnhancements.GetCollection<T>(PagingData.Connection,
+            FacebookObjectCollectionWithPaging<T> newPage = FacebookServicesEnhancements.GetCollection<T>(PagingData.Connection,
                 i_Id, PagingData.Fields, PagingData.QueryParams);
+
+            if(newPage.Count == 0)
+            {
+                newPage = null;
+            }
+
+            return newPage;
         }
     }
 

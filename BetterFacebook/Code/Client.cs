@@ -24,8 +24,8 @@ namespace FacebookClient.Code
 
         public Client()
         {
-            r_FormMain.ViewPanel.ReceivedInfo += this.m_FormMain_ReceivedInfo;
-            r_FormMain.ViewPanel.ChangePage += this.m_FormMain_ChangePage;
+            r_FormMain.ViewPanel.ReceivedInfo += this.r_FormMain_ReceivedInfo;
+            r_FormMain.ViewPanel.ChangePage += this.r_FormMain_ChangePage;
             r_FormMain.FormClosing += this.m_FormMain_FormClosing;
         }
 
@@ -41,7 +41,7 @@ namespace FacebookClient.Code
                         Properties.Settings.Default.AccessToken);
                     tryFirstFetch();
 
-                    EnhancedUser ProxiedUser = FacebookServicesEnhancements.FetchLoggedInUser(r_FormMain.LoginResult);
+                    EnhancedUser ProxiedUser = FacebookServicesEnhancements.FetchLoggedInUser(r_FormMain.LoginResult); //todo: to delete
 
                     FacebookObjectCollection<EnhancedPost> newPosts = ProxiedUser.Posts;
 
@@ -51,12 +51,12 @@ namespace FacebookClient.Code
             Application.Run(r_FormMain);
         }
 
-        private void m_FormMain_ReceivedInfo(object i_Sender, EventArgs i_EventArgs)
+        private void r_FormMain_ReceivedInfo(object i_Sender, EventArgs i_EventArgs)
         {
             processReceivedData(i_Sender);
         }
 
-        private void m_FormMain_ChangePage(object i_Sender, EventArgs i_EventArgs)
+        private void r_FormMain_ChangePage(object i_Sender, EventArgs i_EventArgs)
         {
             pageSwitching(i_Sender);
         }
