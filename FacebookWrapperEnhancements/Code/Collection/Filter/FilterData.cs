@@ -29,13 +29,14 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
         }
 
         // Method to generate a Predicate<EnhancedPost> based on filter conditions
-        public Predicate<EnhancedPost> GetPredicate()
+        public Predicate<EnhancedPost> GetPostFilterStrategy()
         {
+            FilterMethod.MatchAllFilters = MatchAllFilters;
             return FilterMethod.GetCombinedFilter(Conditions, TextContainsString);
         }
 
         // Method to generate a Comparison<EnhancedPost> based on sorting method and reverse order flag
-        public Comparison<EnhancedPost> GetComparison()
+        public Comparison<EnhancedPost> GetPostSortStrategy()
         {
             Comparison<EnhancedPost> baseComparison = SortingMethodFactory.GetComparison(PostSortingMethod);
 

@@ -168,6 +168,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\FacebookPages.Code.Pages.Data.AboutMePageData.datasource" />
+    <None Include="Properties\DataSources\FacebookPages.Code.Pages.Data.WallPageData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

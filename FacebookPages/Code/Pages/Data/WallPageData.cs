@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code;
@@ -12,50 +15,142 @@ namespace FacebookPages.Code.Pages.Data
 {
     public class WallPageData : IPageData
     {
+        public enum eConnectionOptions
+        {
+            Feed,
+            Posts
+        }
+
+        private PagedCollection<EnhancedPost> m_WallPosts;
+        private PagedCollection<EnhancedPost> m_UserPosts;
+        public eConnectionOptions CurrentConnection { get; set; } = eConnectionOptions.Feed;
+        public EnhancedUser PageUser { get; }
         public string ProfilePicUrl { get; protected set; }
         public string CoverPicUrl { get; protected set; }
-        public string FirstName { get; protected set; }
-        public string LastName { get; protected set; }
-        public FacebookObjectCollection<User> Friends { get; protected set; }
-        public FacebookObjectCollectionWithPaging<EnhancedUser> PostsWithPaging { get; protected set; } 
-            = new FacebookObjectCollectionWithPaging<EnhancedUser>();
-
-
-
-        public void LoadUserWallData(User i_User)
+        public string FullName { get; protected set; }
+        public FacebookObjectCollection<EnhancedUser> Friends { get; protected set; }
+        public PagedCollection<EnhancedPost> WallPosts
         {
-            FilterData newFilter = new FilterData { UserSource = i_User };
-
-            newFilter.AvailableUsersToSelect.Add(i_User);
-
-            if(i_User != null)
+            get
             {
-                foreach(User friend in i_User.Friends)
+                if(m_WallPosts == null)
                 {
-                    newFilter.AvailableUsersToSelect.Add(friend);
+                    FetchWallPostsData();
                 }
 
-                CoverPicUrl = i_User.Albums
-                    .FirstOrDefault(i_Album => 
-                        string.Equals(i_Album.Name, "Cover photos", StringComparison.OrdinalIgnoreCase))
-                    ?.CoverPhoto.PictureNormalURL;
-                ProfilePicUrl = i_User.PictureLargeURL;
-                FirstName = i_User.FirstName;
-                LastName = i_User.LastName;
-                Friends = i_User.Friends;
+                Debug.Assert(m_WallPosts != null, nameof(m_WallPosts) + " != null");
+                m_WallPosts.FilterStrategy = CurrentFilterData.GetPostFilterStrategy();
+                m_WallPosts.SortStrategy = CurrentFilterData.GetPostSortStrategy();
+
+                return m_WallPosts;
             }
+        }
+        public PagedCollection<EnhancedPost> UserPosts
+        {
+            get
+            {
+                if(m_UserPosts == null)
+                {
+                    FetchUserPostsData();
+                }
+
+                Debug.Assert(m_UserPosts != null, nameof(m_UserPosts) + " != null");
+                m_UserPosts.FilterStrategy = CurrentFilterData.GetPostFilterStrategy();
+                m_UserPosts.SortStrategy = CurrentFilterData.GetPostSortStrategy();
+
+                return m_UserPosts;
+            }
+        }
+        public FilterData CurrentFilterData { get; set; }
+        
+
+
+        internal WallPageData(EnhancedUser i_PageUser)
+        {
+            PageUser = i_PageUser ?? throw 
+                           new ArgumentNullException(nameof(i_PageUser), "A user was not recieved!");
         }
 
         public void LoadAllCurrentData()
         {
-            throw new NotImplementedException();
+            FetchNonPostsData();
+            FetchWallPostsData();
+            FetchUserPostsData();
         }
 
         public void RefreshData()
         {
-            throw new NotImplementedException();
+            LoadAllCurrentData();
         }
 
-        public EnhancedUser PageUser { get; set; }
+        public void FetchNonPostsData()
+        {
+            CoverPicUrl = PageUser.Albums
+                .FirstOrDefault(
+                    i_Album => string.Equals(i_Album.Name, "Cover photos", 
+                        StringComparison.OrdinalIgnoreCase))
+                ?.CoverPhoto.PictureNormalURL;
+            ProfilePicUrl = PageUser.PictureLargeURL;
+            FullName = PageUser.Name;
+            Friends = PageUser.Friends;
+        }
+
+        public void FetchWallPostsData()
+        {
+            if(CurrentFilterData == null)
+            {
+                CurrentFilterData = new FilterData { UserSource = PageUser };
+
+                CurrentFilterData.AvailableUsersToSelect.Add(PageUser);
+                foreach(EnhancedUser friend in PageUser.Friends)
+                {
+                    CurrentFilterData.AvailableUsersToSelect.Add(friend);
+                }
+            }
+
+
+            m_WallPosts = new PagedCollection<EnhancedPost>(PageUser.Feed, PageUser.Id);
+        }
+
+        public void FetchUserPostsData()
+        {
+            if (CurrentFilterData == null)
+            {
+                CurrentFilterData = new FilterData { UserSource = PageUser };
+
+                CurrentFilterData.AvailableUsersToSelect.Add(PageUser);
+                foreach (EnhancedUser friend in PageUser.Friends)
+                {
+                    CurrentFilterData.AvailableUsersToSelect.Add(friend);
+                }
+            }
+
+            m_UserPosts = new PagedCollection<EnhancedPost>(PageUser.Posts, PageUser.Id)
+                            {
+                                FilterStrategy = CurrentFilterData.GetPostFilterStrategy(),
+                                SortStrategy = CurrentFilterData.GetPostSortStrategy()
+                            };
+        }
+
+        public PagedCollection<EnhancedPost> GetPosts()
+        {
+            PagedCollection<EnhancedPost> returningCollection;
+
+            switch (CurrentConnection)
+            {
+                case eConnectionOptions.Feed:
+                    returningCollection = WallPosts;
+                    break;
+                case eConnectionOptions.Posts:
+                    returningCollection = UserPosts;
+                    break;
+                default:
+                    returningCollection = WallPosts;
+                    CurrentConnection = eConnectionOptions.Feed;
+                    break;
+            }
+
+            return returningCollection;
+        }
     }
 }

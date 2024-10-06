@@ -62,7 +62,7 @@
     <Compile Include="Code\Collection\Paging.cs" />
     <Compile Include="Code\Collection\Sort\ISortingStrategy.cs" />
     <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByDateUpdated.cs" />
-    <Compile Include="Code\Collection\Sort\EnhancedPostSortingMethodFactory.cs" />
+    <Compile Include="Code\Collection\Sort\SortingMethodFactory.cs" />
     <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByType.cs" />
     <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByWriter.cs" />
     <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostsByDatePublished.cs" />

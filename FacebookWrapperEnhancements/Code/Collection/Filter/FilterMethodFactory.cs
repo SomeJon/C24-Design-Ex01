@@ -8,8 +8,6 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
 {
     public static class FilterMethod
     {
-        public static bool MatchAllFilters { get; set; } = false;
-
         public enum eFilterCondition
         {
             Links,
@@ -19,6 +17,18 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
             DateFilter,
             ContainsText
         }
+
+        public static bool MatchAllFilters { get; set; } = false;
+        public static Dictionary<eFilterCondition, string> FilterOptions { get; }
+            = new Dictionary<eFilterCondition, string>
+                  {
+                      { eFilterCondition.Links, "Filter by Links" },
+                      { eFilterCondition.Status, "Filter by Status" },
+                      { eFilterCondition.Photo, "Filter by Photo" },
+                      { eFilterCondition.ContainsPhoto, "Filter by Posts Containing Photos" },
+                      { eFilterCondition.DateFilter, "Filter by Date" },
+                      { eFilterCondition.ContainsText, "Filter by Text Containment" }
+                  };
 
         public static Predicate<EnhancedPost> GetCombinedFilter(
             Dictionary<eFilterCondition, bool> i_FilterConditions,

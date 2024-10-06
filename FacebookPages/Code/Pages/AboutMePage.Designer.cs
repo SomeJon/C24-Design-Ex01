@@ -248,11 +248,14 @@ namespace FacebookPages.Code.Pages
             // 
             // birthdayDateTimePicker
             // 
+            this.birthdayDateTimePicker.CustomFormat = "dd/MM/yyyy";
             this.birthdayDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.aboutMePageDataBindingSource, "Birthday", true, System.Windows.Forms.DataSourceUpdateMode.Never, null, "d"));
+            this.birthdayDateTimePicker.Enabled = false;
             this.birthdayDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.birthdayDateTimePicker.Location = new System.Drawing.Point(97, 38);
+            this.birthdayDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.birthdayDateTimePicker.Location = new System.Drawing.Point(114, 39);
             this.birthdayDateTimePicker.Name = "birthdayDateTimePicker";
-            this.birthdayDateTimePicker.Size = new System.Drawing.Size(200, 24);
+            this.birthdayDateTimePicker.Size = new System.Drawing.Size(148, 24);
             this.birthdayDateTimePicker.TabIndex = 21;
             // 
             // nameLabel1

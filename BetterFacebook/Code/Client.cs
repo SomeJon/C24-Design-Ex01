@@ -196,7 +196,7 @@ namespace FacebookClient.Code
         private void switchToUserPage(User i_User)
         {
             m_PagesData.CurrentUser = i_User;
-            m_PagesData.UserHomeData.LoadUserWallData(i_User);
+            // m_PagesData.UserHomeData.LoadUserWallData(i_User);
             CurrentWallPage.PageData = m_PagesData.UserHomeData;
 
             startNewPageBuild(CurrentWallPage, m_PagesData.UserHomeData);

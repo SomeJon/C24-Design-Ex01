@@ -11,12 +11,28 @@ namespace FacebookWrapperEnhancements.Code.Collection
     public class PagedCollection<T> : IEnumerable<T> where T : DynamicWrapper, new()
     {
         public Predicate<T> FilterStrategy { get; set; }
-        public Comparison<T> ComparisonStrategy { get; set; }
+        public Comparison<T> SortStrategy { get; set; }
         public List<FacebookObjectCollectionWithPaging<T>> CollectionPages { get; }
+
+        public List<T> CollectionData
+        {
+            get
+            {
+                List<T> toBeSorted = new List<T>(this);
+
+                if(SortStrategy != null)
+                {
+                    toBeSorted.Sort(SortStrategy);
+                }
+
+                return toBeSorted;
+            }
+        }
+
         public string ParentId { get; }
         
 
-        internal PagedCollection(FacebookObjectCollectionWithPaging<T> i_TheCollection, string i_ParentId)
+        public PagedCollection(FacebookObjectCollectionWithPaging<T> i_TheCollection, string i_ParentId)
         {
             CollectionPages = new List<FacebookObjectCollectionWithPaging<T>> { i_TheCollection };
             ParentId = i_ParentId;
@@ -62,7 +78,12 @@ namespace FacebookWrapperEnhancements.Code.Collection
             {
                 foreach(T facebookObject in page)
                 {
-                    yield return facebookObject;
+                    bool passedRequirement = FilterStrategy == null || FilterStrategy.Invoke(facebookObject);
+
+                    if (passedRequirement)
+                    {
+                        yield return facebookObject;
+                    }
                 }
             }
         }

@@ -21,6 +21,8 @@ namespace FacebookPages.Code.Pages
 
         protected override void OnLoad(EventArgs i_EventArgs)
         {
+            base.OnLoad(i_EventArgs);
+
             FetchThread = new Thread(fetchDataInBackground);
             FetchThread.Start();
         }
