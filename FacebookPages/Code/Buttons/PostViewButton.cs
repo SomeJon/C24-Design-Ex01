@@ -29,6 +29,7 @@ namespace FacebookPages.Code.Buttons
             this.Refresh();
         }
 
+
         public PostViewButton()
         {
             InitializeComponent();
@@ -84,7 +85,7 @@ namespace FacebookPages.Code.Buttons
             PostSelected?.Invoke(i_Sender, i_EventArgs);
         }
 
-        private void loadInfoButton1_Click(object i_Sender, EventArgs i_EventArgs)
+        private void m_SwitchToAnalytics_Click(object i_Sender, EventArgs i_EventArgs)
         {
             PostAnalyticRequest?.Invoke(i_Sender, i_EventArgs);
         }

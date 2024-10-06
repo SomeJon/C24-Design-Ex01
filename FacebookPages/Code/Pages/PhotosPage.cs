@@ -3,6 +3,7 @@ using System.Threading;
 using System.Windows.Forms;
 using FacebookPages.Code.Buttons;
 using FacebookPages.Code.Pages.Data;
+using FacebookPages.Code.Pages.Factory.Interfaces;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookPages.Code.Pages
@@ -41,6 +42,8 @@ namespace FacebookPages.Code.Pages
 
         private void switchPageButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
+            ((IHasSwitchPage)i_Sender).NewPageOwner = PageData.PageUser;
+
             OnChangePage(i_Sender, i_EventArgs);
         }
 

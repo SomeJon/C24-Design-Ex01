@@ -43,8 +43,8 @@ namespace FacebookPages.Code.Pages
             this.m_NumberOfFriendsLabel = new System.Windows.Forms.Label();
             this.m_FillNumberOfFriends = new System.Windows.Forms.Label();
             this.m_ChooseFriend = new FacebookPages.Code.Buttons.LoadInfoComboBox();
-            this.m_ViewFriendButton = new FacebookPages.Code.Buttons.PageSwitchAndLoadButton();
             this.friendsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.m_ViewFriendButton = new FacebookPages.Code.Buttons.PageSwitchAndLoadButton();
             ((System.ComponentModel.ISupportInitialize)(this.wallPageDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPicture)).BeginInit();
@@ -57,7 +57,8 @@ namespace FacebookPages.Code.Pages
             this.m_ExitButton.Location = new System.Drawing.Point(4, 4);
             this.m_ExitButton.Margin = new System.Windows.Forms.Padding(4);
             this.m_ExitButton.Name = "m_ExitButton";
-            this.m_ExitButton.PageChoice = ePageChoice.HomePage;
+            this.m_ExitButton.NewPageOwner = null;
+            this.m_ExitButton.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.HomePage;
             this.m_ExitButton.Size = new System.Drawing.Size(128, 52);
             this.m_ExitButton.TabIndex = 67;
             this.m_ExitButton.Text = "Back";
@@ -70,7 +71,8 @@ namespace FacebookPages.Code.Pages
             this.aboutButton.Location = new System.Drawing.Point(317, 185);
             this.aboutButton.Margin = new System.Windows.Forms.Padding(4);
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.PageChoice = ePageChoice.AboutMePage;
+            this.aboutButton.NewPageOwner = null;
+            this.aboutButton.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.AboutMePage;
             this.aboutButton.Size = new System.Drawing.Size(177, 37);
             this.aboutButton.TabIndex = 63;
             this.aboutButton.Text = "About ME";
@@ -83,7 +85,8 @@ namespace FacebookPages.Code.Pages
             this.pictureButton.Location = new System.Drawing.Point(319, 224);
             this.pictureButton.Margin = new System.Windows.Forms.Padding(4);
             this.pictureButton.Name = "pictureButton";
-            this.pictureButton.PageChoice = ePageChoice.PicturePage;
+            this.pictureButton.NewPageOwner = null;
+            this.pictureButton.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.PicturePage;
             this.pictureButton.Size = new System.Drawing.Size(176, 37);
             this.pictureButton.TabIndex = 62;
             this.pictureButton.Text = "Pictures";
@@ -93,7 +96,7 @@ namespace FacebookPages.Code.Pages
             // textBoxFullName
             // 
             this.textBoxFullName.BackColor = System.Drawing.Color.DarkBlue;
-            this.textBoxFullName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wallPageDataBindingSource, "FirstName", true, System.Windows.Forms.DataSourceUpdateMode.Never));
+            this.textBoxFullName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wallPageDataBindingSource, "FullName", true));
             this.textBoxFullName.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxFullName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxFullName.Location = new System.Drawing.Point(315, 130);
@@ -127,7 +130,7 @@ namespace FacebookPages.Code.Pages
             this.coverPicture.Location = new System.Drawing.Point(0, 0);
             this.coverPicture.Margin = new System.Windows.Forms.Padding(4);
             this.coverPicture.Name = "coverPicture";
-            this.coverPicture.Size = new System.Drawing.Size(936, 130);
+            this.coverPicture.Size = new System.Drawing.Size(908, 130);
             this.coverPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coverPicture.TabIndex = 69;
             this.coverPicture.TabStop = false;
@@ -137,11 +140,12 @@ namespace FacebookPages.Code.Pages
             this.m_PostViewButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_PostViewButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.m_PostViewButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.m_PostViewButton.Location = new System.Drawing.Point(0, 356);
+            this.m_PostViewButton.Location = new System.Drawing.Point(0, 351);
             this.m_PostViewButton.Margin = new System.Windows.Forms.Padding(5);
             this.m_PostViewButton.Name = "m_PostViewButton";
-            this.m_PostViewButton.Size = new System.Drawing.Size(936, 189);
+            this.m_PostViewButton.Size = new System.Drawing.Size(908, 125);
             this.m_PostViewButton.TabIndex = 73;
             this.m_PostViewButton.MorePostsRequest += new System.EventHandler(this.m_PostViewButton_MorePostsRequest);
             this.m_PostViewButton.ChangeConnectionRequest += new System.EventHandler(this.m_PostViewButton_ChangeConnectionRequest);
@@ -179,7 +183,7 @@ namespace FacebookPages.Code.Pages
             this.m_ChooseFriend.DataSource = this.friendsBindingSource;
             this.m_ChooseFriend.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.m_ChooseFriend.FormattingEnabled = true;
-            this.m_ChooseFriend.InfoChoice = eInfoChoice.Friend;
+            this.m_ChooseFriend.InfoChoice = FacebookPages.Code.Pages.Factory.Interfaces.eInfoChoice.Friend;
             this.m_ChooseFriend.ItemHeight = 18;
             this.m_ChooseFriend.Location = new System.Drawing.Point(563, 234);
             this.m_ChooseFriend.Margin = new System.Windows.Forms.Padding(4);
@@ -188,25 +192,26 @@ namespace FacebookPages.Code.Pages
             this.m_ChooseFriend.Size = new System.Drawing.Size(203, 26);
             this.m_ChooseFriend.TabIndex = 77;
             // 
+            // friendsBindingSource
+            // 
+            this.friendsBindingSource.DataMember = "Friends";
+            this.friendsBindingSource.DataSource = this.wallPageDataBindingSource;
+            // 
             // m_ViewFriendButton
             // 
             this.m_ViewFriendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.m_ViewFriendButton.InfoChoice = eInfoChoice.Friend;
+            this.m_ViewFriendButton.InfoChoice = FacebookPages.Code.Pages.Factory.Interfaces.eInfoChoice.Friend;
             this.m_ViewFriendButton.Location = new System.Drawing.Point(563, 268);
             this.m_ViewFriendButton.Margin = new System.Windows.Forms.Padding(4);
             this.m_ViewFriendButton.Name = "m_ViewFriendButton";
-            this.m_ViewFriendButton.PageChoice = ePageChoice.FriendPage;
+            this.m_ViewFriendButton.NewPageOwner = null;
+            this.m_ViewFriendButton.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.FriendPage;
             this.m_ViewFriendButton.ReceivedInfo = null;
             this.m_ViewFriendButton.Size = new System.Drawing.Size(204, 34);
             this.m_ViewFriendButton.TabIndex = 78;
             this.m_ViewFriendButton.Text = "View Selected Friend";
             this.m_ViewFriendButton.UseVisualStyleBackColor = true;
             this.m_ViewFriendButton.Click += new System.EventHandler(this.m_ViewFriendButton_Click);
-            // 
-            // friendsBindingSource
-            // 
-            this.friendsBindingSource.DataMember = "Friends";
-            this.friendsBindingSource.DataSource = this.wallPageDataBindingSource;
             // 
             // WallPage
             // 
@@ -226,7 +231,7 @@ namespace FacebookPages.Code.Pages
             this.Controls.Add(this.pictureButton);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WallPage";
-            this.Size = new System.Drawing.Size(936, 545);
+            this.Size = new System.Drawing.Size(908, 476);
             ((System.ComponentModel.ISupportInitialize)(this.wallPageDataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPicture)).EndInit();

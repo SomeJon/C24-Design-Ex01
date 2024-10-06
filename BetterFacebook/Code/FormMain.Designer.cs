@@ -39,7 +39,7 @@ namespace FacebookClient.Code
             this.m_ViewPanelControl.CurrentActivePage = null;
             this.m_ViewPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_ViewPanelControl.Location = new System.Drawing.Point(0, 0);
-            this.m_ViewPanelControl.Name = "ViewPanel";
+            this.m_ViewPanelControl.Name = "m_ViewPanelControl";
             this.m_ViewPanelControl.Size = new System.Drawing.Size(846, 593);
             this.m_ViewPanelControl.TabIndex = 0;
             // 
@@ -50,6 +50,7 @@ namespace FacebookClient.Code
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
+
         }
 
         public ViewPanel m_ViewPanelControl;

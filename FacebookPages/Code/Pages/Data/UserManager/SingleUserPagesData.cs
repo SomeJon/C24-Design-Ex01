@@ -1,4 +1,5 @@
-﻿using FacebookWrapperEnhancements.Code.EnhancedObjects;
+﻿using FacebookPages.Code.Pages.Data.Post;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookPages.Code.Pages.Data.UserManager
 {
@@ -11,6 +12,7 @@ namespace FacebookPages.Code.Pages.Data.UserManager
         public AboutMePageData AboutMeData => m_AboutMeData ?? (m_AboutMeData = new AboutMePageData(PageUser));
         public WallPageData WallData => m_WallData ?? (m_WallData = new WallPageData(PageUser));
         public PhotoPageData PhotoData => m_PhotoData ?? (m_PhotoData = new PhotoPageData(PageUser));
+        public PostAnalyticData PostAnalyticData => WallData.PostAnalyticData;
 
         internal SingleUserPagesData(EnhancedUser i_User)
         {

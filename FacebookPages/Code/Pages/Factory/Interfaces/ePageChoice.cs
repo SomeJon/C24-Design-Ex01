@@ -11,7 +11,6 @@
         PicturePage,
         AboutMePage,
         FriendPage,
-        UseCase1Page,
-        UseCase2Page,
+        AnalyticPage,
     }
 }

@@ -18,7 +18,7 @@ namespace FacebookClient.Code
     public partial class FormMain : Form
     {
         public LoginResult LoginResult { get; internal set; }
-        public User LoggedUser { get; internal set; }
+        public EnhancedUser LoggedUser { get; internal set; }
 
         public ViewPanel ViewPanel => m_ViewPanelControl;
         public Page CurrentActivePage
@@ -68,6 +68,7 @@ namespace FacebookClient.Code
             LoginResult = null;
             LoggedUser = null;
             Settings.Default.AccessToken = null;
+            Settings.Default.SaveData = false;
             Settings.Default.Save();
         }
 

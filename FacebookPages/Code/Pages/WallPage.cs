@@ -19,7 +19,7 @@ namespace FacebookPages.Code.Pages
         internal WallPageData PageData { private get; set; }
         public static readonly object sr_PostDataLock = new object();
 
-        public WallPage()
+        internal WallPage()
         {
             InitializeComponent();
         }
@@ -32,6 +32,8 @@ namespace FacebookPages.Code.Pages
 
         protected virtual void PageSwitchButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
+            ((IHasSwitchPage)i_Sender).NewPageOwner = PageData.PageUser;
+
             OnChangePage(i_Sender, i_EventArgs);
         }
 
@@ -124,7 +126,9 @@ namespace FacebookPages.Code.Pages
                 {
                     PageData.GetPosts().FetchNewPage();
 
-                    this.Invoke(new Action(() => m_PostViewButton.Refresh()));
+                    List<EnhancedPost> postDataToLoad = PageData.GetPosts().CollectionData;
+
+                    this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                 }
                 catch(System.InvalidOperationException invalidOperation)
                 {
@@ -135,7 +139,7 @@ namespace FacebookPages.Code.Pages
 
         private void m_PostViewButton_FilterRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            (i_Sender as IHasDataInfo).ReceivedInfo = PageData.CurrentFilterData;
+            ((IHasDataInfo)i_Sender).ReceivedInfo = PageData.CurrentFilterData;
             OnReceivedInfo(i_Sender, i_EventArgs);
             m_PostViewButton.Refresh();
         }
@@ -169,16 +173,17 @@ namespace FacebookPages.Code.Pages
 
         private void m_PostViewButton_PostAnalyticRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            (i_Sender as IHasDataInfo).ReceivedInfo = PageData.GetPosts();
-            OnReceivedInfo(i_Sender, i_EventArgs);
+            ((IHasSwitchPage)i_Sender).NewPageOwner = PageData.PageUser;
+            OnChangePage(i_Sender, i_EventArgs);
         }
 
         private void m_ViewFriendButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            (i_Sender as IHasDataInfo).ReceivedInfo = m_ChooseFriend.ReceivedInfo;
-            (i_Sender as IHasDataInfo).InfoChoice = eInfoChoice.Friend;
+            ((IHasDataInfo)i_Sender).ReceivedInfo = m_ChooseFriend.ReceivedInfo;
+            ((IHasDataInfo)i_Sender).InfoChoice = eInfoChoice.Friend;
+            ((IHasSwitchPage)i_Sender).NewPageOwner = (EnhancedUser)m_ChooseFriend.ReceivedInfo;
 
-            PageSwitchButton_Click(i_Sender, i_EventArgs);
+            OnChangePage(i_Sender, i_EventArgs);
         }
 
         public void LoadFilterData(FilterData i_FilterDate)

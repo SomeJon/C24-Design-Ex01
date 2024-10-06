@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Pages\Factory\CustomPageRequest.cs" />
     <Compile Include="Code\Pages\Factory\Interfaces\eInfoChoice.cs" />
     <Compile Include="Code\Pages\Factory\Interfaces\ePageChoice.cs" />
     <Compile Include="Code\Pages\Factory\Interfaces\IHasDataInfo.cs" />
@@ -94,6 +95,7 @@
       <DependentUpon>AboutMePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\Pages\Factory\IPageFactory.cs" />
+    <Compile Include="Code\Pages\Factory\PageFactory.cs" />
     <Compile Include="Code\Pages\Page.cs">
       <SubType>UserControl</SubType>
     </Compile>

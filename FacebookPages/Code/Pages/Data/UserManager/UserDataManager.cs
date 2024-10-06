@@ -33,15 +33,20 @@ namespace FacebookPages.Code.Pages.Data.UserManager
             }
         }
 
-        public SingleUserPagesData GetUserData(EnhancedUser i_User)
+        public static SingleUserPagesData GetUserData(EnhancedUser i_User)
         {
-            if(!DataDictionary.ContainsKey(i_User.Id))
+            if(!Instance.DataDictionary.ContainsKey(i_User.Id))
             {
                 SingleUserPagesData newPagesData = new SingleUserPagesData(i_User);
-                DataDictionary[i_User.Id] = newPagesData;
+                Instance.DataDictionary[i_User.Id] = newPagesData;
             }
 
-            return DataDictionary[i_User.Id];
+            return Instance.DataDictionary[i_User.Id];
+        }
+
+        public static void Clear()
+        {
+            Instance.DataDictionary.Clear();
         }
     }
 }

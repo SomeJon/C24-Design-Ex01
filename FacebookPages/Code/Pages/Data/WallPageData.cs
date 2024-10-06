@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using FacebookPages.Code.Pages.Data.Post;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.Collection;
@@ -29,9 +30,7 @@ namespace FacebookPages.Code.Pages.Data
         public string ProfilePicUrl { get; protected set; }
         public string CoverPicUrl { get; protected set; }
         public string FullName { get; protected set; }
-
         public FacebookObjectCollection<EnhancedUser> Friends => m_Friends ?? (m_Friends = PageUser.Friends);
-
         public PagedCollection<EnhancedPost> WallPosts
         {
             get
@@ -65,7 +64,7 @@ namespace FacebookPages.Code.Pages.Data
             }
         }
         public FilterData CurrentFilterData { get; set; }
-        
+        public PostAnalyticData PostAnalyticData => new PostAnalyticData(GetPosts().CollectionData, PageUser);
 
 
         internal WallPageData(EnhancedUser i_PageUser)

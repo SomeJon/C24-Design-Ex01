@@ -118,7 +118,6 @@
     <Compile Include="Code\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\PageDataManager.cs" />
     <Compile Include="Code\PostView.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -7,13 +7,20 @@ namespace FacebookPages.Code.Pages.Data.Post
 {
     public class PostAnalyticData : IPageData
     {
+        public EnhancedUser PageUser { get; }
         private List<PostTypeAnalysis> m_PostTypeAnalyses;
-        public List<EnhancedPost> PostData { get; set; }
+        public List<EnhancedPost> PostData { get; }
         public List<EnhancedPost> Top5Posts =>
             PostData
                 .OrderByDescending(i_Post => i_Post.NumOfLikes + i_Post.NumOfComments)
                 .Take(5)
                 .ToList();
+
+        internal PostAnalyticData(List<EnhancedPost> i_PostData, EnhancedUser i_PageUser)
+        {
+            PostData = i_PostData;
+            PageUser = i_PageUser;
+        }
 
         public int TotalLikes => PostData.Sum(i_Post => i_Post.NumOfLikes);
 
@@ -100,8 +107,8 @@ namespace FacebookPages.Code.Pages.Data.Post
             return analysisResults;
         }
 
-        public EnhancedUser PageUser { get; set; }
-
+        
+        //No lazy loading that could use these
         public void RefreshData()
         {
             throw new NotImplementedException();
