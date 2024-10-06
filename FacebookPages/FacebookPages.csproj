@@ -113,6 +113,12 @@
     <Compile Include="Code\Pages\PostAnalyticPage.Designer.cs">
       <DependentUpon>PostAnalyticPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Code\Pages\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Code\Pages\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Code\Pages\WallPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\PostAnalyticPage.resx">
       <DependentUpon>PostAnalyticPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Pages\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\WallPage.resx">
       <DependentUpon>WallPage.cs</DependentUpon>

@@ -23,13 +23,14 @@ namespace FacebookPages.Code.Buttons
 
                 // Set the new page
                 m_CurrentActivePage = value;
+                m_CurrentActivePage = new UserControl1();
 
                 // Add the new page and dock it to fill the panel
                 if (m_CurrentActivePage != null)
                 {
                     m_CurrentActivePage.ReceivedInfo += ReceivedInfo;
                     m_CurrentActivePage.ChangePage += ChangePage;
-                    //m_CurrentActivePage.Dock = DockStyle.Fill;
+                    m_CurrentActivePage.Dock = DockStyle.Fill;
                     this.Controls.Add(m_CurrentActivePage);
                 }
             } 
