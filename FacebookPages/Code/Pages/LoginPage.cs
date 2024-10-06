@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class LoginPage : BasePage
+    public partial class LoginPage : Page
     {
         private Timer m_RotationTimer;
         private int m_RotationAngle = 0;

@@ -11,6 +11,7 @@ using FacebookPages.Code.Buttons.Interfaces;
 using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using Page = FacebookPages.Code.Pages.Page;
 
 
 namespace FacebookClient.Code
@@ -21,7 +22,7 @@ namespace FacebookClient.Code
         public User LoggedUser { get; internal set; }
 
         public ViewPanel ViewPanel => m_ViewPanelControl;
-        public BasePage CurrentActivePage
+        public Page CurrentActivePage
         {
             get => ViewPanel.CurrentActivePage;
             set => ViewPanel.CurrentActivePage = value;

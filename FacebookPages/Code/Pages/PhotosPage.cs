@@ -5,7 +5,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class PhotosPage : BasePage
+    public partial class PhotosPage : Page
     {
         public FacebookObjectCollection<Album> PageData { get; set; }
 

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages
 {
-    public class BasePage : UserControl
+    public class Page : UserControl
     {
         [Category(".Page Events")]
         [Description("Occurs when information is received " +

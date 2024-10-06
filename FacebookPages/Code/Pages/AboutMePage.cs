@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class AboutMePage : BasePage
+    public partial class AboutMePage : Page
     {
         public AboutMePageData PageData { private get; set; }
 
