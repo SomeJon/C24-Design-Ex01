@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class PostAnalyticPage : BasePage
+    public partial class PostAnalyticPage : Page
     {
         public PostAnalyticData PageData {  get; set; }
 

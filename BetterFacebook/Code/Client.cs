@@ -12,6 +12,7 @@ using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using FacebookWrapperEnhancements.Code.Post;
+using Page = FacebookPages.Code.Pages.Page;
 
 namespace FacebookClient.Code
 {
@@ -185,7 +186,7 @@ namespace FacebookClient.Code
         }
 
         private void startNewPageBuild
-            (BasePage i_Page, PageData i_Data)
+            (Page i_Page, PageData i_Data)
         {
             UserFetchData userFetchData = new UserFetchData(m_PagesData.CurrentUser.Id, r_FormMain.LoginResult.AccessToken);
 

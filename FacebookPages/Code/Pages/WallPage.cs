@@ -9,7 +9,7 @@ using FacebookPages.Code.Pages.Data.Post;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class WallPage : BasePage
+    public partial class WallPage : Page
     {
         public override Color BackColor { get; set; }
         public WallPageData PageData { get; set; }

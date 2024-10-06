@@ -7,11 +7,11 @@ namespace FacebookPages.Code.Buttons
 {
     public class ViewPanel : Panel
     {
-        private BasePage m_CurrentActivePage = new BasePage();
+        private Page m_CurrentActivePage = new Page();
         public event EventHandler ReceivedInfo;
         public event EventHandler ChangePage;
 
-        public BasePage CurrentActivePage 
+        public Page CurrentActivePage 
         { 
             get => m_CurrentActivePage;
             set 
