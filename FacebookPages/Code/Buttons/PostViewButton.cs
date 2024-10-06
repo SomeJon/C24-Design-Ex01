@@ -19,17 +19,6 @@ namespace FacebookPages.Code.Buttons
             private set => m_PostsList = value;
         }
 
-        public void Clear()
-        {
-            m_NumOfPostsInfo.Text = "Waiting for posts";
-            m_NumOfPostsInfo.Text = "Waiting for data";
-            LoadInfoListBox.DataSource = null;
-            LoadInfoListBox.Items.Clear();
-            this.m_PostImage.Image = null;
-            this.Refresh();
-        }
-
-
         public PostViewButton()
         {
             InitializeComponent();

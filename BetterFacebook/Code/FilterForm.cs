@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 using FacebookWrapperEnhancements.Code.Collection.Sort;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookClient.Code
 {
@@ -57,7 +58,7 @@ namespace FacebookClient.Code
         {
             FilterData dataFilter = new FilterData
             {
-                                            UserSource = m_PossibleUsersComboBox.SelectedItem as User,
+                                            UserSource = m_PossibleUsersComboBox.SelectedItem as EnhancedUser,
                                             AvailableUsersToSelect = m_PossibleUsersComboBox.Items.Cast<User>().ToList(),
                                             PostSortingMethod = (SortingMethodFactory.eSortingMethod)m_SortList.SelectedIndex,
                                             MinDate = m_MinDatePicker.Value,

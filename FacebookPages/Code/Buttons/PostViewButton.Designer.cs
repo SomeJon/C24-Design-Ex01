@@ -54,9 +54,10 @@ namespace FacebookPages.Code.Buttons
             // m_MorePostsButton
             // 
             this.m_MorePostsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_MorePostsButton.Location = new System.Drawing.Point(397, 65);
+            this.m_MorePostsButton.Location = new System.Drawing.Point(530, 80);
+            this.m_MorePostsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_MorePostsButton.Name = "m_MorePostsButton";
-            this.m_MorePostsButton.Size = new System.Drawing.Size(102, 25);
+            this.m_MorePostsButton.Size = new System.Drawing.Size(136, 31);
             this.m_MorePostsButton.TabIndex = 1;
             this.m_MorePostsButton.Text = "More posts";
             this.m_MorePostsButton.UseVisualStyleBackColor = true;
@@ -65,10 +66,11 @@ namespace FacebookPages.Code.Buttons
             // m_NumOfPostsInfo
             // 
             this.m_NumOfPostsInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_NumOfPostsInfo.Location = new System.Drawing.Point(5, 96);
+            this.m_NumOfPostsInfo.Location = new System.Drawing.Point(7, 118);
+            this.m_NumOfPostsInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_NumOfPostsInfo.Name = "m_NumOfPostsInfo";
             this.m_NumOfPostsInfo.ReadOnly = true;
-            this.m_NumOfPostsInfo.Size = new System.Drawing.Size(113, 20);
+            this.m_NumOfPostsInfo.Size = new System.Drawing.Size(149, 22);
             this.m_NumOfPostsInfo.TabIndex = 3;
             this.m_NumOfPostsInfo.Text = "Waiting for posts";
             // 
@@ -78,9 +80,10 @@ namespace FacebookPages.Code.Buttons
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.m_PostImage.Image = ((System.Drawing.Image)(resources.GetObject("m_PostImage.Image")));
-            this.m_PostImage.Location = new System.Drawing.Point(590, 0);
+            this.m_PostImage.Location = new System.Drawing.Point(787, 0);
+            this.m_PostImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_PostImage.Name = "m_PostImage";
-            this.m_PostImage.Size = new System.Drawing.Size(115, 78);
+            this.m_PostImage.Size = new System.Drawing.Size(153, 96);
             this.m_PostImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.m_PostImage.TabIndex = 6;
             this.m_PostImage.TabStop = false;
@@ -90,9 +93,10 @@ namespace FacebookPages.Code.Buttons
             this.m_FromLabel.AutoSize = true;
             this.m_FromLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_FromLabel.ForeColor = System.Drawing.Color.Ivory;
-            this.m_FromLabel.Location = new System.Drawing.Point(446, 0);
+            this.m_FromLabel.Location = new System.Drawing.Point(595, 0);
+            this.m_FromLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_FromLabel.Name = "m_FromLabel";
-            this.m_FromLabel.Size = new System.Drawing.Size(44, 15);
+            this.m_FromLabel.Size = new System.Drawing.Size(53, 18);
             this.m_FromLabel.TabIndex = 9;
             this.m_FromLabel.Text = "From:";
             // 
@@ -101,9 +105,10 @@ namespace FacebookPages.Code.Buttons
             this.m_ReactionNumLabel.AutoSize = true;
             this.m_ReactionNumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_ReactionNumLabel.ForeColor = System.Drawing.Color.Ivory;
-            this.m_ReactionNumLabel.Location = new System.Drawing.Point(422, 15);
+            this.m_ReactionNumLabel.Location = new System.Drawing.Point(563, 18);
+            this.m_ReactionNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_ReactionNumLabel.Name = "m_ReactionNumLabel";
-            this.m_ReactionNumLabel.Size = new System.Drawing.Size(75, 15);
+            this.m_ReactionNumLabel.Size = new System.Drawing.Size(89, 18);
             this.m_ReactionNumLabel.TabIndex = 10;
             this.m_ReactionNumLabel.Text = "Reactions:";
             // 
@@ -112,9 +117,10 @@ namespace FacebookPages.Code.Buttons
             this.m_CommentsNumLabel.AutoSize = true;
             this.m_CommentsNumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_CommentsNumLabel.ForeColor = System.Drawing.Color.Ivory;
-            this.m_CommentsNumLabel.Location = new System.Drawing.Point(419, 30);
+            this.m_CommentsNumLabel.Location = new System.Drawing.Point(559, 37);
+            this.m_CommentsNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_CommentsNumLabel.Name = "m_CommentsNumLabel";
-            this.m_CommentsNumLabel.Size = new System.Drawing.Size(79, 15);
+            this.m_CommentsNumLabel.Size = new System.Drawing.Size(95, 18);
             this.m_CommentsNumLabel.TabIndex = 11;
             this.m_CommentsNumLabel.Text = "Comments:";
             // 
@@ -123,9 +129,10 @@ namespace FacebookPages.Code.Buttons
             this.m_FillComments.AutoSize = true;
             this.m_FillComments.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_FillComments.ForeColor = System.Drawing.Color.Ivory;
-            this.m_FillComments.Location = new System.Drawing.Point(488, 30);
+            this.m_FillComments.Location = new System.Drawing.Point(651, 37);
+            this.m_FillComments.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_FillComments.Name = "m_FillComments";
-            this.m_FillComments.Size = new System.Drawing.Size(83, 15);
+            this.m_FillComments.Size = new System.Drawing.Size(100, 18);
             this.m_FillComments.TabIndex = 12;
             this.m_FillComments.Text = "FillComments";
             // 
@@ -134,9 +141,10 @@ namespace FacebookPages.Code.Buttons
             this.m_FillReactions.AutoSize = true;
             this.m_FillReactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_FillReactions.ForeColor = System.Drawing.Color.Ivory;
-            this.m_FillReactions.Location = new System.Drawing.Point(488, 15);
+            this.m_FillReactions.Location = new System.Drawing.Point(651, 18);
+            this.m_FillReactions.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_FillReactions.Name = "m_FillReactions";
-            this.m_FillReactions.Size = new System.Drawing.Size(78, 15);
+            this.m_FillReactions.Size = new System.Drawing.Size(93, 18);
             this.m_FillReactions.TabIndex = 13;
             this.m_FillReactions.Text = "FillReactions";
             // 
@@ -145,10 +153,11 @@ namespace FacebookPages.Code.Buttons
             this.m_FillName.AutoSize = true;
             this.m_FillName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_FillName.ForeColor = System.Drawing.Color.Ivory;
-            this.m_FillName.Location = new System.Drawing.Point(488, 0);
-            this.m_FillName.MaximumSize = new System.Drawing.Size(100, 0);
+            this.m_FillName.Location = new System.Drawing.Point(651, 0);
+            this.m_FillName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.m_FillName.MaximumSize = new System.Drawing.Size(133, 0);
             this.m_FillName.Name = "m_FillName";
-            this.m_FillName.Size = new System.Drawing.Size(57, 15);
+            this.m_FillName.Size = new System.Drawing.Size(66, 18);
             this.m_FillName.TabIndex = 14;
             this.m_FillName.Text = "FillName";
             // 
@@ -159,17 +168,19 @@ namespace FacebookPages.Code.Buttons
             this.m_PostTypeChoiceComboBox.Items.AddRange(new object[] {
             "Feed",
             "Posts"});
-            this.m_PostTypeChoiceComboBox.Location = new System.Drawing.Point(195, 95);
+            this.m_PostTypeChoiceComboBox.Location = new System.Drawing.Point(260, 120);
+            this.m_PostTypeChoiceComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_PostTypeChoiceComboBox.Name = "m_PostTypeChoiceComboBox";
-            this.m_PostTypeChoiceComboBox.Size = new System.Drawing.Size(108, 21);
+            this.m_PostTypeChoiceComboBox.Size = new System.Drawing.Size(143, 24);
             this.m_PostTypeChoiceComboBox.TabIndex = 16;
             // 
             // m_ChangeConnectionButton
             // 
             this.m_ChangeConnectionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_ChangeConnectionButton.Location = new System.Drawing.Point(308, 88);
+            this.m_ChangeConnectionButton.Location = new System.Drawing.Point(410, 115);
+            this.m_ChangeConnectionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_ChangeConnectionButton.Name = "m_ChangeConnectionButton";
-            this.m_ChangeConnectionButton.Size = new System.Drawing.Size(87, 25);
+            this.m_ChangeConnectionButton.Size = new System.Drawing.Size(116, 31);
             this.m_ChangeConnectionButton.TabIndex = 17;
             this.m_ChangeConnectionButton.Text = "Chose Type";
             this.m_ChangeConnectionButton.UseVisualStyleBackColor = true;
@@ -178,9 +189,10 @@ namespace FacebookPages.Code.Buttons
             // m_LoadAllButton
             // 
             this.m_LoadAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_LoadAllButton.Location = new System.Drawing.Point(397, 88);
+            this.m_LoadAllButton.Location = new System.Drawing.Point(530, 115);
+            this.m_LoadAllButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_LoadAllButton.Name = "m_LoadAllButton";
-            this.m_LoadAllButton.Size = new System.Drawing.Size(102, 25);
+            this.m_LoadAllButton.Size = new System.Drawing.Size(136, 31);
             this.m_LoadAllButton.TabIndex = 19;
             this.m_LoadAllButton.Text = "Load All Matching";
             this.m_LoadAllButton.UseVisualStyleBackColor = true;
@@ -190,10 +202,9 @@ namespace FacebookPages.Code.Buttons
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(123, 99);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(164, 123);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.Size = new System.Drawing.Size(89, 16);
             this.label1.TabIndex = 21;
             this.label1.Text = "Change View:";
             // 
@@ -201,21 +212,22 @@ namespace FacebookPages.Code.Buttons
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 80);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(9, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 13);
+            this.label2.Size = new System.Drawing.Size(204, 16);
             this.label2.TabIndex = 22;
             this.label2.Text = "Double click on post to open";
             // 
             // m_SwitchToAnalytics
             // 
             this.m_SwitchToAnalytics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.m_SwitchToAnalytics.Location = new System.Drawing.Point(501, 65);
+            this.m_SwitchToAnalytics.Location = new System.Drawing.Point(670, 80);
+            this.m_SwitchToAnalytics.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_SwitchToAnalytics.Name = "m_SwitchToAnalytics";
             this.m_SwitchToAnalytics.NewPageOwner = null;
             this.m_SwitchToAnalytics.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.AnalyticPage;
-            this.m_SwitchToAnalytics.Size = new System.Drawing.Size(83, 25);
+            this.m_SwitchToAnalytics.Size = new System.Drawing.Size(111, 31);
             this.m_SwitchToAnalytics.TabIndex = 20;
             this.m_SwitchToAnalytics.Text = "Post Analytics";
             this.m_SwitchToAnalytics.UseVisualStyleBackColor = true;
@@ -225,10 +237,11 @@ namespace FacebookPages.Code.Buttons
             // 
             this.m_FilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.m_FilterButton.InfoChoice = FacebookPages.Code.Pages.Factory.Interfaces.eInfoChoice.Filter;
-            this.m_FilterButton.Location = new System.Drawing.Point(501, 88);
+            this.m_FilterButton.Location = new System.Drawing.Point(670, 115);
+            this.m_FilterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_FilterButton.Name = "m_FilterButton";
             this.m_FilterButton.ReceivedInfo = null;
-            this.m_FilterButton.Size = new System.Drawing.Size(83, 25);
+            this.m_FilterButton.Size = new System.Drawing.Size(111, 31);
             this.m_FilterButton.TabIndex = 18;
             this.m_FilterButton.Text = "Filter Posts";
             this.m_FilterButton.UseVisualStyleBackColor = true;
@@ -240,19 +253,21 @@ namespace FacebookPages.Code.Buttons
             | System.Windows.Forms.AnchorStyles.Left)));
             this.m_PostsList.FormattingEnabled = true;
             this.m_PostsList.InfoChoice = FacebookPages.Code.Pages.Factory.Interfaces.eInfoChoice.Post;
+            this.m_PostsList.ItemHeight = 16;
             this.m_PostsList.Items.AddRange(new object[] {
             "(dd/mm/yy)|TYPE| Waiting For Info"});
             this.m_PostsList.Location = new System.Drawing.Point(0, 0);
+            this.m_PostsList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_PostsList.Name = "m_PostsList";
             this.m_PostsList.ReceivedInfo = null;
-            this.m_PostsList.Size = new System.Drawing.Size(395, 69);
+            this.m_PostsList.Size = new System.Drawing.Size(525, 84);
             this.m_PostsList.TabIndex = 0;
             this.m_PostsList.SelectedIndexChanged += new System.EventHandler(this.m_PostsList_SelectedIndexChanged);
             this.m_PostsList.DoubleClick += new System.EventHandler(this.m_PostsList_DoubleClick);
             // 
             // PostViewButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -273,8 +288,9 @@ namespace FacebookPages.Code.Buttons
             this.Controls.Add(this.m_NumOfPostsInfo);
             this.Controls.Add(this.m_MorePostsButton);
             this.Controls.Add(this.m_PostsList);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PostViewButton";
-            this.Size = new System.Drawing.Size(705, 121);
+            this.Size = new System.Drawing.Size(940, 149);
             ((System.ComponentModel.ISupportInitialize)(this.m_PostImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

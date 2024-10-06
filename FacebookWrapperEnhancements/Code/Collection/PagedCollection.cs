@@ -13,7 +13,6 @@ namespace FacebookWrapperEnhancements.Code.Collection
         public Predicate<T> FilterStrategy { get; set; }
         public Comparison<T> SortStrategy { get; set; }
         public List<FacebookObjectCollectionWithPaging<T>> CollectionPages { get; }
-
         public List<T> CollectionData
         {
             get

@@ -155,9 +155,14 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    PageData.GetPosts().FetchAllPages();
+                    PagedCollection<EnhancedPost> pagedCollection = PageData.GetPosts();
 
-                    this.Invoke(new Action(() => m_PostViewButton.Refresh()));
+                    while(pagedCollection.FetchNewPage())
+                    {
+                        List<EnhancedPost> postDataToLoad = pagedCollection.CollectionData;
+
+                        this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
+                    }
                 }
                 catch (InvalidOperationException invalidOperation)
                 {
