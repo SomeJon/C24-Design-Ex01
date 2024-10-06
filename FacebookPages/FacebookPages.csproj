@@ -96,7 +96,7 @@
     <Compile Include="Code\Pages\BasePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Code\Pages\Data\PostAnalyticData.cs" />
+    <Compile Include="Code\Pages\Data\Post\PostAnalyticData.cs" />
     <Compile Include="Code\Pages\Data\Post\PostTypeAnalysis.cs" />
     <Compile Include="Code\Pages\Data\UserManager\SingleUserPagesData.cs" />
     <Compile Include="Code\Pages\Data\UserManager\UserDataManager.cs" />
