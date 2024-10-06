@@ -1,4 +1,5 @@
 ﻿using FacebookPages.Code.Pages.Data.Post;
+using FacebookWrapperEnhancements.Code.Post;
 using System;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace FacebookPages.Code.Buttons
         public event EventHandler FilterRequest;
         public event EventHandler LoadAllPosts;
         public event EventHandler PostAnalyticRequest;
-        public LoadInfoListBox LoadInfoListBox 
+        public LoadInfoListBox LoadInfoListBox
         {
             get => m_PostsList;
             private set => m_PostsList = value;
@@ -28,6 +29,7 @@ namespace FacebookPages.Code.Buttons
             this.Refresh();
         }
 
+
         public PostViewButton()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace FacebookPages.Code.Buttons
 
         private void m_PostsList_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
-            if (m_PostsList.SelectedValue is UpdatedPostData post)
+            if (m_PostsList.SelectedValue is EnhancedPost post)
             {
                 if (!string.IsNullOrEmpty(post.ImageUrl))
                 {
@@ -83,7 +85,7 @@ namespace FacebookPages.Code.Buttons
             PostSelected?.Invoke(i_Sender, i_EventArgs);
         }
 
-        private void loadInfoButton1_Click(object i_Sender, EventArgs i_EventArgs)
+        private void m_SwitchToAnalytics_Click(object i_Sender, EventArgs i_EventArgs)
         {
             PostAnalyticRequest?.Invoke(i_Sender, i_EventArgs);
         }
