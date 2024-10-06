@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Pages.Data;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookPages.Code.Pages
 {
     public partial class PhotosPage : Page
     {
-        public FacebookObjectCollection<Album> PageData { get; set; }
+        internal PhotoPageData PageData { private get; set; }
 
         public PhotosPage()
         {
@@ -18,7 +20,23 @@ namespace FacebookPages.Code.Pages
         {
             base.OnLoad(i_);
 
-            m_AlbumChoiceComboBox.DataSource = PageData;
+            new Thread(
+                () =>
+                    {
+                        try
+                        {
+                            PageData.LoadAllCurrentData();
+                        }
+                        catch(System.InvalidOperationException invalidOperation)
+                        {
+                            MessageBox.Show(invalidOperation.Message, @"Error");
+                        }
+                        finally
+                        {
+                            this.Invoke(new Action(() => m_AlbumChoiceComboBox.DataSource = PageData.Albums));
+                        }
+                    }).Start();
+            
         }
 
         private void switchPageButton_Click(object i_Sender, EventArgs i_EventArgs)

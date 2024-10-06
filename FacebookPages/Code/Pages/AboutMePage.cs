@@ -7,7 +7,7 @@ namespace FacebookPages.Code.Pages
 {
     public partial class AboutMePage : Page
     {
-        public AboutMePageData PageData { private get; set; }
+        internal AboutMePageData PageData { private get; set; }
 
         public AboutMePage()
         {

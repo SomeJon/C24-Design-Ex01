@@ -16,7 +16,7 @@ namespace FacebookPages.Code.Pages
     public partial class WallPage : Page
     {
         public override Color BackColor { get; set; }
-        public WallPageData PageData { get; set; }
+        internal WallPageData PageData { private get; set; }
         public static readonly object sr_PostDataLock = new object();
 
         public WallPage()

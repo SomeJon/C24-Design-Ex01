@@ -28,7 +28,7 @@ namespace FacebookPages.Code.Pages.Data
             PropertyInfo[] properties = typeof(AboutMePageData).GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                object value = property.GetValue(this);
+                object value = property.GetValue(this); //Forces the lazy load to load
             }
         }
 

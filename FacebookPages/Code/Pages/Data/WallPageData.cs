@@ -23,12 +23,15 @@ namespace FacebookPages.Code.Pages.Data
 
         private PagedCollection<EnhancedPost> m_WallPosts;
         private PagedCollection<EnhancedPost> m_UserPosts;
+        private FacebookObjectCollection<EnhancedUser> m_Friends;
         public eConnectionOptions CurrentConnection { get; set; } = eConnectionOptions.Feed;
         public EnhancedUser PageUser { get; }
         public string ProfilePicUrl { get; protected set; }
         public string CoverPicUrl { get; protected set; }
         public string FullName { get; protected set; }
-        public FacebookObjectCollection<EnhancedUser> Friends { get; protected set; }
+
+        public FacebookObjectCollection<EnhancedUser> Friends => m_Friends ?? (m_Friends = PageUser.Friends);
+
         public PagedCollection<EnhancedPost> WallPosts
         {
             get
@@ -80,6 +83,9 @@ namespace FacebookPages.Code.Pages.Data
 
         public void RefreshData()
         {
+            m_UserPosts = null;
+            m_WallPosts = null;
+            m_Friends = null;
             LoadAllCurrentData();
         }
 
@@ -92,7 +98,7 @@ namespace FacebookPages.Code.Pages.Data
                 ?.CoverPhoto.PictureNormalURL;
             ProfilePicUrl = PageUser.PictureLargeURL;
             FullName = PageUser.Name;
-            Friends = PageUser.Friends;
+            m_Friends = PageUser.Friends;
         }
 
         public void FetchWallPostsData()
