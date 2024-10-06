@@ -60,13 +60,6 @@ namespace FacebookClient.Code
                 this.StartPosition = FormStartPosition.Manual;
                 this.Location = Settings.Default.StartingPostion;
             }
-
-            UserControl currentActivePage = new UserControl();
-            currentActivePage = new UserControl1();
-
-            currentActivePage.Dock = DockStyle.Fill;
-
-            panel1.Controls.Add(currentActivePage);
         }
 
         public void LogoutActions()

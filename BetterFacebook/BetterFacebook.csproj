@@ -126,12 +126,6 @@
       <DependentUpon>PostView.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\Program.cs" />
-    <Compile Include="Code\TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Code\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Code\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -143,9 +137,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Code\PostView.resx">
       <DependentUpon>PostView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

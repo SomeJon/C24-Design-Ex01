@@ -20,7 +20,7 @@ namespace FacebookClient.Code
     public class Client
     {
         private readonly FormMain r_FormMain = new FormMain();
-        private bool m_SaveLogin = false;
+        private bool m_SaveLogin = Settings.Default.SaveData;
         public WallPage CurrentWallPage { get; set; }
         public IPageFactory PageFactory { get; set; } = new PageFactory();
 

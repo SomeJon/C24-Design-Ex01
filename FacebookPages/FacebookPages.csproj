@@ -56,12 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Buttons\DemoControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Buttons\DemoControl.Designer.cs">
-      <DependentUpon>DemoControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Code\Pages\Factory\CustomPageRequest.cs" />
     <Compile Include="Code\Pages\Factory\Interfaces\eInfoChoice.cs" />
     <Compile Include="Code\Pages\Factory\Interfaces\ePageChoice.cs" />
@@ -119,12 +113,6 @@
     <Compile Include="Code\Pages\PostAnalyticPage.Designer.cs">
       <DependentUpon>PostAnalyticPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Pages\UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Code\Pages\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Code\Pages\WallPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,9 +138,6 @@
       <DependentUpon>LoginSettingPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Code\Buttons\DemoControl.resx">
-      <DependentUpon>DemoControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Code\Buttons\PostViewButton.resx">
       <DependentUpon>PostViewButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,9 +150,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\PostAnalyticPage.resx">
       <DependentUpon>PostAnalyticPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\WallPage.resx">
       <DependentUpon>WallPage.cs</DependentUpon>
