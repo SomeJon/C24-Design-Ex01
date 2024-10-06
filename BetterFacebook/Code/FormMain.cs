@@ -19,7 +19,6 @@ namespace FacebookClient.Code
     {
         public LoginResult LoginResult { get; internal set; }
         public EnhancedUser LoggedUser { get; internal set; }
-
         public ViewPanel ViewPanel => m_ViewPanelControl;
         public Page CurrentActivePage
         {

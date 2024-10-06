@@ -117,9 +117,6 @@ namespace FacebookClient.Code
                 case eInfoChoice.Filter:
                     filterLoadRequest(loadInfoHolder);
                     break;
-                case eInfoChoice.Analytics:
-                    postAnalyticsDataHandling(loadInfoHolder);
-                    break;
                 case eInfoChoice.Post:
                     PostView postView = new PostView();
 
@@ -150,16 +147,6 @@ namespace FacebookClient.Code
             // }
         }
 
-        private void postAnalyticsDataHandling(IHasDataInfo i_LoadInfoHolder)
-        {
-            // PostAnalyticData postAnalyticData = new PostAnalyticData();
-            // PostAnalyticPage postAnalyticPage = new PostAnalyticPage();
-
-            // postAnalyticData.PostData = i_LoadInfoHolder.ReceivedInfo as List<UpdatedPostData>;
-            // postAnalyticPage.PageData = postAnalyticData;
-            // r_FormMain.CurrentActivePage = postAnalyticPage;
-        }
-
         private void pageSwitching(object i_ChoiceDataHolder)
         {
             Page nextPage = PageFactory.CreatePage(i_ChoiceDataHolder as IHasSwitchPage);
@@ -176,71 +163,11 @@ namespace FacebookClient.Code
             r_FormMain.CurrentActivePage = nextPage;
         }
 
-        private void returnToWall()
-        {
-            r_FormMain.CurrentActivePage = CurrentWallPage;
-        }
-
-        private void switchToPhotoPage()
-        {
-            PhotosPage photosPage = new PhotosPage();
-
-            // photosPage.PageData = m_PagesData.CurrentUser.Albums;
-            r_FormMain.CurrentActivePage = photosPage;
-        }
-
-        private void startNewPageBuild
-            (Page i_Page, IPageData i_Data)
-        {
-            // UserFetchData userFetchData = new UserFetchData(m_PagesData.CurrentUser.Id, r_FormMain.LoginResult.AccessToken);
-
-            // i_Data.LoadFetchData(userFetchData);
-            r_FormMain.CurrentActivePage = i_Page;
-        }
-
-        private void switchToUserPage(User i_User)
-        {
-            // m_PagesData.CurrentUser = i_User;
-            // m_PagesData.UserHomeData.LoadUserWallData(i_User);
-            // CurrentWallPage.PageData = m_PagesData.UserHomeData;
-
-            // startNewPageBuild(CurrentWallPage, m_PagesData.UserHomeData);
-        }
-
-        // private void switchToHomePage()
-        // {
-        //     CurrentWallPage = new WallPage();
-        //     CurrentWallPage.SetAsHomePage();
-        //     switchToUserPage(r_FormMain.LoggedUser);
-        // }
-
-        private void switchToLoginPage()
-        {
-            LoginPage loginPage = new LoginPage();
-
-            loginPage.RememberLogin += this.loginPage_RememberLogin;
-
-            r_FormMain.CurrentActivePage = loginPage;
-        }
-
-        
-
-        private void switchToLoginSettingPage()
-        {
-            LoginSettingPage loginSettingPage = new LoginSettingPage();
-
-            r_FormMain.CurrentActivePage = loginSettingPage;
-        }
-
-
         private void logoutActions()
         {
-            switchToLoginPage();
             r_FormMain.LogoutActions();
             m_SaveLogin = false;
         }
-
-
 
         private void m_FormMain_FormClosing(object i_Sender, FormClosingEventArgs i_EventArgs) //todo
         {
