@@ -56,10 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Buttons\Interfaces\eInfoChoice.cs" />
-    <Compile Include="Code\Buttons\Interfaces\ePageChoice.cs" />
-    <Compile Include="Code\Buttons\Interfaces\IHasDataInfo.cs" />
-    <Compile Include="Code\Buttons\Interfaces\IHasSwitchPage.cs" />
+    <Compile Include="Code\Pages\Factory\Interfaces\eInfoChoice.cs" />
+    <Compile Include="Code\Pages\Factory\Interfaces\ePageChoice.cs" />
+    <Compile Include="Code\Pages\Factory\Interfaces\IHasDataInfo.cs" />
+    <Compile Include="Code\Pages\Factory\Interfaces\IHasSwitchPage.cs" />
     <Compile Include="Code\Buttons\LoadInfoButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -93,6 +93,7 @@
     <Compile Include="Code\Pages\AboutMePage.Designer.cs">
       <DependentUpon>AboutMePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Code\Pages\Factory\IPageFactory.cs" />
     <Compile Include="Code\Pages\Page.cs">
       <SubType>UserControl</SubType>
     </Compile>

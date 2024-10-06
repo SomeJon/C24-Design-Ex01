@@ -1,5 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
-using FacebookPages.Code.Buttons.Interfaces;
+using FacebookPages.Code.Pages.Factory.Interfaces;
 
 namespace FacebookPages.Code.Pages
 {
@@ -88,7 +88,7 @@ namespace FacebookPages.Code.Pages
             this.ButtonExit.ForeColor = System.Drawing.Color.DarkBlue;
             this.ButtonExit.Location = new System.Drawing.Point(165, 335);
             this.ButtonExit.Name = "ButtonExit";
-            this.ButtonExit.PageChoice = FacebookPages.Code.Buttons.Interfaces.ePageChoice.Exit;
+            this.ButtonExit.PageChoice = ePageChoice.Exit;
             this.ButtonExit.Size = new System.Drawing.Size(336, 55);
             this.ButtonExit.TabIndex = 67;
             this.ButtonExit.Text = "Exit";
@@ -158,7 +158,7 @@ namespace FacebookPages.Code.Pages
             this.settingButton.ForeColor = System.Drawing.Color.DarkBlue;
             this.settingButton.Location = new System.Drawing.Point(580, 454);
             this.settingButton.Name = "settingButton";
-            this.settingButton.PageChoice = FacebookPages.Code.Buttons.Interfaces.ePageChoice.LoginSetting;
+            this.settingButton.PageChoice = ePageChoice.LoginSetting;
             this.settingButton.Size = new System.Drawing.Size(120, 86);
             this.settingButton.TabIndex = 66;
             this.settingButton.Text = "Settings";
@@ -185,7 +185,7 @@ namespace FacebookPages.Code.Pages
             this.loginButton.ForeColor = System.Drawing.Color.DarkBlue;
             this.loginButton.Location = new System.Drawing.Point(165, 214);
             this.loginButton.Name = "loginButton";
-            this.loginButton.PageChoice = FacebookPages.Code.Buttons.Interfaces.ePageChoice.HomePage;
+            this.loginButton.PageChoice = ePageChoice.HomePage;
             this.loginButton.Size = new System.Drawing.Size(336, 89);
             this.loginButton.TabIndex = 78;
             this.loginButton.Text = "Login with Facebook";

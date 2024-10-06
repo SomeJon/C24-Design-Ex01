@@ -1,5 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
-using FacebookPages.Code.Buttons.Interfaces;
+using FacebookPages.Code.Pages.Factory.Interfaces;
 
 namespace FacebookPages.Code.Pages
 {
@@ -179,7 +179,7 @@ namespace FacebookPages.Code.Pages
             this.m_BackButton.Location = new System.Drawing.Point(0, 0);
             this.m_BackButton.Margin = new System.Windows.Forms.Padding(4);
             this.m_BackButton.Name = "m_BackButton";
-            this.m_BackButton.PageChoice = FacebookPages.Code.Buttons.Interfaces.ePageChoice.WallPage;
+            this.m_BackButton.PageChoice = ePageChoice.WallPage;
             this.m_BackButton.Size = new System.Drawing.Size(132, 39);
             this.m_BackButton.TabIndex = 81;
             this.m_BackButton.Text = "Return";

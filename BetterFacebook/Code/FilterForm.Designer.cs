@@ -1,5 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
-using FacebookPages.Code.Buttons.Interfaces;
+using FacebookPages.Code.Pages.Factory.Interfaces;
 
 namespace FacebookClient.Code
 {

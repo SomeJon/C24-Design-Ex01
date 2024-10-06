@@ -1,4 +1,4 @@
-﻿using FacebookPages.Code.Buttons.Interfaces;
+﻿using FacebookPages.Code.Pages.Factory.Interfaces;
 
 namespace FacebookPages.Code.Buttons
 {

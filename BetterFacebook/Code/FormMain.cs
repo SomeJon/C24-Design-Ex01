@@ -7,7 +7,6 @@ using FacebookPages.Code.Pages;
 using FacebookPages.Code.Buttons;
 using FacebookPages.Code.Pages.Data.Post;
 using System.Collections.Generic;
-using FacebookPages.Code.Buttons.Interfaces;
 using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
