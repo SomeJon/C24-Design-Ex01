@@ -72,6 +72,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="CefSharp, Version=87.1.132.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
       <HintPath>..\packages\CefSharp.Common.87.1.132\lib\net452\CefSharp.dll</HintPath>
@@ -125,6 +126,12 @@
       <DependentUpon>PostView.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\Program.cs" />
+    <Compile Include="Code\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Code\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Code\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -136,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Code\PostView.resx">
       <DependentUpon>PostView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

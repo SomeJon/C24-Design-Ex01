@@ -23,7 +23,7 @@ namespace FacebookPages.Code.Buttons
 
                 // Set the new page
                 m_CurrentActivePage = value;
-                m_CurrentActivePage = new UserControl1();
+                //m_CurrentActivePage = new UserControl1();
 
                 // Add the new page and dock it to fill the panel
                 if (m_CurrentActivePage != null)

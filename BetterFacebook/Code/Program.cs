@@ -17,6 +17,9 @@ namespace FacebookClient.Code
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Application.Run(new TestForm());
+
+
             Client runningClient = new Client();
 
             runningClient.Run();

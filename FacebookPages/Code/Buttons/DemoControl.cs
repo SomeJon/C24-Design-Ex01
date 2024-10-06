@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FacebookPages.Code.Buttons;
 
-namespace FacebookPages.Code.Pages
+namespace FacebookPages.Code.Buttons
 {
-    public partial class UserControl1 : UserControl
+    public partial class DemoControl : UserControl
     {
-        public UserControl1()
+        public DemoControl()
         {
             InitializeComponent();
         }
