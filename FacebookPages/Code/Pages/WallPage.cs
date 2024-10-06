@@ -54,7 +54,7 @@ namespace FacebookPages.Code.Pages
                 this.Invoke(
                     (MethodInvoker)updatePageWithNonPostData);
             }
-            catch (System.InvalidOperationException invalidOperation)
+            catch (InvalidOperationException invalidOperation)
             {
                 MessageBox.Show(invalidOperation.Message, @"Error");
             }
@@ -70,7 +70,7 @@ namespace FacebookPages.Code.Pages
 
                     this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                 }
-                catch(System.InvalidOperationException invalidOperation)
+                catch(InvalidOperationException invalidOperation)
                 {
                     MessageBox.Show(invalidOperation.Message, @"Error");
                 }
@@ -103,7 +103,7 @@ namespace FacebookPages.Code.Pages
 
         private void m_PostViewButton_ChangeConnectionRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            string connection = (string)(i_Sender as System.Windows.Forms.ComboBox)?.SelectedItem;
+            string connection = (string)(i_Sender as ComboBox)?.SelectedItem;
             if(connection != null)
             {
                 PageData.CurrentConnection =
@@ -130,7 +130,7 @@ namespace FacebookPages.Code.Pages
 
                     this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                 }
-                catch(System.InvalidOperationException invalidOperation)
+                catch(InvalidOperationException invalidOperation)
                 {
                     MessageBox.Show(invalidOperation.Message, @"Error");
                 }
@@ -159,7 +159,7 @@ namespace FacebookPages.Code.Pages
 
                     this.Invoke(new Action(() => m_PostViewButton.Refresh()));
                 }
-                catch (System.InvalidOperationException invalidOperation)
+                catch (InvalidOperationException invalidOperation)
                 {
                     MessageBox.Show(invalidOperation.Message, @"Error");
                 }

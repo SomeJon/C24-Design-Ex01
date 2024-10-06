@@ -29,7 +29,7 @@ namespace FacebookPages.Code.Buttons
                 {
                     m_CurrentActivePage.ReceivedInfo += ReceivedInfo;
                     m_CurrentActivePage.ChangePage += ChangePage;
-                    m_CurrentActivePage.Dock = DockStyle.Fill;
+                    //m_CurrentActivePage.Dock = DockStyle.Fill;
                     this.Controls.Add(m_CurrentActivePage);
                 }
             } 

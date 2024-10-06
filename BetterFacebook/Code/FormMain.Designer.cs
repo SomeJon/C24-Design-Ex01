@@ -35,6 +35,7 @@ namespace FacebookClient.Code
             // 
             // m_ViewPanelControl
             // 
+            this.m_ViewPanelControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.m_ViewPanelControl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.m_ViewPanelControl.CurrentActivePage = null;
             this.m_ViewPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
