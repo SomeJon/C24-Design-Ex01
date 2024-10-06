@@ -14,7 +14,7 @@ namespace FacebookPages.Code.Pages
         public event Action LoginRequest;
         public override Color BackColor { get; set; }
 
-        public LoginPage()
+        internal LoginPage()
         {
             InitializeComponent();
             m_RotationTimer = new Timer();

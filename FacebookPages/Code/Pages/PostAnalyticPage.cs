@@ -15,7 +15,7 @@ namespace FacebookPages.Code.Pages
     {
         public PostAnalyticData PageData {  get; set; }
 
-        public PostAnalyticPage()
+        internal PostAnalyticPage()
         {
             InitializeComponent();
         }

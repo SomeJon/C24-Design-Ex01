@@ -10,7 +10,7 @@ namespace FacebookPages.Code.Pages
     {
         internal AboutMePageData PageData { private get; set; }
 
-        public AboutMePage()
+        internal AboutMePage()
         {
             InitializeComponent();
         }

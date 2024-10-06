@@ -12,7 +12,7 @@ namespace FacebookPages.Code.Pages
     {
         internal PhotoPageData PageData { private get; set; }
 
-        public PhotosPage()
+        internal PhotosPage()
         {
             InitializeComponent();
         }

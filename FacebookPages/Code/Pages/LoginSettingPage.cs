@@ -9,7 +9,7 @@ namespace FacebookPages.Code.Pages
     {
         public override Color BackColor {  get; set; }
 
-        public LoginSettingPage()
+        internal LoginSettingPage()
         {
             InitializeComponent();
             appIdComboBox.Items.AddRange(new object[] {

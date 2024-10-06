@@ -67,9 +67,9 @@ namespace FacebookPages.Code.Pages
             // 
             cityLabel.AutoSize = true;
             cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cityLabel.Location = new System.Drawing.Point(444, 16);
+            cityLabel.Location = new System.Drawing.Point(439, 12);
             cityLabel.Name = "cityLabel";
-            cityLabel.Size = new System.Drawing.Size(42, 18);
+            cityLabel.Size = new System.Drawing.Size(34, 15);
             cityLabel.TabIndex = 16;
             cityLabel.Text = "City:";
             // 
@@ -79,7 +79,7 @@ namespace FacebookPages.Code.Pages
             countryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             countryLabel.Location = new System.Drawing.Point(414, 42);
             countryLabel.Name = "countryLabel";
-            countryLabel.Size = new System.Drawing.Size(72, 18);
+            countryLabel.Size = new System.Drawing.Size(59, 15);
             countryLabel.TabIndex = 18;
             countryLabel.Text = "Country:";
             // 
@@ -87,9 +87,9 @@ namespace FacebookPages.Code.Pages
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nameLabel.Location = new System.Drawing.Point(379, 76);
+            nameLabel.Location = new System.Drawing.Point(386, 76);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(104, 18);
+            nameLabel.Size = new System.Drawing.Size(87, 15);
             nameLabel.TabIndex = 19;
             nameLabel.Text = "Home Town:";
             // 
@@ -99,7 +99,7 @@ namespace FacebookPages.Code.Pages
             birthdayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             birthdayLabel.Location = new System.Drawing.Point(19, 41);
             birthdayLabel.Name = "birthdayLabel";
-            birthdayLabel.Size = new System.Drawing.Size(74, 18);
+            birthdayLabel.Size = new System.Drawing.Size(63, 15);
             birthdayLabel.TabIndex = 20;
             birthdayLabel.Text = "Birthday:";
             // 
@@ -109,7 +109,7 @@ namespace FacebookPages.Code.Pages
             fullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             fullNameLabel.Location = new System.Drawing.Point(6, 12);
             fullNameLabel.Name = "fullNameLabel";
-            fullNameLabel.Size = new System.Drawing.Size(89, 18);
+            fullNameLabel.Size = new System.Drawing.Size(77, 15);
             fullNameLabel.TabIndex = 21;
             fullNameLabel.Text = "Full Name:";
             // 
@@ -119,7 +119,7 @@ namespace FacebookPages.Code.Pages
             genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             genderLabel.Location = new System.Drawing.Point(23, 80);
             genderLabel.Name = "genderLabel";
-            genderLabel.Size = new System.Drawing.Size(68, 18);
+            genderLabel.Size = new System.Drawing.Size(58, 15);
             genderLabel.TabIndex = 22;
             genderLabel.Text = "Gender:";
             // 
@@ -129,7 +129,7 @@ namespace FacebookPages.Code.Pages
             emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             emailLabel.Location = new System.Drawing.Point(33, 114);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(55, 18);
+            emailLabel.Size = new System.Drawing.Size(48, 15);
             emailLabel.TabIndex = 23;
             emailLabel.Text = "Email:";
             // 
@@ -142,7 +142,7 @@ namespace FacebookPages.Code.Pages
             this.labelAboutMe.Location = new System.Drawing.Point(188, 17);
             this.labelAboutMe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAboutMe.Name = "labelAboutMe";
-            this.labelAboutMe.Size = new System.Drawing.Size(306, 68);
+            this.labelAboutMe.Size = new System.Drawing.Size(245, 55);
             this.labelAboutMe.TabIndex = 0;
             this.labelAboutMe.Text = "About me";
             // 
@@ -154,7 +154,7 @@ namespace FacebookPages.Code.Pages
             this.m_PersonalInfoLabel.Location = new System.Drawing.Point(4, 119);
             this.m_PersonalInfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_PersonalInfoLabel.Name = "m_PersonalInfoLabel";
-            this.m_PersonalInfoLabel.Size = new System.Drawing.Size(295, 38);
+            this.m_PersonalInfoLabel.Size = new System.Drawing.Size(230, 30);
             this.m_PersonalInfoLabel.TabIndex = 2;
             this.m_PersonalInfoLabel.Text = "Personal Information";
             // 
@@ -167,7 +167,7 @@ namespace FacebookPages.Code.Pages
             this.m_LocationLabel.Location = new System.Drawing.Point(355, 119);
             this.m_LocationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_LocationLabel.Name = "m_LocationLabel";
-            this.m_LocationLabel.Size = new System.Drawing.Size(352, 38);
+            this.m_LocationLabel.Size = new System.Drawing.Size(277, 30);
             this.m_LocationLabel.TabIndex = 72;
             this.m_LocationLabel.Text = "Location and Background";
             // 
@@ -179,7 +179,8 @@ namespace FacebookPages.Code.Pages
             this.m_BackButton.Location = new System.Drawing.Point(0, 0);
             this.m_BackButton.Margin = new System.Windows.Forms.Padding(4);
             this.m_BackButton.Name = "m_BackButton";
-            this.m_BackButton.PageChoice = ePageChoice.WallPage;
+            this.m_BackButton.NewPageOwner = null;
+            this.m_BackButton.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.WallPage;
             this.m_BackButton.Size = new System.Drawing.Size(132, 39);
             this.m_BackButton.TabIndex = 81;
             this.m_BackButton.Text = "Return";
@@ -214,13 +215,14 @@ namespace FacebookPages.Code.Pages
             // 
             // emailLabel1
             // 
-            this.emailLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Email", true));
+            this.emailLabel1.AutoSize = true;
+            this.emailLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Email", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "[NotFound]"));
             this.emailLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailLabel1.Location = new System.Drawing.Point(111, 114);
             this.emailLabel1.Name = "emailLabel1";
-            this.emailLabel1.Size = new System.Drawing.Size(100, 23);
+            this.emailLabel1.Size = new System.Drawing.Size(77, 15);
             this.emailLabel1.TabIndex = 24;
-            this.emailLabel1.Text = "label1";
+            this.emailLabel1.Text = "[NotFound]";
             // 
             // aboutMePageDataBindingSource
             // 
@@ -228,21 +230,23 @@ namespace FacebookPages.Code.Pages
             // 
             // genderLabel1
             // 
+            this.genderLabel1.AutoSize = true;
             this.genderLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Gender", true));
             this.genderLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.genderLabel1.Location = new System.Drawing.Point(113, 81);
             this.genderLabel1.Name = "genderLabel1";
-            this.genderLabel1.Size = new System.Drawing.Size(100, 23);
+            this.genderLabel1.Size = new System.Drawing.Size(77, 15);
             this.genderLabel1.TabIndex = 23;
-            this.genderLabel1.Text = "label1";
+            this.genderLabel1.Text = "[NotFound]";
             // 
             // fullNameLabel1
             // 
+            this.fullNameLabel1.AutoSize = true;
             this.fullNameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "FullName", true));
             this.fullNameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullNameLabel1.Location = new System.Drawing.Point(115, 11);
             this.fullNameLabel1.Name = "fullNameLabel1";
-            this.fullNameLabel1.Size = new System.Drawing.Size(100, 23);
+            this.fullNameLabel1.Size = new System.Drawing.Size(47, 15);
             this.fullNameLabel1.TabIndex = 22;
             this.fullNameLabel1.Text = "label1";
             // 
@@ -255,38 +259,41 @@ namespace FacebookPages.Code.Pages
             this.birthdayDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.birthdayDateTimePicker.Location = new System.Drawing.Point(114, 39);
             this.birthdayDateTimePicker.Name = "birthdayDateTimePicker";
-            this.birthdayDateTimePicker.Size = new System.Drawing.Size(148, 24);
+            this.birthdayDateTimePicker.Size = new System.Drawing.Size(148, 21);
             this.birthdayDateTimePicker.TabIndex = 21;
             // 
             // nameLabel1
             // 
-            this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Hometown.Name", true));
+            this.nameLabel1.AutoSize = true;
+            this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Hometown.Name", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "[NotFound]"));
             this.nameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameLabel1.Location = new System.Drawing.Point(502, 76);
             this.nameLabel1.Name = "nameLabel1";
-            this.nameLabel1.Size = new System.Drawing.Size(100, 23);
+            this.nameLabel1.Size = new System.Drawing.Size(77, 15);
             this.nameLabel1.TabIndex = 20;
-            this.nameLabel1.Text = "label1";
+            this.nameLabel1.Text = "[NotFound]";
             // 
             // cityLabel1
             // 
-            this.cityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Location.Location.City", true));
+            this.cityLabel1.AutoSize = true;
+            this.cityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Location.Location.City", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "[NotFound]"));
             this.cityLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityLabel1.Location = new System.Drawing.Point(503, 11);
             this.cityLabel1.Name = "cityLabel1";
-            this.cityLabel1.Size = new System.Drawing.Size(100, 23);
+            this.cityLabel1.Size = new System.Drawing.Size(77, 15);
             this.cityLabel1.TabIndex = 17;
-            this.cityLabel1.Text = "label1";
+            this.cityLabel1.Text = "[NotFound]";
             // 
             // countryLabel1
             // 
-            this.countryLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Location.Location.Country", true));
+            this.countryLabel1.AutoSize = true;
+            this.countryLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Location.Location.Country", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "[NotFound]"));
             this.countryLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.countryLabel1.Location = new System.Drawing.Point(502, 42);
             this.countryLabel1.Name = "countryLabel1";
-            this.countryLabel1.Size = new System.Drawing.Size(100, 23);
+            this.countryLabel1.Size = new System.Drawing.Size(77, 15);
             this.countryLabel1.TabIndex = 19;
-            this.countryLabel1.Text = "label1";
+            this.countryLabel1.Text = "[NotFound]";
             // 
             // AboutMePage
             // 
