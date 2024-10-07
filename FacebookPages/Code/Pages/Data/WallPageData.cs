@@ -1,56 +1,99 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using FacebookPages.Code.Pages.Data.Post;
-using FacebookPages.Code.Pages.Data.Post.Filter;
+using FacebookPages.Code.Pages.Data.UserManager;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.Collection;
+using FacebookWrapperEnhancements.Code.Collection.Filter;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using FetchHandler.Fetch;
+using static FacebookWrapperEnhancements.Code.EnhancedObjects.EnhancedPost;
 
 namespace FacebookPages.Code.Pages.Data
 {
-    public class WallPageData : PageData
+    public class WallPageData : IPageData
     {
+        private FilterData m_CurrentFilterData;
+        private FacebookObjectCollection<EnhancedUser> m_Friends;
+        public EnhancedUser PageUser { get; }
         public string ProfilePicUrl { get; protected set; }
         public string CoverPicUrl { get; protected set; }
-        public string FirstName { get; protected set; }
-        public string LastName { get; protected set; }
-        public FacebookObjectCollection<User> Friends { get; protected set; }
-        public PostsWithPaging<UpdatedPostData> PostsWithPaging { get; protected set; } = new PostsWithPaging<UpdatedPostData>();
-
-        public override void TryFetchAndLoadPageData(
-            UserFetchData i_FetchData = null, Dictionary<string, string> i_KeyValueParamtersPairs = null)
+        public string FullName { get; protected set; }
+        public FacebookObjectCollection<EnhancedUser> Friends => m_Friends ?? (m_Friends = PageUser.Friends);
+        public FilterData CurrentFilterData
         {
-            base.TryFetchAndLoadPageData(i_FetchData, i_KeyValueParamtersPairs);
-            PostsWithPaging.Connection = "feed";
-            PostsWithPaging.PageFetcherObject = this.PageFetcherObject;
-            PostsWithPaging.TryFetchAndLoadPageData();
-
-        }
-
-        public void LoadUserWallData(User i_User)
-        {
-            DataFilter newFilter = new DataFilter { UserSource = i_User };
-
-            PostsWithPaging.FilterData = newFilter;
-            newFilter.AvailableUsersToSelect.Add(i_User);
-
-            if(i_User != null)
+            get
             {
-                foreach(User friend in i_User.Friends)
+                if (m_CurrentFilterData == null)
                 {
-                    newFilter.AvailableUsersToSelect.Add(friend);
+                    m_CurrentFilterData = new FilterData { UserSource = PageUser };
+
+                    m_CurrentFilterData.AvailableUsersToSelect.Add(PageUser);
+                    foreach (EnhancedUser friend in PageUser.Friends)
+                    {
+                        m_CurrentFilterData.AvailableUsersToSelect.Add(friend);
+                    }
                 }
 
-                CoverPicUrl = i_User.Albums
-                    .FirstOrDefault(i_Album => 
-                        string.Equals(i_Album.Name, "Cover photos", StringComparison.OrdinalIgnoreCase))
-                    ?.CoverPhoto.PictureNormalURL;
-                ProfilePicUrl = i_User.PictureLargeURL;
-                FirstName = i_User.FirstName;
-                LastName = i_User.LastName;
-                Friends = i_User.Friends;
+                return m_CurrentFilterData;
+            }
+            set
+            {
+                m_CurrentFilterData = value;
+                CurrentPageFeed = UserDataManager.GetUserData(CurrentFilterData.UserSource).WallData.PageUserFeed;
             }
         }
+        public PagedCollection<EnhancedPost> FeedPaged => CurrentPageFeed.GetPosts(CurrentFilterData);
+        public List<EnhancedPost> FeedList => CurrentPageFeed.GetPosts(CurrentFilterData).CollectionData;
+        public PostAnalyticData PostAnalyticData => new PostAnalyticData
+            (FeedPaged.CollectionData, PageUser);
+        public UserPostFeed PageUserFeed { get; }
+        public UserPostFeed CurrentPageFeed { get; internal set; }
+
+
+        internal WallPageData(EnhancedUser i_PageUser)
+        {
+            if(i_PageUser != null)
+            {
+                PageUser = i_PageUser;
+                PageUserFeed = new UserPostFeed(PageUser);
+                CurrentPageFeed = PageUserFeed;
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(i_PageUser), "A user was not recieved!");
+            }
+
+        }
+
+        public void LoadAllCurrentData()
+        {
+            FetchNonPostsData();
+        }
+
+        public void RefreshData()
+        {
+            m_Friends = null;
+            LoadAllCurrentData();
+        }
+
+        public void FetchNonPostsData()
+        {
+            CoverPicUrl = PageUser.Albums
+                .FirstOrDefault(
+                    i_Album => string.Equals(i_Album.Name, "Cover photos", 
+                        StringComparison.OrdinalIgnoreCase))
+                ?.CoverPhoto.PictureNormalURL;
+            ProfilePicUrl = PageUser.PictureLargeURL;
+            FullName = PageUser.Name;
+            m_Friends = PageUser.Friends;
+        }
+
+        
     }
 }

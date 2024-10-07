@@ -84,8 +84,8 @@ namespace FacebookWrapperEnhancements.Code.Collection
             Uri uri = new Uri(NextPageUrl);
             string[] pathSegments = uri.AbsolutePath.TrimStart('/').Split('/');
 
-            m_UserId = pathSegments.Length > 2 ? pathSegments[0] : string.Empty;
-            m_Connection = pathSegments.Length > 3 ? pathSegments[1] : string.Empty;
+            m_UserId = pathSegments.Length > 1 ? pathSegments[1] : string.Empty;
+            m_Connection = pathSegments.Length > 2 ? pathSegments[2] : string.Empty;
 
             m_QueryParams = ParseQueryString(NextPageUrl);
             m_QueryParams.TryGetValue("fields", out m_Fields);

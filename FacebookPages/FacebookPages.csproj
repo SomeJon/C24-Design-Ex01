@@ -56,10 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Buttons\Interfaces\eInfoChoice.cs" />
-    <Compile Include="Code\Buttons\Interfaces\ePageChoice.cs" />
-    <Compile Include="Code\Buttons\Interfaces\IHasDataInfo.cs" />
-    <Compile Include="Code\Buttons\Interfaces\IHasSwitchPage.cs" />
+    <Compile Include="Code\Pages\Data\UserPostFeed.cs" />
+    <Compile Include="Code\Pages\Factory\CustomPageRequest.cs" />
+    <Compile Include="Code\Pages\Factory\Interfaces\eInfoChoice.cs" />
+    <Compile Include="Code\Pages\Factory\Interfaces\ePageChoice.cs" />
+    <Compile Include="Code\Pages\Factory\Interfaces\IHasDataInfo.cs" />
+    <Compile Include="Code\Pages\Factory\Interfaces\IHasSwitchPage.cs" />
     <Compile Include="Code\Buttons\LoadInfoButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -93,21 +95,18 @@
     <Compile Include="Code\Pages\AboutMePage.Designer.cs">
       <DependentUpon>AboutMePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Pages\BasePage.cs">
+    <Compile Include="Code\Pages\Factory\IPageFactory.cs" />
+    <Compile Include="Code\Pages\Factory\PageFactory.cs" />
+    <Compile Include="Code\Pages\Page.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Code\Pages\Data\IHasSetData.cs" />
-    <Compile Include="Code\Pages\Data\PostAnalyticData.cs" />
-    <Compile Include="Code\Pages\Data\Post\Filter\DataFilter.cs" />
-    <Compile Include="Code\Pages\Data\Post\Filter\FilterMethod.cs" />
-    <Compile Include="Code\Pages\Data\Post\Paging.cs" />
-    <Compile Include="Code\Pages\Data\Post\PostsWithPaging.cs" />
+    <Compile Include="Code\Pages\Data\PhotoPageData.cs" />
+    <Compile Include="Code\Pages\Data\Post\PostAnalyticData.cs" />
     <Compile Include="Code\Pages\Data\Post\PostTypeAnalysis.cs" />
-    <Compile Include="Code\Pages\Data\Post\Sort\SortingMethod.cs" />
-    <Compile Include="Code\Pages\Data\Post\UpdatedPostData.cs" />
+    <Compile Include="Code\Pages\Data\UserManager\SingleUserPagesData.cs" />
+    <Compile Include="Code\Pages\Data\UserManager\UserDataManager.cs" />
     <Compile Include="Code\Pages\Data\WallPageData.cs" />
     <Compile Include="Code\Pages\Data\IPageData.cs" />
-    <Compile Include="Code\Pages\Data\PageData.cs" />
     <Compile Include="Code\Pages\Data\AboutMePageData.cs" />
     <Compile Include="Code\Pages\PostAnalyticPage.cs">
       <SubType>UserControl</SubType>
@@ -146,8 +145,9 @@
     <EmbeddedResource Include="Code\Pages\AboutMePage.resx">
       <DependentUpon>AboutMePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Code\Pages\BasePage.resx">
-      <DependentUpon>BasePage.cs</DependentUpon>
+    <EmbeddedResource Include="Code\Pages\Page.resx">
+      <DependentUpon>Page.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Code\Pages\PostAnalyticPage.resx">
       <DependentUpon>PostAnalyticPage.cs</DependentUpon>
@@ -173,6 +173,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\FacebookPages.Code.Pages.Data.AboutMePageData.datasource" />
+    <None Include="Properties\DataSources\FacebookPages.Code.Pages.Data.UserPostFeed+ePostConnectionOptions.datasource" />
+    <None Include="Properties\DataSources\FacebookPages.Code.Pages.Data.WallPageData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

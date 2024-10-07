@@ -1,4 +1,5 @@
 ﻿using FetchHandler.Fetch;
+using System.Collections.ObjectModel;
 
 namespace FacebookWrapperEnhancements.Code.Collection
 {

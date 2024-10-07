@@ -1,4 +1,4 @@
-﻿namespace FacebookPages.Code.Buttons.Interfaces
+﻿namespace FacebookPages.Code.Pages.Factory.Interfaces
 {
     public interface IHasDataInfo
     {

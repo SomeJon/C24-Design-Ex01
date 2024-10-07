@@ -5,11 +5,11 @@ using FacebookPages.Code.Buttons;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class LoginSettingPage : BasePage
+    public partial class LoginSettingPage : Page
     {
         public override Color BackColor {  get; set; }
 
-        public LoginSettingPage()
+        internal LoginSettingPage()
         {
             InitializeComponent();
             appIdComboBox.Items.AddRange(new object[] {

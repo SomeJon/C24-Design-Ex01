@@ -1,50 +1,48 @@
 ﻿using FacebookPages.Code.Pages.Data;
-using FacebookPages.Pages;
 using System;
 using System.Threading;
 using System.Windows.Forms;
+using FacebookPages.Code.Pages.Factory.Interfaces;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class AboutMePage : BasePage
+    public partial class AboutMePage : Page
     {
-        public AboutMePageData PageData { private get; set; }
+        internal AboutMePageData PageData { private get; set; }
 
-        public AboutMePage()
+        internal AboutMePage()
         {
             InitializeComponent();
         }
 
         private void switchPageButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
+            ((IHasSwitchPage)i_Sender).NewPageOwner = PageData.PageUser;
+
             OnChangePage(i_Sender, i_EventArgs);
         }
 
         protected override void OnLoad(EventArgs i_EventArgs)
         {
-            FetchThread = new Thread(new ThreadStart(fetchDataInBackground));
+            base.OnLoad(i_EventArgs);
 
+            FetchThread = new Thread(fetchDataInBackground);
             FetchThread.Start();
         }
 
         private void fetchDataInBackground()
         {
-            PageData.TryFetchAndLoadPageData();
-
-            this.Invoke((MethodInvoker)updatePageWithData);
+            PageData.LoadAllCurrentData();
+            this.Invoke(new Action(updatePageWithData));
         }
 
         private void updatePageWithData()
         {
             if (PageData != null)
             {
-                m_FillBirthDayLabel.Text = PageData.Birthday;
-                m_FillCityLabel.Text = PageData.Location?.Location.City;
-                m_FillCountryLabel.Text = PageData.Location?.Location.Country;
-                m_FillEmailLabel.Text = PageData.Email;
-                m_FillGenderLabel.Text = PageData.Gender;
-                m_FillNameLabel.Text = PageData.Name;
-                m_FillHometownLabel.Text = PageData.Hometown?.Name;
+                PageData.LoadAllCurrentData();
+                aboutMePageDataBindingSource.DataSource = PageData;
+                aboutMePageDataBindingSource.ResetBindings(false);
             }
         }
     }

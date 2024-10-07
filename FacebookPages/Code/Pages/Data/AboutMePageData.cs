@@ -1,42 +1,40 @@
 ﻿using FacebookWrapper.ObjectModel;
 using System.Collections.Generic;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using static FacebookWrapper.ObjectModel.DynamicWrapper;
+using System.Reflection;
+using System;
 
 namespace FacebookPages.Code.Pages.Data
 {
-    public class AboutMePageData : PageData
+    public class AboutMePageData : IPageData
     {
-        private City m_Location;
-        private City m_Hometown;
-        public string Birthday => m_DynamicData.birthday;
-
-        public City Location => 
-            WrapOrGet<City>(ref m_Location, m_DynamicData.location, eLoadOptions.Full);
-
-        public string Email => m_DynamicData.email;
-
-        public string Gender => m_DynamicData.gender;
-
-        public City Hometown => 
-            WrapOrGet<City>(ref m_Hometown, m_DynamicData.hometown, eLoadOptions.Full);
-
-        public string Name => m_DynamicData.name;
+        public EnhancedUser PageUser { get; }
+        public string Birthday => PageUser?.Birthday;
+        public City Location => PageUser?.Location;
+        public string Email => PageUser?.Email;
+        public string Gender => PageUser?.Gender?.ToString();
+        public City Hometown => PageUser?.Hometown;
+        public string FullName => PageUser?.Name;
 
 
-        private static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
-            {
-                { eLoadOptions.None, "id, name" },
-                { eLoadOptions.Basic, "birthday,location{location},email,gender,hometown,name" },
-                { eLoadOptions.Full, "birthday,location{location},email,gender,hometown,name" },
-                { eLoadOptions.FullWithConnections, "birthday,location{location},email,gender,hometown,name" }
-            };
-
-        protected override Dictionary<eLoadOptions, string> FieldsToLoad => sr_FieldsToLoad;
-
-        protected override void ResetForReFetch()
+        internal AboutMePageData(EnhancedUser i_PageUser)
         {
-            base.ResetForReFetch();
-            m_Hometown = null;
-            m_Location = null;
+            PageUser = i_PageUser ?? throw new ArgumentNullException(nameof(i_PageUser), "A user was not recieved!");
+        }
+
+        public void LoadAllCurrentData()
+        {
+            PropertyInfo[] properties = typeof(AboutMePageData).GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                object value = property.GetValue(this); //Forces the lazy load to load
+            }
+        }
+
+        public void RefreshData()
+        {
+            LoadAllCurrentData();
         }
     }
 }

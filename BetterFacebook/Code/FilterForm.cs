@@ -1,82 +1,43 @@
-﻿using FacebookPages.Code.Pages.Data.Post.Filter;
-using FacebookPages.Code.Pages.Data.Post.Sort;
-using FacebookWrapper.ObjectModel;
+﻿using FacebookWrapper.ObjectModel;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using FacebookWrapperEnhancements.Code.Collection.Filter;
+using FacebookWrapperEnhancements.Code.Collection.Sort;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
+
 
 namespace FacebookClient.Code
 {
     public partial class FilterForm : Form
     {
         public bool Confirmed { get; private set; } = false;
+        private FilterData FilterData { get; }
 
-        public FilterForm()
+
+        public FilterForm(FilterData i_FilterData)
         {
             InitializeComponent();
-            m_MaxDatePicker.Value = DateTime.Now;
-            m_SortList.SelectedIndex = 0;
+            FilterData = i_FilterData;
+
+            customDataBinding();
+            this.filterDataBindingSource.DataSource = FilterData;
         }
 
-        public void LoadData(DataFilter i_DataToLoad)
+        private void customDataBinding()
         {
-            if (i_DataToLoad != null)
+            m_SortList.DisplayMember = "Value";
+            m_SortList.ValueMember = "Key";
+            m_SortList.DataSource = new BindingSource(SortingMethodFactory.SortingOptions, null);
+
+
+            Dictionary<string, bool> copiedDictionary = new Dictionary<string, bool>(FilterData.FilterOptions);
+            foreach (KeyValuePair<string, bool> item in copiedDictionary)
             {
-                m_PossibleUsersComboBox.DataSource = i_DataToLoad.AvailableUsersToSelect;
-                m_PossibleUsersComboBox.DisplayMember = "Name";
-                m_PossibleUsersComboBox.SelectedItem = i_DataToLoad.UserSource;
-
-                m_SortList.SelectedIndex = (int)i_DataToLoad.SortingMethod;
-
-                foreach (var condition in i_DataToLoad.Conditions)
-                {
-                    int index = (int)condition.Key;
-                    if (index >= 0 && index < m_FilterCheckedList.Items.Count && condition.Value)
-                    {
-                        m_FilterCheckedList.SetItemChecked(index, true);
-                    }
-                }
-
-                m_MinDatePicker.Value =
-                    i_DataToLoad.MinDate > m_MinDatePicker.MinDate && i_DataToLoad.MinDate <= m_MaxDatePicker.MaxDate
-                    ? i_DataToLoad.MinDate
-                    : m_MinDatePicker.MinDate;
-
-                m_MaxDatePicker.Value =
-                    i_DataToLoad.MaxDate >= m_MinDatePicker.MinDate && i_DataToLoad.MaxDate <= m_MaxDatePicker.MaxDate
-                    ? i_DataToLoad.MaxDate
-                    : m_MaxDatePicker.MaxDate;
-
-                m_ReverseOrderCheckBox.Checked = i_DataToLoad.ReverseOrder;
-                m_MatchAllFiltersCheckBox.Checked = i_DataToLoad.MatchAllFilters;
-                m_TextContainsBox.Text = i_DataToLoad.TextContainsString ?? string.Empty;
-            }
-        }
-
-        public DataFilter GetData()
-        {
-            DataFilter dataFilter = new DataFilter
-            {
-                UserSource = m_PossibleUsersComboBox.SelectedItem as User,
-                AvailableUsersToSelect = m_PossibleUsersComboBox.Items.Cast<User>().ToList(),
-                SortingMethod = (SortingMethod.eSortingMethod)m_SortList.SelectedIndex,
-                MinDate = m_MinDatePicker.Value,
-                MaxDate = m_MaxDatePicker.Value,
-                ReverseOrder = m_ReverseOrderCheckBox.Checked,
-                MatchAllFilters = m_MatchAllFiltersCheckBox.Checked,
-                TextContainsString = string.IsNullOrEmpty(m_TextContainsBox.Text) ? null : m_TextContainsBox.Text
-            };
-
-            foreach (object condition in Enum.GetValues(typeof(FilterMethod.eFilterCondition)))
-            {
-                int index = (int)condition;
-                if (index >= 0 && index < m_FilterCheckedList.Items.Count)
-                {
-                    dataFilter.Conditions[(FilterMethod.eFilterCondition)condition] = m_FilterCheckedList.GetItemChecked(index);
-                }
+                m_FilterCheckedList.Items.Add(item.Key, item.Value);
             }
 
-            return dataFilter;
         }
 
         private void m_Cancel_Click(object i_Sender, EventArgs i_EventArgs)
@@ -88,6 +49,13 @@ namespace FacebookClient.Code
         {
             Confirmed = true;
             this.Close();
+        }
+
+        private void m_FilterCheckedList_ItemCheck(object i_Sender, ItemCheckEventArgs i_EventArgs)
+        {
+            string itemKey = (string)m_FilterCheckedList.Items[i_EventArgs.Index];
+
+            FilterData.FilterOptions[itemKey] = (i_EventArgs.NewValue == CheckState.Checked);
         }
     }
 }

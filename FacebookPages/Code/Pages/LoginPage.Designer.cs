@@ -1,5 +1,5 @@
 ﻿using FacebookPages.Code.Buttons;
-using FacebookPages.Code.Buttons.Interfaces;
+using FacebookPages.Code.Pages.Factory.Interfaces;
 
 namespace FacebookPages.Code.Pages
 {
@@ -38,8 +38,6 @@ namespace FacebookPages.Code.Pages
             this.ButtonExit = new FacebookPages.Code.Buttons.PageSwitchButton();
             this.textBoxWelcomeMsg = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.settingButton = new FacebookPages.Code.Buttons.PageSwitchButton();
             this.rememberLoginChackBox = new System.Windows.Forms.CheckBox();
             this.loginButton = new FacebookPages.Code.Buttons.PageSwitchButton();
@@ -56,7 +54,7 @@ namespace FacebookPages.Code.Pages
             this.dateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dateLabel.Location = new System.Drawing.Point(0, 0);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(380, 28);
+            this.dateLabel.Size = new System.Drawing.Size(299, 21);
             this.dateLabel.TabIndex = 0;
             this.dateLabel.Text = "Showing the current date in dd/mm/yy";
             // 
@@ -88,12 +86,13 @@ namespace FacebookPages.Code.Pages
             this.ButtonExit.ForeColor = System.Drawing.Color.DarkBlue;
             this.ButtonExit.Location = new System.Drawing.Point(165, 335);
             this.ButtonExit.Name = "ButtonExit";
-            this.ButtonExit.PageChoice = FacebookPages.Code.Buttons.Interfaces.ePageChoice.Exit;
+            this.ButtonExit.NewPageOwner = null;
+            this.ButtonExit.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.Exit;
             this.ButtonExit.Size = new System.Drawing.Size(336, 55);
             this.ButtonExit.TabIndex = 67;
             this.ButtonExit.Text = "Exit";
             this.ButtonExit.UseVisualStyleBackColor = true;
-            this.ButtonExit.Click += new System.EventHandler(this.switchPageButton_Click);
+            this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
             // textBoxWelcomeMsg
             // 
@@ -125,32 +124,6 @@ namespace FacebookPages.Code.Pages
             this.textBox4.TabIndex = 71;
             this.textBox4.Text = "press the facebook logo :)";
             // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.textBox2.Location = new System.Drawing.Point(508, 344);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(127, 28);
-            this.textBox2.TabIndex = 73;
-            this.textBox2.Text = "might be emoji";
-            this.textBox2.Visible = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.textBox1.Location = new System.Drawing.Point(451, 510);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(127, 28);
-            this.textBox1.TabIndex = 74;
-            this.textBox1.Text = "might be emoji";
-            this.textBox1.Visible = false;
-            // 
             // settingButton
             // 
             this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -158,7 +131,8 @@ namespace FacebookPages.Code.Pages
             this.settingButton.ForeColor = System.Drawing.Color.DarkBlue;
             this.settingButton.Location = new System.Drawing.Point(580, 454);
             this.settingButton.Name = "settingButton";
-            this.settingButton.PageChoice = FacebookPages.Code.Buttons.Interfaces.ePageChoice.LoginSetting;
+            this.settingButton.NewPageOwner = null;
+            this.settingButton.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.LoginSetting;
             this.settingButton.Size = new System.Drawing.Size(120, 86);
             this.settingButton.TabIndex = 66;
             this.settingButton.Text = "Settings";
@@ -172,7 +146,7 @@ namespace FacebookPages.Code.Pages
             this.rememberLoginChackBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rememberLoginChackBox.Location = new System.Drawing.Point(180, 309);
             this.rememberLoginChackBox.Name = "rememberLoginChackBox";
-            this.rememberLoginChackBox.Size = new System.Drawing.Size(133, 20);
+            this.rememberLoginChackBox.Size = new System.Drawing.Size(130, 20);
             this.rememberLoginChackBox.TabIndex = 77;
             this.rememberLoginChackBox.Text = "Remember Login";
             this.rememberLoginChackBox.UseVisualStyleBackColor = true;
@@ -185,20 +159,19 @@ namespace FacebookPages.Code.Pages
             this.loginButton.ForeColor = System.Drawing.Color.DarkBlue;
             this.loginButton.Location = new System.Drawing.Point(165, 214);
             this.loginButton.Name = "loginButton";
-            this.loginButton.PageChoice = FacebookPages.Code.Buttons.Interfaces.ePageChoice.HomePage;
+            this.loginButton.NewPageOwner = null;
+            this.loginButton.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.HomePage;
             this.loginButton.Size = new System.Drawing.Size(336, 89);
             this.loginButton.TabIndex = 78;
             this.loginButton.Text = "Login with Facebook";
             this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.switchPageButton_Click);
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // LoginPage
             // 
             this.BackColor = System.Drawing.Color.DarkBlue;
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.rememberLoginChackBox);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBoxWelcomeMsg);
             this.Controls.Add(this.ButtonExit);
@@ -225,8 +198,6 @@ namespace FacebookPages.Code.Pages
         private PageSwitchButton ButtonExit;
         private System.Windows.Forms.TextBox textBoxWelcomeMsg;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private PageSwitchButton settingButton;
         private System.Windows.Forms.CheckBox rememberLoginChackBox;
         private PageSwitchButton loginButton;

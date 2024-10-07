@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Facebook;
 using System.Dynamic;
-using FacebookPages.Code.Pages.Data;
 using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using FetchHandler.Fetch;
@@ -50,7 +49,7 @@ namespace FacebookWrapperEnhancements.Code
         {
             Fetcher fetchObject = new Fetcher(new UserFetchData(i_UserId, AccessToken));
             dynamic dynamicData = fetchObject.Fetch(i_Fields, i_Connection, i_KeyValueParametersPairs, i_Limit);
-            return FacebookServicesEnhancements.CreateCollection<T>(dynamicData, i_LoadOptions);
+            return CreateCollection<T>(dynamicData, i_LoadOptions);
         }
 
         internal static FacebookObjectCollectionWithPaging<T> CreateCollection<T>(
@@ -94,7 +93,7 @@ namespace FacebookWrapperEnhancements.Code
             AccessToken = i_LoginResult.AccessToken;
             FacebookClient facebookClient = new FacebookClient(AccessToken);
             dynamic val = new ExpandoObject();
-            val.fields = User.sr_FieldsToLoad[DynamicWrapper.eLoadOptions.Full];
+            val.fields = EnhancedUser.sr_FieldsToLoad[DynamicWrapper.eLoadOptions.Full];
             dynamic val2 = facebookClient.Get(string.Format("/{0}", "me"), val);
             EnhancedUser user = new EnhancedUser();
             EnhancedUser user2 = null;

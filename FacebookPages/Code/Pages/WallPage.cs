@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using FacebookPages.Code.Buttons.Interfaces;
 using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages.Data.Post;
+using FacebookPages.Code.Pages.Data.UserManager;
+using FacebookPages.Code.Pages.Factory.Interfaces;
+using FacebookWrapperEnhancements.Code.Collection;
+using FacebookWrapperEnhancements.Code.Collection.Filter;
+using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using static FacebookPages.Code.Pages.Data.UserPostFeed;
+using static FacebookPages.Code.Pages.Data.WallPageData;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class WallPage : BasePage
+    public partial class WallPage : Page
     {
         public override Color BackColor { get; set; }
-        public WallPageData PageData { get; set; }
-        public static readonly object sr_PageDataLock = new object();
+        internal WallPageData PageData { private get; set; }
+        public static readonly object sr_PostDataLock = new object();
 
-        public WallPage()
+        internal WallPage()
         {
             InitializeComponent();
         }
@@ -28,6 +34,8 @@ namespace FacebookPages.Code.Pages
 
         protected virtual void PageSwitchButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
+            ((IHasSwitchPage)i_Sender).NewPageOwner = PageData.PageUser;
+
             OnChangePage(i_Sender, i_EventArgs);
         }
 
@@ -35,6 +43,71 @@ namespace FacebookPages.Code.Pages
         {
             base.OnLoad(i_EventArgs);
 
+            new Thread(fetchPostsDataInBackgroundSet).Start();
+            new Thread(fetchNonPostsDataInBackground).Start();
+
+            
+        }
+
+        private void fetchNonPostsDataInBackground()
+        {
+            try
+            {
+                PageData.FetchNonPostsData();
+
+                this.Invoke(
+                    (MethodInvoker)updatePageWithNonPostData);
+            }
+            catch (InvalidOperationException invalidOperation)
+            {
+                MessageBox.Show(invalidOperation.Message, @"Error");
+            }
+        }
+
+        private void fetchPostsDataInBackgroundSet()
+        {
+            lock (sr_PostDataLock)
+            {
+                try
+                {
+                    List<EnhancedPost> postDataToLoad = PageData.FeedPaged.CollectionData;
+
+                    this.Invoke(new Action((() => m_PostViewButton.LoadDataSource(PageData))));
+                    this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
+                }
+                catch (InvalidOperationException invalidOperation)
+                {
+                    MessageBox.Show(invalidOperation.Message, @"Error");
+                }
+            }
+        }
+
+        private void fetchPostsDataInBackground()
+        {
+            lock(sr_PostDataLock)
+            {
+                try
+                {
+                    List<EnhancedPost> postDataToLoad = PageData.FeedPaged.CollectionData;
+
+                    this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
+                }
+                catch(InvalidOperationException invalidOperation)
+                {
+                    MessageBox.Show(invalidOperation.Message, @"Error");
+                }
+            }
+        }
+
+        private void updatePageWithPostData(List<EnhancedPost> i_Data)
+        {
+            m_PostViewButton.Refresh();
+        }
+
+        private void updatePageWithNonPostData()
+        {
+            wallPageDataBindingSource.DataSource = PageData;
+            
             if (PageData?.ProfilePicUrl != null)
             {
                 profilePicture.LoadAsync(PageData.ProfilePicUrl);
@@ -46,103 +119,77 @@ namespace FacebookPages.Code.Pages
                 coverPicture.SizeMode = PictureBoxSizeMode.CenterImage;
             }
 
-            m_ChooseFriend.DataSource = PageData?.Friends;
             m_FillNumberOfFriends.Text = PageData?.Friends.Count.ToString();
-            textBoxFullName.Text = PageData?.FirstName
-                + " " + PageData?.LastName;
-
-            FetchThread = new Thread(fetchDataInBackground);
-
-            FetchThread.Start();
-        }
-
-        private void m_ViewFriendButton_Click(object i_Sender, EventArgs i_EventArgs)
-        {
-            (i_Sender as IHasDataInfo).ReceivedInfo = m_ChooseFriend.ReceivedInfo;
-            (i_Sender as IHasDataInfo).InfoChoice = eInfoChoice.Friend;
-
-            PageSwitchButton_Click(i_Sender, i_EventArgs);
-        }
-
-
-        private void fetchDataInBackground()
-        {
-            lock (sr_PageDataLock)
-            {
-                PageData.TryFetchAndLoadPageData();
-            }
-
-            try
-            {
-                this.Invoke((MethodInvoker)delegate
-                {
-                    updatePageWithData(PageData.PostsWithPaging.Posts);
-                });
-            } 
-            catch (System.InvalidOperationException iInvalidOperation) 
-            {
-                MessageBox.Show(iInvalidOperation.Message, @"Error");
-            }
-
-        }
-
-        private void updatePageWithData(List<UpdatedPostData> i_Data)
-        {
-            m_PostViewButton.LoadInfoListBox.DataSource = i_Data;
-            m_PostViewButton.Refresh();
         }
 
         private void m_PostViewButton_ChangeConnectionRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            lock(sr_PageDataLock)
+            object selectedItem = (i_Sender as ComboBox)?.SelectedItem;
+            if(selectedItem != null)
             {
-                m_PostViewButton.Clear();
-                PageData.PostsWithPaging.SwitchConnection
-                    (((string)(i_Sender as System.Windows.Forms.ComboBox)?.SelectedItem).ToLower());
-                updatePageWithData(PageData.PostsWithPaging.Posts);
-            }
+                ePostConnectionOptions connection = (ePostConnectionOptions)selectedItem;
 
+                if(connection != null)
+                {
+                    new Thread(fetchPostsDataInBackground).Start();
+                }
+            }
         }
 
         private void m_PostViewButton_MorePostsRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            lock (sr_PageDataLock)
-            {
-                m_PostViewButton.Clear();
-                if (!PageData.PostsWithPaging.TryToAddNextPage())
-                {
-                    MessageBox.Show("No more Posts were found", "Posts request", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+            new Thread(fetchMorePostsDataInBackground).Start();
+        }
 
-                updatePageWithData(PageData.PostsWithPaging.Posts);
+        private void fetchMorePostsDataInBackground()
+        {
+            lock(sr_PostDataLock)
+            {
+                try
+                {
+                    PageData.FeedPaged.FetchNewPage();
+
+                    List<EnhancedPost> postDataToLoad = PageData.FeedPaged.CollectionData;
+
+                    this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
+                }
+                catch(InvalidOperationException invalidOperation)
+                {
+                    MessageBox.Show(invalidOperation.Message, @"Error");
+                }
             }
         }
 
         private void m_PostViewButton_FilterRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            (i_Sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging;
+            ((IHasDataInfo)i_Sender).ReceivedInfo = PageData.CurrentFilterData;
             OnReceivedInfo(i_Sender, i_EventArgs);
-            updatePageWithData(PageData.PostsWithPaging.Posts);
         }
 
         private void m_PostViewButton_LoadAllPosts(object i_Sender, EventArgs i_EventArgs)
         {
-            lock (sr_PageDataLock)
+            new Thread(fetchAllPostsDataInBackground).Start();
+        }
+
+        private void fetchAllPostsDataInBackground()
+        {
+            lock (sr_PostDataLock)
             {
                 try
                 {
-                    while (PageData.PostsWithPaging.TryToAddNextPage())
+                    PagedCollection<EnhancedPost> pagedCollection = PageData.FeedPaged;
+
+                    while(pagedCollection.FetchNewPage())
                     {
-                        m_PostViewButton.Clear();
-                        m_PostViewButton.LoadInfoListBox.DataSource = PageData.PostsWithPaging.Posts;
-                        m_PostViewButton.Refresh();
+                        List<EnhancedPost> postDataToLoad = pagedCollection.CollectionData;
+
+                        this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                     }
                 }
-                catch (System.InvalidOperationException iInvalidOperation)
+                catch (InvalidOperationException invalidOperation)
                 {
-                    MessageBox.Show(iInvalidOperation.Message, "Error");
+                    MessageBox.Show(invalidOperation.Message, @"Error");
                 }
-                updatePageWithData(PageData.PostsWithPaging.Posts);
             }
         }
 
@@ -153,8 +200,51 @@ namespace FacebookPages.Code.Pages
 
         private void m_PostViewButton_PostAnalyticRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            (i_Sender as IHasDataInfo).ReceivedInfo = PageData.PostsWithPaging.Posts;
-            OnReceivedInfo(i_Sender, i_EventArgs);
+            ((IHasSwitchPage)i_Sender).NewPageOwner = PageData.PageUser;
+            OnChangePage(i_Sender, i_EventArgs);
+        }
+
+        private void m_ViewFriendButton_Click(object i_Sender, EventArgs i_EventArgs)
+        {
+            ((IHasDataInfo)i_Sender).ReceivedInfo = m_ChooseFriend.ReceivedInfo;
+            ((IHasDataInfo)i_Sender).InfoChoice = eInfoChoice.Friend;
+            ((IHasSwitchPage)i_Sender).NewPageOwner = (EnhancedUser)m_ChooseFriend.ReceivedInfo;
+
+            OnChangePage(i_Sender, i_EventArgs);
+        }
+
+        public void LoadFilterData(FilterData i_FilterDate)
+        {
+            PageData.CurrentFilterData = i_FilterDate;
+
+            if(i_FilterDate.Conditions[FilterMethod.eFilterCondition.DateFilter] == true)
+            {
+                new Thread(fetchAllPostInDatesInBackground).Start();
+            }
+            else
+            {
+                new Thread(fetchPostsDataInBackground).Start();
+            }
+        }
+
+        private void fetchAllPostInDatesInBackground()
+        {
+            lock (sr_PostDataLock)
+            {
+                try
+                {
+                    PageData.FeedPaged.TryToGetAllInDates
+                        (PageData.CurrentFilterData.MaxDate, PageData.CurrentFilterData.MinDate);
+
+                    List<EnhancedPost> postDataToLoad = PageData.FeedPaged.CollectionData;
+
+                    this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
+                }
+                catch (InvalidOperationException invalidOperation)
+                {
+                    MessageBox.Show(invalidOperation.Message, @"Error");
+                }
+            }
         }
     }
 }

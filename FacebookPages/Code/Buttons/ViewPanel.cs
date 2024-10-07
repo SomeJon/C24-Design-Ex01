@@ -1,5 +1,4 @@
-﻿using FacebookPages.Pages;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using FacebookPages.Code.Pages;
 using System;
 
@@ -7,11 +6,11 @@ namespace FacebookPages.Code.Buttons
 {
     public class ViewPanel : Panel
     {
-        private BasePage m_CurrentActivePage = new BasePage();
+        private Page m_CurrentActivePage = new Page();
         public event EventHandler ReceivedInfo;
         public event EventHandler ChangePage;
 
-        public BasePage CurrentActivePage 
+        public Page CurrentActivePage 
         { 
             get => m_CurrentActivePage;
             set 
@@ -24,6 +23,7 @@ namespace FacebookPages.Code.Buttons
 
                 // Set the new page
                 m_CurrentActivePage = value;
+                //m_CurrentActivePage = new UserControl1();
 
                 // Add the new page and dock it to fill the panel
                 if (m_CurrentActivePage != null)

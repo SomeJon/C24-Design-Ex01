@@ -1,5 +1,4 @@
 ﻿using FacebookPages.Code.Buttons;
-using FacebookPages.Pages;
 
 namespace FacebookClient.Code
 {
@@ -36,21 +35,22 @@ namespace FacebookClient.Code
             // 
             // m_ViewPanelControl
             // 
+            this.m_ViewPanelControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.m_ViewPanelControl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.m_ViewPanelControl.CurrentActivePage = null;
             this.m_ViewPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_ViewPanelControl.Location = new System.Drawing.Point(0, 0);
-            this.m_ViewPanelControl.Name = "ViewPanel";
-            this.m_ViewPanelControl.Size = new System.Drawing.Size(846, 593);
+            this.m_ViewPanelControl.Name = "m_ViewPanelControl";
+            this.m_ViewPanelControl.Size = new System.Drawing.Size(894, 537);
             this.m_ViewPanelControl.TabIndex = 0;
             // 
             // FormMain
             // 
-            this.ClientSize = new System.Drawing.Size(846, 593);
+            this.ClientSize = new System.Drawing.Size(894, 537);
             this.Controls.Add(this.m_ViewPanelControl);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
+
         }
 
         public ViewPanel m_ViewPanelControl;

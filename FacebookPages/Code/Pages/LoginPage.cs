@@ -4,15 +4,17 @@ using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages
 {
-    public partial class LoginPage : BasePage
+    public partial class LoginPage : Page
     {
         private Timer m_RotationTimer;
         private int m_RotationAngle = 0;
         private Image m_OriginalImage;
-        public event EventHandler RemeberLogin;
+        public event EventHandler RememberLogin;
+        public event Action ExitRequest;
+        public event Action LoginRequest;
         public override Color BackColor { get; set; }
 
-        public LoginPage()
+        internal LoginPage()
         {
             InitializeComponent();
             m_RotationTimer = new Timer();
@@ -62,7 +64,17 @@ namespace FacebookPages.Code.Pages
 
         private void rememberLoginCheckBox_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            RemeberLogin?.Invoke(i_Sender, i_EventArgs);
+            RememberLogin?.Invoke(i_Sender, i_EventArgs);
+        }
+
+        private void ButtonExit_Click(object i_Sender, EventArgs i_EventArgs)
+        {
+            ExitRequest?.Invoke();
+        }
+
+        private void loginButton_Click(object i_Sender, EventArgs i_EventArgs)
+        {
+            LoginRequest?.Invoke();
         }
     }
 }
