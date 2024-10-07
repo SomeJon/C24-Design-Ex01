@@ -31,25 +31,32 @@ namespace FacebookClient.Code
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.m_Cancel = new System.Windows.Forms.Button();
             this.m_SortingHeaderLabel = new System.Windows.Forms.Label();
             this.m_FetchFilterHeaderLabel = new System.Windows.Forms.Label();
             this.m_SortList = new System.Windows.Forms.ListBox();
             this.m_FromHeader = new System.Windows.Forms.Label();
-            this.m_FilterCheckedList = new System.Windows.Forms.CheckedListBox();
-            this.m_PossibleUsersComboBox = new System.Windows.Forms.ComboBox();
             this.m_MinLikesLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.m_TextContainsLabel = new System.Windows.Forms.Label();
             this.m_TextContainsBox = new System.Windows.Forms.TextBox();
+            this.filterDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.m_MinDatePicker = new System.Windows.Forms.DateTimePicker();
             this.m_MaxDatePicker = new System.Windows.Forms.DateTimePicker();
             this.m_MaxDateLabel = new System.Windows.Forms.Label();
             this.m_MinDateLabel = new System.Windows.Forms.Label();
             this.m_ReverseOrderCheckBox = new System.Windows.Forms.CheckBox();
             this.m_MatchAllFiltersCheckBox = new System.Windows.Forms.CheckBox();
-            this.m_Confirm = new LoadInfoButton();
+            this.availableUsersToSelectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageSquarePictureBox = new System.Windows.Forms.PictureBox();
+            this.nameComboBox = new System.Windows.Forms.ComboBox();
+            this.m_FilterCheckedList = new FacebookPages.Code.Buttons.FilterCheckedListBox();
+            this.m_Confirm = new FacebookPages.Code.Buttons.LoadInfoButton();
+            ((System.ComponentModel.ISupportInitialize)(this.filterDataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.availableUsersToSelectBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageSquarePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // m_Cancel
@@ -66,7 +73,7 @@ namespace FacebookClient.Code
             // 
             this.m_SortingHeaderLabel.AutoSize = true;
             this.m_SortingHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_SortingHeaderLabel.Location = new System.Drawing.Point(27, 9);
+            this.m_SortingHeaderLabel.Location = new System.Drawing.Point(27, 18);
             this.m_SortingHeaderLabel.Name = "m_SortingHeaderLabel";
             this.m_SortingHeaderLabel.Size = new System.Drawing.Size(114, 25);
             this.m_SortingHeaderLabel.TabIndex = 2;
@@ -76,7 +83,7 @@ namespace FacebookClient.Code
             // 
             this.m_FetchFilterHeaderLabel.AutoSize = true;
             this.m_FetchFilterHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_FetchFilterHeaderLabel.Location = new System.Drawing.Point(186, 9);
+            this.m_FetchFilterHeaderLabel.Location = new System.Drawing.Point(233, 18);
             this.m_FetchFilterHeaderLabel.Name = "m_FetchFilterHeaderLabel";
             this.m_FetchFilterHeaderLabel.Size = new System.Drawing.Size(78, 25);
             this.m_FetchFilterHeaderLabel.TabIndex = 4;
@@ -93,43 +100,20 @@ namespace FacebookClient.Code
             "Post Type",
             "Post Likes",
             "Post Comments"});
-            this.m_SortList.Location = new System.Drawing.Point(32, 46);
+            this.m_SortList.Location = new System.Drawing.Point(30, 46);
             this.m_SortList.Name = "m_SortList";
-            this.m_SortList.Size = new System.Drawing.Size(143, 112);
+            this.m_SortList.Size = new System.Drawing.Size(179, 94);
             this.m_SortList.TabIndex = 3;
             // 
             // m_FromHeader
             // 
             this.m_FromHeader.AutoSize = true;
             this.m_FromHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_FromHeader.Location = new System.Drawing.Point(459, 9);
+            this.m_FromHeader.Location = new System.Drawing.Point(501, 78);
             this.m_FromHeader.Name = "m_FromHeader";
             this.m_FromHeader.Size = new System.Drawing.Size(149, 25);
             this.m_FromHeader.TabIndex = 6;
             this.m_FromHeader.Text = "User Source:";
-            // 
-            // m_FilterCheckedList
-            // 
-            this.m_FilterCheckedList.FormattingEnabled = true;
-            this.m_FilterCheckedList.Items.AddRange(new object[] {
-            "Links",
-            "Status",
-            "Photo",
-            "Contains Photo",
-            "Date Filter",
-            "Text Filter"});
-            this.m_FilterCheckedList.Location = new System.Drawing.Point(191, 46);
-            this.m_FilterCheckedList.Name = "m_FilterCheckedList";
-            this.m_FilterCheckedList.Size = new System.Drawing.Size(189, 118);
-            this.m_FilterCheckedList.TabIndex = 5;
-            // 
-            // m_PossibleUsersComboBox
-            // 
-            this.m_PossibleUsersComboBox.FormattingEnabled = true;
-            this.m_PossibleUsersComboBox.Location = new System.Drawing.Point(614, 8);
-            this.m_PossibleUsersComboBox.Name = "m_PossibleUsersComboBox";
-            this.m_PossibleUsersComboBox.Size = new System.Drawing.Size(138, 26);
-            this.m_PossibleUsersComboBox.TabIndex = 10;
             // 
             // m_MinLikesLabel
             // 
@@ -162,7 +146,7 @@ namespace FacebookClient.Code
             // 
             this.m_TextContainsLabel.AutoSize = true;
             this.m_TextContainsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_TextContainsLabel.Location = new System.Drawing.Point(218, 262);
+            this.m_TextContainsLabel.Location = new System.Drawing.Point(100, 289);
             this.m_TextContainsLabel.Name = "m_TextContainsLabel";
             this.m_TextContainsLabel.Size = new System.Drawing.Size(165, 25);
             this.m_TextContainsLabel.TabIndex = 16;
@@ -170,34 +154,41 @@ namespace FacebookClient.Code
             // 
             // m_TextContainsBox
             // 
-            this.m_TextContainsBox.Location = new System.Drawing.Point(386, 264);
+            this.m_TextContainsBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.filterDataBindingSource, "TextContainsString", true));
+            this.m_TextContainsBox.Location = new System.Drawing.Point(275, 290);
             this.m_TextContainsBox.Name = "m_TextContainsBox";
-            this.m_TextContainsBox.Size = new System.Drawing.Size(117, 24);
+            this.m_TextContainsBox.Size = new System.Drawing.Size(150, 24);
             this.m_TextContainsBox.TabIndex = 17;
+            // 
+            // filterDataBindingSource
+            // 
+            this.filterDataBindingSource.DataSource = typeof(FacebookWrapperEnhancements.Code.Collection.Filter.FilterData);
             // 
             // m_MinDatePicker
             // 
+            this.m_MinDatePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.filterDataBindingSource, "MinDate", true));
             this.m_MinDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.m_MinDatePicker.Location = new System.Drawing.Point(386, 234);
+            this.m_MinDatePicker.Location = new System.Drawing.Point(275, 250);
             this.m_MinDatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.m_MinDatePicker.Name = "m_MinDatePicker";
-            this.m_MinDatePicker.Size = new System.Drawing.Size(117, 24);
+            this.m_MinDatePicker.Size = new System.Drawing.Size(150, 24);
             this.m_MinDatePicker.TabIndex = 18;
             this.m_MinDatePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
             // m_MaxDatePicker
             // 
+            this.m_MaxDatePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.filterDataBindingSource, "MaxDate", true));
             this.m_MaxDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.m_MaxDatePicker.Location = new System.Drawing.Point(386, 205);
+            this.m_MaxDatePicker.Location = new System.Drawing.Point(275, 210);
             this.m_MaxDatePicker.Name = "m_MaxDatePicker";
-            this.m_MaxDatePicker.Size = new System.Drawing.Size(117, 24);
+            this.m_MaxDatePicker.Size = new System.Drawing.Size(150, 24);
             this.m_MaxDatePicker.TabIndex = 19;
             // 
             // m_MaxDateLabel
             // 
             this.m_MaxDateLabel.AutoSize = true;
             this.m_MaxDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_MaxDateLabel.Location = new System.Drawing.Point(210, 204);
+            this.m_MaxDateLabel.Location = new System.Drawing.Point(92, 210);
             this.m_MaxDateLabel.Name = "m_MaxDateLabel";
             this.m_MaxDateLabel.Size = new System.Drawing.Size(173, 25);
             this.m_MaxDateLabel.TabIndex = 20;
@@ -207,7 +198,7 @@ namespace FacebookClient.Code
             // 
             this.m_MinDateLabel.AutoSize = true;
             this.m_MinDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_MinDateLabel.Location = new System.Drawing.Point(218, 233);
+            this.m_MinDateLabel.Location = new System.Drawing.Point(98, 250);
             this.m_MinDateLabel.Name = "m_MinDateLabel";
             this.m_MinDateLabel.Size = new System.Drawing.Size(167, 25);
             this.m_MinDateLabel.TabIndex = 21;
@@ -216,8 +207,9 @@ namespace FacebookClient.Code
             // m_ReverseOrderCheckBox
             // 
             this.m_ReverseOrderCheckBox.AutoSize = true;
+            this.m_ReverseOrderCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.filterDataBindingSource, "ReverseOrder", true));
             this.m_ReverseOrderCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_ReverseOrderCheckBox.Location = new System.Drawing.Point(32, 164);
+            this.m_ReverseOrderCheckBox.Location = new System.Drawing.Point(30, 151);
             this.m_ReverseOrderCheckBox.Name = "m_ReverseOrderCheckBox";
             this.m_ReverseOrderCheckBox.Size = new System.Drawing.Size(134, 22);
             this.m_ReverseOrderCheckBox.TabIndex = 22;
@@ -227,17 +219,59 @@ namespace FacebookClient.Code
             // m_MatchAllFiltersCheckBox
             // 
             this.m_MatchAllFiltersCheckBox.AutoSize = true;
+            this.m_MatchAllFiltersCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.filterDataBindingSource, "MatchAllFilters", true));
             this.m_MatchAllFiltersCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_MatchAllFiltersCheckBox.Location = new System.Drawing.Point(191, 170);
+            this.m_MatchAllFiltersCheckBox.Location = new System.Drawing.Point(238, 151);
             this.m_MatchAllFiltersCheckBox.Name = "m_MatchAllFiltersCheckBox";
             this.m_MatchAllFiltersCheckBox.Size = new System.Drawing.Size(148, 22);
             this.m_MatchAllFiltersCheckBox.TabIndex = 23;
             this.m_MatchAllFiltersCheckBox.Text = "Match All Filters";
             this.m_MatchAllFiltersCheckBox.UseVisualStyleBackColor = true;
             // 
+            // availableUsersToSelectBindingSource
+            // 
+            this.availableUsersToSelectBindingSource.DataMember = "AvailableUsersToSelect";
+            this.availableUsersToSelectBindingSource.DataSource = this.filterDataBindingSource;
+            // 
+            // imageSquarePictureBox
+            // 
+            this.imageSquarePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.availableUsersToSelectBindingSource, "ImageSquare", true));
+            this.imageSquarePictureBox.Location = new System.Drawing.Point(725, 12);
+            this.imageSquarePictureBox.Name = "imageSquarePictureBox";
+            this.imageSquarePictureBox.Size = new System.Drawing.Size(69, 59);
+            this.imageSquarePictureBox.TabIndex = 24;
+            this.imageSquarePictureBox.TabStop = false;
+            // 
+            // nameComboBox
+            // 
+            this.nameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.availableUsersToSelectBindingSource, "Name", true));
+            this.nameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.filterDataBindingSource, "UserSource", true));
+            this.nameComboBox.FormattingEnabled = true;
+            this.nameComboBox.Location = new System.Drawing.Point(656, 77);
+            this.nameComboBox.Name = "nameComboBox";
+            this.nameComboBox.Size = new System.Drawing.Size(138, 26);
+            this.nameComboBox.TabIndex = 26;
+            // 
+            // m_FilterCheckedList
+            // 
+            this.m_FilterCheckedList.DataBindings.Add(new System.Windows.Forms.Binding("FilterConditionsState", this.filterDataBindingSource, "Conditions", true));
+            this.m_FilterCheckedList.FilterConditionsState = null;
+            this.m_FilterCheckedList.FormattingEnabled = true;
+            this.m_FilterCheckedList.Items.AddRange(new object[] {
+            "Links",
+            "Status",
+            "Photo",
+            "Contains Photo",
+            "Date Filter",
+            "Text Filter"});
+            this.m_FilterCheckedList.Location = new System.Drawing.Point(238, 46);
+            this.m_FilterCheckedList.Name = "m_FilterCheckedList";
+            this.m_FilterCheckedList.Size = new System.Drawing.Size(236, 99);
+            this.m_FilterCheckedList.TabIndex = 5;
+            // 
             // m_Confirm
             // 
-            this.m_Confirm.InfoChoice = eInfoChoice.AppId;
+            this.m_Confirm.InfoChoice = FacebookPages.Code.Pages.Factory.Interfaces.eInfoChoice.AppId;
             this.m_Confirm.Location = new System.Drawing.Point(689, 273);
             this.m_Confirm.Name = "m_Confirm";
             this.m_Confirm.ReceivedInfo = null;
@@ -252,7 +286,9 @@ namespace FacebookClient.Code
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(806, 337);
+            this.ClientSize = new System.Drawing.Size(809, 331);
+            this.Controls.Add(this.imageSquarePictureBox);
+            this.Controls.Add(this.nameComboBox);
             this.Controls.Add(this.m_MatchAllFiltersCheckBox);
             this.Controls.Add(this.m_ReverseOrderCheckBox);
             this.Controls.Add(this.m_MinDateLabel);
@@ -264,7 +300,6 @@ namespace FacebookClient.Code
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.m_MinLikesLabel);
-            this.Controls.Add(this.m_PossibleUsersComboBox);
             this.Controls.Add(this.m_FromHeader);
             this.Controls.Add(this.m_FilterCheckedList);
             this.Controls.Add(this.m_FetchFilterHeaderLabel);
@@ -278,6 +313,9 @@ namespace FacebookClient.Code
             this.Name = "FilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Filter";
+            ((System.ComponentModel.ISupportInitialize)(this.filterDataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.availableUsersToSelectBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageSquarePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,8 +329,6 @@ namespace FacebookClient.Code
         private System.Windows.Forms.Label m_FetchFilterHeaderLabel;
         private System.Windows.Forms.ListBox m_SortList;
         private System.Windows.Forms.Label m_FromHeader;
-        private System.Windows.Forms.CheckedListBox m_FilterCheckedList;
-        private System.Windows.Forms.ComboBox m_PossibleUsersComboBox;
         private System.Windows.Forms.Label m_MinLikesLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -304,5 +340,10 @@ namespace FacebookClient.Code
         private System.Windows.Forms.Label m_MinDateLabel;
         private System.Windows.Forms.CheckBox m_ReverseOrderCheckBox;
         private System.Windows.Forms.CheckBox m_MatchAllFiltersCheckBox;
+        private FilterCheckedListBox m_FilterCheckedList;
+        private System.Windows.Forms.BindingSource filterDataBindingSource;
+        private System.Windows.Forms.BindingSource availableUsersToSelectBindingSource;
+        private System.Windows.Forms.PictureBox imageSquarePictureBox;
+        private System.Windows.Forms.ComboBox nameComboBox;
     }
 }

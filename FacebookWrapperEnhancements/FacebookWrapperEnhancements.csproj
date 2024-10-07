@@ -74,9 +74,7 @@
     <Compile Include="Code\EnhancedObjects\EnhancedUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Code\UserManagement\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\FetchHandler\FetchHandler.csproj">
       <Project>{b3f772bb-2b99-48b1-982c-81633a06924e}</Project>

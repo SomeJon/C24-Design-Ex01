@@ -5,6 +5,12 @@ namespace FacebookWrapperEnhancements.Code.EnhancedObjects
 {
     public class EnhancedPost : FacebookWrapper.ObjectModel.Post
     {
+        public enum ePostConnectionOptions
+        {
+            Feed,
+            Posts
+        }
+
         public int NumOfComments => 
             m_DynamicData.comments.summary.total_count != null ?
             (int)m_DynamicData.comments.summary.total_count : 0;

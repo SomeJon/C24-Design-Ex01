@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code.Collection.Sort;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
@@ -11,7 +12,9 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
         public EnhancedUser UserSource { get; set; }
         public List<User> AvailableUsersToSelect { get; set; } = new List<User>();
         public Dictionary<FilterMethod.eFilterCondition, bool> Conditions { get; set; } =
-            new Dictionary<FilterMethod.eFilterCondition, bool>();
+            Enum.GetValues(typeof(FilterMethod.eFilterCondition))
+                .Cast<FilterMethod.eFilterCondition>()
+                .ToDictionary(i_Condition => i_Condition, i_Condition => false);
         public DateTime MinDate { get; set; } =
             new System.DateTime
                 (1900, 1, 1, 0, 0, 0, 0);

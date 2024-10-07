@@ -107,7 +107,7 @@ namespace FacebookPages.Code.Pages
             if(connection != null)
             {
                 PageData.CurrentConnection =
-                    (eConnectionOptions)Enum.Parse(typeof(eConnectionOptions), connection);
+                    (EnhancedPost.ePostConnectionOptions)Enum.Parse(typeof(EnhancedPost.ePostConnectionOptions), connection);
 
                 new Thread(fetchPostsDataInBackground).Start();
             }

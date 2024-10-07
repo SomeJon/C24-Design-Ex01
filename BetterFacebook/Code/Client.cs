@@ -11,6 +11,7 @@ using FacebookPages.Code.Pages.Factory.Interfaces;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.Collection;
+using FacebookWrapperEnhancements.Code.Collection.Filter;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using FetchHandler.Fetch;
 using Page = FacebookPages.Code.Pages.Page;
@@ -35,6 +36,12 @@ namespace FacebookClient.Code
         public void Run()
         {
             startLogin();
+
+            FilterData unsavedFilter = new FilterData();
+            FilterData savedFilter = unsavedFilter.DeepClone();
+            FilterForm getFilters = new FilterForm(savedFilter);
+            Application.Run(getFilters);
+
 
             Application.Run(r_FormMain);
         }
@@ -131,9 +138,9 @@ namespace FacebookClient.Code
 
         private static void filterLoadRequest(IHasDataInfo i_LoadInfoHolder)
         {
-            FilterForm getFilters = new FilterForm();
-            FacebookObjectCollectionWithPaging<EnhancedPost> dataToProcess =
-                i_LoadInfoHolder.ReceivedInfo as FacebookObjectCollectionWithPaging<EnhancedPost>;
+            //FilterForm getFilters = new FilterForm();
+            //FacebookObjectCollectionWithPaging<EnhancedPost> dataToProcess =
+            //    i_LoadInfoHolder.ReceivedInfo as FacebookObjectCollectionWithPaging<EnhancedPost>;
 
             // getFilters.LoadData(dataToProcess?.FilterData); //Todo: remove logic from form
             // getFilters.ShowDialog();

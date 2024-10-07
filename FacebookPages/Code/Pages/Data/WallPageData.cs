@@ -11,21 +11,16 @@ using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using FetchHandler.Fetch;
+using static FacebookWrapperEnhancements.Code.EnhancedObjects.EnhancedPost;
 
 namespace FacebookPages.Code.Pages.Data
 {
     public class WallPageData : IPageData
     {
-        public enum eConnectionOptions
-        {
-            Feed,
-            Posts
-        }
-
         private PagedCollection<EnhancedPost> m_WallPosts;
         private PagedCollection<EnhancedPost> m_UserPosts;
         private FacebookObjectCollection<EnhancedUser> m_Friends;
-        public eConnectionOptions CurrentConnection { get; set; } = eConnectionOptions.Feed;
+        public ePostConnectionOptions CurrentConnection { get; set; } = ePostConnectionOptions.Feed;
         public EnhancedUser PageUser { get; }
         public string ProfilePicUrl { get; protected set; }
         public string CoverPicUrl { get; protected set; }
@@ -143,15 +138,15 @@ namespace FacebookPages.Code.Pages.Data
 
             switch (CurrentConnection)
             {
-                case eConnectionOptions.Feed:
+                case ePostConnectionOptions.Feed:
                     returningCollection = WallPosts;
                     break;
-                case eConnectionOptions.Posts:
+                case ePostConnectionOptions.Posts:
                     returningCollection = UserPosts;
                     break;
                 default:
                     returningCollection = WallPosts;
-                    CurrentConnection = eConnectionOptions.Feed;
+                    CurrentConnection = ePostConnectionOptions.Feed;
                     break;
             }
 
