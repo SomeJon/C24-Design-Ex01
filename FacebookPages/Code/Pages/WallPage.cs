@@ -10,6 +10,7 @@ using FacebookPages.Code.Pages.Factory.Interfaces;
 using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using static FacebookPages.Code.Pages.Data.UserPostFeed;
 using static FacebookPages.Code.Pages.Data.WallPageData;
 
 namespace FacebookPages.Code.Pages
@@ -44,6 +45,8 @@ namespace FacebookPages.Code.Pages
 
             new Thread(fetchPostsDataInBackground).Start();
             new Thread(fetchNonPostsDataInBackground).Start();
+
+            m_PostViewButton.LoadDataSource(PageData);
         }
 
         private void fetchNonPostsDataInBackground()
@@ -80,8 +83,9 @@ namespace FacebookPages.Code.Pages
 
         private void updatePageWithPostData(List<EnhancedPost> i_Data)
         {
-            m_PostViewButton.LoadInfoListBox.DataSource = i_Data;
+            //m_PostViewButton.LoadInfoListBox.DataSource = i_Data;
             m_PostViewButton.Refresh();
+            this.Refresh();
         }
 
         private void updatePageWithNonPostData()
@@ -104,13 +108,17 @@ namespace FacebookPages.Code.Pages
 
         private void m_PostViewButton_ChangeConnectionRequest(object i_Sender, EventArgs i_EventArgs)
         {
-            string connection = (string)(i_Sender as ComboBox)?.SelectedItem;
-            if(connection != null)
+            object selectedItem = (i_Sender as ComboBox)?.SelectedItem;
+            if(selectedItem != null)
             {
-                PageData.CurrentPageFeed.CurrentConnection =
-                    (UserPostFeed.ePostConnectionOptions)Enum.Parse(typeof(UserPostFeed.ePostConnectionOptions), connection);
+                ePostConnectionOptions connection = (ePostConnectionOptions)selectedItem;
 
-                new Thread(fetchPostsDataInBackground).Start();
+                if(connection != null)
+                {
+                    //PageData.CurrentPageFeed.CurrentConnection = connection;
+
+                    new Thread(fetchPostsDataInBackground).Start();
+                }
             }
         }
 

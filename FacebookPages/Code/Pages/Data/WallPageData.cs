@@ -49,6 +49,7 @@ namespace FacebookPages.Code.Pages.Data
             }
         }
         public PagedCollection<EnhancedPost> Feed => CurrentPageFeed.GetPosts(CurrentFilterData);
+        public List<EnhancedPost> FeedList => CurrentPageFeed.GetPosts(CurrentFilterData).CollectionData;
         public PostAnalyticData PostAnalyticData => new PostAnalyticData
             (Feed.CollectionData, PageUser);
         public UserPostFeed PageUserFeed { get; }

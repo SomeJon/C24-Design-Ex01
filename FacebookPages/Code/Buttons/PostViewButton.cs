@@ -1,6 +1,7 @@
 ﻿using FacebookPages.Code.Pages.Data.Post;
 using System;
 using System.Windows.Forms;
+using FacebookPages.Code.Pages.Data;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookPages.Code.Buttons
@@ -13,40 +14,23 @@ namespace FacebookPages.Code.Buttons
         public event EventHandler FilterRequest;
         public event EventHandler LoadAllPosts;
         public event EventHandler PostAnalyticRequest;
-        public LoadInfoListBox LoadInfoListBox 
-        {
-            get => m_PostsList;
-            private set => m_PostsList = value;
-        }
+
 
         public PostViewButton()
         {
             InitializeComponent();
         }
 
-        public override void Refresh()
+        public void LoadDataSource(WallPageData i_DataSource)
         {
-            m_NumOfPostsInfo.Text = "Showing - " + m_PostsList.Items.Count + " posts";
-            base.Refresh();
+            this.wallPageDataBindingSource.DataSource = i_DataSource;
+            ePostConnectionOptionsBindingSource.DataSource = Enum.GetValues(typeof(UserPostFeed.ePostConnectionOptions));
         }
 
-        private void m_PostsList_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
+        public override void Refresh()
         {
-            if (m_PostsList.SelectedValue is EnhancedPost post)
-            {
-                if (!string.IsNullOrEmpty(post.ImageUrl))
-                {
-                    m_PostImage.LoadAsync(post.ImageUrl);
-                }
-                else
-                {
-                    m_PostImage.Image = null;
-                }
-
-                m_FillComments.Text = post.NumOfComments.ToString();
-                m_FillReactions.Text = post.NumOfLikes.ToString();
-                m_FillName.Text = post.From?.ToString();
-            }
+            wallPageDataBindingSource.ResetBindings(false);
+            base.Refresh();
         }
 
         private void m_MorePostsButton_Click(object i_Sender, EventArgs i_EventArgs)
@@ -54,7 +38,7 @@ namespace FacebookPages.Code.Buttons
             MorePostsRequest?.Invoke(i_Sender, i_EventArgs);
         }
 
-        private void m_ChangeConnectionButton_Click(object i_Sender, EventArgs i_EventArgs)
+        private void m_PostTypeChoiceComboBox_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
             ChangeConnectionRequest?.Invoke(m_PostTypeChoiceComboBox, i_EventArgs);
         }
@@ -77,6 +61,12 @@ namespace FacebookPages.Code.Buttons
         private void m_SwitchToAnalytics_Click(object i_Sender, EventArgs i_EventArgs)
         {
             PostAnalyticRequest?.Invoke(i_Sender, i_EventArgs);
+        }
+
+        private void feedListBindingSource_ListChanged(object i_Sender, System.ComponentModel.ListChangedEventArgs e)
+        {
+            int postCount = feedListBindingSource.Count;
+            m_NumOfPostsInfo.Text = $"Showing {postCount} posts";
         }
     }
 }
