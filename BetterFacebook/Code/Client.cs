@@ -120,9 +120,8 @@ namespace FacebookClient.Code
                     filterLoadRequest(loadInfoHolder);
                     break;
                 case eInfoChoice.Post:
-                    PostView postView = new PostView();
+                    PostView postView = new PostView(loadInfoHolder.ReceivedInfo as EnhancedPost);
 
-                    // postView.LoadPostData(loadInfoHolder.ReceivedInfo as UpdatedPostData);
                     postView.Show();
                     break;
                 default:

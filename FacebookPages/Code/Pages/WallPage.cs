@@ -43,10 +43,10 @@ namespace FacebookPages.Code.Pages
         {
             base.OnLoad(i_EventArgs);
 
-            new Thread(fetchPostsDataInBackground).Start();
+            new Thread(fetchPostsDataInBackgroundSet).Start();
             new Thread(fetchNonPostsDataInBackground).Start();
 
-            m_PostViewButton.LoadDataSource(PageData);
+            
         }
 
         private void fetchNonPostsDataInBackground()
@@ -61,6 +61,24 @@ namespace FacebookPages.Code.Pages
             catch (InvalidOperationException invalidOperation)
             {
                 MessageBox.Show(invalidOperation.Message, @"Error");
+            }
+        }
+
+        private void fetchPostsDataInBackgroundSet()
+        {
+            lock (sr_PostDataLock)
+            {
+                try
+                {
+                    List<EnhancedPost> postDataToLoad = PageData.FeedPaged.CollectionData;
+
+                    this.Invoke(new Action((() => m_PostViewButton.LoadDataSource(PageData))));
+                    this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
+                }
+                catch (InvalidOperationException invalidOperation)
+                {
+                    MessageBox.Show(invalidOperation.Message, @"Error");
+                }
             }
         }
 
@@ -83,9 +101,7 @@ namespace FacebookPages.Code.Pages
 
         private void updatePageWithPostData(List<EnhancedPost> i_Data)
         {
-            //m_PostViewButton.LoadInfoListBox.DataSource = i_Data;
             m_PostViewButton.Refresh();
-            this.Refresh();
         }
 
         private void updatePageWithNonPostData()
@@ -115,8 +131,6 @@ namespace FacebookPages.Code.Pages
 
                 if(connection != null)
                 {
-                    //PageData.CurrentPageFeed.CurrentConnection = connection;
-
                     new Thread(fetchPostsDataInBackground).Start();
                 }
             }
