@@ -9,7 +9,7 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter.Strategy
 
         public ContainsTextFilterStrategy(string i_TextToContain)
         {
-            r_TextToContain = i_TextToContain;
+            r_TextToContain = string.IsNullOrEmpty(i_TextToContain) ? string.Empty : i_TextToContain;
         }
 
         public Predicate<EnhancedPost> GetPredicate()

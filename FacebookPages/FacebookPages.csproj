@@ -56,12 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Buttons\FilterCheckedListBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Code\Buttons\SortOptionsListBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Code\Pages\Data\UserPostFeed.cs" />
     <Compile Include="Code\Pages\Factory\CustomPageRequest.cs" />
     <Compile Include="Code\Pages\Factory\Interfaces\eInfoChoice.cs" />
     <Compile Include="Code\Pages\Factory\Interfaces\ePageChoice.cs" />

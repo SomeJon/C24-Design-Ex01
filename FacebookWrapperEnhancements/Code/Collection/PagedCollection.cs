@@ -95,12 +95,10 @@ namespace FacebookWrapperEnhancements.Code.Collection
         public void TryToGetAllInDates(DateTime i_Until, DateTime i_Since)
         {
             Paging paging = CollectionPages.First().PagingData;
-            Dictionary<string, string> keyValuePairs =
-                new Dictionary<string, string> (paging.QueryParams)
-                    {
-                        { "until", FilterData.ToUnixTimestamp(i_Until).ToString() },
-                        { "since", FilterData.ToUnixTimestamp(i_Since).ToString() },
-                    };
+            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>(paging.QueryParams);
+
+            keyValuePairs["until"] = FilterData.ToUnixTimestamp(i_Until).ToString();
+            keyValuePairs["since"] = FilterData.ToUnixTimestamp(i_Since).ToString();
 
             FacebookObjectCollectionWithPaging<T> newPage = FacebookServicesEnhancements
                 .GetCollection<T>(paging.Connection,

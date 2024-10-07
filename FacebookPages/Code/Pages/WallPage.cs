@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages.Data.Post;
+using FacebookPages.Code.Pages.Data.UserManager;
 using FacebookPages.Code.Pages.Factory.Interfaces;
 using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
@@ -66,7 +67,7 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    List<EnhancedPost> postDataToLoad = PageData.GetPosts().CollectionData;
+                    List<EnhancedPost> postDataToLoad = PageData.Feed.CollectionData;
 
                     this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                 }
@@ -106,8 +107,8 @@ namespace FacebookPages.Code.Pages
             string connection = (string)(i_Sender as ComboBox)?.SelectedItem;
             if(connection != null)
             {
-                PageData.CurrentConnection =
-                    (EnhancedPost.ePostConnectionOptions)Enum.Parse(typeof(EnhancedPost.ePostConnectionOptions), connection);
+                PageData.CurrentPageFeed.CurrentConnection =
+                    (UserPostFeed.ePostConnectionOptions)Enum.Parse(typeof(UserPostFeed.ePostConnectionOptions), connection);
 
                 new Thread(fetchPostsDataInBackground).Start();
             }
@@ -124,9 +125,9 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    PageData.GetPosts().FetchNewPage();
+                    PageData.Feed.FetchNewPage();
 
-                    List<EnhancedPost> postDataToLoad = PageData.GetPosts().CollectionData;
+                    List<EnhancedPost> postDataToLoad = PageData.Feed.CollectionData;
 
                     this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                 }
@@ -141,7 +142,6 @@ namespace FacebookPages.Code.Pages
         {
             ((IHasDataInfo)i_Sender).ReceivedInfo = PageData.CurrentFilterData;
             OnReceivedInfo(i_Sender, i_EventArgs);
-            m_PostViewButton.Refresh();
         }
 
         private void m_PostViewButton_LoadAllPosts(object i_Sender, EventArgs i_EventArgs)
@@ -155,7 +155,7 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    PagedCollection<EnhancedPost> pagedCollection = PageData.GetPosts();
+                    PagedCollection<EnhancedPost> pagedCollection = PageData.Feed;
 
                     while(pagedCollection.FetchNewPage())
                     {
@@ -195,7 +195,34 @@ namespace FacebookPages.Code.Pages
         {
             PageData.CurrentFilterData = i_FilterDate;
 
-            new Thread(fetchPostsDataInBackground).Start();
+            if(i_FilterDate.Conditions[FilterMethod.eFilterCondition.DateFilter] == true)
+            {
+                new Thread(fetchAllPostInDatesInBackground).Start();
+            }
+            else
+            {
+                new Thread(fetchPostsDataInBackground).Start();
+            }
+        }
+
+        private void fetchAllPostInDatesInBackground()
+        {
+            lock (sr_PostDataLock)
+            {
+                try
+                {
+                    PageData.Feed.TryToGetAllInDates
+                        (PageData.CurrentFilterData.MaxDate, PageData.CurrentFilterData.MinDate);
+
+                    List<EnhancedPost> postDataToLoad = PageData.Feed.CollectionData;
+
+                    this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
+                }
+                catch (InvalidOperationException invalidOperation)
+                {
+                    MessageBox.Show(invalidOperation.Message, @"Error");
+                }
+            }
         }
     }
 }

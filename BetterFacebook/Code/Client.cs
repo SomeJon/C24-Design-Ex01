@@ -6,6 +6,7 @@ using static FacebookClient.Code.FormMain;
 using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages;
 using System.Collections.Generic;
+using System.Diagnostics;
 using FacebookPages.Code.Pages.Factory;
 using FacebookPages.Code.Pages.Factory.Interfaces;
 using FacebookWrapper.ObjectModel;
@@ -36,12 +37,6 @@ namespace FacebookClient.Code
         public void Run()
         {
             startLogin();
-
-            FilterData unsavedFilter = new FilterData();
-            FilterData savedFilter = unsavedFilter.DeepClone();
-            FilterForm getFilters = new FilterForm(savedFilter);
-            Application.Run(getFilters);
-
 
             Application.Run(r_FormMain);
         }
@@ -136,22 +131,20 @@ namespace FacebookClient.Code
             }
         }
 
-        private static void filterLoadRequest(IHasDataInfo i_LoadInfoHolder)
+        private void filterLoadRequest(IHasDataInfo i_LoadInfoHolder)
         {
-            //FilterForm getFilters = new FilterForm();
-            //FacebookObjectCollectionWithPaging<EnhancedPost> dataToProcess =
-            //    i_LoadInfoHolder.ReceivedInfo as FacebookObjectCollectionWithPaging<EnhancedPost>;
+            FilterData currentFilterData = i_LoadInfoHolder.ReceivedInfo as FilterData;
+            Debug.Assert(currentFilterData != null, nameof(currentFilterData) + " != null");
+            FilterData newFilterData = currentFilterData.DeepClone();
+            FilterForm getFilters = new FilterForm(newFilterData);
 
-            // getFilters.LoadData(dataToProcess?.FilterData); //Todo: remove logic from form
-            // getFilters.ShowDialog();
-            //
-            // if (getFilters.Confirmed)
-            // {
-            //     if (dataToProcess != null)
-            //     {
-            //         dataToProcess.FilterData = getFilters.GetData();
-            //     }
-            // }
+            getFilters.ShowDialog();
+
+            if (getFilters.Confirmed)
+            {
+                WallPage currentWallPage = r_FormMain.CurrentActivePage as WallPage;
+                currentWallPage?.LoadFilterData(newFilterData);
+            }
         }
 
         private void pageSwitching(object i_ChoiceDataHolder)

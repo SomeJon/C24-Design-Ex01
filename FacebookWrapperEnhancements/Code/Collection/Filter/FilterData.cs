@@ -4,6 +4,7 @@ using System.Linq;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code.Collection.Sort;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
+using static FacebookWrapperEnhancements.Code.Collection.Sort.SortingMethodFactory;
 
 namespace FacebookWrapperEnhancements.Code.Collection.Filter
 {
@@ -11,10 +12,26 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
     {
         public EnhancedUser UserSource { get; set; }
         public List<User> AvailableUsersToSelect { get; set; } = new List<User>();
-        public Dictionary<FilterMethod.eFilterCondition, bool> Conditions { get; set; } =
-            Enum.GetValues(typeof(FilterMethod.eFilterCondition))
-                .Cast<FilterMethod.eFilterCondition>()
-                .ToDictionary(i_Condition => i_Condition, i_Condition => false);
+        public Dictionary<FilterMethod.eFilterCondition, bool> Conditions =>
+            new Dictionary<FilterMethod.eFilterCondition, bool>()
+                {
+                    { FilterMethod.eFilterCondition.Links, FilterOptions["Filter by Links"] },
+                    { FilterMethod.eFilterCondition.Status, FilterOptions["Filter by Status"] },
+                    { FilterMethod.eFilterCondition.Photo, FilterOptions["Filter by Photo"] },
+                    { FilterMethod.eFilterCondition.ContainsPhoto, FilterOptions["Filter by Posts Containing Photos"] },
+                    { FilterMethod.eFilterCondition.DateFilter, FilterOptions["Filter by Date"] },
+                    { FilterMethod.eFilterCondition.ContainsText, FilterOptions["Filter by Text Containment"] }
+                };
+        public Dictionary<string, bool> FilterOptions { get; set; } =
+            new Dictionary<string, bool>
+                {
+                    { "Filter by Links", false },
+                    { "Filter by Status", false },
+                    { "Filter by Photo", false },
+                    { "Filter by Posts Containing Photos", false },
+                    { "Filter by Date", false },
+                    { "Filter by Text Containment", false }
+                };
         public DateTime MinDate { get; set; } =
             new System.DateTime
                 (1900, 1, 1, 0, 0, 0, 0);
@@ -37,7 +54,7 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
                                    {
                                        UserSource = this.UserSource,
                                        AvailableUsersToSelect = new List<User>(this.AvailableUsersToSelect),
-                                       Conditions = new Dictionary<FilterMethod.eFilterCondition, bool>(this.Conditions),
+                                       FilterOptions = new Dictionary<string, bool>(this.FilterOptions),
                                        MinDate = this.MinDate,
                                        MaxDate = this.MaxDate,
                                        PostSortingMethod = this.PostSortingMethod,
