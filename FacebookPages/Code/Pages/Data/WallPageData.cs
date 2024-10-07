@@ -48,10 +48,10 @@ namespace FacebookPages.Code.Pages.Data
                 CurrentPageFeed = UserDataManager.GetUserData(CurrentFilterData.UserSource).WallData.PageUserFeed;
             }
         }
-        public PagedCollection<EnhancedPost> Feed => CurrentPageFeed.GetPosts(CurrentFilterData);
+        public PagedCollection<EnhancedPost> FeedPaged => CurrentPageFeed.GetPosts(CurrentFilterData);
         public List<EnhancedPost> FeedList => CurrentPageFeed.GetPosts(CurrentFilterData).CollectionData;
         public PostAnalyticData PostAnalyticData => new PostAnalyticData
-            (Feed.CollectionData, PageUser);
+            (FeedPaged.CollectionData, PageUser);
         public UserPostFeed PageUserFeed { get; }
         public UserPostFeed CurrentPageFeed { get; internal set; }
 

@@ -70,7 +70,7 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    List<EnhancedPost> postDataToLoad = PageData.Feed.CollectionData;
+                    List<EnhancedPost> postDataToLoad = PageData.FeedPaged.CollectionData;
 
                     this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                 }
@@ -133,9 +133,9 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    PageData.Feed.FetchNewPage();
+                    PageData.FeedPaged.FetchNewPage();
 
-                    List<EnhancedPost> postDataToLoad = PageData.Feed.CollectionData;
+                    List<EnhancedPost> postDataToLoad = PageData.FeedPaged.CollectionData;
 
                     this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                 }
@@ -163,7 +163,7 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    PagedCollection<EnhancedPost> pagedCollection = PageData.Feed;
+                    PagedCollection<EnhancedPost> pagedCollection = PageData.FeedPaged;
 
                     while(pagedCollection.FetchNewPage())
                     {
@@ -219,10 +219,10 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    PageData.Feed.TryToGetAllInDates
+                    PageData.FeedPaged.TryToGetAllInDates
                         (PageData.CurrentFilterData.MaxDate, PageData.CurrentFilterData.MinDate);
 
-                    List<EnhancedPost> postDataToLoad = PageData.Feed.CollectionData;
+                    List<EnhancedPost> postDataToLoad = PageData.FeedPaged.CollectionData;
 
                     this.Invoke((MethodInvoker)delegate { updatePageWithPostData(postDataToLoad); });
                 }
