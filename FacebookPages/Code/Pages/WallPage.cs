@@ -217,7 +217,7 @@ namespace FacebookPages.Code.Pages
         {
             PageData.CurrentFilterData = i_FilterDate;
 
-            if(i_FilterDate.Conditions[FilterMethod.eFilterCondition.DateFilter] == true)
+            if(i_FilterDate.FilterByDate)
             {
                 new Thread(fetchAllPostInDatesInBackground).Start();
             }

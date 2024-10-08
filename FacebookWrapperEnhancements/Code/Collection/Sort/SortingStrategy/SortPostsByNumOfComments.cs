@@ -17,5 +17,20 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
                     return i_SecondObject.NumOfComments.CompareTo(i_FirstObject.NumOfComments);
                 };
         }
+
+        public override string ToString()
+        {
+            return "Sort by Number of Comments";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj != null && this.GetType() == obj.GetType();
+        }
+
+        public override int GetHashCode()
+        {
+            return this.GetType().GetHashCode();
+        }
     }
 }

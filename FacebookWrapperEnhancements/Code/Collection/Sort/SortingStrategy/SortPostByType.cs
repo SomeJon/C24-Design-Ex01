@@ -14,5 +14,20 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
                     return string.Compare(secondObjectType, firstObjectType, StringComparison.OrdinalIgnoreCase);
                 };
         }
+
+        public override string ToString()
+        {
+            return "Sort by Post Type";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj != null && this.GetType() == obj.GetType();
+        }
+
+        public override int GetHashCode()
+        {
+            return this.GetType().GetHashCode();
+        }
     }
 }

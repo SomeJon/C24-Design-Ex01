@@ -14,7 +14,7 @@ namespace FacebookClient.Code
     {
         public bool Confirmed { get; private set; } = false;
         private FilterData FilterData { get; }
-
+        private FilterFormUtils m_FilterFormUtils = new FilterFormUtils();
 
         public FilterForm(FilterData i_FilterData)
         {
@@ -23,21 +23,23 @@ namespace FacebookClient.Code
 
             customDataBinding();
             this.filterDataBindingSource.DataSource = FilterData;
+            this.filterFormUtilsBindingSource.DataSource = m_FilterFormUtils;
         }
 
         private void customDataBinding()
         {
-            m_SortList.DisplayMember = "Value";
-            m_SortList.ValueMember = "Key";
-            m_SortList.DataSource = new BindingSource(SortingMethodFactory.SortingOptions, null);
-
-
-            Dictionary<string, bool> copiedDictionary = new Dictionary<string, bool>(FilterData.FilterOptions);
-            foreach (KeyValuePair<string, bool> item in copiedDictionary)
+            Dictionary<IFilterStrategy, bool> copiedDictionary 
+                = m_FilterFormUtils.GetDictionaryForSelectedChoices(FilterData.FilterStrategy.SelectedFilters);
+            foreach (KeyValuePair<IFilterStrategy, bool> item in copiedDictionary)
             {
                 m_FilterCheckedList.Items.Add(item.Key, item.Value);
             }
 
+            //Loading the instances of the next filters to be used
+            FilterData.FilterStrategy.SelectedFilters = copiedDictionary
+                .Where(item => item.Value == true)
+                .Select(item => item.Key)
+                .ToList();
         }
 
         private void m_Cancel_Click(object i_Sender, EventArgs i_EventArgs)
@@ -53,9 +55,20 @@ namespace FacebookClient.Code
 
         private void m_FilterCheckedList_ItemCheck(object i_Sender, ItemCheckEventArgs i_EventArgs)
         {
-            string itemKey = (string)m_FilterCheckedList.Items[i_EventArgs.Index];
+            IFilterStrategy strategy = (IFilterStrategy)m_FilterCheckedList.Items[i_EventArgs.Index];
 
-            FilterData.FilterOptions[itemKey] = (i_EventArgs.NewValue == CheckState.Checked);
+            if (i_EventArgs.NewValue == CheckState.Checked)
+            {
+                if (!FilterData.FilterStrategy.SelectedFilters.Contains(strategy))
+                {
+                    FilterData.FilterStrategy.SelectedFilters.Add(strategy);
+                }
+
+            }
+            else if (i_EventArgs.NewValue == CheckState.Unchecked)
+            {
+                FilterData.FilterStrategy.SelectedFilters.Remove(strategy);
+            }
         }
     }
 }

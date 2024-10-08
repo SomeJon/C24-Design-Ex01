@@ -9,5 +9,20 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
         {
             return (i_FirstObject, i_SecondObject) => string.Compare(i_SecondObject?.Name, i_FirstObject?.Name, StringComparison.OrdinalIgnoreCase);
         }
+
+        public override string ToString()
+        {
+            return "Sort by Writer";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj != null && this.GetType() == obj.GetType();
+        }
+
+        public override int GetHashCode()
+        {
+            return this.GetType().GetHashCode();
+        }
     }
 }

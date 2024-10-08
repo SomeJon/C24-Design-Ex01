@@ -113,6 +113,7 @@
     <Compile Include="Code\FilterForm.Designer.cs">
       <DependentUpon>FilterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Code\FilterFormUtils.cs" />
     <Compile Include="Code\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +150,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FacebookClient.Code.FilterFormUtils.datasource" />
     <None Include="Properties\DataSources\FacebookWrapperEnhancements.Code.Collection.Filter.FilterData.datasource" />
     <None Include="Properties\DataSources\FacebookWrapperEnhancements.Code.EnhancedObjects.EnhancedPost.datasource" />
     <None Include="Properties\Settings.settings">

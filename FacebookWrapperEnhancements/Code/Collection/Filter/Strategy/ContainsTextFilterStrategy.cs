@@ -5,16 +5,26 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter.Strategy
 {
     public class ContainsTextFilterStrategy : IFilterStrategy
     {
-        private readonly string r_TextToContain;
+        public string TextToContain { get; set; }
+
+        public ContainsTextFilterStrategy()
+        {
+            TextToContain = string.Empty;
+        }
 
         public ContainsTextFilterStrategy(string i_TextToContain)
         {
-            r_TextToContain = string.IsNullOrEmpty(i_TextToContain) ? string.Empty : i_TextToContain;
+            TextToContain = string.IsNullOrEmpty(i_TextToContain) ? string.Empty : i_TextToContain;
         }
 
         public Predicate<EnhancedPost> GetPredicate()
         {
-            return i_Post => !string.IsNullOrEmpty(i_Post.Message) && i_Post.Message.Contains(r_TextToContain);
+            return i_Post => !string.IsNullOrEmpty(i_Post.Message) && i_Post.Message.Contains(TextToContain);
+        }
+
+        public override string ToString()
+        {
+            return "Filter: Text Contained";
         }
     }
 }
