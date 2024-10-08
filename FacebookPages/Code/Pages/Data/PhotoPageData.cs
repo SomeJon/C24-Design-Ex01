@@ -8,8 +8,8 @@ namespace FacebookPages.Code.Pages.Data
     public class PhotoPageData : IPageData
     {
         public EnhancedUser PageUser { get; }
-
         public FacebookObjectCollection<Album> Albums => PageUser.Albums;
+
 
         internal PhotoPageData(EnhancedUser i_PageUser)
         {
@@ -20,11 +20,7 @@ namespace FacebookPages.Code.Pages.Data
 
         public void LoadAllCurrentData()
         {
-            PropertyInfo[] properties = typeof(AboutMePageData).GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                object value = property.GetValue(this); //Forces the lazy load to load
-            }
+            object forceLoad = Albums;
         }
 
         public void RefreshData()
