@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookPages.Code.Pages.Data.UserManager

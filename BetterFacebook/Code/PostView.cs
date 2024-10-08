@@ -1,6 +1,4 @@
-﻿using FacebookPages.Code.Pages.Data.Post;
-using System;
-using System.Drawing;
+﻿using System;
 using System.Windows.Forms;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 

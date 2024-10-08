@@ -1,20 +1,14 @@
 ﻿using FacebookWrapper;
 using System;
 using System.Windows.Forms;
-using FacebookPages.Code.Pages.Data.Post;
 using static FacebookClient.Code.FormMain;
-using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages;
-using System.Collections.Generic;
 using System.Diagnostics;
 using FacebookPages.Code.Pages.Factory;
 using FacebookPages.Code.Pages.Factory.Interfaces;
-using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code;
-using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
-using FetchHandler.Fetch;
 using Page = FacebookPages.Code.Pages.Page;
 
 namespace FacebookClient.Code
@@ -23,7 +17,6 @@ namespace FacebookClient.Code
     {
         private readonly FormMain r_FormMain = new FormMain();
         private bool m_SaveLogin = Settings.Default.SaveData;
-        public WallPage CurrentWallPage { get; set; }
         public IPageFactory PageFactory { get; set; } = new PageFactory();
 
 
@@ -31,7 +24,7 @@ namespace FacebookClient.Code
         {
             r_FormMain.ViewPanel.ReceivedInfo += this.r_FormMain_ReceivedInfo;
             r_FormMain.ViewPanel.ChangePage += this.r_FormMain_ChangePage;
-            r_FormMain.FormClosing += this.m_FormMain_FormClosing;
+            r_FormMain.FormClosing += this.r_FormMain_FormClosing;
         }
 
         public void Run()
@@ -168,7 +161,7 @@ namespace FacebookClient.Code
             m_SaveLogin = false;
         }
 
-        private void m_FormMain_FormClosing(object i_Sender, FormClosingEventArgs i_EventArgs) //todo
+        private void r_FormMain_FormClosing(object i_Sender, FormClosingEventArgs i_EventArgs) //todo
         {
             i_EventArgs.Cancel = !Utils.CloseConfirm();
 

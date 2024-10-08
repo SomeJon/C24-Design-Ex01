@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code.Collection.Filter.Strategy;
 using FacebookWrapperEnhancements.Code.Collection.Sort;

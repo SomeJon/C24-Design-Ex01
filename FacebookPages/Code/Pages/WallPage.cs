@@ -4,14 +4,11 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using FacebookPages.Code.Pages.Data;
-using FacebookPages.Code.Pages.Data.Post;
-using FacebookPages.Code.Pages.Data.UserManager;
 using FacebookPages.Code.Pages.Factory.Interfaces;
 using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using static FacebookPages.Code.Pages.Data.UserPostFeed;
-using static FacebookPages.Code.Pages.Data.WallPageData;
 
 namespace FacebookPages.Code.Pages
 {
@@ -19,7 +16,7 @@ namespace FacebookPages.Code.Pages
     {
         public override Color BackColor { get; set; }
         internal WallPageData PageData { private get; set; }
-        public static readonly object sr_PostDataLock = new object();
+        private static readonly object sr_PostDataLock = new object();
 
         internal WallPage()
         {
@@ -177,7 +174,7 @@ namespace FacebookPages.Code.Pages
             {
                 try
                 {
-                    PagedCollection<EnhancedPost> pagedCollection = PageData.FeedPaged;
+                    PagedCollectionManager<EnhancedPost> pagedCollection = PageData.FeedPaged;
 
                     while(pagedCollection.FetchNewPage())
                     {

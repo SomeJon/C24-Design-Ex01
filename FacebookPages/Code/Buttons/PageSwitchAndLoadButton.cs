@@ -1,5 +1,4 @@
 ﻿using FacebookPages.Code.Pages.Factory.Interfaces;
-using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookPages.Code.Buttons
 {

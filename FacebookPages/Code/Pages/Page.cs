@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace FacebookPages.Code.Pages
@@ -14,7 +13,6 @@ namespace FacebookPages.Code.Pages
         [Category(".Page Events")]
         [Description("Occurs when recieve a page change request.")]
         public event EventHandler ChangePage;
-        protected internal Thread FetchThread { get; set; }
 
         protected virtual void OnReceivedInfo(object i_Sender, EventArgs i_EventArgs)
         {

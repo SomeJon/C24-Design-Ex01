@@ -1,9 +1,7 @@
-﻿using FacebookPages.Code.Pages.Data;
-using FacebookPages.Code.Pages.Data.Post;
+﻿using FacebookPages.Code.Pages.Data.Post;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using System.Windows.Forms;
 using FacebookPages.Code.Pages.Factory.Interfaces;

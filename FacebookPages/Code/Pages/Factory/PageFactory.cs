@@ -1,9 +1,7 @@
-﻿using System;
-using FacebookPages.Code.Pages.Data;
+﻿using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages.Data.Post;
 using FacebookPages.Code.Pages.Data.UserManager;
 using FacebookPages.Code.Pages.Factory.Interfaces;
-using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookPages.Code.Pages.Factory

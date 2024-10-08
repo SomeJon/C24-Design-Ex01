@@ -3,12 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
-using FacebookWrapperEnhancements.Code.Collection.Filter.Strategy;
 
 
 namespace FacebookWrapperEnhancements.Code.Collection
 {
-    public class PagedCollection<T> : IEnumerable<T> where T : DynamicWrapper, new()
+    public class PagedCollectionManager<T> : IEnumerable<T> where T : DynamicWrapper, new()
     {
         public Predicate<T> FilterStrategy { get; set; }
         public Comparison<T> SortStrategy { get; set; }
@@ -31,7 +30,7 @@ namespace FacebookWrapperEnhancements.Code.Collection
         public string ParentId { get; }
         
 
-        public PagedCollection(FacebookObjectCollectionWithPaging<T> i_TheCollection, string i_ParentId)
+        public PagedCollectionManager(FacebookObjectCollectionWithPaging<T> i_TheCollection, string i_ParentId)
         {
             CollectionPages = new List<FacebookObjectCollectionWithPaging<T>> { i_TheCollection };
             ParentId = i_ParentId;

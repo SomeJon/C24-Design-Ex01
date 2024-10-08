@@ -1,11 +1,8 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
-using FacebookWrapperEnhancements.Code.Collection.Sort;
-using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 
 namespace FacebookClient.Code

@@ -1,7 +1,6 @@
 ﻿using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using System;
-using System.Diagnostics;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 
 namespace FacebookPages.Code.Pages.Data
@@ -14,11 +13,11 @@ namespace FacebookPages.Code.Pages.Data
             Posts
         }
 
-        private PagedCollection<EnhancedPost> m_WallPosts;
-        private PagedCollection<EnhancedPost> m_UserPosts;
+        private PagedCollectionManager<EnhancedPost> m_WallPosts;
+        private PagedCollectionManager<EnhancedPost> m_UserPosts;
         public EnhancedUser PageUser { get; }
         public ePostConnectionOptions CurrentConnection { get; set; } = ePostConnectionOptions.Feed;
-        public PagedCollection<EnhancedPost> WallPosts
+        public PagedCollectionManager<EnhancedPost> WallPosts
         {
             get
             {
@@ -30,7 +29,7 @@ namespace FacebookPages.Code.Pages.Data
                 return m_WallPosts;
             }
         }
-        public PagedCollection<EnhancedPost> UserPosts
+        public PagedCollectionManager<EnhancedPost> UserPosts
         {
             get
             {
@@ -62,9 +61,9 @@ namespace FacebookPages.Code.Pages.Data
             m_WallPosts = null;
         }
 
-        public PagedCollection<EnhancedPost> GetPosts(FilterData i_FilterData)
+        public PagedCollectionManager<EnhancedPost> GetPosts(FilterData i_FilterData)
         {
-            PagedCollection<EnhancedPost> returningCollection;
+            PagedCollectionManager<EnhancedPost> returningCollection;
 
             switch (CurrentConnection)
             {
@@ -87,12 +86,12 @@ namespace FacebookPages.Code.Pages.Data
 
         public void FetchWallPostsData()
         {
-            m_WallPosts = new PagedCollection<EnhancedPost>(PageUser.Feed, PageUser.Id);
+            m_WallPosts = new PagedCollectionManager<EnhancedPost>(PageUser.Feed, PageUser.Id);
         }
 
         public void FetchUserPostsData()
         {
-            m_UserPosts = new PagedCollection<EnhancedPost>(PageUser.Posts, PageUser.Id);
+            m_UserPosts = new PagedCollectionManager<EnhancedPost>(PageUser.Posts, PageUser.Id);
         }
     }
 }
