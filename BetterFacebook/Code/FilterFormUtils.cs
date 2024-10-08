@@ -2,6 +2,8 @@
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 using System.Collections.Generic;
 using FacebookWrapperEnhancements.Code.Collection.Filter.Strategy;
+using FacebookWrapperEnhancements.Code.Collection.Sort;
+using FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy;
 
 namespace FacebookClient.Code
 {
@@ -18,6 +20,7 @@ namespace FacebookClient.Code
             set => r_ContainsTextFilterStrategy.TextToContain = value;
         }
         public List<IFilterStrategy> FilterStrategyChoices { get; }
+        public List<ISortingStrategy> SortStrategiesChoices { get; }
 
 
         public FilterFormUtils()
@@ -29,6 +32,16 @@ namespace FacebookClient.Code
                                             r_PhotoFilterStrategy,
                                             r_ContainsPhotoFilterStrategy,
                                             r_ContainsTextFilterStrategy
+                                        };
+
+            SortStrategiesChoices = new List<ISortingStrategy>()
+                                        {
+                                            new SortPostsByDatePublished(),
+                                            new SortPostByDateUpdated(),
+                                            new SortPostByWriter(),
+                                            new SortPostByType(),
+                                            new SortPostsByLikes(),
+                                            new SortPostsByNumOfComments()
                                         };
         }
 

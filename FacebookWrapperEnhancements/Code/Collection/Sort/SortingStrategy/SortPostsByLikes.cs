@@ -22,5 +22,15 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
         {
             return "Sort by Number of Likes";
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj != null && this.GetType() == obj.GetType();
+        }
+
+        public override int GetHashCode()
+        {
+            return this.GetType().GetHashCode();
+        }
     }
 }

@@ -19,5 +19,15 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
         {
             return "Sort by Post Type";
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj != null && this.GetType() == obj.GetType();
+        }
+
+        public override int GetHashCode()
+        {
+            return this.GetType().GetHashCode();
+        }
     }
 }

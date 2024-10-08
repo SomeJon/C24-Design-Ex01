@@ -4,8 +4,9 @@ using System.Linq;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapperEnhancements.Code.Collection.Filter.Strategy;
 using FacebookWrapperEnhancements.Code.Collection.Sort;
+using FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
-using static FacebookWrapperEnhancements.Code.Collection.Sort.SortingMethodFactory;
+
 
 namespace FacebookWrapperEnhancements.Code.Collection.Filter
 {
@@ -17,8 +18,6 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
             new System.DateTime
                 (1900, 1, 1, 0, 0, 0, 0);
         public DateTime MaxDate { get; set; } = DateTime.Now;
-        public SortingMethodFactory.eSortingMethod PostSortingMethod { get; set; } =
-            SortingMethodFactory.eSortingMethod.ByDatePublished;
         public bool ReverseOrder { get; set; } = false;
         public bool MatchAllFilters
         {
@@ -27,6 +26,7 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
         }
         public bool FilterByDate { get; set; } = false;
         public CombinedFilter FilterStrategy { get; set; } = new CombinedFilter();
+        public ISortingStrategy SortingStrategy { get; set; } = new SortPostsByDatePublished();
 
 
         public static long ToUnixTimestamp(DateTime i_DateTime)
@@ -43,11 +43,11 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
                                        AvailableUsersToSelect = new List<User>(this.AvailableUsersToSelect),
                                        MinDate = this.MinDate,
                                        MaxDate = this.MaxDate,
-                                       PostSortingMethod = this.PostSortingMethod,
                                        ReverseOrder = this.ReverseOrder,
                                        MatchAllFilters = this.MatchAllFilters,
-                                       FilterStrategy = FilterStrategy.DeepClone(),
-                                   };
+                                       FilterStrategy = this.FilterStrategy.DeepClone(),
+                                       SortingStrategy = this.SortingStrategy,
+            };
 
             return clone;
         }
@@ -59,12 +59,11 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
 
         public Comparison<EnhancedPost> GetPostSortStrategy()
         {
-            Comparison<EnhancedPost> baseComparison = SortingMethodFactory.GetComparison(PostSortingMethod);
+            Comparison<EnhancedPost> baseComparison = SortingStrategy.GetComparison();
 
             if (ReverseOrder)
             {
-                // If ReverseOrder is true, reverse the comparison
-                return (firstPost, secondPost) => baseComparison(secondPost, firstPost);
+                baseComparison = (firstPost, secondPost) => SortingStrategy.GetComparison()(secondPost, firstPost);
             }
 
             return baseComparison;

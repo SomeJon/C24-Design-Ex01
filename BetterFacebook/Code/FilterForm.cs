@@ -28,11 +28,6 @@ namespace FacebookClient.Code
 
         private void customDataBinding()
         {
-            m_SortList.DisplayMember = "Value";
-            m_SortList.ValueMember = "Key";
-            m_SortList.DataSource = new BindingSource(SortingMethodFactory.SortingOptions, null);
-
-            
             Dictionary<IFilterStrategy, bool> copiedDictionary 
                 = m_FilterFormUtils.GetDictionaryForSelectedChoices(FilterData.FilterStrategy.SelectedFilters);
             foreach (KeyValuePair<IFilterStrategy, bool> item in copiedDictionary)

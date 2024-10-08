@@ -14,5 +14,15 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
         {
             return "Sort by Date Published";
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj != null && this.GetType() == obj.GetType();
+        }
+
+        public override int GetHashCode()
+        {
+            return this.GetType().GetHashCode();
+        }
     }
 }
