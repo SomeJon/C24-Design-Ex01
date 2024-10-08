@@ -1,7 +1,5 @@
 ﻿using FacebookWrapper.ObjectModel;
-using System.Collections.Generic;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
-using static FacebookWrapper.ObjectModel.DynamicWrapper;
 using System.Reflection;
 using System;
 

@@ -1,7 +1,4 @@
-﻿using FetchHandler.Fetch;
-using System.Collections.ObjectModel;
-
-namespace FacebookWrapperEnhancements.Code.Collection
+﻿namespace FacebookWrapperEnhancements.Code.Collection
 {
     public interface IHasPaging
     {

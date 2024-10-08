@@ -28,7 +28,6 @@ namespace FacebookWrapperEnhancements.Code.EnhancedObjects
                     "id, name,gender, birthday, about, age_range, email, first_name, last_name, relationship_status, religion, significant_other, cover,favorite_athletes, favorite_teams, inspirational_people, install_type, installed, interested_in, languages, locale, meeting_for, middle_name, name_format, political, quotes, sports, third_party_id, timezone, updated_time, video_upload_limits, website, accounts, verified, link, location{location}, currency, education, work, devices,groups, events, friends, albums, likes, hometown"
                 }
             };
-
         protected override Dictionary<eLoadOptions, string> FieldsToLoad => sr_FieldsToLoad;
         public new static Dictionary<eLoadOptions, string> sr_FieldsToLoad => sr_FieldsToLoadV900;
         public new FacebookObjectCollection<EnhancedUser> Friends

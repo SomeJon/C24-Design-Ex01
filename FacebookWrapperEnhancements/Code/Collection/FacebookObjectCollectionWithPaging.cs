@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using FacebookWrapper.ObjectModel;
-using FetchHandler.Fetch;
 
 namespace FacebookWrapperEnhancements.Code.Collection
 {

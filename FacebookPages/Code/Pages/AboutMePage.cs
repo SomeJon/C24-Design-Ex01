@@ -1,7 +1,6 @@
 ﻿using FacebookPages.Code.Pages.Data;
 using System;
 using System.Threading;
-using System.Windows.Forms;
 using FacebookPages.Code.Pages.Factory.Interfaces;
 
 namespace FacebookPages.Code.Pages
@@ -26,8 +25,7 @@ namespace FacebookPages.Code.Pages
         {
             base.OnLoad(i_EventArgs);
 
-            FetchThread = new Thread(fetchDataInBackground);
-            FetchThread.Start();
+            new Thread(fetchDataInBackground).Start();
         }
 
         private void fetchDataInBackground()

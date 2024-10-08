@@ -1,5 +1,4 @@
 ﻿using FacebookPages.Code.Pages.Factory.Interfaces;
-using System;
 
 namespace FacebookPages.Code.Pages.Factory
 {

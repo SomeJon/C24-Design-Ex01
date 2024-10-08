@@ -1,17 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
+﻿using System.Windows.Forms;
 using FacebookWrapper;
-using FacebookPages.Code.Pages.Data;
-using FacebookPages.Code.Pages;
 using FacebookPages.Code.Buttons;
-using FacebookPages.Code.Pages.Data.Post;
-using System.Collections.Generic;
-using FacebookWrapperEnhancements.Code;
-using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using Page = FacebookPages.Code.Pages.Page;
-using CefSharp.DevTools.CSS;
 
 
 namespace FacebookClient.Code

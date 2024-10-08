@@ -1,7 +1,6 @@
 ﻿using FacebookWrapperEnhancements.Code.EnhancedObjects;
 using System;
 using FacebookWrapper.ObjectModel;
-using System.Reflection;
 
 namespace FacebookPages.Code.Pages.Data
 {

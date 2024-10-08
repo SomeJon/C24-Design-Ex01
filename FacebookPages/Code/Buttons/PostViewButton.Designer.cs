@@ -186,6 +186,7 @@ namespace FacebookPages.Code.Buttons
             this.m_PostTypeChoiceComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.m_PostTypeChoiceComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.wallPageDataBindingSource, "CurrentPageFeed.CurrentConnection", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.m_PostTypeChoiceComboBox.DataSource = this.ePostConnectionOptionsBindingSource;
+            this.m_PostTypeChoiceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.m_PostTypeChoiceComboBox.FormattingEnabled = true;
             this.m_PostTypeChoiceComboBox.Location = new System.Drawing.Point(281, 115);
             this.m_PostTypeChoiceComboBox.Margin = new System.Windows.Forms.Padding(4);

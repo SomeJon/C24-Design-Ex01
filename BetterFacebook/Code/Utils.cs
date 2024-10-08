@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
-using FacebookWrapperEnhancements.Code.Collection.Filter;
+﻿using System.Windows.Forms;
 
 namespace FacebookClient.Code
 {

@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using FacebookPages.Code.Pages.Data.Post;
 using FacebookPages.Code.Pages.Data.UserManager;
 using FacebookWrapper.ObjectModel;
-using FacebookWrapperEnhancements.Code;
 using FacebookWrapperEnhancements.Code.Collection;
 using FacebookWrapperEnhancements.Code.Collection.Filter;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
-using FetchHandler.Fetch;
-using static FacebookWrapperEnhancements.Code.EnhancedObjects.EnhancedPost;
 
 namespace FacebookPages.Code.Pages.Data
 {
@@ -48,7 +42,7 @@ namespace FacebookPages.Code.Pages.Data
                 CurrentPageFeed = UserDataManager.GetUserData(CurrentFilterData.UserSource).WallData.PageUserFeed;
             }
         }
-        public PagedCollection<EnhancedPost> FeedPaged => CurrentPageFeed.GetPosts(CurrentFilterData);
+        public PagedCollectionManager<EnhancedPost> FeedPaged => CurrentPageFeed.GetPosts(CurrentFilterData);
         public List<EnhancedPost> FeedList => CurrentPageFeed.GetPosts(CurrentFilterData).CollectionData;
         public PostAnalyticData PostAnalyticData => new PostAnalyticData
             (FeedPaged.CollectionData, PageUser);
