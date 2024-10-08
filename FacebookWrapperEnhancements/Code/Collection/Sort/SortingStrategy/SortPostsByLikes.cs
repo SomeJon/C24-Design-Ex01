@@ -17,5 +17,10 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
                     return i_SecondObject.NumOfLikes.CompareTo(i_FirstObject.NumOfLikes);
                 };
         }
+
+        public override string ToString()
+        {
+            return "Sort by Number of Likes";
+        }
     }
 }

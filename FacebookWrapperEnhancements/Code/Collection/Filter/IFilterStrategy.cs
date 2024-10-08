@@ -6,5 +6,6 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
     public interface IFilterStrategy
     {
         Predicate<EnhancedPost> GetPredicate();
+        string ToString();
     }
 }

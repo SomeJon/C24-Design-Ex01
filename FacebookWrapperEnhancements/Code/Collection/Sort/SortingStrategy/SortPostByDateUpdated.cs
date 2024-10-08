@@ -9,5 +9,10 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
         {
             return (i_FirstObject, i_SecondObject) => Nullable.Compare(i_SecondObject?.UpdateTime, i_FirstObject?.UpdateTime);
         }
+
+        public override string ToString()
+        {
+            return "Sort by Date Updated";
+        }
     }
 }

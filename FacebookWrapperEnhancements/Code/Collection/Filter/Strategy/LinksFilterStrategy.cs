@@ -9,5 +9,10 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter.Strategy
         {
             return i_Post => i_Post.Type == FacebookWrapper.ObjectModel.Post.eType.link;
         }
+
+        public override string ToString()
+        {
+            return "Filter: Links";
+        }
     }
 }

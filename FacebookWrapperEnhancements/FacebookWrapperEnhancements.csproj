@@ -49,8 +49,7 @@
   <ItemGroup>
     <Compile Include="Code\Collection\FacebookObjectCollectionWithPaging.cs" />
     <Compile Include="Code\Collection\Filter\FilterData.cs" />
-    <Compile Include="Code\Collection\Filter\Strategy\DefaultFilterStrategy.cs" />
-    <Compile Include="Code\Collection\Filter\FilterMethodFactory.cs" />
+    <Compile Include="Code\Collection\Filter\Strategy\CombinedFilter.cs" />
     <Compile Include="Code\Collection\Filter\Strategy\ContainsPhotoFilterStrategy.cs" />
     <Compile Include="Code\Collection\Filter\Strategy\ContainsTextFilterStrategy.cs" />
     <Compile Include="Code\Collection\Filter\IFilterStrategy.cs" />

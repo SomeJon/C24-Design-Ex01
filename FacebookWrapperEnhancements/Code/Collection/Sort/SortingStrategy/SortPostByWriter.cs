@@ -9,5 +9,10 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
         {
             return (i_FirstObject, i_SecondObject) => string.Compare(i_SecondObject?.Name, i_FirstObject?.Name, StringComparison.OrdinalIgnoreCase);
         }
+
+        public override string ToString()
+        {
+            return "Sort by Writer";
+        }
     }
 }

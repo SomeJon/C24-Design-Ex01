@@ -9,5 +9,10 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter.Strategy
         {
             return i_Post => !string.IsNullOrEmpty(i_Post.ImageUrl);
         }
+
+        public override string ToString()
+        {
+            return "Filter: Contains Photos";
+        }
     }
 }
