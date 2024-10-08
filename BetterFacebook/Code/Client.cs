@@ -38,12 +38,6 @@ namespace FacebookClient.Code
         {
             startLogin();
 
-            FilterData unsavedData = new FilterData();
-            FilterData savedData = unsavedData.DeepClone();
-            FilterForm newFilterForm = new FilterForm(savedData);
-
-            newFilterForm.ShowDialog();
-
             Application.Run(r_FormMain);
         }
 
