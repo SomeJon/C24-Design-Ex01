@@ -34,7 +34,14 @@ namespace FacebookPages.Code.Pages
                         }
                         finally
                         {
-                            this.Invoke(new Action(() => m_AlbumChoiceComboBox.DataSource = PageData.Albums));
+                            this.Invoke(new Action(() =>
+                                {
+                                    albumsBindingSource.DataSource = PageData;
+                                    if (m_AlbumChoiceComboBox?.SelectedItem is Album toSend)
+                                    {
+                                        loadAlbumIntoFlowLayoutPanel(toSend);
+                                    }
+                                }));
                         }
                     }).Start();
             
@@ -71,9 +78,9 @@ namespace FacebookPages.Code.Pages
 
         private void m_AlbumChoiceComboBox_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
-            if(i_Sender != null)
+            if(((ComboBox)i_Sender)?.SelectedItem is Album toSend)
             {
-                loadAlbumIntoFlowLayoutPanel((((ComboBox)i_Sender).SelectedItem as Album));
+                loadAlbumIntoFlowLayoutPanel(toSend);
             }
         }
     }

@@ -65,6 +65,7 @@ namespace FacebookPages.Code.Pages
             // 
             // cityLabel
             // 
+            cityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             cityLabel.AutoSize = true;
             cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             cityLabel.Location = new System.Drawing.Point(439, 12);
@@ -75,6 +76,7 @@ namespace FacebookPages.Code.Pages
             // 
             // countryLabel
             // 
+            countryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             countryLabel.AutoSize = true;
             countryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             countryLabel.Location = new System.Drawing.Point(414, 42);
@@ -85,6 +87,7 @@ namespace FacebookPages.Code.Pages
             // 
             // nameLabel
             // 
+            nameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             nameLabel.AutoSize = true;
             nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             nameLabel.Location = new System.Drawing.Point(386, 76);
@@ -139,7 +142,7 @@ namespace FacebookPages.Code.Pages
             this.labelAboutMe.AutoSize = true;
             this.labelAboutMe.Font = new System.Drawing.Font("Arial", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelAboutMe.ForeColor = System.Drawing.Color.DarkBlue;
-            this.labelAboutMe.Location = new System.Drawing.Point(188, 17);
+            this.labelAboutMe.Location = new System.Drawing.Point(159, 17);
             this.labelAboutMe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAboutMe.Name = "labelAboutMe";
             this.labelAboutMe.Size = new System.Drawing.Size(245, 55);
@@ -164,7 +167,7 @@ namespace FacebookPages.Code.Pages
             this.m_LocationLabel.AutoSize = true;
             this.m_LocationLabel.Font = new System.Drawing.Font("Segoe UI", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_LocationLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.m_LocationLabel.Location = new System.Drawing.Point(355, 119);
+            this.m_LocationLabel.Location = new System.Drawing.Point(362, 119);
             this.m_LocationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_LocationLabel.Name = "m_LocationLabel";
             this.m_LocationLabel.Size = new System.Drawing.Size(277, 30);
@@ -210,7 +213,7 @@ namespace FacebookPages.Code.Pages
             this.AboutInfoPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutInfoPanel.Location = new System.Drawing.Point(11, 172);
             this.AboutInfoPanel.Name = "AboutInfoPanel";
-            this.AboutInfoPanel.Size = new System.Drawing.Size(696, 169);
+            this.AboutInfoPanel.Size = new System.Drawing.Size(637, 169);
             this.AboutInfoPanel.TabIndex = 82;
             // 
             // emailLabel1
@@ -264,6 +267,7 @@ namespace FacebookPages.Code.Pages
             // 
             // nameLabel1
             // 
+            this.nameLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nameLabel1.AutoSize = true;
             this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Hometown.Name", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "[NotFound]"));
             this.nameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -275,6 +279,7 @@ namespace FacebookPages.Code.Pages
             // 
             // cityLabel1
             // 
+            this.cityLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cityLabel1.AutoSize = true;
             this.cityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Location.Location.City", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "[NotFound]"));
             this.cityLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -286,6 +291,7 @@ namespace FacebookPages.Code.Pages
             // 
             // countryLabel1
             // 
+            this.countryLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.countryLabel1.AutoSize = true;
             this.countryLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aboutMePageDataBindingSource, "Location.Location.Country", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "[NotFound]"));
             this.countryLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -307,7 +313,7 @@ namespace FacebookPages.Code.Pages
             this.Controls.Add(this.labelAboutMe);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AboutMePage";
-            this.Size = new System.Drawing.Size(723, 344);
+            this.Size = new System.Drawing.Size(664, 344);
             this.AboutInfoPanel.ResumeLayout(false);
             this.AboutInfoPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.aboutMePageDataBindingSource)).EndInit();
