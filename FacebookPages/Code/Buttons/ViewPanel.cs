@@ -9,7 +9,6 @@ namespace FacebookPages.Code.Buttons
         private Page m_CurrentActivePage = new Page();
         public event EventHandler ReceivedInfo;
         public event EventHandler ChangePage;
-
         public Page CurrentActivePage 
         { 
             get => m_CurrentActivePage;
