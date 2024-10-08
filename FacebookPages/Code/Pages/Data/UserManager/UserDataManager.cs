@@ -6,12 +6,8 @@ namespace FacebookPages.Code.Pages.Data.UserManager
     public class UserDataManager
     {
         private static UserDataManager s_Instance = null;
-        private Dictionary<string, SingleUserPagesData> DataDictionary { get; } = new Dictionary<string, SingleUserPagesData>();
+        private readonly Dictionary<string, SingleUserPagesData> r_DataDictionary = new Dictionary<string, SingleUserPagesData>();
         private static readonly object sr_LockObj = new object();
-
-
-        private UserDataManager() { }
-
         public static UserDataManager Instance
         {
             get
@@ -32,20 +28,23 @@ namespace FacebookPages.Code.Pages.Data.UserManager
             }
         }
 
+
+        private UserDataManager() { }
+
         public static SingleUserPagesData GetUserData(EnhancedUser i_User)
         {
-            if(!Instance.DataDictionary.ContainsKey(i_User.Id))
+            if(!Instance.r_DataDictionary.ContainsKey(i_User.Id))
             {
                 SingleUserPagesData newPagesData = new SingleUserPagesData(i_User);
-                Instance.DataDictionary[i_User.Id] = newPagesData;
+                Instance.r_DataDictionary[i_User.Id] = newPagesData;
             }
 
-            return Instance.DataDictionary[i_User.Id];
+            return Instance.r_DataDictionary[i_User.Id];
         }
 
         public static void Clear()
         {
-            Instance.DataDictionary.Clear();
+            Instance.r_DataDictionary.Clear();
         }
     }
 }
