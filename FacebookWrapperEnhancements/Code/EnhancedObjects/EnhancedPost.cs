@@ -24,7 +24,7 @@ namespace FacebookWrapperEnhancements.Code.EnhancedObjects
                 return null;
             }
         }
-        public static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
+        public new static readonly Dictionary<eLoadOptions, string> sr_FieldsToLoad = new Dictionary<eLoadOptions, string>
             {
                 {
                     eLoadOptions.None,
