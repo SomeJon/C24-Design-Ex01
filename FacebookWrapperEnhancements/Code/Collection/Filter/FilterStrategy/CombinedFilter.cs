@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
-namespace FacebookWrapperEnhancements.Code.Collection.Filter.Strategy
+namespace FacebookWrapperEnhancements.Code.Collection.Filter.FilterStrategy
 {
     public class CombinedFilter : IFilterStrategy
     {
@@ -14,18 +14,18 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter.Strategy
         {
             if (SelectedFilters == null || SelectedFilters.Count == 0)
             {
-                return post => true;
+                return i_Post => true;
             }
 
             List<Predicate<EnhancedPost>> activeFilters = SelectedFilters
-                .Select(filter => filter.GetPredicate())
+                .Select(i_Filter => i_Filter.GetPredicate())
                 .ToList();
 
-            return post =>
+            return i_Post =>
                 {
                     return MatchAllFilters
-                               ? activeFilters.All(filter => filter(post))
-                               : activeFilters.Any(filter => filter(post));
+                               ? activeFilters.All(i_Filter => i_Filter(i_Post))
+                               : activeFilters.Any(i_Filter => i_Filter(i_Post));
                 };
         }
 

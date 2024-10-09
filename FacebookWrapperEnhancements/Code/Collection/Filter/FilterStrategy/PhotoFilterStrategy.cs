@@ -1,7 +1,7 @@
 ﻿using System;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
-namespace FacebookWrapperEnhancements.Code.Collection.Filter.Strategy
+namespace FacebookWrapperEnhancements.Code.Collection.Filter.FilterStrategy
 {
     public class PhotoFilterStrategy : IFilterStrategy
     {
