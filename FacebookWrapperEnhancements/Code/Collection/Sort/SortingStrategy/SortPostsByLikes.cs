@@ -3,7 +3,7 @@ using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
 {
-    public class SortPostsByLikes : ISortingStrategy
+    public class SortPostsByLikes : IPostSortingStrategy
     {
         public Comparison<EnhancedPost> GetComparison()
         {
@@ -23,9 +23,9 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
             return "Sort by Number of Likes";
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object i_Obj)
         {
-            return obj != null && this.GetType() == obj.GetType();
+            return i_Obj != null && this.GetType() == i_Obj.GetType();
         }
 
         public override int GetHashCode()

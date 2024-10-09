@@ -52,14 +52,14 @@
     <Compile Include="Code\Collection\Filter\FilterStrategy\CombinedFilter.cs" />
     <Compile Include="Code\Collection\Filter\FilterStrategy\ContainsPhotoFilterStrategy.cs" />
     <Compile Include="Code\Collection\Filter\FilterStrategy\ContainsTextFilterStrategy.cs" />
-    <Compile Include="Code\Collection\Filter\IFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\IPostFilterStrategy.cs" />
     <Compile Include="Code\Collection\Filter\FilterStrategy\PhotoFilterStrategy.cs" />
     <Compile Include="Code\Collection\Filter\FilterStrategy\StatusFilterStrategy.cs" />
     <Compile Include="Code\Collection\Filter\FilterStrategy\LinksFilterStrategy.cs" />
     <Compile Include="Code\Collection\IHasPaging.cs" />
     <Compile Include="Code\Collection\PagedCollectionManager.cs" />
     <Compile Include="Code\Collection\Paging.cs" />
-    <Compile Include="Code\Collection\Sort\ISortingStrategy.cs" />
+    <Compile Include="Code\Collection\Sort\IPostSortingStrategy.cs" />
     <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByDateUpdated.cs" />
     <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByType.cs" />
     <Compile Include="Code\Collection\Sort\SortingStrategy\SortPostByWriter.cs" />

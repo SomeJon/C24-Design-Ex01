@@ -3,7 +3,7 @@ using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookWrapperEnhancements.Code.Collection.Filter.FilterStrategy
 {
-    public class PhotoFilterStrategy : IFilterStrategy
+    public class PhotoFilterStrategy : IPostFilterStrategy
     {
         public Predicate<EnhancedPost> GetPredicate()
         {
