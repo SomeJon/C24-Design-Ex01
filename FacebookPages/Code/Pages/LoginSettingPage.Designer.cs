@@ -34,17 +34,19 @@ namespace FacebookPages.Code.Pages
             this.appIdComboBox = new System.Windows.Forms.ComboBox();
             this.addAppIdTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonBack = new PageSwitchButton();
-            this.addIdButton = new LoadInfoButton();
+            this.buttonBack = new FacebookPages.Code.Buttons.PageSwitchButton();
+            this.addIdButton = new FacebookPages.Code.Buttons.LoadInfoButton();
             this.SuspendLayout();
             // 
             // appIdComboBox
             // 
+            this.appIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.appIdComboBox.FormattingEnabled = true;
             this.appIdComboBox.Location = new System.Drawing.Point(118, 59);
             this.appIdComboBox.Name = "appIdComboBox";
             this.appIdComboBox.Size = new System.Drawing.Size(121, 21);
             this.appIdComboBox.TabIndex = 0;
+            this.appIdComboBox.SelectedIndexChanged += new System.EventHandler(this.appIdComboBox_SelectedIndexChanged);
             // 
             // addAppIdTextBox
             // 
@@ -71,7 +73,8 @@ namespace FacebookPages.Code.Pages
             this.buttonBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonBack.Location = new System.Drawing.Point(722, 368);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.PageChoice = ePageChoice.Login;
+            this.buttonBack.NewPageOwner = null;
+            this.buttonBack.PageChoice = FacebookPages.Code.Pages.Factory.Interfaces.ePageChoice.Login;
             this.buttonBack.Size = new System.Drawing.Size(75, 20);
             this.buttonBack.TabIndex = 5;
             this.buttonBack.Text = "back";
@@ -80,13 +83,13 @@ namespace FacebookPages.Code.Pages
             // 
             // addIdButton
             // 
-            this.addIdButton.BackColor = System.Drawing.Color.DarkBlue;
+            this.addIdButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.addIdButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.addIdButton.FlatAppearance.BorderSize = 0;
             this.addIdButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addIdButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.addIdButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addIdButton.InfoChoice = eInfoChoice.AppId;
+            this.addIdButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.addIdButton.InfoChoice = FacebookPages.Code.Pages.Factory.Interfaces.eInfoChoice.AppId;
             this.addIdButton.Location = new System.Drawing.Point(366, 53);
             this.addIdButton.Name = "addIdButton";
             this.addIdButton.ReceivedInfo = null;
