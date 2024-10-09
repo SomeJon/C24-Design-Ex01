@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using FacebookPages.Code.Buttons;
+using FacebookPages.Code.Pages.Data;
 
 namespace FacebookPages.Code.Pages
 {
@@ -12,10 +13,7 @@ namespace FacebookPages.Code.Pages
         internal LoginSettingPage()
         {
             InitializeComponent();
-            appIdComboBox.Items.AddRange(new object[] {
-                                                          "867142571975316",
-                                                          "696056928008003",
-                                                          "1450160541956417"});
+            appIdComboBox.DataSource = AppSetting.AppIds;
 
             appIdComboBox.SelectedIndex = 0;
         }
@@ -36,19 +34,17 @@ namespace FacebookPages.Code.Pages
         private void addIdButton_Click(object i_Sender, EventArgs i_EventArgs)
         {
             if (addAppIdTextBox.Text.Length > 0) {
-                ((LoadInfoButton)i_Sender).ReceivedInfo = addAppIdTextBox.Text;
-                appIdComboBox.Items.Add(addAppIdTextBox.Text);
+                AppSetting.AppIds.Add(addAppIdTextBox.Text);
                 appIdComboBox.SelectedIndex = appIdComboBox.Items.Count - 1;
-                OnReceivedInfo(i_Sender, i_EventArgs);
             } else
             {
                 MessageBox.Show("You need to first input an id in the Text Box!");
             }
         }
 
-        private void pictureBoxReturn_Click(object i_Sender, EventArgs i_EventArgs)
+        private void appIdComboBox_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
-           OnChangePage(i_Sender, i_EventArgs);        
+            AppSetting.AppId = (i_Sender as ComboBox)?.SelectedItem as string;
         }
     }
 }

@@ -36,11 +36,10 @@ namespace FacebookPages.Code.Pages
             this.timePanel = new System.Windows.Forms.Panel();
             this.facebooklogo = new System.Windows.Forms.PictureBox();
             this.ButtonExit = new FacebookPages.Code.Buttons.PageSwitchButton();
-            this.textBoxWelcomeMsg = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.settingButton = new FacebookPages.Code.Buttons.PageSwitchButton();
             this.rememberLoginChackBox = new System.Windows.Forms.CheckBox();
             this.loginButton = new FacebookPages.Code.Buttons.PageSwitchButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.timePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebooklogo)).BeginInit();
             this.SuspendLayout();
@@ -94,36 +93,6 @@ namespace FacebookPages.Code.Pages
             this.ButtonExit.UseVisualStyleBackColor = true;
             this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
-            // textBoxWelcomeMsg
-            // 
-            this.textBoxWelcomeMsg.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBoxWelcomeMsg.BackColor = System.Drawing.Color.DarkBlue;
-            this.textBoxWelcomeMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxWelcomeMsg.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.textBoxWelcomeMsg.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxWelcomeMsg.Location = new System.Drawing.Point(8, 66);
-            this.textBoxWelcomeMsg.Multiline = true;
-            this.textBoxWelcomeMsg.Name = "textBoxWelcomeMsg";
-            this.textBoxWelcomeMsg.Size = new System.Drawing.Size(671, 97);
-            this.textBoxWelcomeMsg.TabIndex = 68;
-            this.textBoxWelcomeMsg.Text = "welcome to facebook 2.0";
-            this.textBoxWelcomeMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox4.BackColor = System.Drawing.Color.DarkBlue;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox4.Location = new System.Drawing.Point(93, 152);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(322, 39);
-            this.textBox4.TabIndex = 71;
-            this.textBox4.Text = "press the facebook logo :)";
-            // 
             // settingButton
             // 
             this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -146,7 +115,7 @@ namespace FacebookPages.Code.Pages
             this.rememberLoginChackBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rememberLoginChackBox.Location = new System.Drawing.Point(180, 309);
             this.rememberLoginChackBox.Name = "rememberLoginChackBox";
-            this.rememberLoginChackBox.Size = new System.Drawing.Size(130, 20);
+            this.rememberLoginChackBox.Size = new System.Drawing.Size(106, 17);
             this.rememberLoginChackBox.TabIndex = 77;
             this.rememberLoginChackBox.Text = "Remember Login";
             this.rememberLoginChackBox.UseVisualStyleBackColor = true;
@@ -167,13 +136,23 @@ namespace FacebookPages.Code.Pages
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(140, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(432, 47);
+            this.label1.TabIndex = 79;
+            this.label1.Text = "welcome to facebook 2.0";
+            // 
             // LoginPage
             // 
             this.BackColor = System.Drawing.Color.DarkBlue;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.rememberLoginChackBox);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBoxWelcomeMsg);
             this.Controls.Add(this.ButtonExit);
             this.Controls.Add(this.settingButton);
             this.Controls.Add(this.facebooklogo);
@@ -196,10 +175,9 @@ namespace FacebookPages.Code.Pages
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.PictureBox facebooklogo;
         private PageSwitchButton ButtonExit;
-        private System.Windows.Forms.TextBox textBoxWelcomeMsg;
-        private System.Windows.Forms.TextBox textBox4;
         private PageSwitchButton settingButton;
         private System.Windows.Forms.CheckBox rememberLoginChackBox;
         private PageSwitchButton loginButton;
+        private System.Windows.Forms.Label label1;
     }
 }

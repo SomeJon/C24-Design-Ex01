@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Pages\Data\AppSetting.cs" />
     <Compile Include="Code\Pages\Data\UserPostFeed.cs" />
     <Compile Include="Code\Pages\Factory\CustomPageRequest.cs" />
     <Compile Include="Code\Pages\Factory\Interfaces\eInfoChoice.cs" />

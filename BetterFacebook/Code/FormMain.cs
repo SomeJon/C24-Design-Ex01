@@ -18,26 +18,6 @@ namespace FacebookClient.Code
             set => ViewPanel.CurrentActivePage = value;
         }
 
-        public static class AppSettings
-        {
-            public static string m_SAppId = "867142571975316";
-            public static string[] m_SPermissions = new string[] {
-                                                                   "email",
-                                                                   "public_profile",
-                                                                   "user_age_range",
-                                                                   "user_birthday",
-                                                                   "user_friends",
-                                                                   "user_gender",
-                                                                   "user_hometown",
-                                                                   "user_likes",
-                                                                   "user_link",
-                                                                   "user_location",
-                                                                   "user_photos",
-                                                                   "user_posts",
-                                                                   "user_videos"
-                                                                   };
-        }
-
         public FormMain()
         {
             InitializeComponent();

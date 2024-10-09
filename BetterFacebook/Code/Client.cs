@@ -5,6 +5,7 @@ using static FacebookClient.Code.FormMain;
 using FacebookPages.Code.Pages;
 using System.Diagnostics;
 using System.Drawing;
+using FacebookPages.Code.Pages.Data;
 using FacebookPages.Code.Pages.Factory;
 using FacebookPages.Code.Pages.Factory.Interfaces;
 using FacebookWrapperEnhancements.Code;
@@ -108,7 +109,7 @@ namespace FacebookClient.Code
             switch (loadInfoHolder?.InfoChoice)
             {
                 case eInfoChoice.AppId:
-                    AppSettings.m_SAppId = loadInfoHolder.ReceivedInfo.ToString();
+                    AppSetting.AppId = loadInfoHolder.ReceivedInfo.ToString();
                     break;
                 case eInfoChoice.Filter:
                     filterLoadRequest(loadInfoHolder);
@@ -183,8 +184,8 @@ namespace FacebookClient.Code
 
         private void login()
         {
-            r_FormMain.LoginResult = FacebookService.Login(AppSettings.m_SAppId,
-                AppSettings.m_SPermissions);
+            r_FormMain.LoginResult = FacebookService.Login(AppSetting.AppId,
+                AppSetting.Permissions);
 
             tryFirstFetch();
         }
