@@ -19,13 +19,13 @@ namespace FacebookClient.Code
             get => r_ContainsTextFilterStrategy.TextToContain;
             set => r_ContainsTextFilterStrategy.TextToContain = value;
         }
-        public List<IFilterStrategy> FilterStrategyChoices { get; }
-        public List<ISortingStrategy> SortStrategiesChoices { get; }
+        public List<IPostFilterStrategy> FilterStrategyChoices { get; }
+        public List<IPostSortingStrategy> SortStrategiesChoices { get; }
 
 
         public FilterFormUtils()
         {
-            FilterStrategyChoices = new List<IFilterStrategy>
+            FilterStrategyChoices = new List<IPostFilterStrategy>
                                         {
                                             r_LinksFilterStrategy,
                                             r_StatusFilterStrategy,
@@ -34,7 +34,7 @@ namespace FacebookClient.Code
                                             r_ContainsTextFilterStrategy
                                         };
 
-            SortStrategiesChoices = new List<ISortingStrategy>()
+            SortStrategiesChoices = new List<IPostSortingStrategy>()
                                         {
                                             new SortPostsByDatePublished(),
                                             new SortPostByDateUpdated(),
@@ -45,24 +45,24 @@ namespace FacebookClient.Code
                                         };
         }
 
-        public Dictionary<IFilterStrategy, bool> GetDictionaryForSelectedChoices
-            (List<IFilterStrategy> i_SelectedFilterStrategies)
+        public Dictionary<IPostFilterStrategy, bool> GetDictionaryForSelectedChoices
+            (List<IPostFilterStrategy> i_SelectedFilterStrategies)
         {
 
             Dictionary<Type, bool> typeDictionaryChoice = new Dictionary<Type, bool>();
-            Dictionary<IFilterStrategy, bool> returnDictionary = new Dictionary<IFilterStrategy, bool>();
+            Dictionary<IPostFilterStrategy, bool> returnDictionary = new Dictionary<IPostFilterStrategy, bool>();
 
-            foreach (IFilterStrategy filter in FilterStrategyChoices)
+            foreach (IPostFilterStrategy filter in FilterStrategyChoices)
             {
                 typeDictionaryChoice[filter.GetType()] = false;
             }
 
-            foreach(IFilterStrategy filter in i_SelectedFilterStrategies)
+            foreach(IPostFilterStrategy filter in i_SelectedFilterStrategies)
             {
                 typeDictionaryChoice[filter.GetType()] = true;
             }
 
-            foreach (IFilterStrategy filter in FilterStrategyChoices)
+            foreach (IPostFilterStrategy filter in FilterStrategyChoices)
             {
                 returnDictionary[filter] = typeDictionaryChoice[filter.GetType()];
             }

@@ -3,7 +3,7 @@ using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
 {
-    public class SortPostsByLikes : ISortingStrategy
+    public class SortPostsByLikes : IPostSortingStrategy
     {
         public Comparison<EnhancedPost> GetComparison()
         {

@@ -25,9 +25,9 @@ namespace FacebookClient.Code
 
         private void customDataBinding()
         {
-            Dictionary<IFilterStrategy, bool> copiedDictionary 
+            Dictionary<IPostFilterStrategy, bool> copiedDictionary 
                 = m_FilterFormUtils.GetDictionaryForSelectedChoices(FilterData.FilterStrategy.SelectedFilters);
-            foreach (KeyValuePair<IFilterStrategy, bool> item in copiedDictionary)
+            foreach (KeyValuePair<IPostFilterStrategy, bool> item in copiedDictionary)
             {
                 m_FilterCheckedList.Items.Add(item.Key, item.Value);
             }
@@ -52,7 +52,7 @@ namespace FacebookClient.Code
 
         private void m_FilterCheckedList_ItemCheck(object i_Sender, ItemCheckEventArgs i_EventArgs)
         {
-            IFilterStrategy strategy = (IFilterStrategy)m_FilterCheckedList.Items[i_EventArgs.Index];
+            IPostFilterStrategy strategy = (IPostFilterStrategy)m_FilterCheckedList.Items[i_EventArgs.Index];
 
             if (i_EventArgs.NewValue == CheckState.Checked)
             {

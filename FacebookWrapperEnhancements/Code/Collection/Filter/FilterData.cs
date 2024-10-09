@@ -25,7 +25,7 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter
         }
         public bool FilterByDate { get; set; } = false;
         public CombinedFilter FilterStrategy { get; set; } = new CombinedFilter();
-        public ISortingStrategy SortingStrategy { get; set; } = new SortPostsByDatePublished();
+        public IPostSortingStrategy SortingStrategy { get; set; } = new SortPostsByDatePublished();
 
 
         public static long ToUnixTimestamp(DateTime i_DateTime)

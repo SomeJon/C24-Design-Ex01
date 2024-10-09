@@ -5,9 +5,9 @@ using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookWrapperEnhancements.Code.Collection.Filter.FilterStrategy
 {
-    public class CombinedFilter : IFilterStrategy
+    public class CombinedFilter : IPostFilterStrategy
     {
-        public List<IFilterStrategy> SelectedFilters { get; set; } = new List<IFilterStrategy>();
+        public List<IPostFilterStrategy> SelectedFilters { get; set; } = new List<IPostFilterStrategy>();
         public bool MatchAllFilters { get; set; } = false;
 
         public Predicate<EnhancedPost> GetPredicate()
@@ -34,7 +34,7 @@ namespace FacebookWrapperEnhancements.Code.Collection.Filter.FilterStrategy
             CombinedFilter clone = new CombinedFilter
                                        {
                                            MatchAllFilters = MatchAllFilters,
-                                           SelectedFilters = new List<IFilterStrategy>(SelectedFilters)
+                                           SelectedFilters = new List<IPostFilterStrategy>(SelectedFilters)
                                        };
 
             return clone;

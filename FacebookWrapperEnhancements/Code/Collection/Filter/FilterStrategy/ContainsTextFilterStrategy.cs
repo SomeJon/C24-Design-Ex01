@@ -3,7 +3,7 @@ using FacebookWrapperEnhancements.Code.EnhancedObjects;
 
 namespace FacebookWrapperEnhancements.Code.Collection.Filter.FilterStrategy
 {
-    public class ContainsTextFilterStrategy : IFilterStrategy
+    public class ContainsTextFilterStrategy : IPostFilterStrategy
     {
         public string TextToContain { get; set; }
 
