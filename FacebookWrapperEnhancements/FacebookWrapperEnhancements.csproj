@@ -49,13 +49,13 @@
   <ItemGroup>
     <Compile Include="Code\Collection\FacebookObjectCollectionWithPaging.cs" />
     <Compile Include="Code\Collection\Filter\FilterData.cs" />
-    <Compile Include="Code\Collection\Filter\Strategy\CombinedFilter.cs" />
-    <Compile Include="Code\Collection\Filter\Strategy\ContainsPhotoFilterStrategy.cs" />
-    <Compile Include="Code\Collection\Filter\Strategy\ContainsTextFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\FilterStrategy\CombinedFilter.cs" />
+    <Compile Include="Code\Collection\Filter\FilterStrategy\ContainsPhotoFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\FilterStrategy\ContainsTextFilterStrategy.cs" />
     <Compile Include="Code\Collection\Filter\IFilterStrategy.cs" />
-    <Compile Include="Code\Collection\Filter\Strategy\PhotoFilterStrategy.cs" />
-    <Compile Include="Code\Collection\Filter\Strategy\StatusFilterStrategy.cs" />
-    <Compile Include="Code\Collection\Filter\Strategy\LinksFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\FilterStrategy\PhotoFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\FilterStrategy\StatusFilterStrategy.cs" />
+    <Compile Include="Code\Collection\Filter\FilterStrategy\LinksFilterStrategy.cs" />
     <Compile Include="Code\Collection\IHasPaging.cs" />
     <Compile Include="Code\Collection\PagedCollection.cs" />
     <Compile Include="Code\Collection\Paging.cs" />

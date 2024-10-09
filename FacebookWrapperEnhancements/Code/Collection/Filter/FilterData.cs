@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
-using FacebookWrapperEnhancements.Code.Collection.Filter.Strategy;
+using FacebookWrapperEnhancements.Code.Collection.Filter.FilterStrategy;
 using FacebookWrapperEnhancements.Code.Collection.Sort;
 using FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy;
 using FacebookWrapperEnhancements.Code.EnhancedObjects;
