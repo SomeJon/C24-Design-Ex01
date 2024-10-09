@@ -37,6 +37,7 @@ namespace FacebookClient.Code
             // 
             this.m_ViewPanelControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.m_ViewPanelControl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.m_ViewPanelControl.CurrentActivePage = null;
             this.m_ViewPanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_ViewPanelControl.Location = new System.Drawing.Point(0, 0);
             this.m_ViewPanelControl.Name = "m_ViewPanelControl";
@@ -49,6 +50,7 @@ namespace FacebookClient.Code
             this.Controls.Add(this.m_ViewPanelControl);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Better Facebook";
             this.ResumeLayout(false);
 
         }

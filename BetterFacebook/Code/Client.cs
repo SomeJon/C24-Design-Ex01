@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using static FacebookClient.Code.FormMain;
 using FacebookPages.Code.Pages;
 using System.Diagnostics;
+using System.Drawing;
 using FacebookPages.Code.Pages.Factory;
 using FacebookPages.Code.Pages.Factory.Interfaces;
 using FacebookWrapperEnhancements.Code;
@@ -117,6 +118,12 @@ namespace FacebookClient.Code
 
                     postView.Show();
                     break;
+                case eInfoChoice.Picture:
+                    ImageForm imageView = new ImageForm();
+
+                    imageView.Image = loadInfoHolder.ReceivedInfo as Image;
+                    imageView.Show();
+                    break;
                 default:
                     MessageBox.Show("Unkown Error!");
                     break;
@@ -181,8 +188,6 @@ namespace FacebookClient.Code
 
             tryFirstFetch();
         }
-
-        
 
         private void loginPage_RememberLogin(object i_Sender, EventArgs i_EventArgs)
         {
