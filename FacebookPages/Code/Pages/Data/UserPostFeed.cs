@@ -75,7 +75,6 @@ namespace FacebookPages.Code.Pages.Data
                     break;
                 default:
                     returningCollection = WallPosts;
-                    //CurrentConnection = ePostConnectionOptions.Feed;
                     break;
             }
 

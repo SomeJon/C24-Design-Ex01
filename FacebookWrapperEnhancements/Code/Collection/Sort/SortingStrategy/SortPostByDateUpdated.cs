@@ -15,9 +15,9 @@ namespace FacebookWrapperEnhancements.Code.Collection.Sort.SortingStrategy
             return "Sort by Date Updated";
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object i_Obj)
         {
-            return obj != null && this.GetType() == obj.GetType();
+            return i_Obj != null && this.GetType() == i_Obj.GetType();
         }
 
         public override int GetHashCode()
