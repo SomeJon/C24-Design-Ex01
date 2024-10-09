@@ -122,14 +122,10 @@ namespace FacebookPages.Code.Pages
         private void m_PostViewButton_ChangeConnectionRequest(object i_Sender, EventArgs i_EventArgs)
         {
             object selectedItem = (i_Sender as ComboBox)?.SelectedItem;
-            if(selectedItem != null)
-            {
-                ePostConnectionOptions connection = (ePostConnectionOptions)selectedItem;
 
-                if(connection != null)
-                {
-                    new Thread(fetchPostsDataInBackground).Start();
-                }
+            if(selectedItem is ePostConnectionOptions connection)
+            {
+                new Thread(fetchPostsDataInBackground).Start();
             }
         }
 
