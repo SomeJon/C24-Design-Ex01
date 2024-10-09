@@ -6,7 +6,7 @@ namespace FacebookPages.Code.Buttons
 {
     public class ViewPanel : Panel
     {
-        private Page m_CurrentActivePage = new Page();
+        private Page m_CurrentActivePage = null;
         public event EventHandler ReceivedInfo;
         public event EventHandler ChangePage;
         public Page CurrentActivePage 
